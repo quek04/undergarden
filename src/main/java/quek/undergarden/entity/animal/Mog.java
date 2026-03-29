@@ -137,6 +137,11 @@ public class Mog extends Animal implements IShearable {
 		builder.define(HAS_MOSS, true);
 	}
 
+	@Override
+	public float getAgeScale() {
+		return this.isBaby() ? 0.6F : 1.0F;
+	}
+
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason reason, @Nullable SpawnGroupData data) {

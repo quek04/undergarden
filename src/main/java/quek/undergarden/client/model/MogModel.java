@@ -18,33 +18,77 @@ public class MogModel extends EntityModel<MogRenderState> {
 
 	public MogModel(ModelPart root) {
 		super(root);
-		this.frontLegLeft = root.getChild("frontLegLeft");
-		this.frontLegRight = root.getChild("frontLegRight");
-		this.backLegRight = root.getChild("backLegRight");
-		this.backLegLeft = root.getChild("backLegLeft");
+		this.frontLegLeft = root.getChild("left_front_leg");
+		this.frontLegRight = root.getChild("right_front_leg");
+		this.backLegRight = root.getChild("right_back_leg");
+		this.backLegLeft = root.getChild("left_back_leg");
 		this.head = root.getChild("head");
 		this.body = root.getChild("body");
 	}
 
-	public static LayerDefinition createBodyLayer() {
+	public static LayerDefinition create() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition frontLegLeft = partdefinition.addOrReplaceChild("frontLegLeft", CubeListBuilder.create().texOffs(32, 36).mirror().addBox(0.0F, 0.0F, -3.0F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, 20.0F, -2.0F));
+		partdefinition.addOrReplaceChild("body", CubeListBuilder.create()
+				.texOffs(0, 35).addBox(0.0F, -17.0F, -4.0F, 5.0F, 4.0F, 5.0F)
+				.texOffs(0, 0).addBox(-6.0F, -13.0F, -6.0F, 12.0F, 14.0F, 12.0F)
+				.texOffs(0, 26).addBox(-4.0F, -15.0F, -3.0F, 6.0F, 2.0F, 7.0F),
+			PartPose.offset(0.0F, 20.0F, 0.0F));
 
-		PartDefinition frontLegRight = partdefinition.addOrReplaceChild("frontLegRight", CubeListBuilder.create().texOffs(20, 36).addBox(-3.0F, 0.0F, -3.0F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 20.0F, -2.0F));
+		partdefinition.addOrReplaceChild("head", CubeListBuilder.create()
+				.texOffs(26, 26).addBox(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F),
+			PartPose.offset(0.0F, 20.0F, -6.0F));
 
-		PartDefinition backLegRight = partdefinition.addOrReplaceChild("backLegRight", CubeListBuilder.create().texOffs(0, 0).addBox(-7.0F, 0.0F, 0.0F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 20.0F, 2.0F));
+		partdefinition.addOrReplaceChild("left_front_leg", CubeListBuilder.create()
+				.texOffs(32, 36).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+			PartPose.offset(3.5F, 20.0F, -3.5F));
 
-		PartDefinition backLegLeft = partdefinition.addOrReplaceChild("backLegLeft", CubeListBuilder.create().texOffs(36, 0).mirror().addBox(4.0F, 0.0F, 0.0F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-2.0F, 20.0F, 2.0F));
+		partdefinition.addOrReplaceChild("right_front_leg", CubeListBuilder.create()
+				.texOffs(20, 36).addBox(-1.5F, 2.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+			PartPose.offset(-3.5F, 18.0F, -3.5F));
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(26, 26).addBox(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 20.0F, -6.0F));
+		partdefinition.addOrReplaceChild("right_back_leg", CubeListBuilder.create()
+				.texOffs(0, 0).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+			PartPose.offset(-3.5F, 20.0F, 3.5F));
 
-		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 35).addBox(0.0F, -21.0F, -4.0F, 5.0F, 4.0F, 5.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 0).addBox(-6.0F, -17.0F, -6.0F, 12.0F, 14.0F, 12.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 26).addBox(-4.0F, -19.0F, -3.0F, 6.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		partdefinition.addOrReplaceChild("left_back_leg", CubeListBuilder.create()
+				.texOffs(36, 0).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+			PartPose.offset(3.5F, 20.0F, 3.5F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
+	}
+
+	public static LayerDefinition createBaby() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
+
+		partdefinition.addOrReplaceChild("body", CubeListBuilder.create()
+				.texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F)
+				.texOffs(0, 16).addBox(-3.0F, -10.0F, -1.0F, 4.0F, 2.0F, 4.0F),
+			PartPose.offset(0.0F, 22.0F, 0.0F));
+
+		partdefinition.addOrReplaceChild("head", CubeListBuilder.create()
+				.texOffs(16, 16).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 2.0F, 2.0F),
+			PartPose.offset(0.0F, 21.0F, -4.0F));
+
+		partdefinition.addOrReplaceChild("left_front_leg", CubeListBuilder.create()
+				.texOffs(8, 22).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F),
+			PartPose.offset(2.0F, 22.0F, -2.0F));
+
+		partdefinition.addOrReplaceChild("right_front_leg", CubeListBuilder.create()
+				.texOffs(16, 20).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F),
+			PartPose.offset(-2.0F, 22.0F, -2.0F));
+
+		partdefinition.addOrReplaceChild("right_back_leg", CubeListBuilder.create()
+				.texOffs(0, 22).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F),
+			PartPose.offset(-2.0F, 22.0F, 2.0F));
+
+		partdefinition.addOrReplaceChild("left_back_leg", CubeListBuilder.create()
+				.texOffs(24, 20).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F),
+			PartPose.offset(2.0F, 24.0F, 2.0F));
+
+		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
 
 	@Override

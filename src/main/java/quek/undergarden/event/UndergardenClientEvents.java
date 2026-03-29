@@ -184,7 +184,8 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.MUNCHER, MuncherModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SPLOOGIE, SploogieModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GWIB, GwibModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::create);
+		event.registerLayerDefinition(UGModelLayers.MOG_BABY, MogModel::createBaby);
 		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN, DenizenModel::createBodyLayer);

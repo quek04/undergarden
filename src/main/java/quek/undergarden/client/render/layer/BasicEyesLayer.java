@@ -5,35 +5,42 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 
 import java.util.function.Predicate;
 
-public class BasicEyesLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends EyesLayer<S, M> {
+public class BasicEyesLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
 
-	private final RenderType type;
+	private final RenderType adultType;
+	private final RenderType babyType;
 	private final Predicate<S> visible;
 
 	public BasicEyesLayer(RenderLayerParent<S, M> renderer, RenderType type) {
-		this(renderer, type, state -> true);
+		this(renderer, type, type, state -> true);
+	}
+
+	public BasicEyesLayer(RenderLayerParent<S, M> renderer, RenderType adultType, RenderType babyType) {
+		this(renderer, adultType, babyType, s -> true);
 	}
 
 	public BasicEyesLayer(RenderLayerParent<S, M> renderer, RenderType type, Predicate<S> visible) {
+		this(renderer, type, type, visible);
+	}
+
+	public BasicEyesLayer(RenderLayerParent<S, M> renderer, RenderType adultType, RenderType babyType, Predicate<S> visible) {
 		super(renderer);
-		this.type = type;
+		this.adultType = adultType;
+		this.babyType = babyType;
 		this.visible = visible;
 	}
 
 	@Override
-	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state, float yRot, float xRot) {
+	public void submit(PoseStack stack, SubmitNodeCollector collector, int light, S state, float yRot, float xRot) {
 		if (this.visible.test(state)) {
-			super.submit(poseStack, submitNodeCollector, lightCoords, state, yRot, xRot);
+			collector.order(1).submitModel(this.getParentModel(), state, stack, state.isBaby ? this.babyType : this.adultType, light, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
 		}
-	}
-
-	@Override
-	public RenderType renderType() {
-		return this.type;
 	}
 }
