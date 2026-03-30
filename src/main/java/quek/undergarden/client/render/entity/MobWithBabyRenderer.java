@@ -27,7 +27,7 @@ public abstract class MobWithBabyRenderer<T extends Mob, S extends LivingEntityR
 	}
 
 	@Override
-	public Identifier getTextureLocation(S state) {
+	public final Identifier getTextureLocation(S state) {
 		return state.isBaby ? this.getBabyTexture(state) : this.getAdultTexture(state);
 	}
 

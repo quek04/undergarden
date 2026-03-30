@@ -172,12 +172,14 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.ROTLING, RotlingModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTWALKER, RotwalkerModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTBEAST, RotbeastModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.DWELLER, () -> DwellerModel.createBodyLayer(0.0F));
-		event.registerLayerDefinition(UGModelLayers.DWELLER_SADDLE, () -> DwellerModel.createBodyLayer(0.5F));
+		event.registerLayerDefinition(UGModelLayers.DWELLER, () -> DwellerModel.create(0.0F));
+		event.registerLayerDefinition(UGModelLayers.DWELLER_BABY, DwellerModel::createBaby);
+		event.registerLayerDefinition(UGModelLayers.DWELLER_SADDLE, () -> DwellerModel.create(0.5F));
 		event.registerLayerDefinition(UGModelLayers.GREATER_DWELLER, GreaterDwellerModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GWIBLING, GwiblingModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.BRUTE, BruteModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.SCINTLING, ScintlingModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.SCINTLING, ScintlingModel::create);
+		event.registerLayerDefinition(UGModelLayers.SCINTLING_BABY, ScintlingModel::createBaby);
 		event.registerLayerDefinition(UGModelLayers.GLOOMPER, GloomperModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.STONEBORN, StonebornModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.NARGOYLE, NargoyleModel::createBodyLayer);

@@ -12,45 +12,70 @@ public class ScintlingModel extends EntityModel<LivingEntityRenderState> {
 	private final ModelPart head;
 	private final ModelPart leftStalk;
 	private final ModelPart rightStalk;
-	private final ModelPart torso;
+	private final ModelPart body1;
+	private final ModelPart body2;
 	private final ModelPart tail;
 
 	public ScintlingModel(ModelPart root) {
 		super(root);
 		this.head = root.getChild("head");
-		this.leftStalk = head.getChild("leftStalk");
-		this.rightStalk = head.getChild("rightStalk");
-		this.torso = root.getChild("torso");
-		this.tail = root.getChild("tail");
+		this.leftStalk = this.head.getChild("left_stalk");
+		this.rightStalk = this.head.getChild("right_stalk");
+		this.body1 = root.getChild("body1");
+		this.body2 = this.body1.getChild("body2");
+		this.tail = this.body2.getChild("tail");
 	}
 
-	public static LayerDefinition createBodyLayer() {
+	public static LayerDefinition create() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition tail = partdefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 18).addBox(-4.0F, -2.0F, 0.0F, 8.0F, 4.0F, 5.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 28).addBox(-3.0F, -1.0F, 5.0F, 6.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, 6.0F));
+		PartDefinition body = partdefinition.addOrReplaceChild("body1", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -3.0F, -1.0F, 8.0F, 5.0F, 13.0F), PartPose.offset(0.0F, 22.0F, -7.0F));
 
-		PartDefinition torso = partdefinition.addOrReplaceChild("torso", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -5.0F, -7.0F, 8.0F, 5.0F, 13.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition body2 = body.addOrReplaceChild("body2", CubeListBuilder.create().texOffs(0, 18).addBox(-4.0F, -3.0F, 0.0F, 8.0F, 4.0F, 5.0F), PartPose.offset(0.0F, 1.0F, 12.0F));
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(26, 18).addBox(-3.0F, -2.0F, -6.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, -7.0F));
+		body2.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 28).addBox(-3.0F, -1.5F, 0.0F, 6.0F, 3.0F, 4.0F), PartPose.offset(0.0F, -0.5F, 5.0F));
 
-		PartDefinition leftStalk = head.addOrReplaceChild("leftStalk", CubeListBuilder.create().texOffs(20, 28).addBox(0.0F, -7.0F, -1.0F, 1.0F, 7.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0F, -2.0F, -5.0F, 0.3491F, 0.0F, 0.1745F));
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(26, 18).addBox(-3.0F, -2.0F, -7.0F, 6.0F, 4.0F, 6.0F), PartPose.offset(0.0F, 22.0F, -7.0F));
 
-		PartDefinition rightStalk = head.addOrReplaceChild("rightStalk", CubeListBuilder.create().texOffs(20, 28).mirror().addBox(-1.0F, -7.0F, -1.0F, 1.0F, 7.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-2.0F, -2.0F, -5.0F, 0.3491F, 0.0F, -0.1745F));
+		head.addOrReplaceChild("right_stalk", CubeListBuilder.create().texOffs(20, 28).addBox(-0.5F, -7.0F, -0.5F, 1.0F, 7.0F, 1.0F), PartPose.offset(-2.5F, -2.0F, -6.5F));
+
+		head.addOrReplaceChild("left_stalk", CubeListBuilder.create().texOffs(20, 28).addBox(-0.5F, -7.0F, -0.5F, 1.0F, 7.0F, 1.0F), PartPose.offset(2.5F, -2.0F, -6.5F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
+	}
+
+	public static LayerDefinition createBaby() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
+
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -3.0F, -6.0F, 4.0F, 3.0F, 10.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+		head.addOrReplaceChild("left_stalk", CubeListBuilder.create().texOffs(0, 13).addBox(-0.5F, -2.0F, -0.5F, 1.0F, 2.0F, 1.0F), PartPose.offsetAndRotation(1.5F, -3.0F, -5.5F, -0.1745F, 0.0F, 0.0873F));
+
+		head.addOrReplaceChild("right_stalk", CubeListBuilder.create().texOffs(0, 13).addBox(-0.5F, -2.0F, -0.5F, 1.0F, 2.0F, 1.0F), PartPose.offsetAndRotation(-1.5F, -3.0F, -5.5F, -0.1745F, 0.0F, -0.0873F));
+
+		PartDefinition body1 = partdefinition.addOrReplaceChild("body1", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -2.0F, 4.0F, 2.0F, 2.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+		PartDefinition body2 = body1.addOrReplaceChild("body2", CubeListBuilder.create(), PartPose.ZERO);
+
+		body2.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.ZERO);
+
+		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
 
 	@Override
 	public void setupAnim(LivingEntityRenderState state) {
 		super.setupAnim(state);
-		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
-		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
 
-		this.torso.yRot = Mth.cos(state.walkAnimationPos * 0.5F + Mth.PI) * 0.5F * state.walkAnimationSpeed;
+		if (state.isBaby) {
+			state.walkAnimationPos *= 0.75F;
+			state.walkAnimationSpeed *= 0.75F;
+		}
 
-		this.tail.yRot = Mth.cos(state.walkAnimationPos * 0.5F) * 0.5F * state.walkAnimationSpeed;
+		this.body1.yRot += Mth.cos(state.walkAnimationPos * 0.65F + Mth.PI) * state.walkAnimationSpeed;
+		this.body2.yRot += Mth.cos(state.walkAnimationPos * 0.65F) * state.walkAnimationSpeed;
+		this.tail.yRot += Mth.cos(state.walkAnimationPos * 0.65F + Mth.PI) * state.walkAnimationSpeed;
 
 		float wiggle = Mth.sin((state.ageInTicks) * 0.3F) * 0.3F;
 
