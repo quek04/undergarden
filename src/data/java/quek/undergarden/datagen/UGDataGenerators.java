@@ -35,7 +35,7 @@ public class UGDataGenerators {
 		generator.addProvider(true, datapackProvider);
 
 		generator.addProvider(true, new UGRecipeRunner(output, lookupProvider));
-		generator.addProvider(true, new UGStructureUpdater("structures", output, event.getResourceManager(PackType.SERVER_DATA)));
+		generator.addProvider(true, new UGStructureUpdater("structure", output, event.getResourceManager(PackType.SERVER_DATA)));
 		generator.addProvider(true, new UGAdvancements(output, datapackProvider.getRegistryProvider()));
 		generator.addProvider(true, new UGDataMapsProvider(output, lookupProvider));
 

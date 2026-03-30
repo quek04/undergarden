@@ -2,12 +2,6 @@
   "feature": "undergarden:shimmerweed",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 75.0,
-      "noise_offset": 0.0,
-      "noise_to_count_ratio": 200
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
@@ -24,6 +18,12 @@
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 75.0,
+      "noise_offset": 0.0,
+      "noise_to_count_ratio": 200
     },
     {
       "type": "minecraft:random_offset",
