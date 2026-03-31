@@ -54,6 +54,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
+import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -131,6 +132,7 @@ public class UndergardenCommonEvents {
 
 	private static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerItem(Capabilities.FluidHandler.ITEM, (object, context) -> new FluidHandlerItemStack(UGDataComponents.STORED_FLUID, object, FluidType.BUCKET_VOLUME), UGItems.CLOGGRUM_BUCKET);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UGBlockEntities.INFUSER.get(), SidedInvWrapper::new);
 	}
 
 	private static void registerBETypes(BlockEntityTypeAddBlocksEvent event) {
