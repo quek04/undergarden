@@ -2,10 +2,6 @@
   "feature": "undergarden:blood_mushroom",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
@@ -22,6 +18,10 @@
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 1
     },
     {
       "type": "minecraft:random_offset",

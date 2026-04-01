@@ -48,11 +48,25 @@ public class UndergardenConfig {
 		}
 	}
 
+	public static class Server {
+
+		public static ModConfigSpec.ConfigValue<Boolean> spawn_in_undergarden;
+
+		public Server(ModConfigSpec.Builder builder) {
+			spawn_in_undergarden = builder
+				.translation("config.undergarden.spawn_in_undergarden")
+				.define("Spawn in Undergarden", false);
+		}
+	}
+
 	static final ModConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 
 	static final ModConfigSpec CLIENT_SPEC;
 	public static final Client CLIENT;
+
+	static final ModConfigSpec SERVER_SPEC;
+	public static final Server SERVER;
 
 	static {
 		final Pair<UndergardenConfig.Common, ModConfigSpec> common = new ModConfigSpec.Builder().configure(UndergardenConfig.Common::new);
@@ -61,5 +75,8 @@ public class UndergardenConfig {
 		final Pair<UndergardenConfig.Client, ModConfigSpec> client = new ModConfigSpec.Builder().configure(UndergardenConfig.Client::new);
 		CLIENT_SPEC = client.getRight();
 		CLIENT = client.getLeft();
+		final Pair<UndergardenConfig.Server, ModConfigSpec> server = new ModConfigSpec.Builder().configure(UndergardenConfig.Server::new);
+		SERVER_SPEC = server.getRight();
+		SERVER = server.getLeft();
 	}
 }

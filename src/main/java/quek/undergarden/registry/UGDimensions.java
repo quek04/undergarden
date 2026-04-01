@@ -1,16 +1,16 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TimelineTags;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.attribute.*;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.BedRule;
+import net.minecraft.world.attribute.EnvironmentAttributeMap;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.CardinalLighting;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
@@ -28,7 +28,6 @@ import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalLong;
 
 public class UGDimensions {
 

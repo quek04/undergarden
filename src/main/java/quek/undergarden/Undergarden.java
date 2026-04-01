@@ -75,6 +75,7 @@ public class Undergarden {
 
 		container.registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
 		container.registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
+		container.registerConfig(ModConfig.Type.SERVER, UndergardenConfig.SERVER_SPEC);
 	}
 
 	public static Identifier prefix(String name) {
