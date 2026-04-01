@@ -13,6 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeBookCategories;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import quek.undergarden.Undergarden;
 import quek.undergarden.inventory.InfuserMenu;
 import quek.undergarden.recipe.display.CatalystSlotDisplay;
 import quek.undergarden.recipe.display.InfusingRecipeDisplay;
@@ -25,13 +26,14 @@ import java.util.List;
 public class InfuserRecipeBookComponent extends RecipeBookComponent<InfuserMenu> {
 
 	private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
-		Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
-		Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
-		Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
-		Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
+		Undergarden.prefix("recipe_book/infuser_filter_enabled"),
+		Undergarden.prefix("recipe_book/infuser_filter_disabled"),
+		Undergarden.prefix("recipe_book/infuser_filter_enabled_highlighted"),
+		Undergarden.prefix("recipe_book/infuser_filter_disabled_highlighted")
 	);
 	private static final Component FILTER_NAME = Component.translatable("gui.undergarden.recipebook.toggleRecipes.infusable");
 	private static final List<RecipeBookComponent.TabInfo> TABS = List.of(
+		new RecipeBookComponent.TabInfo(Items.COMPASS, UGRecipeBookCategories.INFUSER_SEARCH.get()),
 		new RecipeBookComponent.TabInfo(UGItems.UTHERIUM_CRYSTAL.get(), UGRecipeBookCategories.INFUSER_CORRUPTING.get()),
 		new RecipeBookComponent.TabInfo(UGItems.ROGDORIUM.get(), UGRecipeBookCategories.INFUSER_PURIFYING.get()),
 		new RecipeBookComponent.TabInfo(UGBlocks.GRONGLET.asItem(), UGRecipeBookCategories.INFUSER_MISC.get())

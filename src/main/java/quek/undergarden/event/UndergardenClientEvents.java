@@ -112,6 +112,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerSpecialBlockModels);
 		bus.addListener(UndergardenClientEvents::registerSpecialItemModels);
 		bus.addListener(UndergardenClientEvents::registerSpecialModels);
+		bus.addListener(UndergardenClientEvents::registerInfuserSearchCategory);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
@@ -125,6 +126,10 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 		});
+	}
+
+	private static void registerInfuserSearchCategory(RegisterRecipeBookSearchCategoriesEvent event) {
+		event.register(UGRecipeBookCategories.INFUSER_SEARCH.get(), UGRecipeBookCategories.INFUSER_CORRUPTING.get(), UGRecipeBookCategories.INFUSER_PURIFYING.get(), UGRecipeBookCategories.INFUSER_MISC.get());
 	}
 
 	private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {

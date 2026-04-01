@@ -384,6 +384,7 @@
   "gui.undergarden.jei.category.infuser": "Infusing",
   "gui.undergarden.jei.category.infusing.experience": "%s XP",
   "gui.undergarden.jei.category.infusing.time.seconds": "%ss",
+  "gui.undergarden.recipebook.toggleRecipes.infusable": "Show Infusable",
   "item.minecraft.lingering_potion.effect.brittleness": "Lingering Potion of Brittleness",
   "item.minecraft.lingering_potion.effect.featherweight": "Lingering Potion of Featherweight",
   "item.minecraft.lingering_potion.effect.glowing": "Lingering Potion of Glowing",

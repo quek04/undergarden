@@ -734,6 +734,7 @@ public class UGLang extends UGLangProvider {
 		add("trim_material.undergarden.forgotten", "Forgotten material");
 		add("trim_material.undergarden.rogdorium", "Rogdorium material");
 
+		add("gui.undergarden.recipebook.toggleRecipes.infusable", "Show Infusable");
 		add("gui.undergarden.jei.category.infuser", "Infusing");
 		add("gui.undergarden.jei.category.infusing.experience", "%s XP");
 		add("gui.undergarden.jei.category.infusing.time.seconds", "%ss");
