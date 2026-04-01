@@ -12,14 +12,16 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BasicEyesLayer;
 import quek.undergarden.entity.animal.Scintling;
 
-public class ScintlingRenderer extends MobRenderer<Scintling, LivingEntityRenderState, ScintlingModel> {
+public class ScintlingRenderer extends MobWithBabyRenderer<Scintling, LivingEntityRenderState, ScintlingModel> {
 
 	private static final Identifier SCINTLING = Undergarden.prefix("textures/entity/scintling.png");
+	private static final Identifier BABY_SCINTLING = Undergarden.prefix("textures/entity/scintling_baby.png");
 	private static final RenderType SCINTLING_GLOW = RenderTypes.eyes(Undergarden.prefix("textures/entity/scintling_glow.png"));
+	private static final RenderType BABY_SCINTLING_GLOW = RenderTypes.eyes(Undergarden.prefix("textures/entity/scintling_baby_glow.png"));
 
 	public ScintlingRenderer(EntityRendererProvider.Context context) {
-		super(context, new ScintlingModel(context.bakeLayer(UGModelLayers.SCINTLING)), 0.5F);
-		this.addLayer(new BasicEyesLayer<>(this, SCINTLING_GLOW));
+		super(context, new ScintlingModel(context.bakeLayer(UGModelLayers.SCINTLING)), new ScintlingModel(context.bakeLayer(UGModelLayers.SCINTLING_BABY)), 0.5F);
+		this.addLayer(new BasicEyesLayer<>(this, SCINTLING_GLOW, BABY_SCINTLING_GLOW));
 	}
 
 	@Override
@@ -28,8 +30,12 @@ public class ScintlingRenderer extends MobRenderer<Scintling, LivingEntityRender
 	}
 
 	@Override
-	public Identifier getTextureLocation(LivingEntityRenderState state) {
+	protected Identifier getAdultTexture(LivingEntityRenderState state) {
 		return SCINTLING;
 	}
 
+	@Override
+	protected Identifier getBabyTexture(LivingEntityRenderState state) {
+		return BABY_SCINTLING;
+	}
 }

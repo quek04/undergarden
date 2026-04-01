@@ -10,6 +10,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation DEPTHROCK_BED_FOOT = register("depthrock_bed_foot");
 	public static final ModelLayerLocation BRUTE = register("brute");
 	public static final ModelLayerLocation DWELLER = register("dweller");
+	public static final ModelLayerLocation DWELLER_BABY = register("dweller_baby");
 	public static final ModelLayerLocation DWELLER_SADDLE = register("dweller", "saddle");
 	public static final ModelLayerLocation GREATER_DWELLER = register("greater_dweller");
 	public static final ModelLayerLocation FORGOTTEN_GUARDIAN = register("forgotten_guardian");
@@ -29,6 +30,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation ROTLING = register("rotling");
 	public static final ModelLayerLocation ROTWALKER = register("rotwalker");
 	public static final ModelLayerLocation SCINTLING = register("scintling");
+	public static final ModelLayerLocation SCINTLING_BABY = register("scintling_baby");
 	public static final ModelLayerLocation SPLOOGIE = register("sploogie");
 	public static final ModelLayerLocation STONEBORN = register("stoneborn");
 	public static final ModelLayerLocation GRONGLET = register("gronglet");

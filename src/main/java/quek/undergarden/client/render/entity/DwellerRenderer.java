@@ -16,14 +16,16 @@ import quek.undergarden.client.state.entity.DwellerRenderState;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.UGEquipmentAssets;
 
-public class DwellerRenderer extends MobRenderer<Dweller, DwellerRenderState, DwellerModel> {
+public class DwellerRenderer extends MobWithBabyRenderer<Dweller, DwellerRenderState, DwellerModel> {
 
 	private static final Identifier DWELLER = Undergarden.prefix("textures/entity/dweller.png");
+	private static final Identifier BABY_DWELLER = Undergarden.prefix("textures/entity/dweller_baby.png");
 	private final static RenderType DWELLER_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/dweller_eyes.png"));
+	private final static RenderType BABY_DWELLER_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/dweller_baby_eyes.png"));
 
 	public DwellerRenderer(EntityRendererProvider.Context context) {
-		super(context, new DwellerModel(context.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
-		this.addLayer(new BasicEyesLayer<>(this, DWELLER_EYES));
+		super(context, new DwellerModel(context.bakeLayer(UGModelLayers.DWELLER)), new DwellerModel(context.bakeLayer(UGModelLayers.DWELLER_BABY)), 0.7F);
+		this.addLayer(new BasicEyesLayer<>(this, DWELLER_EYES, BABY_DWELLER_EYES));
 		this.addLayer(new SimpleEquipmentLayer<>(
 			this,
 			context.getEquipmentRenderer(),
@@ -45,7 +47,12 @@ public class DwellerRenderer extends MobRenderer<Dweller, DwellerRenderState, Dw
 	}
 
 	@Override
-	public Identifier getTextureLocation(DwellerRenderState state) {
+	protected Identifier getAdultTexture(DwellerRenderState state) {
 		return DWELLER;
+	}
+
+	@Override
+	protected Identifier getBabyTexture(DwellerRenderState state) {
+		return BABY_DWELLER;
 	}
 }
