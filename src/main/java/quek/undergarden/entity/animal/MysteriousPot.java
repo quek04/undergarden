@@ -146,6 +146,16 @@ public class MysteriousPot extends PathfinderMob {
 		return super.hurt(source, amount);
 	}
 
+	@Override
+	public void checkDespawn() {
+
+	}
+
+	@Override
+	public boolean isPersistenceRequired() {
+		return true;
+	}
+
 	static class HideAgainGoal extends Goal {
 
 		private final MysteriousPot pot;
