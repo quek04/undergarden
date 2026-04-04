@@ -34,25 +34,6 @@ import java.util.function.BiConsumer;
 
 public class UGItemModels extends ItemModelGenerators {
 
-	private static final List<TrimMaterialData> EX_TRIM_MATERIAL_MODELS = List.of(
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.QUARTZ, TrimMaterials.QUARTZ),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.IRON, TrimMaterials.IRON),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.NETHERITE, TrimMaterials.NETHERITE),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.REDSTONE, TrimMaterials.REDSTONE),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.COPPER, TrimMaterials.COPPER),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.GOLD, TrimMaterials.GOLD),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.EMERALD, TrimMaterials.EMERALD),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.DIAMOND, TrimMaterials.DIAMOND),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.LAPIS, TrimMaterials.LAPIS),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.AMETHYST, TrimMaterials.AMETHYST),
-		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.RESIN, TrimMaterials.RESIN),
-		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.CLOGGRUM, UGTrimMaterials.CLOGGRUM),
-		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.FROSTSTEEL, UGTrimMaterials.FROSTSTEEL),
-		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.UTHERIUM, UGTrimMaterials.UTHERIUM),
-		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.REGALIUM, UGTrimMaterials.REGALIUM),
-		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.FORGOTTEN, UGTrimMaterials.FORGOTTEN),
-		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.ROGDORIUM, UGTrimMaterials.ROGDORIUM));
-
 	public UGItemModels(ItemModelOutput output, BiConsumer<Identifier, ModelInstance> modelOutput) {
 		super(output, modelOutput);
 	}
@@ -93,18 +74,18 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.CLOGGRUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.CLOGGRUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.CLOGGRUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_HELMET.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_HELMET);
-		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_CHESTPLATE.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
-		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_LEGGINGS.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
-		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_BOOTS.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_BOOTS);
-		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_HELMET.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET);
-		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_CHESTPLATE.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
-		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_LEGGINGS.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
-		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_BOOTS.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_BOOTS);
-		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_HELMET.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_HELMET);
-		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_CHESTPLATE.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
-		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_LEGGINGS.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
-		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_BOOTS.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_BOOTS);
+		this.generateDynamicTrimmableItem(UGItems.CLOGGRUM_HELMET.get(), Undergarden.prefix("trims/items/cloggrum_helmet_trim"));
+		this.generateDynamicTrimmableItem(UGItems.CLOGGRUM_CHESTPLATE.get(), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateDynamicTrimmableItem(UGItems.CLOGGRUM_LEGGINGS.get(), ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateDynamicTrimmableItem(UGItems.CLOGGRUM_BOOTS.get(), ItemModelGenerators.TRIM_PREFIX_BOOTS);
+		this.generateDynamicTrimmableItem(UGItems.FROSTSTEEL_HELMET.get(), ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateDynamicTrimmableItem(UGItems.FROSTSTEEL_CHESTPLATE.get(), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateDynamicTrimmableItem(UGItems.FROSTSTEEL_LEGGINGS.get(), ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateDynamicTrimmableItem(UGItems.FROSTSTEEL_BOOTS.get(), ItemModelGenerators.TRIM_PREFIX_BOOTS);
+		this.generateDynamicTrimmableItem(UGItems.UTHERIUM_HELMET.get(), ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateDynamicTrimmableItem(UGItems.UTHERIUM_CHESTPLATE.get(), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateDynamicTrimmableItem(UGItems.UTHERIUM_LEGGINGS.get(), ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateDynamicTrimmableItem(UGItems.UTHERIUM_BOOTS.get(), Undergarden.prefix("trims/items/utherium_boots_trim"));
 		this.generateFlatItem(UGItems.FROSTSTEEL_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.FROSTSTEEL_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.FROSTSTEEL_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -153,9 +134,9 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.BLOOD_GLOBULE.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.BLUE_MOGMOSS.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.SLOP_BOWL.get(), ModelTemplates.FLAT_ITEM);
-		this.generateExpandedTrimmableItem(UGItems.ANCIENT_HELMET.get(), UGEquipmentAssets.ANCIENT, ItemModelGenerators.TRIM_PREFIX_HELMET);
-		this.generateExpandedTrimmableItem(UGItems.ANCIENT_CHESTPLATE.get(), UGEquipmentAssets.ANCIENT, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
-		this.generateExpandedTrimmableItem(UGItems.ANCIENT_LEGGINGS.get(), UGEquipmentAssets.ANCIENT, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateDynamicTrimmableItem(UGItems.ANCIENT_HELMET.get(), ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateDynamicTrimmableItem(UGItems.ANCIENT_CHESTPLATE.get(), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateDynamicTrimmableItem(UGItems.ANCIENT_LEGGINGS.get(), ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
 		this.generateFlatItem(UGItems.ROGDORIUM.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.ROGDORIUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.DENIZEN_MASK.get(), ModelTemplates.FLAT_ITEM);
@@ -197,22 +178,7 @@ public class UGItemModels extends ItemModelGenerators {
 		this.itemModelOutput.accept(item, createFlatModelDispatch(flatModel, inHandModel));
 	}
 
-	public void generateExpandedTrimmableItem(Item armor, ResourceKey<EquipmentAsset> equipmentAssetId, Identifier slotTrimPrefix) {
-		Identifier modelLocation = ModelLocationUtils.getModelLocation(armor);
-		Material itemTexture = TextureMapping.getItemTexture(armor);
-		List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> cases = new ArrayList<>(EX_TRIM_MATERIAL_MODELS.size());
-
-		for (ItemModelGenerators.TrimMaterialData material : TRIM_MATERIAL_MODELS) {
-			Identifier trimModelLocation = modelLocation.withSuffix("_" + material.assets().base().suffix() + "_trim");
-			Material trimOverlayTexture = new Material(slotTrimPrefix.withSuffix("_" + material.assets().assetId(equipmentAssetId).suffix()));
-			ItemModel.Unbaked trimModel = ItemModelUtils.plainModel(trimModelLocation);
-			this.generateLayeredItem(trimModelLocation, itemTexture, trimOverlayTexture);
-
-			cases.add(ItemModelUtils.when(material.materialKey(), trimModel));
-		}
-
-		ItemModel.Unbaked untrimmedModel = ItemModelUtils.plainModel(modelLocation);
-		ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), this.modelOutput);
-		this.itemModelOutput.accept(armor, ItemModelUtils.select(new TrimMaterialProperty(), untrimmedModel, cases));
+	public void generateDynamicTrimmableItem(Item armor, Identifier slotTrimPrefix) {
+		this.generateDynamicTrimmableItem(armor, this.createFlatItemModel(armor, ModelTemplates.FLAT_ITEM), slotTrimPrefix);
 	}
 }

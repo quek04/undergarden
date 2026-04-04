@@ -108,7 +108,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(ItemTags.IRON_ORES).add(UGBlocks.DEPTHROCK_IRON_ORE.get().asItem(), UGBlocks.SHIVERSTONE_IRON_ORE.get().asItem());
 		tag(ItemTags.GOLD_ORES).add(UGBlocks.DEPTHROCK_GOLD_ORE.get().asItem());
 		tag(ItemTags.DIAMOND_ORES).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get().asItem(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().asItem());
-		tag(ItemTags.TRIM_MATERIALS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.FORGOTTEN_INGOT.get());
+		tag(ItemTags.TRIM_MATERIALS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.FORGOTTEN_INGOT.get(), UGItems.ROGDORIUM.get());
 		tag(ItemTags.VILLAGER_PLANTABLE_SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
 		tag(ItemTags.WOLF_FOOD).add(UGItems.RAW_DWELLER_MEAT.get(), UGItems.DWELLER_STEAK.get(), UGItems.RAW_GLOOMPER_LEG.get(), UGItems.GLOOMPER_LEG.get());
 		tag(ItemTags.HEAD_ARMOR).add(UGItems.CLOGGRUM_HELMET.get(), UGItems.FROSTSTEEL_HELMET.get(), UGItems.UTHERIUM_HELMET.get(), UGItems.ANCIENT_HELMET.get());
