@@ -126,26 +126,26 @@ public class UGPlacedFeatures {
 		context.register(GRONGLEGROWTH_DELTA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GRONGLEGROWTH_DELTA), List.of(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome())));
 
 		//vegetation
-		context.register(AMOROUS_BRISTLE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.AMOROUS_BRISTLE), patch(5)));
-		context.register(MISERABELL_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.MISERABELL), patch(5)));
-		context.register(BUTTERBUNCH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BUTTERBUNCH), patch(5)));
-		context.register(DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEEPTURF), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
-		context.register(ASHEN_DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ASHEN_DEEPTURF), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get()))));
-		context.register(FROZEN_DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.FROZEN_DEEPTURF), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get()))));
-		context.register(SHIMMERWEED_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SHIMMERWEED), noiseWithFilter(200, 75.0D, 0.0D, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get()))));
-		context.register(DEPTHROCK_PEBBLE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHROCK_PEBBLE), noise(200, 50.0D, 0.0D)));
-		context.register(DITCHBULB_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DITCHBULB), patchWithFilter(75, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEPTHROCK.get(), UGBlocks.DREADROCK.get()))));
-		context.register(DITCHBULB_PATCH_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DITCHBULB), patchWithFilter(10, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEPTHROCK.get(), UGBlocks.DREADROCK.get()))));
-		context.register(TALL_DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TALL_DEEPTURF), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get()))));
-		context.register(TALL_SHIMMERWEED_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TALL_SHIMMERWEED), noiseWithFilter(200, 75.0D, 0.0D, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get()))));
-		context.register(INDIGO_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.INDIGO_MUSHROOM), patch(1)));
-		context.register(VEIL_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.VEIL_MUSHROOM), patch(1)));
-		context.register(INK_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.INK_MUSHROOM), patch(1)));
-		context.register(BLOOD_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLOOD_MUSHROOM), patch(1)));
-		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM), patch(10)));
-		context.register(UNDERBEAN_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UNDERBEAN_BUSH), patch(5)));
-		context.register(BLISTERBERRY_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLISTERBERRY_BUSH), patch(5)));
-		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD), patchWithFilter(5, BlockPredicate.hasSturdyFace(Direction.DOWN.getUnitVec3i(), Direction.UP))));
+		context.register(AMOROUS_BRISTLE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.AMOROUS_BRISTLE), patch(5, 64)));
+		context.register(MISERABELL_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.MISERABELL), patch(5, 64)));
+		context.register(BUTTERBUNCH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BUTTERBUNCH), patch(5, 64)));
+		context.register(DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEEPTURF), patchWithFilter(100, 64, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
+		context.register(ASHEN_DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ASHEN_DEEPTURF), patchWithFilter(100, 64, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get()))));
+		context.register(FROZEN_DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.FROZEN_DEEPTURF), patchWithFilter(100, 64, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get()))));
+		context.register(SHIMMERWEED_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SHIMMERWEED), noiseWithFilter(200, 75.0D, 0.0D, 32, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get()))));
+		context.register(DEPTHROCK_PEBBLE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHROCK_PEBBLE), noise(200, 50.0D, 0.0D, 32)));
+		context.register(DITCHBULB_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DITCHBULB), patchWithFilter(75, 16, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEPTHROCK.get(), UGBlocks.DREADROCK.get()))));
+		context.register(DITCHBULB_PATCH_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DITCHBULB), patchWithFilter(10, 16, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEPTHROCK.get(), UGBlocks.DREADROCK.get()))));
+		context.register(TALL_DEEPTURF_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TALL_DEEPTURF), patchWithFilter(100, 32, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get()))));
+		context.register(TALL_SHIMMERWEED_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TALL_SHIMMERWEED), noiseWithFilter(200, 75.0D, 0.0D, 32, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get()))));
+		context.register(INDIGO_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.INDIGO_MUSHROOM), patch(1, 64)));
+		context.register(VEIL_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.VEIL_MUSHROOM), patch(1, 64)));
+		context.register(INK_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.INK_MUSHROOM), patch(1, 64)));
+		context.register(BLOOD_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLOOD_MUSHROOM), patch(1, 64)));
+		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM), patch(10, 64)));
+		context.register(UNDERBEAN_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UNDERBEAN_BUSH), patch(5, 64)));
+		context.register(BLISTERBERRY_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLISTERBERRY_BUSH), patch(5, 64)));
+		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD), patchWithFilter(5, 16, BlockPredicate.hasSturdyFace(Direction.DOWN.getUnitVec3i(), Direction.UP))));
 		context.register(DROOPVINE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DROOPVINE), patch(100)));
 		context.register(GLITTERKELP_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLITTERKELP), List.of(NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome())));
 
@@ -177,9 +177,9 @@ public class UGPlacedFeatures {
 		//misc
 		context.register(SMOG_VENT, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOG_VENT), tree(8)));
 		context.register(ICE_PILLAR, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ICE_PILLAR), patch(50)));
-		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), crystal(50)));
-		context.register(CEILING_UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.CEILING_UTHERIUM_GROWTH), crystal(50)));
-		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), crystal(100)));
+		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), patch(50)));
+		context.register(CEILING_UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.CEILING_UTHERIUM_GROWTH), patch(50)));
+		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), patch(100)));
 		context.register(ANCIENT_ROOT, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ANCIENT_ROOT), patch(50)));
 		context.register(ANCIENT_ROOT_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ANCIENT_ROOT_EXTRA), patch(100)));
 		context.register(RUINS, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.RUINS), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
@@ -201,55 +201,75 @@ public class UGPlacedFeatures {
 		);
 	}
 
-	private static List<PlacementModifier> patch(int count) {
+	private static List<PlacementModifier> patch(int count, int tries) {
 		return List.of(
+			CountPlacement.of(count),
 			InSquarePlacement.spread(),
 			PlacementUtils.FULL_RANGE,
 			BiomeFilter.biome(),
-			CountPlacement.of(count),
+
+			//I believe this is what used to be the random patch feature
+			CountPlacement.of(tries),
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
 		);
 	}
 
-	private static List<PlacementModifier> crystal(int count) {
+	private static List<PlacementModifier> patch(int count) {
 		return List.of(
+			CountPlacement.of(count),
 			InSquarePlacement.spread(),
 			PlacementUtils.FULL_RANGE,
-			BiomeFilter.biome(),
-			CountPlacement.of(count),
-			RandomOffsetPlacement.ofTriangle(7, 3)
+			BiomeFilter.biome()
 		);
 	}
 
-	private static List<PlacementModifier> patchWithFilter(int count, BlockPredicate filter) {
+	private static List<PlacementModifier> patchWithFilter(int count, int tries, BlockPredicate filter) {
 		return List.of(
+			CountPlacement.of(count),
 			InSquarePlacement.spread(),
 			PlacementUtils.FULL_RANGE,
 			BiomeFilter.biome(),
-			CountPlacement.of(count),
+
+			//I believe this is what used to be the random patch feature
+			CountPlacement.of(tries),
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter))
 		);
 	}
 
-	private static List<PlacementModifier> noise(int noiseToCountRatio, double noiseFactor, double noiseOffset) {
+	private static List<PlacementModifier> patchWithFilter(int count, BlockPredicate filter) {
 		return List.of(
+			CountPlacement.of(count),
+			InSquarePlacement.spread(),
+			PlacementUtils.FULL_RANGE,
+			BiomeFilter.biome()
+		);
+	}
+
+	private static List<PlacementModifier> noise(int noiseToCountRatio, double noiseFactor, double noiseOffset, int tries) {
+		return List.of(
+			NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset),
 			InSquarePlacement.spread(),
 			PlacementUtils.FULL_RANGE,
 			BiomeFilter.biome(),
-			NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset),
+
+			//I believe this is what used to be the random patch feature
+			CountPlacement.of(tries),
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
 		);
 	}
 
-	private static List<PlacementModifier> noiseWithFilter(int noiseToCountRatio, double noiseFactor, double noiseOffset, BlockPredicate filter) {
+	private static List<PlacementModifier> noiseWithFilter(int noiseToCountRatio, double noiseFactor, double noiseOffset, int tries, BlockPredicate filter) {
 		return List.of(
+			NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset),
 			InSquarePlacement.spread(),
 			PlacementUtils.FULL_RANGE,
 			BiomeFilter.biome(),
-			NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset),
+
+			//I believe this is what used to be the random patch feature
+			CountPlacement.of(tries),
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter))
 		);

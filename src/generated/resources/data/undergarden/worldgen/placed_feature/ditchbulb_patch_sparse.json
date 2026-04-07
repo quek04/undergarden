@@ -2,6 +2,10 @@
   "feature": "undergarden:ditchbulb",
   "placement": [
     {
+      "type": "minecraft:count",
+      "count": 10
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -21,7 +25,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 10
+      "count": 16
     },
     {
       "type": "minecraft:random_offset",

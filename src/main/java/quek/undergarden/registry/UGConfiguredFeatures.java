@@ -4,9 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
@@ -150,25 +148,25 @@ public class UGConfiguredFeatures {
 		context.register(GRONGLEGROWTH_DELTA, new ConfiguredFeature<>(UGFeatures.DELTA.get(), new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), UGBlocks.SEDIMENT.get().defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(2, 4))));
 
 		//vegetation
-		context.register(AMOROUS_BRISTLE, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.AMOROUS_BRISTLE.get())));
-		context.register(MISERABELL, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.MISERABELL.get())));
-		context.register(BUTTERBUNCH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.BUTTERBUNCH.get())));
-		context.register(DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.DEEPTURF.get())));
-		context.register(ASHEN_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.ASHEN_DEEPTURF.get())));
-		context.register(FROZEN_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.FROZEN_DEEPTURF.get())));
-		context.register(SHIMMERWEED, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.SHIMMERWEED.get())));
+		context.register(AMOROUS_BRISTLE, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.AMOROUS_BRISTLE.get())));
+		context.register(MISERABELL, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.MISERABELL.get())));
+		context.register(BUTTERBUNCH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.BUTTERBUNCH.get())));
+		context.register(DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.DEEPTURF.get())));
+		context.register(ASHEN_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.ASHEN_DEEPTURF.get())));
+		context.register(FROZEN_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.FROZEN_DEEPTURF.get())));
+		context.register(SHIMMERWEED, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.SHIMMERWEED.get())));
 		context.register(DEPTHROCK_PEBBLE, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, pebble(UGBlocks.DEPTHROCK_PEBBLES.get())));
-		context.register(DITCHBULB, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1))));
-		context.register(TALL_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.TALL_DEEPTURF.get())));
-		context.register(TALL_SHIMMERWEED, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.TALL_SHIMMERWEED.get())));
-		context.register(INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.INDIGO_MUSHROOM.get())));
-		context.register(VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.VEIL_MUSHROOM.get())));
-		context.register(INK_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.INK_MUSHROOM.get())));
-		context.register(BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.BLOOD_MUSHROOM.get())));
-		context.register(PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.PUFF_MUSHROOM.get())));
-		context.register(UNDERBEAN_BUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.UNDERBEAN_BUSH.get().defaultBlockState().setValue(UnderbeanBushBlock.AGE, 3))));
-		context.register(BLISTERBERRY_BUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.BLISTERBERRY_BUSH.get().defaultBlockState().setValue(BlisterberryBushBlock.AGE, 3))));
-		context.register(GLOOMGOURD, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.GLOOMGOURD.get())));
+		context.register(DITCHBULB, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1))));
+		context.register(TALL_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.TALL_DEEPTURF.get())));
+		context.register(TALL_SHIMMERWEED, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.TALL_SHIMMERWEED.get())));
+		context.register(INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.INDIGO_MUSHROOM.get())));
+		context.register(VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.VEIL_MUSHROOM.get())));
+		context.register(INK_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.INK_MUSHROOM.get())));
+		context.register(BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.BLOOD_MUSHROOM.get())));
+		context.register(PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.PUFF_MUSHROOM.get())));
+		context.register(UNDERBEAN_BUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.UNDERBEAN_BUSH.get().defaultBlockState().setValue(UnderbeanBushBlock.AGE, 3))));
+		context.register(BLISTERBERRY_BUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.BLISTERBERRY_BUSH.get().defaultBlockState().setValue(BlisterberryBushBlock.AGE, 3))));
+		context.register(GLOOMGOURD, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.GLOOMGOURD.get())));
 		context.register(DROOPVINE, new ConfiguredFeature<>(UGFeatures.DROOPVINE.get(), FeatureConfiguration.NONE));
 		context.register(GLITTERKELP, new ConfiguredFeature<>(UGFeatures.GLITTERKELP.get(), FeatureConfiguration.NONE));
 
@@ -224,11 +222,11 @@ public class UGConfiguredFeatures {
 		context.register(RUINS, new ConfiguredFeature<>(Feature.BLOCK_PILE, new BlockPileConfiguration(new WeightedStateProvider(WeightedList.<BlockState>builder().add(UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), 5).add(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState(), 2).add(UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState(), 2).build()))));
 	}
 
-	private static SimpleBlockConfiguration flower(Block block) {
+	private static SimpleBlockConfiguration simpleBlock(Block block) {
 		return new SimpleBlockConfiguration(BlockStateProvider.simple(block));
 	}
 
-	private static SimpleBlockConfiguration flower(BlockState block) {
+	private static SimpleBlockConfiguration simpleBlock(BlockState block) {
 		return new SimpleBlockConfiguration(BlockStateProvider.simple(block));
 	}
 

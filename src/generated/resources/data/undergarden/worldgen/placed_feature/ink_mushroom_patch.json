@@ -2,6 +2,10 @@
   "feature": "undergarden:ink_mushroom",
   "placement": [
     {
+      "type": "minecraft:count",
+      "count": 1
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -21,7 +25,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 1
+      "count": 64
     },
     {
       "type": "minecraft:random_offset",

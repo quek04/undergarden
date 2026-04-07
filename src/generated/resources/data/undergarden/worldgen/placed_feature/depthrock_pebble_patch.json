@@ -2,6 +2,12 @@
   "feature": "undergarden:depthrock_pebble",
   "placement": [
     {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 50.0,
+      "noise_offset": 0.0,
+      "noise_to_count_ratio": 200
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -20,10 +26,8 @@
       "type": "minecraft:biome"
     },
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 50.0,
-      "noise_offset": 0.0,
-      "noise_to_count_ratio": 200
+      "type": "minecraft:count",
+      "count": 32
     },
     {
       "type": "minecraft:random_offset",

@@ -2,6 +2,10 @@
   "feature": "undergarden:butterbunch",
   "placement": [
     {
+      "type": "minecraft:count",
+      "count": 5
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -21,7 +25,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 5
+      "count": 64
     },
     {
       "type": "minecraft:random_offset",

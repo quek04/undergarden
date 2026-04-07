@@ -2,6 +2,10 @@
   "feature": "undergarden:frozen_deepturf",
   "placement": [
     {
+      "type": "minecraft:count",
+      "count": 100
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -21,7 +25,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 100
+      "count": 64
     },
     {
       "type": "minecraft:random_offset",
