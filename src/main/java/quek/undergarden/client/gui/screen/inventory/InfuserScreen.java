@@ -37,6 +37,7 @@ public class InfuserScreen extends AbstractRecipeBookScreen<InfuserMenu> {
 
 	@Override
 	public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+		super.extractBackground(graphics, mouseX, mouseY, a);
 		int leftPos = this.leftPos;
 		int topPos = this.topPos;
 
