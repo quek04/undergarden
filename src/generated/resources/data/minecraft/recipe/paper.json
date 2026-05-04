@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": "undergarden:thornreed"
+  },
+  "pattern": [
+    "TTT"
+  ],
+  "result": {
+    "id": "minecraft:paper"
+  }
+}

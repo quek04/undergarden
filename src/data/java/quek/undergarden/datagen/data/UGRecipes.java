@@ -361,6 +361,12 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
 			.save(this.output);
 
+		ShapedRecipeBuilder.shaped(getter, RecipeCategory.MISC, Items.PAPER)
+			.pattern("TTT")
+			.define('T', UGItems.THORNREED)
+			.unlockedBy("has_thornreed", has(UGItems.THORNREED.get()))
+			.save(this.output);
+
 		makeIngotToBlock(getter, UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(this.output);
 		makeIngotToBlock(getter, UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(this.output);
 		makeIngotToBlock(getter, UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(this.output);

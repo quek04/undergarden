@@ -73,7 +73,8 @@
       "undergarden:small_grongle_tree",
       "undergarden:grongle_bush",
       "undergarden:amorous_bristle_patch",
-      "undergarden:butterbunch_patch"
+      "undergarden:butterbunch_patch",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

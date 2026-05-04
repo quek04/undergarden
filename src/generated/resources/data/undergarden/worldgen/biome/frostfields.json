@@ -64,7 +64,8 @@
       "undergarden:veil_mushroom_patch",
       "undergarden:shimmerweed_patch",
       "undergarden:tall_shimmerweed_patch",
-      "undergarden:frozen_deepturf_patch"
+      "undergarden:frozen_deepturf_patch",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

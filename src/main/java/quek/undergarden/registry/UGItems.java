@@ -81,6 +81,7 @@ public class UGItems {
 	public static final DeferredItem<Item> BRUTE_TUSK = register("brute_tusk", Item::new, Item.Properties::new);
 	public static final DeferredItem<Item> MOGMOSS = register("mogmoss", Item::new, Item.Properties::new);
 	public static final DeferredItem<Item> BLUE_MOGMOSS = register("blue_mogmoss", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> THORNREED = register("thornreed", (properties) -> new BlockItem(UGBlocks.THORNREED.get(), properties), Item.Properties::new);
 
 	//tools
 	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = register("cloggrum_battleaxe", BattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.CLOGGRUM, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.WHACK, 12)).component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)));

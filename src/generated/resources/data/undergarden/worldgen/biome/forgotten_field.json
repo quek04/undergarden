@@ -70,7 +70,8 @@
       "undergarden:tall_shimmerweed_patch",
       "undergarden:droopvine_patch",
       "undergarden:gloomgourd_patch",
-      "undergarden:smogstem_tree_sparse"
+      "undergarden:smogstem_tree_sparse",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

@@ -69,7 +69,8 @@
       "undergarden:wigglewood_tree",
       "undergarden:tall_wigglewood_tree",
       "undergarden:miserabell_patch",
-      "undergarden:butterbunch_patch"
+      "undergarden:butterbunch_patch",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

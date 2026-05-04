@@ -66,7 +66,8 @@
       "undergarden:tall_shimmerweed_patch",
       "undergarden:frozen_deepturf_patch",
       "undergarden:smogstem_tree",
-      "undergarden:wide_smogstem_tree"
+      "undergarden:wide_smogstem_tree",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

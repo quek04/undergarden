@@ -63,6 +63,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> GLOOMGOURD_PATCH = create("gloomgourd_patch");
 	public static final ResourceKey<PlacedFeature> DROOPVINE_PATCH = create("droopvine_patch");
 	public static final ResourceKey<PlacedFeature> GLITTERKELP_PATCH = create("glitterkelp_patch");
+	public static final ResourceKey<PlacedFeature> THORNREED_PATCH = create("thornreed_patch");
 
 	//tree
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE = create("smogstem_tree");
@@ -145,9 +146,23 @@ public class UGPlacedFeatures {
 		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM), patch(10, 64)));
 		context.register(UNDERBEAN_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UNDERBEAN_BUSH), patch(5, 64)));
 		context.register(BLISTERBERRY_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLISTERBERRY_BUSH), patch(5, 64)));
-		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD), patchWithFilter(5, 16, BlockPredicate.hasSturdyFace(Direction.DOWN.getUnitVec3i(), Direction.UP))));
+		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD), patchWithFilter(5, 16, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEEPTURF_BLOCK.get()))));
 		context.register(DROOPVINE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DROOPVINE), patch(100)));
-		context.register(GLITTERKELP_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLITTERKELP), List.of(NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome())));
+		context.register(GLITTERKELP_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLITTERKELP), List.of(
+			NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D),
+			InSquarePlacement.spread(),
+			HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)),
+			BiomeFilter.biome()
+		)));
+		context.register(THORNREED_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.THORNREED), List.of(
+			CountPlacement.of(100),
+			InSquarePlacement.spread(),
+			PlacementUtils.FULL_RANGE,
+			BiomeFilter.biome(),
+			CountPlacement.of(50),
+			RandomOffsetPlacement.ofTriangle(7, 3),
+			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.THORNREED.get().defaultBlockState(), BlockPos.ZERO))
+		)));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));
@@ -197,7 +212,7 @@ public class UGPlacedFeatures {
 		return List.of(
 			CountOnEveryLayerPlacement.of(count),
 			BiomeFilter.biome(),
-			BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(), UGTags.Blocks.PUFFSHROOM_CAN_PLACE_ON))
+			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.PUFF_MUSHROOM.get().defaultBlockState(), BlockPos.ZERO))
 		);
 	}
 

@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#minecraft:supports_sugar_cane",
+    "undergarden:deepturf_block",
+    "undergarden:frozen_deepturf_block",
+    "undergarden:ashen_deepturf_block",
+    "undergarden:deepsoil",
+    "undergarden:coarse_deepsoil",
+    "undergarden:sediment"
+  ]
+}

@@ -63,7 +63,8 @@
       "undergarden:depthrock_pebble_patch",
       "undergarden:ditchbulb_patch",
       "undergarden:gloomgourd_patch",
-      "undergarden:huge_ink_mushroom"
+      "undergarden:huge_ink_mushroom",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

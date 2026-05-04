@@ -53,7 +53,8 @@
       "undergarden:depthrock_pebble_patch",
       "undergarden:ditchbulb_patch",
       "undergarden:droopvine_patch",
-      "undergarden:glitterkelp_patch"
+      "undergarden:glitterkelp_patch",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

@@ -295,6 +295,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.DREADROCK_BUTTON);
 		this.dropSelf(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		this.add(UGBlocks.DEPTHROCK_POT.get(), noDrop());
+		this.dropSelf(UGBlocks.THORNREED);
 	}
 
 	public void dropSelf(Supplier<? extends Block> block) {

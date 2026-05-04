@@ -52,8 +52,8 @@
             "tag": "minecraft:air"
           },
           {
-            "type": "minecraft:has_sturdy_face",
-            "direction": "up",
+            "type": "minecraft:matching_blocks",
+            "blocks": "undergarden:deepturf_block",
             "offset": [
               0,
               -1,

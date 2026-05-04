@@ -17,7 +17,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
 import net.minecraft.util.random.Weighted;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
@@ -28,7 +27,6 @@ import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.client.render.item.DepthrockBedSpecialRenderer;
@@ -296,6 +294,9 @@ public class UGBlockStates extends BlockModelGenerators {
 			ModelTemplates.CAULDRON_FULL.create(UGBlocks.VIRULENT_MIX_CAULDRON.get(), TextureMapping.cauldron(TextureMapping.getBlockTexture(UGBlocks.VIRULENT_MIX.get(), "_still")), this.modelOutput))));
 
 		this.registerSimpleFlatItemModel(UGBlocks.MUSHROOM_VEIL.get(), "_end");
+
+		this.createCrossBlock(UGBlocks.THORNREED.get(), PlantType.NOT_TINTED);
+		this.registerSimpleFlatItemModel(UGItems.THORNREED.get());
 	}
 
 	public void wrapBlockItem(Block block, Consumer<Block> blockRegistry) {

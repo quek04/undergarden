@@ -65,7 +65,8 @@
       "undergarden:ditchbulb_patch",
       "undergarden:droopvine_patch",
       "undergarden:gloomgourd_patch",
-      "undergarden:huge_veil_mushroom"
+      "undergarden:huge_veil_mushroom",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

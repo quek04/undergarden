@@ -175,12 +175,12 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> BOOMGOURD = registerWithItem("boomgourd", BoomgourdBlock::new, () -> BlockBehaviour.Properties.of().ignitedByLava().mapColor(MapColor.COLOR_PURPLE).strength(1.0F).sound(SoundType.WOOD));
 	public static final DeferredBlock<StemBlock> GLOOMGOURD_STEM = register("gloomgourd_stem", (properties) -> new StemBlock(GLOOMGOURD.getKey(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.getKey(), UGItems.GLOOMGOURD_SEEDS.getKey(), BlockTags.SUPPORTS_STEM_CROPS, BlockTags.SUPPORTS_STEM_FRUIT, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MELON_STEM));
 	public static final DeferredBlock<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = register("gloomgourd_stem_attached", (properties) -> new AttachedStemBlock(UGBlocks.GLOOMGOURD_STEM.getKey(), UGBlocks.GLOOMGOURD.getKey(), UGItems.GLOOMGOURD_SEEDS.getKey(), BlockTags.SUPPORTS_STEM_CROPS, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_MELON_STEM));
-
 	public static final DeferredBlock<Block> DEPTHROCK_PEBBLES = register("depthrock_pebbles", DepthrockPebblesBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).instabreak().pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT).noOcclusion().noCollision());
 	public static final DeferredBlock<GlitterkelpBlock> GLITTERKELP = register("glitterkelp", GlitterkelpBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.KELP).lightLevel((state) -> 10));
 	public static final DeferredBlock<GlitterkelpPlantBlock> GLITTERKELP_PLANT = register("glitterkelp_plant", GlitterkelpPlantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.KELP_PLANT).lightLevel((state) -> 10));
 	public static final DeferredBlock<DroopvineBlock> DROOPVINE = register("droopvine", DroopvineBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light()));
 	public static final DeferredBlock<DroopvinePlantBlock> DROOPVINE_PLANT = register("droopvine_plant", DroopvinePlantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES_PLANT).strength(0.1F).lightLevel(Droopvine.light()));
+	public static final DeferredBlock<Block> THORNREED = register("thornreed", ThornreedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SUGAR_CANE));
 
 	//mushroom
 	public static final DeferredBlock<Block> INDIGO_MUSHROOM = registerWithItem("indigo_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));

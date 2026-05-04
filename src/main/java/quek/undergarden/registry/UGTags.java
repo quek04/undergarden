@@ -105,11 +105,13 @@ public class UGTags {
 		public static final TagKey<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
 		public static final TagKey<Block> GRONGLE_LOGS = tag("grongle_logs");
 		public static final TagKey<Block> MUNCHER_BREAKABLES = tag("muncher_breakables");
+
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
 		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
 		public static final TagKey<Block> GREATER_DWELLER_SPAWNABLE_ON = tag("greater_dweller_spawnable_on");
 
-		public static final TagKey<Block> PUFFSHROOM_CAN_PLACE_ON = tag("puffshroom_can_place_on");
+		public static final TagKey<Block> SUPPORTS_THORNREED = tag("supports_thornreed");
+		public static final TagKey<Block> SUPPORTS_THORNREED_ADJACENTLY = tag("supports_thornreed_adjacently");
 
 		public static final TagKey<Block> NEEDS_FORGOTTEN_TOOL = tag("needs_forgotten_tool");
 		public static final TagKey<Block> INCORRECT_FOR_FORGOTTEN_TOOL = tag("incorrect_for_forgotten_tool");
@@ -160,6 +162,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> IMMUNE_TO_BLISTERBERRY_BUSH = tag("immune_to_blisterberry_bush");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_INFECTION = tag("immune_to_utheric_infection");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_GOOEY_EFFECT = tag("immune_to_gooey_effect");
+		public static final TagKey<EntityType<?>> IMMUNE_TO_THORNREED = tag("immune_to_thornreed");
 
 		private static TagKey<EntityType<?>> tag(String name) {
 			return TagKey.create(Registries.ENTITY_TYPE, Undergarden.prefix(name));
@@ -169,6 +172,8 @@ public class UGTags {
 	public static class Fluids {
 
 		public static final TagKey<Fluid> VIRULENT = tag("virulent");
+
+		public static final TagKey<Fluid> SUPPORTS_THORNREED_ADJACENTLY = tag("supports_thornreed_adjacently");
 
 		private static TagKey<Fluid> tag(String name) {
 			return TagKey.create(Registries.FLUID, Undergarden.prefix(name));

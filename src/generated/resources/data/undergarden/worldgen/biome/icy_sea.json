@@ -56,7 +56,8 @@
       "undergarden:shimmerweed_patch",
       "undergarden:tall_shimmerweed_patch",
       "undergarden:glitterkelp_patch",
-      "undergarden:frozen_deepturf_patch"
+      "undergarden:frozen_deepturf_patch",
+      "undergarden:thornreed_patch"
     ]
   ],
   "has_precipitation": false,

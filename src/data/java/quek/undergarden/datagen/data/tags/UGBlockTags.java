@@ -2,9 +2,7 @@ package quek.undergarden.datagen.data.tags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.BlockItemTagsProvider;
 import net.minecraft.data.tags.TagAppender;
-import net.minecraft.data.tags.VanillaBlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -16,7 +14,6 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTags;
 
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class UGBlockTags extends BlockTagsProvider {
@@ -48,6 +45,8 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(UGTags.Blocks.SCINTLING_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
 		tag(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
 		tag(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.DREADROCK.get(), UGBlocks.COARSE_DEEPSOIL.get());
+		tag(UGTags.Blocks.SUPPORTS_THORNREED).addTag(BlockTags.SUPPORTS_SUGAR_CANE).add(UGBlocks.DEEPTURF_BLOCK.get()).add(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()).add(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()).add(UGBlocks.DEEPSOIL.get()).add(UGBlocks.COARSE_DEEPSOIL.get()).add(UGBlocks.SEDIMENT.get());
+		tag(UGTags.Blocks.SUPPORTS_THORNREED_ADJACENTLY).add(Blocks.FROSTED_ICE);
 
 		//undergarden common
 		tag(UGTags.Blocks.DEPTHROCK_GROUND).add(UGBlocks.DEPTHROCK.get());
@@ -95,8 +94,8 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE_PLANT.get(), UGBlocks.DROOPVINE.get());
 		tag(BlockTags.STRIDER_WARM_BLOCKS).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.UTHERIUM_GROWTH.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get());
 		tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get(), UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
-		tag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
-		tag(BlockTags.HUGE_RED_MUSHROOM_CAN_PLACE_ON).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
+		tag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
+		tag(BlockTags.HUGE_RED_MUSHROOM_CAN_PLACE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
 		tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), UGBlocks.POTTED_PUFF_MUSHROOM.get(), UGBlocks.POTTED_GRONGLE_SAPLING.get(), UGBlocks.POTTED_AMOROUS_BRISTLE.get(), UGBlocks.POTTED_MISERABELL.get(), UGBlocks.POTTED_BUTTERBUNCH.get());
 		tag(BlockTags.WOOL_CARPETS).add(UGBlocks.MOGMOSS_RUG.get(), UGBlocks.BLUE_MOGMOSS_RUG.get());
 		tag(BlockTags.COAL_ORES).add(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.SHIVERSTONE_COAL_ORE.get());
@@ -112,6 +111,7 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(BlockTags.IMPERMEABLE).add(UGBlocks.SEDIMENT_GLASS.get());
 		tag(BlockTags.CAULDRONS).add(UGBlocks.VIRULENT_MIX_CAULDRON.get());
 		tag(BlockTags.MAINTAINS_FARMLAND).add(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
+		tag(BlockTags.SUPPORTS_SUGAR_CANE).add(UGBlocks.SEDIMENT.get());
 
 		//common
 		tag(Tags.Blocks.ORES).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM).addTag(UGTags.Blocks.ORES_ROGDORIUM);
