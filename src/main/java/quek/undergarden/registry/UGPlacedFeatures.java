@@ -159,7 +159,7 @@ public class UGPlacedFeatures {
 			InSquarePlacement.spread(),
 			PlacementUtils.FULL_RANGE,
 			BiomeFilter.biome(),
-			CountPlacement.of(50),
+//			CountPlacement.of(50),
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.THORNREED.get().defaultBlockState(), BlockPos.ZERO))
 		)));

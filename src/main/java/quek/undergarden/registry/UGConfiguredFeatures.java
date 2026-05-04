@@ -39,6 +39,7 @@ import quek.undergarden.world.gen.trunkplacer.SingleForkingTrunkPlacer;
 import quek.undergarden.world.gen.trunkplacer.SmogstemTrunkPlacer;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalInt;
 
 public class UGConfiguredFeatures {
@@ -49,6 +50,10 @@ public class UGConfiguredFeatures {
 	public static final RuleTest SHIVERSTONE_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES);
 	public static final RuleTest DREADROCK_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES);
 	public static final RuleTest TREMBLECRUST_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES);
+
+	public static final RuleBasedStateProvider PLACE_BELOW_UNDERGARDEN_TRUNKS = RuleBasedStateProvider.ifTrueThenProvide(
+		TreeConfiguration.CAN_PLACE_BELOW_OVERWORLD_TRUNKS, UGBlocks.DEEPSOIL.get()
+	);
 
 	//ores
 	public static final ResourceKey<ConfiguredFeature<?, ?>> COAL_ORE = create("coal_ore");
@@ -190,32 +195,139 @@ public class UGConfiguredFeatures {
 		)));
 
 		//tree
-		context.register(SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()), new SmogstemTrunkPlacer(10, 2, 2, 1), BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().build()));
-		context.register(WIDE_SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()), new SmogstemTrunkPlacer(10, 2, 2, 2), BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().build()));
-		context.register(TALL_SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()), new SmogstemTrunkPlacer(15, 4, 4, 2), BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().build()));
-		context.register(SMOGSTEM_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0)).ignoreVines().build()));
-		context.register(WIGGLEWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LOG.get()), new ForkingTrunkPlacer(3, 1, 1), BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LEAVES.get()), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build()));
-		context.register(TALL_WIGGLEWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LOG.get()), new ForkingTrunkPlacer(6, 1, 1), BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LEAVES.get()), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build()));
-		context.register(GRONGLE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.GRONGLE_LOG.get()), new MegaJungleTrunkPlacer(10, 2, 19), BlockStateProvider.simple(UGBlocks.GRONGLE_LEAVES.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE, GrongletTrunkDecorator.INSTANCE)).build()));
-		context.register(SMALL_GRONGLE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.GRONGLE_LOG.get()), new StraightTrunkPlacer(5, 2, 19), BlockStateProvider.simple(UGBlocks.GRONGLE_LEAVES.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE, GrongletTrunkDecorator.INSTANCE)).build()));
-		context.register(GRONGLE_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.GRONGLE_LOG.get()), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(UGBlocks.GRONGLE_LEAVES.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new TwoLayersFeatureSize(0, 0, 0)).ignoreVines().build()));
+		context.register(SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()),
+			new SmogstemTrunkPlacer(10, 2, 2, 1),
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()),
+			new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 1, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(WIDE_SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()),
+			new SmogstemTrunkPlacer(10, 2, 2, 2),
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()),
+			new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 1, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(TALL_SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()),
+			new SmogstemTrunkPlacer(15, 4, 4, 2),
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()),
+			new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 1, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(SMOGSTEM_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()),
+			new StraightTrunkPlacer(1, 0, 0),
+			BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()),
+			new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
+			Optional.empty(),
+			new TwoLayersFeatureSize(0, 0, 0),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(WIGGLEWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LOG.get()),
+			new ForkingTrunkPlacer(3, 1, 1),
+			BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LEAVES.get()),
+			new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(TALL_WIGGLEWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LOG.get()),
+			new ForkingTrunkPlacer(6, 1, 1),
+			BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LEAVES.get()),
+			new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(GRONGLE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.GRONGLE_LOG.get()),
+			new MegaJungleTrunkPlacer(10, 2, 19),
+			BlockStateProvider.simple(UGBlocks.GRONGLE_LEAVES.get()),
+			new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 1, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE, GrongletTrunkDecorator.INSTANCE)).build()));
+		context.register(SMALL_GRONGLE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.GRONGLE_LOG.get()),
+			new StraightTrunkPlacer(5, 2, 19),
+			BlockStateProvider.simple(UGBlocks.GRONGLE_LEAVES.get()),
+			new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 1),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE, GrongletTrunkDecorator.INSTANCE)).build()));
+		context.register(GRONGLE_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.GRONGLE_LOG.get()),
+			new StraightTrunkPlacer(1, 0, 0),
+			BlockStateProvider.simple(UGBlocks.GRONGLE_LEAVES.get()),
+			new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+			Optional.empty(),
+			new TwoLayersFeatureSize(0, 0, 0),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
 
 		//huge mushrooms
-		context.register(HUGE_INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState()), BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STEM.get().defaultBlockState()), 3, BlockPredicate.matchesTag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON))));
-		context.register(HUGE_VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()), new StraightTrunkPlacer(9, 1, 1), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()), new VeilFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).build()));
-		context.register(HUGE_INK_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get()), new SingleForkingTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2)).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
-		context.register(HUGE_BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()), new DarkOakTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())))).build()));
-		context.register(HUGE_PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_STEM.get()), new CherryTrunkPlacer(
-			6,
-			2,
-			2,
-			new WeightedListInt(
-				WeightedList.<IntProvider>builder().add(ConstantInt.of(1), 1).add(ConstantInt.of(2), 1).add(ConstantInt.of(3), 1).build()
+		context.register(HUGE_INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(
+			BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState()),
+			BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STEM.get().defaultBlockState()),
+			3,
+			BlockPredicate.matchesTag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON)
+		)));
+		context.register(HUGE_VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()),
+			new StraightTrunkPlacer(9, 1, 1),
+			BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()),
+			new VeilFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 1),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).build()));
+		context.register(HUGE_INK_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get()),
+			new SingleForkingTrunkPlacer(6, 2, 2),
+			BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()),
+			new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
+		context.register(HUGE_BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()),
+			new DarkOakTrunkPlacer(6, 2, 2),
+			BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()),
+			new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+			Optional.empty(),
+			new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())))).build()));
+		context.register(HUGE_PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_STEM.get()),
+			new CherryTrunkPlacer(
+				6,
+				2,
+				2,
+				new WeightedListInt(WeightedList.<IntProvider>builder().add(ConstantInt.of(1), 1).add(ConstantInt.of(2), 1).add(ConstantInt.of(3), 1).build()),
+				UniformInt.of(2, 4),
+				UniformInt.of(-4, -3),
+				UniformInt.of(-1, 0)
 			),
-			UniformInt.of(2, 4),
-			UniformInt.of(-4, -3),
-			UniformInt.of(-1, 0)
-		), BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_CAP.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(1, 0, 2)).build()));
+			BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_CAP.get()),
+			new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 2),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).build()));
 
 		//rocks
 		context.register(DEPTHROCK_ROCK, new ConfiguredFeature<>(UGFeatures.BOULDER.get(), new BlockStateConfiguration(UGBlocks.DEPTHROCK.get().defaultBlockState())));
@@ -225,13 +337,13 @@ public class UGConfiguredFeatures {
 		context.register(SMOG_VENT, new ConfiguredFeature<>(UGFeatures.SMOG_VENT.get(), FeatureConfiguration.NONE));
 		context.register(ICE_PILLAR, new ConfiguredFeature<>(UGFeatures.ICE_PILLAR.get(), FeatureConfiguration.NONE));
 		context.register(UTHERIUM_GROWTH, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
-		new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
-				new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
-				0.4F, false)));
+			new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
+			new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+			0.4F, false)));
 		context.register(CEILING_UTHERIUM_GROWTH, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
-				new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
-				new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
-				0.4F, true)));
+			new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
+			new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+			0.4F, true)));
 		context.register(UTHERIUM_GROWTH_EXTRA, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
 			new ColumnFeatureConfiguration(UniformInt.of(1, 3), UniformInt.of(2, 10)),
 			new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
