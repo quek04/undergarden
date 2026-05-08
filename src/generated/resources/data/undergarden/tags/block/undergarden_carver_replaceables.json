@@ -8,7 +8,9 @@
     "#c:ores/froststeel",
     "#c:ores/utherium",
     "#c:ores/regalium",
+    "#c:ores/rogdorium",
     "undergarden:sediment",
+    "undergarden:sediment_stone",
     "minecraft:powder_snow"
   ]
 }

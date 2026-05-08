@@ -88,6 +88,19 @@
     "undergarden:dreadrock_brick_wall",
     "undergarden:dreadrock_button",
     "undergarden:dreadrock_pressure_plate",
-    "undergarden:infuser"
+    "undergarden:infuser",
+    "undergarden:sediment_stone",
+    "undergarden:polished_sediment_stone",
+    "undergarden:sediment_stone_bricks",
+    "undergarden:chiseled_sediment_stone_bricks",
+    "undergarden:sediment_stone_stairs",
+    "undergarden:polished_sediment_stone_stairs",
+    "undergarden:sediment_stone_brick_stairs",
+    "undergarden:sediment_stone_slab",
+    "undergarden:polished_sediment_stone_slab",
+    "undergarden:sediment_stone_brick_slab",
+    "undergarden:sediment_stone_wall",
+    "undergarden:polished_sediment_stone_wall",
+    "undergarden:sediment_stone_brick_wall"
   ]
 }

@@ -177,7 +177,22 @@ public class UGDimensions {
 				//filler depthrock
 				SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())),
 				//sediment
-				SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState())))),
+				SurfaceRules.ifTrue(
+					SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0),
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)),
+						SurfaceRules.sequence(
+							SurfaceRules.ifTrue(
+								SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR),
+								SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState())
+							),
+							SurfaceRules.ifTrue(
+								SurfaceRules.DEEP_UNDER_FLOOR,
+								SurfaceRules.state(UGBlocks.SEDIMENT_STONE.get().defaultBlockState())
+							)
+						)
+					)
+				),
 				//mix coarse deepsoil into blood bog
 				SurfaceRules.ifTrue(
 					SurfaceRules.isBiome(UGBiomes.BLOOD_MUSHROOM_BOG),

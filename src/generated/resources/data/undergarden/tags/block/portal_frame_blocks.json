@@ -10,10 +10,16 @@
     "minecraft:cracked_deepslate_tiles",
     "minecraft:polished_deepslate",
     "minecraft:reinforced_deepslate",
-    "undergarden:depthrock_bricks",
-    "undergarden:depthrock_tiles",
     "undergarden:polished_depthrock",
+    "undergarden:depthrock_bricks",
+    "undergarden:cracked_depthrock_bricks",
+    "undergarden:chiseled_depthrock_bricks",
+    "undergarden:depthrock_tiles",
     "undergarden:shiverstone_bricks",
-    "undergarden:dreadrock_bricks"
+    "undergarden:cracked_shiverstone_bricks",
+    "undergarden:chiseled_shiverstone_bricks",
+    "undergarden:polished_sediment_stone",
+    "undergarden:sediment_stone_bricks",
+    "undergarden:chiseled_sediment_stone_bricks"
   ]
 }

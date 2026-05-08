@@ -8,6 +8,9 @@
     "undergarden:tremblecrust_wall",
     "undergarden:tremblecrust_brick_wall",
     "undergarden:dreadrock_wall",
-    "undergarden:dreadrock_brick_wall"
+    "undergarden:dreadrock_brick_wall",
+    "undergarden:sediment_stone_wall",
+    "undergarden:polished_sediment_stone_wall",
+    "undergarden:sediment_stone_brick_wall"
   ]
 }
