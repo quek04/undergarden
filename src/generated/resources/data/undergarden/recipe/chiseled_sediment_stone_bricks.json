@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": "undergarden:sediment_stone_brick_slab"
+  },
+  "pattern": [
+    "M",
+    "M"
+  ],
+  "result": {
+    "id": "undergarden:chiseled_sediment_stone_bricks"
+  }
+}

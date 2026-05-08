@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "undergarden:block/sediment_stone_bricks",
+    "side": "undergarden:block/sediment_stone_bricks",
+    "top": "undergarden:block/sediment_stone_bricks"
+  }
+}

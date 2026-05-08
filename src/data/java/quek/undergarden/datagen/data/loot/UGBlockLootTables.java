@@ -296,6 +296,19 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		this.add(UGBlocks.DEPTHROCK_POT.get(), noDrop());
 		this.dropSelf(UGBlocks.THORNREED);
+		this.dropSelf(UGBlocks.SEDIMENT_STONE);
+		this.dropSelf(UGBlocks.POLISHED_SEDIMENT_STONE);
+		this.dropSelf(UGBlocks.SEDIMENT_STONE_BRICKS);
+		this.dropSelf(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS);
+		this.dropSelf(UGBlocks.SEDIMENT_STONE_STAIRS);
+		this.dropSelf(UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS);
+		this.dropSelf(UGBlocks.SEDIMENT_STONE_BRICK_STAIRS);
+		this.slab(UGBlocks.SEDIMENT_STONE_SLAB);
+		this.slab(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB);
+		this.slab(UGBlocks.SEDIMENT_STONE_BRICK_SLAB);
+		this.dropSelf(UGBlocks.SEDIMENT_STONE_WALL);
+		this.dropSelf(UGBlocks.POLISHED_SEDIMENT_STONE_WALL);
+		this.dropSelf(UGBlocks.SEDIMENT_STONE_BRICK_WALL);
 	}
 
 	public void dropSelf(Supplier<? extends Block> block) {

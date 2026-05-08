@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "undergarden:block/polished_sediment_stone",
+    "side": "undergarden:block/polished_sediment_stone",
+    "top": "undergarden:block/polished_sediment_stone"
+  }
+}

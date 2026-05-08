@@ -47,19 +47,24 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> CRACKED_DEPTHROCK_BRICKS = registerWithItem("cracked_depthrock_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
 	public static final DeferredBlock<Block> CHISELED_DEPTHROCK_BRICKS = registerWithItem("chiseled_depthrock_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
 	public static final DeferredBlock<Block> DEPTHROCK_TILES = registerWithItem("depthrock_tiles", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
+
 	public static final DeferredBlock<StairBlock> DEPTHROCK_STAIRS = registerWithItem("depthrock_stairs", (properties) -> new StairBlock(DEPTHROCK.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
 	public static final DeferredBlock<StairBlock> POLISHED_DEPTHROCK_STAIRS = registerWithItem("polished_depthrock_stairs", (properties) -> new StairBlock(POLISHED_DEPTHROCK.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get()));
 	public static final DeferredBlock<StairBlock> DEPTHROCK_BRICK_STAIRS = registerWithItem("depthrock_brick_stairs", (properties) -> new StairBlock(DEPTHROCK_BRICKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get()));
 	public static final DeferredBlock<StairBlock> DEPTHROCK_TILE_STAIRS = registerWithItem("depthrock_tile_stairs", (properties) -> new StairBlock(DEPTHROCK_TILES.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_TILES.get()));
+
 	public static final DeferredBlock<SlabBlock> DEPTHROCK_SLAB = registerWithItem("depthrock_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
 	public static final DeferredBlock<SlabBlock> POLISHED_DEPTHROCK_SLAB = registerWithItem("polished_depthrock_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get()));
 	public static final DeferredBlock<SlabBlock> DEPTHROCK_BRICK_SLAB = registerWithItem("depthrock_brick_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get()));
 	public static final DeferredBlock<SlabBlock> DEPTHROCK_TILE_SLAB = registerWithItem("depthrock_tile_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
+
 	public static final DeferredBlock<WallBlock> DEPTHROCK_WALL = registerWithItem("depthrock_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
 	public static final DeferredBlock<WallBlock> POLISHED_DEPTHROCK_WALL = registerWithItem("polished_depthrock_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get()));
 	public static final DeferredBlock<WallBlock> DEPTHROCK_BRICK_WALL = registerWithItem("depthrock_brick_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get()));
+
 	public static final DeferredBlock<ButtonBlock> DEPTHROCK_BUTTON = registerWithItem("depthrock_button", (properties) -> new ButtonBlock(BlockSetType.STONE, 20, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(SoundType.BASALT));
 	public static final DeferredBlock<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = registerWithItem("depthrock_pressure_plate", (properties) -> new PressurePlateBlock(BlockSetType.STONE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.BASALT));
+
 	public static final DeferredBlock<Block> DEPTHROCK_POT = registerWithItem("depthrock_pot", DepthrockPotBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).sound(SoundType.DECORATED_POT_CRACKED));
 
 	//shiverstone
@@ -67,24 +72,54 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> SHIVERSTONE_BRICKS = registerWithItem("shiverstone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()));
 	public static final DeferredBlock<Block> CRACKED_SHIVERSTONE_BRICKS = registerWithItem("cracked_shiverstone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()));
 	public static final DeferredBlock<Block> CHISELED_SHIVERSTONE_BRICKS = registerWithItem("chiseled_shiverstone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()));
+
 	public static final DeferredBlock<StairBlock> SHIVERSTONE_STAIRS = registerWithItem("shiverstone_stairs", (properties) -> new StairBlock(SHIVERSTONE.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()));
 	public static final DeferredBlock<StairBlock> SHIVERSTONE_BRICK_STAIRS = registerWithItem("shiverstone_brick_stairs", (properties) -> new StairBlock(SHIVERSTONE_BRICKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get()));
+
 	public static final DeferredBlock<SlabBlock> SHIVERSTONE_SLAB = registerWithItem("shiverstone_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()));
 	public static final DeferredBlock<SlabBlock> SHIVERSTONE_BRICK_SLAB = registerWithItem("shiverstone_brick_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get()));
+
 	public static final DeferredBlock<WallBlock> SHIVERSTONE_WALL = registerWithItem("shiverstone_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()));
 	public static final DeferredBlock<WallBlock> SHIVERSTONE_BRICK_WALL = registerWithItem("shiverstone_brick_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get()));
+
 	public static final DeferredBlock<ButtonBlock> SHIVERSTONE_BUTTON = registerWithItem("shiverstone_button", (properties) -> new ButtonBlock(BlockSetType.STONE, 20, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(SoundType.NETHER_BRICKS));
 	public static final DeferredBlock<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = registerWithItem("shiverstone_pressure_plate", (properties) -> new PressurePlateBlock(BlockSetType.STONE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.NETHER_BRICKS));
+
+	//sediment
+	public static final DeferredBlock<Block> SEDIMENT = registerWithItem("sediment", Block::new, () -> BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.SNARE).mapColor(MapColor.DEEPSLATE).strength(0.5F).sound(SoundType.SAND));
+	public static final DeferredBlock<Block> SEDIMENT_GLASS = registerWithItem("sediment_glass", TransparentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS));
+	public static final DeferredBlock<Block> SEDIMENT_GLASS_PANE = registerWithItem("sediment_glass_pane", IronBarsBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE));
+
+	public static final DeferredBlock<Block> SEDIMENT_STONE = registerWithItem("sediment_stone", Block::new, () -> BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F));
+	public static final DeferredBlock<Block> POLISHED_SEDIMENT_STONE = registerWithItem("polished_sediment_stone", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<Block> SEDIMENT_STONE_BRICKS = registerWithItem("sediment_stone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<Block> CHISELED_SEDIMENT_STONE_BRICKS = registerWithItem("chiseled_sediment_stone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+
+	public static final DeferredBlock<StairBlock> SEDIMENT_STONE_STAIRS = registerWithItem("sediment_stone_stairs", (properties) -> new StairBlock(UGBlocks.SEDIMENT_STONE.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<StairBlock> POLISHED_SEDIMENT_STONE_STAIRS = registerWithItem("polished_sediment_stone_stairs", (properties) -> new StairBlock(UGBlocks.POLISHED_SEDIMENT_STONE.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(POLISHED_SEDIMENT_STONE.get()));
+	public static final DeferredBlock<StairBlock> SEDIMENT_STONE_BRICK_STAIRS = registerWithItem("sediment_stone_brick_stairs", (properties) -> new StairBlock(UGBlocks.SEDIMENT_STONE_BRICKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE_BRICKS.get()));
+
+	public static final DeferredBlock<SlabBlock> SEDIMENT_STONE_SLAB = registerWithItem("sediment_stone_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<SlabBlock> POLISHED_SEDIMENT_STONE_SLAB = registerWithItem("polished_sediment_stone_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(POLISHED_SEDIMENT_STONE.get()));
+	public static final DeferredBlock<SlabBlock> SEDIMENT_STONE_BRICK_SLAB = registerWithItem("sediment_stone_brick_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE_BRICKS.get()));
+
+	public static final DeferredBlock<WallBlock> SEDIMENT_STONE_WALL = registerWithItem("sediment_stone_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<WallBlock> POLISHED_SEDIMENT_STONE_WALL = registerWithItem("polished_sediment_stone_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(POLISHED_SEDIMENT_STONE.get()));
+	public static final DeferredBlock<WallBlock> SEDIMENT_STONE_BRICK_WALL = registerWithItem("sediment_stone_brick_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE_BRICKS.get()));
 
 	//dreadrock
 	public static final DeferredBlock<Block> DREADROCK = registerWithItem("dreadrock", DreadrockBlock::new, () -> BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_GREEN).strength(3.0F, 12.0F).sound(UGSoundTypes.DREADROCK).requiresCorrectToolForDrops());
 	public static final DeferredBlock<Block> DREADROCK_BRICKS = registerWithItem("dreadrock_bricks", DreadrockBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()));
+
 	public static final DeferredBlock<StairBlock> DREADROCK_STAIRS = registerWithItem("dreadrock_stairs", (properties) -> new DreadrockStairBlock(DREADROCK.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()));
 	public static final DeferredBlock<StairBlock> DREADROCK_BRICK_STAIRS = registerWithItem("dreadrock_brick_stairs", (properties) -> new DreadrockStairBlock(DREADROCK_BRICKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK_BRICKS.get()));
+
 	public static final DeferredBlock<SlabBlock> DREADROCK_SLAB = registerWithItem("dreadrock_slab", DreadrockSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()));
 	public static final DeferredBlock<SlabBlock> DREADROCK_BRICK_SLAB = registerWithItem("dreadrock_brick_slab", DreadrockSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK_BRICKS.get()));
+
 	public static final DeferredBlock<WallBlock> DREADROCK_WALL = registerWithItem("dreadrock_wall", DreadrockWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()));
 	public static final DeferredBlock<WallBlock> DREADROCK_BRICK_WALL = registerWithItem("dreadrock_brick_wall", DreadrockWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DREADROCK_BRICKS.get()));
+
 	public static final DeferredBlock<ButtonBlock> DREADROCK_BUTTON = registerWithItem("dreadrock_button", (properties) -> new ButtonBlock(BlockSetType.STONE, 20, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(UGSoundTypes.DREADROCK));
 	public static final DeferredBlock<PressurePlateBlock> DREADROCK_PRESSURE_PLATE = registerWithItem("dreadrock_pressure_plate", (properties) -> new PressurePlateBlock(BlockSetType.STONE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(UGSoundTypes.DREADROCK));
 
@@ -94,12 +129,16 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> TREMBLECRUST_BRICKS = registerWithItem("tremblecrust_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).requiresCorrectToolForDrops());
 	public static final DeferredBlock<Block> CRACKED_TREMBLECRUST_BRICKS = registerWithItem("cracked_tremblecrust_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get()));
 	public static final DeferredBlock<Block> CHISELED_TREMBLECRUST_BRICKS = registerWithItem("chiseled_tremblecrust_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get()));
+
 	public static final DeferredBlock<StairBlock> TREMBLECRUST_STAIRS = registerWithItem("tremblecrust_stairs", (properties) -> new StairBlock(TREMBLECRUST.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()));
 	public static final DeferredBlock<StairBlock> TREMBLECRUST_BRICK_STAIRS = registerWithItem("tremblecrust_brick_stairs", (properties) -> new StairBlock(TREMBLECRUST_BRICKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get()));
+
 	public static final DeferredBlock<SlabBlock> TREMBLECRUST_SLAB = registerWithItem("tremblecrust_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()));
 	public static final DeferredBlock<SlabBlock> TREMBLECRUST_BRICK_SLAB = registerWithItem("tremblecrust_brick_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get()));
+
 	public static final DeferredBlock<WallBlock> TREMBLECRUST_WALL = registerWithItem("tremblecrust_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()));
 	public static final DeferredBlock<WallBlock> TREMBLECRUST_BRICK_WALL = registerWithItem("tremblecrust_brick_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get()));
+
 	public static final DeferredBlock<ButtonBlock> TREMBLECRUST_BUTTON = registerWithItem("tremblecrust_button", (properties) -> new ButtonBlock(BlockSetType.STONE, 20, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON));
 	public static final DeferredBlock<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = registerWithItem("tremblecrust_pressure_plate", (properties) -> new PressurePlateBlock(BlockSetType.STONE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE));
 
@@ -142,9 +181,6 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> GOO = registerWithItem("goo", GooLayerBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((state, getter, pos) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollision());
 	public static final DeferredBlock<Block> GOO_BLOCK = registerWithItem("goo_block", GooBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion());
 	public static final DeferredBlock<Block> SMOG_VENT = registerWithItem("smog_vent", SmogVentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).lightLevel((state) -> 10).isValidSpawn(((state, level, pos, entity) -> false)));
-	public static final DeferredBlock<Block> SEDIMENT = registerWithItem("sediment", Block::new, () -> BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.SNARE).mapColor(MapColor.DEEPSLATE).strength(0.5F).sound(SoundType.SAND));
-	public static final DeferredBlock<Block> SEDIMENT_GLASS = registerWithItem("sediment_glass", TransparentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS));
-	public static final DeferredBlock<Block> SEDIMENT_GLASS_PANE = registerWithItem("sediment_glass_pane", IronBarsBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE));
 	public static final DeferredBlock<Block> CLOGGRUM_BARS = registerWithItem("cloggrum_bars", IronBarsBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS));
 	public static final DeferredBlock<Block> CLOGGRUM_TILES = registerWithItem("cloggrum_tiles", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_BLOCK.get()));
 	public static final DeferredBlock<StairBlock> CLOGGRUM_TILE_STAIRS = registerWithItem("cloggrum_tile_stairs", (properties) -> new StairBlock(CLOGGRUM_TILES.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_TILES.get()));

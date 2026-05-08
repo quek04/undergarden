@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "undergarden:block/sediment_stone_slab"
+    },
+    "type=double": {
+      "model": "undergarden:block/sediment_stone"
+    },
+    "type=top": {
+      "model": "undergarden:block/sediment_stone_slab_top"
+    }
+  }
+}

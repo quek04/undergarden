@@ -50,6 +50,23 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.SHIVERSTONE_BUTTON, "Shiverstone Button");
 		addBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, "Shiverstone Pressure Plate");
 
+		addBlock(UGBlocks.SEDIMENT, "Sediment");
+		addBlock(UGBlocks.SEDIMENT_GLASS, "Sediment Glass");
+		addBlock(UGBlocks.SEDIMENT_GLASS_PANE, "Sediment Glass Pane");
+		addBlock(UGBlocks.SEDIMENT_STONE, "Sediment Stone");
+		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE, "Polished Sediment Stone");
+		addBlock(UGBlocks.SEDIMENT_STONE_BRICKS, "Sediment Stone Bricks");
+		addBlock(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS, "Chiseled Sediment Stone Bricks");
+		addBlock(UGBlocks.SEDIMENT_STONE_STAIRS, "Sediment Stone Stairs");
+		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS, "Polished Sediment Stone Stairs");
+		addBlock(UGBlocks.SEDIMENT_STONE_BRICK_STAIRS, "Sediment Stone Brick Stairs");
+		addBlock(UGBlocks.SEDIMENT_STONE_SLAB, "Sediment Stone Slab");
+		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB, "PolishedSediment Stone Slab");
+		addBlock(UGBlocks.SEDIMENT_STONE_BRICK_SLAB, "Sediment Stone Brick Slab");
+		addBlock(UGBlocks.SEDIMENT_STONE_WALL, "Sediment Stone Wall");
+		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_WALL, "Polished Sediment Stone Wall");
+		addBlock(UGBlocks.SEDIMENT_STONE_BRICK_WALL, "Sediment Stone Brick Wall");
+
 		addBlock(UGBlocks.DREADROCK, "Dreadrock");
 		addBlock(UGBlocks.DREADROCK_BRICKS, "Dreadrock Bricks");
 		addBlock(UGBlocks.DREADROCK_STAIRS, "Dreadrock Stairs");
@@ -111,9 +128,6 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.GOO, "Scintling Goo");
 		addBlock(UGBlocks.GOO_BLOCK, "Scintling Goo Block");
 		addBlock(UGBlocks.SMOG_VENT, "Smog Vent");
-		addBlock(UGBlocks.SEDIMENT, "Sediment");
-		addBlock(UGBlocks.SEDIMENT_GLASS, "Sediment Glass");
-		addBlock(UGBlocks.SEDIMENT_GLASS_PANE, "Sediment Glass Pane");
 		addBlock(UGBlocks.CLOGGRUM_BARS, "Cloggrum Bars");
 		addBlock(UGBlocks.CLOGGRUM_TILES, "Cloggrum Tiles");
 		addBlock(UGBlocks.CLOGGRUM_TILE_STAIRS, "Cloggrum Tile Stairs");

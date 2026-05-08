@@ -30,7 +30,7 @@ public class UGModels extends ModelProvider {
 		ItemInfoCollector itemModelOutput = new ItemInfoCollector(this::getKnownItems);
 		BlockStateGeneratorCollector blockModelOutput = new BlockStateGeneratorCollector(this::getKnownBlocks);
 		SimpleModelCollector modelOutput = new SimpleModelCollector();
-		this.registerModels(new UGBlockStates(blockModelOutput, itemModelOutput, modelOutput), new UGItemModels(itemModelOutput, modelOutput));
+		this.registerModels(new UGBlockModels(blockModelOutput, itemModelOutput, modelOutput), new UGItemModels(itemModelOutput, modelOutput));
 //		blockModelOutput.validate();
 //		itemModelOutput.finalizeAndValidate();
 		return CompletableFuture.allOf(blockModelOutput.save(output, this.blocks), modelOutput.save(output, this.models), itemModelOutput.save(output, this.items));

@@ -11,6 +11,7 @@ import quek.undergarden.registry.UGBlocks;
 import java.util.Map;
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 public class UGBlockFamilies {
 
 	private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
@@ -151,6 +152,27 @@ public class UGBlockFamilies {
 	public static final BlockFamily CLOGGRUM_TILES = familyBuilder(UGBlocks.CLOGGRUM_TILES.get())
 		.stairs(UGBlocks.CLOGGRUM_TILE_STAIRS.get())
 		.slab(UGBlocks.CLOGGRUM_TILE_SLAB.get())
+		.getFamily();
+
+	public static final BlockFamily SEDIMENT_STONE = familyBuilder(UGBlocks.SEDIMENT_STONE.get())
+		.stairs(UGBlocks.SEDIMENT_STONE_STAIRS.get())
+		.slab(UGBlocks.SEDIMENT_STONE_SLAB.get())
+		.wall(UGBlocks.SEDIMENT_STONE_WALL.get())
+		.polished(UGBlocks.POLISHED_SEDIMENT_STONE.get())
+		.getFamily();
+
+	public static final BlockFamily POLISHED_SEDIMENT_STONE = familyBuilder(UGBlocks.POLISHED_SEDIMENT_STONE.get())
+		.stairs(UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS.get())
+		.slab(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB.get())
+		.wall(UGBlocks.POLISHED_SEDIMENT_STONE_WALL.get())
+		.bricks(UGBlocks.SEDIMENT_STONE_BRICKS.get())
+		.getFamily();
+
+	public static final BlockFamily SEDIMENT_STONE_BRICKS = familyBuilder(UGBlocks.SEDIMENT_STONE_BRICKS.get())
+		.stairs(UGBlocks.SEDIMENT_STONE_BRICK_STAIRS.get())
+		.slab(UGBlocks.SEDIMENT_STONE_BRICK_SLAB.get())
+		.wall(UGBlocks.SEDIMENT_STONE_BRICK_WALL.get())
+		.chiseled(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get())
 		.getFamily();
 
 	private static BlockFamily.Builder familyBuilder(Block base) {

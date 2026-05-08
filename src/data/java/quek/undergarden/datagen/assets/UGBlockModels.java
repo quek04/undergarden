@@ -41,9 +41,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class UGBlockStates extends BlockModelGenerators {
+public class UGBlockModels extends BlockModelGenerators {
 
-	public UGBlockStates(Consumer<BlockModelDefinitionGenerator> stateOutput, ItemModelOutput itemOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
+	public UGBlockModels(Consumer<BlockModelDefinitionGenerator> stateOutput, ItemModelOutput itemOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
 		super(stateOutput, itemOutput, modelOutput);
 	}
 
@@ -65,6 +65,11 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.generateBlockItem(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get());
 		this.generateBlockItem(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get());
 		this.generateBlockItem(UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.SEDIMENT_STONE.get());
+		this.generateBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get());
+		this.generateBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get());
 
 		this.generateBlockItem(UGBlocks.TREMBLECRUST.get());
 		this.generateBlockItem(UGBlocks.TREMBLECRUST_BRICKS.get());
@@ -297,6 +302,10 @@ public class UGBlockStates extends BlockModelGenerators {
 
 		this.createCrossBlock(UGBlocks.THORNREED.get(), PlantType.NOT_TINTED);
 		this.registerSimpleFlatItemModel(UGItems.THORNREED.get());
+//		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), this::createTrivialCube);
+//		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);
+//		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);
+//		this.wrapBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN.updateTexture(mapping -> mapping.put(TextureSlot.END, TextureMapping.getBlockTexture(UGBlocks.POLISHED_SEDIMENT_STONE.get())))));
 	}
 
 	public void wrapBlockItem(Block block, Consumer<Block> blockRegistry) {

@@ -41,10 +41,14 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBricks(getter, UGBlocks.TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST).save(this.output);
 		makeBricks(getter, UGBlocks.DEPTHROCK_TILES, UGBlocks.DEPTHROCK_BRICKS).save(this.output);
 		makeBricks(getter, UGBlocks.DREADROCK_BRICKS, UGBlocks.DREADROCK).save(this.output);
+		makeBricks(getter, UGBlocks.SEDIMENT_STONE, UGBlocks.SEDIMENT).save(this.output);
+		makeBricks(getter, UGBlocks.POLISHED_SEDIMENT_STONE, UGBlocks.SEDIMENT_STONE);
+		makeBricks(getter, UGBlocks.SEDIMENT_STONE_BRICKS, UGBlocks.POLISHED_SEDIMENT_STONE).save(this.output);
 
 		makeChiseledBricks(getter, UGBlocks.CHISELED_DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK_BRICK_SLAB).save(this.output);
 		makeChiseledBricks(getter, UGBlocks.CHISELED_SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE_BRICK_SLAB).save(this.output);
 		makeChiseledBricks(getter, UGBlocks.CHISELED_TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST_BRICK_SLAB).save(this.output);
+		makeChiseledBricks(getter, UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS, UGBlocks.SEDIMENT_STONE_BRICK_SLAB).save(this.output);
 
 		makeWood(getter, UGBlocks.SMOGSTEM_WOOD, UGBlocks.SMOGSTEM_LOG).save(this.output);
 		makeWood(getter, UGBlocks.STRIPPED_SMOGSTEM_WOOD, UGBlocks.STRIPPED_SMOGSTEM_LOG).save(this.output);
@@ -455,6 +459,9 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStairs(getter, UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS).save(this.output);
 		makeStairs(getter, UGBlocks.DREADROCK_STAIRS, UGBlocks.DREADROCK).save(this.output);
 		makeStairs(getter, UGBlocks.DREADROCK_BRICK_STAIRS, UGBlocks.DREADROCK_BRICKS).save(this.output);
+		makeStairs(getter, UGBlocks.SEDIMENT_STONE_STAIRS, UGBlocks.SEDIMENT_STONE).save(this.output);
+		makeStairs(getter, UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS, UGBlocks.POLISHED_SEDIMENT_STONE).save(this.output);
+		makeStairs(getter, UGBlocks.SEDIMENT_STONE_BRICK_STAIRS, UGBlocks.SEDIMENT_STONE_BRICKS).save(this.output);
 
 		makeSlab(getter, UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).save(this.output);
 		makeSlab(getter, UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).save(this.output);
@@ -471,6 +478,9 @@ public class UGRecipes extends UGRecipeProvider {
 		makeSlab(getter, UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS).save(this.output);
 		makeSlab(getter, UGBlocks.DREADROCK_SLAB, UGBlocks.DREADROCK).save(this.output);
 		makeSlab(getter, UGBlocks.DREADROCK_BRICK_SLAB, UGBlocks.DREADROCK_BRICKS).save(this.output);
+		makeSlab(getter, UGBlocks.SEDIMENT_STONE_SLAB, UGBlocks.SEDIMENT_STONE).save(this.output);
+		makeSlab(getter, UGBlocks.POLISHED_SEDIMENT_STONE_SLAB, UGBlocks.POLISHED_SEDIMENT_STONE).save(this.output);
+		makeSlab(getter, UGBlocks.SEDIMENT_STONE_BRICK_SLAB, UGBlocks.SEDIMENT_STONE_BRICKS).save(this.output);
 
 		makeWall(getter, UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).save(this.output);
 		makeWall(getter, UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).save(this.output);
@@ -481,6 +491,9 @@ public class UGRecipes extends UGRecipeProvider {
 		makeWall(getter, UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK).save(this.output);
 		makeWall(getter, UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK).save(this.output);
 		makeWall(getter, UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS).save(this.output);
+		makeWall(getter, UGBlocks.SEDIMENT_STONE_WALL, UGBlocks.SEDIMENT_STONE).save(this.output);
+		makeWall(getter, UGBlocks.POLISHED_SEDIMENT_STONE_WALL, UGBlocks.POLISHED_SEDIMENT_STONE).save(this.output);
+		makeWall(getter, UGBlocks.SEDIMENT_STONE_BRICK_WALL, UGBlocks.SEDIMENT_STONE_BRICKS).save(this.output);
 
 		makeFence(getter, UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS).save(this.output);
 		makeFence(getter, UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS).save(this.output);
