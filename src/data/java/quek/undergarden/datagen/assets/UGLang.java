@@ -148,6 +148,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.GLITTERKELP_PLANT, "Glitterkelp");
 		addBlock(UGBlocks.DROOPVINE, "Droopvine");
 		addBlock(UGBlocks.DROOPVINE_PLANT, "Droopvine");
+		addBlock(UGBlocks.THORNREED, "Thornreed");
 
 		addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
 		addBlock(UGBlocks.POTTED_INDIGO_MUSHROOM, "Potted Indigo Mushroom");
@@ -300,6 +301,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.BLISTERBOMB, "Blisterbomb");
 		addItem(UGItems.UNDERBEAN_STICK, "Underbean on a Stick");
 		addItem(UGItems.JAVELIN, "Javelin");
+		addItem(UGItems.THORNREED, "Thornreed");
 
 		addItem(UGItems.CLOGGRUM_BATTLEAXE, "Cloggrum Battleaxe");
 		addItem(UGItems.CLOGGRUM_SWORD, "Cloggrum Sword");
