@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": "undergarden:sediment_stone"
+    "#": "undergarden:sediment_stone"
   },
   "pattern": [
-    "M  ",
-    "MM ",
-    "MMM"
+    "#  ",
+    "## ",
+    "###"
   ],
   "result": {
     "count": 4,

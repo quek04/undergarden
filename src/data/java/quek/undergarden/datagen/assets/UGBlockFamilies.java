@@ -80,6 +80,7 @@ public class UGBlockFamilies {
 		.pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get())
 		.button(UGBlocks.DEPTHROCK_BUTTON.get())
 		.polished(UGBlocks.POLISHED_DEPTHROCK.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily POLISHED_DEPTHROCK = familyBuilder(UGBlocks.POLISHED_DEPTHROCK.get())
@@ -87,6 +88,7 @@ public class UGBlockFamilies {
 		.stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get())
 		.slab(UGBlocks.POLISHED_DEPTHROCK_SLAB.get())
 		.bricks(UGBlocks.DEPTHROCK_BRICKS.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily DEPTHROCK_BRICKS = familyBuilder(UGBlocks.DEPTHROCK_BRICKS.get())
@@ -96,11 +98,13 @@ public class UGBlockFamilies {
 		.chiseled(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get())
 		.cracked(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get())
 		.tiles(UGBlocks.DEPTHROCK_TILES.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily DEPTHROCK_TILES = familyBuilder(UGBlocks.DEPTHROCK_TILES.get())
 		.stairs(UGBlocks.DEPTHROCK_TILE_STAIRS.get())
 		.slab(UGBlocks.DEPTHROCK_TILE_SLAB.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily SHIVERSTONE = familyBuilder(UGBlocks.SHIVERSTONE.get())
@@ -109,6 +113,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.SHIVERSTONE_SLAB.get())
 		.pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get())
 		.button(UGBlocks.SHIVERSTONE_BUTTON.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily SHIVERSTONE_BRICKS = familyBuilder(UGBlocks.SHIVERSTONE_BRICKS.get())
@@ -117,6 +122,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.SHIVERSTONE_BRICK_SLAB.get())
 		.chiseled(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get())
 		.cracked(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily DREADROCK = familyBuilder(UGBlocks.DREADROCK.get())
@@ -125,12 +131,14 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.DREADROCK_SLAB.get())
 		.pressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE.get())
 		.button(UGBlocks.DREADROCK_BUTTON.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily DREADROCK_BRICKS = familyBuilder(UGBlocks.DREADROCK_BRICKS.get())
 		.wall(UGBlocks.DREADROCK_BRICK_WALL.get())
 		.stairs(UGBlocks.DREADROCK_BRICK_STAIRS.get())
 		.slab(UGBlocks.DREADROCK_BRICK_SLAB.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily TREMBLECRUST = familyBuilder(UGBlocks.TREMBLECRUST.get())
@@ -139,6 +147,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.TREMBLECRUST_SLAB.get())
 		.pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE.get())
 		.button(UGBlocks.TREMBLECRUST_BUTTON.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily TREMBLECRUST_BRICKS = familyBuilder(UGBlocks.TREMBLECRUST_BRICKS.get())
@@ -147,11 +156,13 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.TREMBLECRUST_BRICK_SLAB.get())
 		.chiseled(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get())
 		.cracked(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily CLOGGRUM_TILES = familyBuilder(UGBlocks.CLOGGRUM_TILES.get())
 		.stairs(UGBlocks.CLOGGRUM_TILE_STAIRS.get())
 		.slab(UGBlocks.CLOGGRUM_TILE_SLAB.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily SEDIMENT_STONE = familyBuilder(UGBlocks.SEDIMENT_STONE.get())
@@ -159,6 +170,8 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.SEDIMENT_STONE_SLAB.get())
 		.wall(UGBlocks.SEDIMENT_STONE_WALL.get())
 		.polished(UGBlocks.POLISHED_SEDIMENT_STONE.get())
+		.chiseled(UGBlocks.CHISELED_SEDIMENT_STONE.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily POLISHED_SEDIMENT_STONE = familyBuilder(UGBlocks.POLISHED_SEDIMENT_STONE.get())
@@ -166,13 +179,21 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB.get())
 		.wall(UGBlocks.POLISHED_SEDIMENT_STONE_WALL.get())
 		.bricks(UGBlocks.SEDIMENT_STONE_BRICKS.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	public static final BlockFamily SEDIMENT_STONE_BRICKS = familyBuilder(UGBlocks.SEDIMENT_STONE_BRICKS.get())
 		.stairs(UGBlocks.SEDIMENT_STONE_BRICK_STAIRS.get())
 		.slab(UGBlocks.SEDIMENT_STONE_BRICK_SLAB.get())
 		.wall(UGBlocks.SEDIMENT_STONE_BRICK_WALL.get())
-		.chiseled(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get())
+		.generateStonecutterRecipe()
+		.getFamily();
+
+	public static final BlockFamily SMOOTH_SEDIMENT_STONE = familyBuilder(UGBlocks.SMOOTH_SEDIMENT_STONE.get())
+		.stairs(UGBlocks.SMOOTH_SEDIMENT_STONE_STAIRS.get())
+		.slab(UGBlocks.SMOOTH_SEDIMENT_STONE_SLAB.get())
+		.wall(UGBlocks.SMOOTH_SEDIMENT_STONE_WALL.get())
+		.generateStonecutterRecipe()
 		.getFamily();
 
 	private static BlockFamily.Builder familyBuilder(Block base) {

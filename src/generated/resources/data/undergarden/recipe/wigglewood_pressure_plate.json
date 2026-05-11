@@ -1,11 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
+  "group": "wooden_pressure_plate",
   "key": {
-    "B": "undergarden:wigglewood_planks"
+    "#": "undergarden:wigglewood_planks"
   },
   "pattern": [
-    "BB"
+    "##"
   ],
   "result": {
     "id": "undergarden:wigglewood_pressure_plate"

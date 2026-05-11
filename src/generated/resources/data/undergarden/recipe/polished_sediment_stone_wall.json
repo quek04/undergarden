@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "M": "undergarden:polished_sediment_stone"
+    "#": "undergarden:polished_sediment_stone"
   },
   "pattern": [
-    "MMM",
-    "MMM"
+    "###",
+    "###"
   ],
   "result": {
     "count": 6,

@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": "undergarden:cloggrum_tiles"
+    "#": "undergarden:cloggrum_tiles"
   },
   "pattern": [
-    "M  ",
-    "MM ",
-    "MMM"
+    "#  ",
+    "## ",
+    "###"
   ],
   "result": {
     "count": 4,

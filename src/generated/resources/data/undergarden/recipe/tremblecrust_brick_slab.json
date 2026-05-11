@@ -2,10 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": "undergarden:tremblecrust_bricks"
+    "#": "undergarden:tremblecrust_bricks"
   },
   "pattern": [
-    "MMM"
+    "###"
   ],
   "result": {
     "count": 6,

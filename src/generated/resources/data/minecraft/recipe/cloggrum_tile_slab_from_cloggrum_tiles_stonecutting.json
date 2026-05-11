@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:cloggrum_tiles",
+  "result": {
+    "count": 2,
+    "id": "undergarden:cloggrum_tile_slab"
+  }
+}

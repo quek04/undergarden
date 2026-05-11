@@ -74,7 +74,7 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get(),
 			UGBlocks.POLISHED_SEDIMENT_STONE.get(),
 			UGBlocks.SEDIMENT_STONE_BRICKS.get(),
-			UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get()
+			UGBlocks.CHISELED_SEDIMENT_STONE.get()
 		);
 		tag(UGTags.Blocks.MUNCHER_BREAKABLES).addTag(Tags.Blocks.STONES).addTag(BlockTags.BASE_STONE_OVERWORLD).addTag(BlockTags.BASE_STONE_NETHER).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
 		tag(UGTags.Blocks.SCINTLING_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
@@ -265,7 +265,7 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.SEDIMENT_STONE.get(),
 			UGBlocks.POLISHED_SEDIMENT_STONE.get(),
 			UGBlocks.SEDIMENT_STONE_BRICKS.get(),
-			UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get(),
+			UGBlocks.CHISELED_SEDIMENT_STONE.get(),
 			UGBlocks.SEDIMENT_STONE_STAIRS.get(),
 			UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS.get(),
 			UGBlocks.SEDIMENT_STONE_BRICK_STAIRS.get(),

@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": "undergarden:tremblecrust_brick_slab"
+    "#": "undergarden:tremblecrust_brick_slab"
   },
   "pattern": [
-    "M",
-    "M"
+    "#",
+    "#"
   ],
   "result": {
     "id": "undergarden:chiseled_tremblecrust_bricks"

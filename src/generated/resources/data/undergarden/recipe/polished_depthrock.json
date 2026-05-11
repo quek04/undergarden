@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": "undergarden:depthrock"
+    "S": "undergarden:depthrock"
   },
   "pattern": [
-    "MM",
-    "MM"
+    "SS",
+    "SS"
   ],
   "result": {
     "count": 4,

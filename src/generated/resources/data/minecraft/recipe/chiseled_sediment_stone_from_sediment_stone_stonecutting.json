@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:sediment_stone",
+  "result": {
+    "id": "undergarden:chiseled_sediment_stone"
+  }
+}

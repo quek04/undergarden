@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:smooth_sediment_stone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_undergarden:sediment_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:sediment_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_undergarden:sediment_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:smooth_sediment_stone"
+    ]
+  }
+}

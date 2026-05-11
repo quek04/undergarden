@@ -1,13 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "undergarden:wigglewood_fence_gate"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_wigglewood_planks": {
+    "has_planks": {
       "conditions": {
         "items": [
           {
@@ -16,12 +10,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:wigglewood_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_wigglewood_planks"
+      "has_planks"
     ]
   ],
   "rewards": {

@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "undergarden:dreadrock",
-  "result": {
-    "id": "undergarden:dreadrock_brick_wall"
-  }
-}

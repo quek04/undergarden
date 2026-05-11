@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "M": "undergarden:dreadrock_bricks"
+    "#": "undergarden:dreadrock_bricks"
   },
   "pattern": [
-    "MMM",
-    "MMM"
+    "###",
+    "###"
   ],
   "result": {
     "count": 6,

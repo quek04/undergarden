@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:sediment_stone",
+  "result": {
+    "id": "undergarden:polished_sediment_stone_stairs"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:cloggrum_tiles",
+  "result": {
+    "id": "undergarden:cloggrum_tile_stairs"
+  }
+}

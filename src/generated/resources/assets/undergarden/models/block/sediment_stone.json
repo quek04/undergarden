@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "undergarden:block/sediment_stone"
+    "end": "undergarden:block/sediment_stone_top",
+    "side": "undergarden:block/sediment_stone"
   }
 }

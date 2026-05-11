@@ -1,12 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
+  "group": "wooden_trapdoor",
   "key": {
-    "P": "undergarden:ancient_root_planks"
+    "#": "undergarden:ancient_root_planks"
   },
   "pattern": [
-    "PPP",
-    "PPP"
+    "###",
+    "###"
   ],
   "result": {
     "count": 2,

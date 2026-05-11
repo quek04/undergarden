@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:sediment_stone_bricks",
+  "result": {
+    "id": "undergarden:sediment_stone_brick_wall"
+  }
+}

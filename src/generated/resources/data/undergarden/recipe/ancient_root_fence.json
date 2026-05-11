@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "wooden_fence",
   "key": {
-    "/": "#c:rods/wooden",
-    "M": "undergarden:ancient_root_planks"
+    "#": "minecraft:stick",
+    "W": "undergarden:ancient_root_planks"
   },
   "pattern": [
-    "M/M",
-    "M/M"
+    "W#W",
+    "W#W"
   ],
   "result": {
-    "count": 6,
+    "count": 3,
     "id": "undergarden:ancient_root_fence"
   }
 }

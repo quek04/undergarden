@@ -1,11 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "wooden_slab",
   "key": {
-    "M": "undergarden:wigglewood_planks"
+    "#": "undergarden:wigglewood_planks"
   },
   "pattern": [
-    "MMM"
+    "###"
   ],
   "result": {
     "count": 6,

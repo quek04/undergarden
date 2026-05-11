@@ -1,5 +1,6 @@
 package quek.undergarden.datagen.assets;
 
+import com.google.common.collect.ImmutableMap;
 import com.mojang.math.Transformation;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -35,6 +36,7 @@ import quek.undergarden.client.render.item.GrongletSpecialRenderer;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -46,6 +48,15 @@ public class UGBlockModels extends BlockModelGenerators {
 	public UGBlockModels(Consumer<BlockModelDefinitionGenerator> stateOutput, ItemModelOutput itemOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
 		super(stateOutput, itemOutput, modelOutput);
 	}
+
+	public static final Map<Block, TexturedModel> UG_TEXTURED_MODELS = ImmutableMap.<Block, TexturedModel>builder()
+		.put(UGBlocks.SEDIMENT_STONE.get(), TexturedModel.COLUMN_WITH_WALL.get(UGBlocks.SEDIMENT_STONE.get()))
+		.put(UGBlocks.CHISELED_SEDIMENT_STONE.get(), TexturedModel.COLUMN.get(UGBlocks.CHISELED_SEDIMENT_STONE.get()).updateTextures(m -> {
+			m.put(TextureSlot.END, TextureMapping.getBlockTexture(UGBlocks.SEDIMENT_STONE.get(), "_top"));
+			m.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(UGBlocks.CHISELED_SEDIMENT_STONE.get()));
+		}))
+		.put(UGBlocks.SMOOTH_SEDIMENT_STONE.get(), TexturedModel.createAllSame(TextureMapping.getBlockTexture(UGBlocks.SEDIMENT_STONE.get(), "_top")))
+		.build();
 
 	@Override
 	public void run() {
@@ -69,7 +80,8 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.generateBlockItem(UGBlocks.SEDIMENT_STONE.get());
 		this.generateBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get());
 		this.generateBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get());
-		this.generateBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE.get());
+		this.generateBlockItem(UGBlocks.SMOOTH_SEDIMENT_STONE.get());
 
 		this.generateBlockItem(UGBlocks.TREMBLECRUST.get());
 		this.generateBlockItem(UGBlocks.TREMBLECRUST_BRICKS.get());
@@ -302,10 +314,17 @@ public class UGBlockModels extends BlockModelGenerators {
 
 		this.createCrossBlock(UGBlocks.THORNREED.get(), PlantType.NOT_TINTED);
 		this.registerSimpleFlatItemModel(UGItems.THORNREED.get());
-//		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), this::createTrivialCube);
+
+//		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);
-//		this.wrapBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN.updateTexture(mapping -> mapping.put(TextureSlot.END, TextureMapping.getBlockTexture(UGBlocks.POLISHED_SEDIMENT_STONE.get())))));
+//		this.wrapBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_ALT.updateTexture(mapping -> mapping.put(TextureSlot.END, TextureMapping.getBlockTexture(UGBlocks.SEDIMENT_STONE.get(), "_top")))));
+	}
+
+	@Override
+	public UGBlockFamilyProvider family(Block block) {
+		TexturedModel model = UG_TEXTURED_MODELS.getOrDefault(block, TexturedModel.CUBE.get(block));
+		return (UGBlockFamilyProvider) new UGBlockFamilyProvider(model.getMapping()).fullBlock(block, model.getTemplate());
 	}
 
 	public void wrapBlockItem(Block block, Consumer<Block> blockRegistry) {
@@ -414,5 +433,21 @@ public class UGBlockModels extends BlockModelGenerators {
 
 	public static TextureMapping crossEmissive(Block block, String suffix) {
 		return new TextureMapping().put(TextureSlot.CROSS, TextureMapping.getBlockTexture(block, suffix)).put(TextureSlot.CROSS_EMISSIVE, TextureMapping.getBlockTexture(block, suffix + "_emissive"));
+	}
+
+	//this is probably stupid
+	public class UGBlockFamilyProvider extends BlockModelGenerators.BlockFamilyProvider {
+
+		public UGBlockFamilyProvider(TextureMapping mapping) {
+			super(mapping);
+		}
+
+		@Override
+		public BlockModelGenerators.BlockFamilyProvider fullBlockVariant(Block variant) {
+			TexturedModel model = UG_TEXTURED_MODELS.getOrDefault(variant, TexturedModel.CUBE.get(variant));
+			MultiVariant variantModel = BlockModelGenerators.plainVariant(model.create(variant, UGBlockModels.this.modelOutput));
+			UGBlockModels.this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(variant, variantModel));
+			return this;
+		}
 	}
 }

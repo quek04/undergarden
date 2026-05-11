@@ -8,6 +8,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.CeilingHangingSignBlock;
 import net.minecraft.world.level.block.SignBlock;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
+import quek.undergarden.datagen.assets.UGBlockFamilies;
 import quek.undergarden.datagen.helpers.builder.InfusingRecipeBuilder;
 import quek.undergarden.datagen.helpers.builder.ItemInfusingRecipeBuilder;
 import quek.undergarden.recipe.InfusingBookCategory;
@@ -35,6 +37,11 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public UGRecipeProvider(RecipeOutput output, HolderLookup.Provider provider) {
 		super(provider, output);
+	}
+
+	@Override
+	protected void generateForEnabledBlockFamilies(FeatureFlagSet flagSet) {
+		UGBlockFamilies.getAllFamilies().forEach(blockFamily -> this.generateRecipes(blockFamily, flagSet));
 	}
 
 	public ShapelessRecipeBuilder makePlanks(HolderGetter<Item> getter, Supplier<? extends Block> plankOut, TagKey<Item> logIn) {

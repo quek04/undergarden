@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:depthrock_bricks",
+  "result": {
+    "id": "undergarden:depthrock_tiles"
+  }
+}

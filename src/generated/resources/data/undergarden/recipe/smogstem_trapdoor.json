@@ -1,12 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
+  "group": "wooden_trapdoor",
   "key": {
-    "P": "undergarden:smogstem_planks"
+    "#": "undergarden:smogstem_planks"
   },
   "pattern": [
-    "PPP",
-    "PPP"
+    "###",
+    "###"
   ],
   "result": {
     "count": 2,

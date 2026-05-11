@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": "undergarden:depthrock_brick_slab"
+    "#": "undergarden:depthrock_brick_slab"
   },
   "pattern": [
-    "M",
-    "M"
+    "#",
+    "#"
   ],
   "result": {
     "id": "undergarden:chiseled_depthrock_bricks"

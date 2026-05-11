@@ -1,14 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "wooden_sign",
   "key": {
-    "/": "#c:rods/wooden",
-    "P": "undergarden:wigglewood_planks"
+    "#": "undergarden:wigglewood_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
-    "PPP",
-    "PPP",
-    " / "
+    "###",
+    "###",
+    " X "
   ],
   "result": {
     "count": 3,

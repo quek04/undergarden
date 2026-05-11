@@ -22,59 +22,80 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.CRACKED_DEPTHROCK_BRICKS, "Cracked Depthrock Bricks");
 		addBlock(UGBlocks.CHISELED_DEPTHROCK_BRICKS, "Chiseled Depthrock Bricks");
 		addBlock(UGBlocks.DEPTHROCK_TILES, "Depthrock Tiles");
+
 		addBlock(UGBlocks.DEPTHROCK_STAIRS, "Depthrock Stairs");
 		addBlock(UGBlocks.POLISHED_DEPTHROCK_STAIRS, "Polished Depthrock Stairs");
 		addBlock(UGBlocks.DEPTHROCK_BRICK_STAIRS, "Depthrock Brick Stairs");
 		addBlock(UGBlocks.DEPTHROCK_TILE_STAIRS, "Depthrock Tile Stairs");
+
 		addBlock(UGBlocks.DEPTHROCK_SLAB, "Depthrock Slab");
 		addBlock(UGBlocks.POLISHED_DEPTHROCK_SLAB, "Polished Depthrock Slab");
 		addBlock(UGBlocks.DEPTHROCK_BRICK_SLAB, "Depthrock Brick Slab");
 		addBlock(UGBlocks.DEPTHROCK_TILE_SLAB, "Depthrock Tile Slab");
+
 		addBlock(UGBlocks.DEPTHROCK_WALL, "Depthrock Wall");
 		addBlock(UGBlocks.POLISHED_DEPTHROCK_WALL, "Polished Depthrock Wall");
 		addBlock(UGBlocks.DEPTHROCK_BRICK_WALL, "Depthrock Brick Wall");
+
 		addBlock(UGBlocks.DEPTHROCK_BUTTON, "Depthrock Button");
 		addBlock(UGBlocks.DEPTHROCK_PRESSURE_PLATE, "Depthrock Pressure Plate");
+
 		addBlock(UGBlocks.DEPTHROCK_POT, "Depthrock Pot");
 
 		addBlock(UGBlocks.SHIVERSTONE, "Shiverstone");
 		addBlock(UGBlocks.SHIVERSTONE_BRICKS, "Shiverstone Bricks");
 		addBlock(UGBlocks.CRACKED_SHIVERSTONE_BRICKS, "Cracked Shiverstone Bricks");
 		addBlock(UGBlocks.CHISELED_SHIVERSTONE_BRICKS, "Chiseled Shiverstone Bricks");
+
 		addBlock(UGBlocks.SHIVERSTONE_STAIRS, "Shiverstone Stairs");
 		addBlock(UGBlocks.SHIVERSTONE_BRICK_STAIRS, "Shiverstone Brick Stairs");
+
 		addBlock(UGBlocks.SHIVERSTONE_SLAB, "Shiverstone Slab");
 		addBlock(UGBlocks.SHIVERSTONE_BRICK_SLAB, "Shiverstone Brick Slab");
+
 		addBlock(UGBlocks.SHIVERSTONE_WALL, "Shiverstone Wall");
 		addBlock(UGBlocks.SHIVERSTONE_BRICK_WALL, "Shiverstone Brick Wall");
+
 		addBlock(UGBlocks.SHIVERSTONE_BUTTON, "Shiverstone Button");
 		addBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, "Shiverstone Pressure Plate");
 
 		addBlock(UGBlocks.SEDIMENT, "Sediment");
 		addBlock(UGBlocks.SEDIMENT_GLASS, "Sediment Glass");
 		addBlock(UGBlocks.SEDIMENT_GLASS_PANE, "Sediment Glass Pane");
+
 		addBlock(UGBlocks.SEDIMENT_STONE, "Sediment Stone");
 		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE, "Polished Sediment Stone");
 		addBlock(UGBlocks.SEDIMENT_STONE_BRICKS, "Sediment Stone Bricks");
-		addBlock(UGBlocks.CHISELED_SEDIMENT_STONE_BRICKS, "Chiseled Sediment Stone Bricks");
+		addBlock(UGBlocks.CHISELED_SEDIMENT_STONE, "Chiseled Sediment Stone");
+		addBlock(UGBlocks.SMOOTH_SEDIMENT_STONE, "Smooth Sediment Stone");
+
 		addBlock(UGBlocks.SEDIMENT_STONE_STAIRS, "Sediment Stone Stairs");
 		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS, "Polished Sediment Stone Stairs");
 		addBlock(UGBlocks.SEDIMENT_STONE_BRICK_STAIRS, "Sediment Stone Brick Stairs");
+		addBlock(UGBlocks.SMOOTH_SEDIMENT_STONE_STAIRS, "Smooth Sediment Stone Stairs");
+
 		addBlock(UGBlocks.SEDIMENT_STONE_SLAB, "Sediment Stone Slab");
-		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB, "PolishedSediment Stone Slab");
+		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB, "Polished Sediment Stone Slab");
 		addBlock(UGBlocks.SEDIMENT_STONE_BRICK_SLAB, "Sediment Stone Brick Slab");
+		addBlock(UGBlocks.SMOOTH_SEDIMENT_STONE_SLAB, "Smooth Sediment Stone Slab");
+
 		addBlock(UGBlocks.SEDIMENT_STONE_WALL, "Sediment Stone Wall");
 		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE_WALL, "Polished Sediment Stone Wall");
 		addBlock(UGBlocks.SEDIMENT_STONE_BRICK_WALL, "Sediment Stone Brick Wall");
+		addBlock(UGBlocks.SMOOTH_SEDIMENT_STONE_WALL, "Smooth Sediment Stone Wall");
 
 		addBlock(UGBlocks.DREADROCK, "Dreadrock");
 		addBlock(UGBlocks.DREADROCK_BRICKS, "Dreadrock Bricks");
+
 		addBlock(UGBlocks.DREADROCK_STAIRS, "Dreadrock Stairs");
 		addBlock(UGBlocks.DREADROCK_BRICK_STAIRS, "Dreadrock Brick Stairs");
+
 		addBlock(UGBlocks.DREADROCK_SLAB, "Dreadrock Slab");
 		addBlock(UGBlocks.DREADROCK_BRICK_SLAB, "Dreadrock Brick Slab");
+
 		addBlock(UGBlocks.DREADROCK_WALL, "Dreadrock Wall");
 		addBlock(UGBlocks.DREADROCK_BRICK_WALL, "Dreadrock Brick Wall");
+
 		addBlock(UGBlocks.DREADROCK_BUTTON, "Dreadrock Button");
 		addBlock(UGBlocks.DREADROCK_PRESSURE_PLATE, "Dreadrock Pressure Plate");
 
@@ -83,12 +104,16 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.TREMBLECRUST_BRICKS, "Tremblecrust Bricks");
 		addBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS, "Cracked Tremblecrust Bricks");
 		addBlock(UGBlocks.CHISELED_TREMBLECRUST_BRICKS, "Chiseled Tremblecrust Bricks");
+
 		addBlock(UGBlocks.TREMBLECRUST_STAIRS, "Tremblecrust Stairs");
 		addBlock(UGBlocks.TREMBLECRUST_BRICK_STAIRS, "Tremblecrust Brick Stairs");
+
 		addBlock(UGBlocks.TREMBLECRUST_SLAB, "Tremblecrust Slab");
 		addBlock(UGBlocks.TREMBLECRUST_BRICK_SLAB, "Tremblecrust Brick Slab");
+
 		addBlock(UGBlocks.TREMBLECRUST_WALL, "Tremblecrust Wall");
 		addBlock(UGBlocks.TREMBLECRUST_BRICK_WALL, "Tremblecrust Brick Wall");
+
 		addBlock(UGBlocks.TREMBLECRUST_BUTTON, "Tremblecrust Button");
 		addBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, "Tremblecrust Pressure Plate");
 

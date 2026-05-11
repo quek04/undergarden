@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:polished_depthrock",
+  "result": {
+    "id": "undergarden:depthrock_brick_wall"
+  }
+}

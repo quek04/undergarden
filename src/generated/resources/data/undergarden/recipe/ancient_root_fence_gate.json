@@ -1,13 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
+  "group": "wooden_fence_gate",
   "key": {
-    "/": "#c:rods/wooden",
-    "M": "undergarden:ancient_root_planks"
+    "#": "minecraft:stick",
+    "W": "undergarden:ancient_root_planks"
   },
   "pattern": [
-    "/M/",
-    "/M/"
+    "#W#",
+    "#W#"
   ],
   "result": {
     "id": "undergarden:ancient_root_fence_gate"
