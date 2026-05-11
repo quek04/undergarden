@@ -832,5 +832,15 @@ public class UGLang extends UGLangProvider {
 		this.add("commands.undergarden.infection.cannot_infect", "%s is immune to infection");
 		this.add("commands.undergarden.infection.cannot_infect_multiple", "All targets are immune to infection");
 		this.add("commands.undergarden.infection.skipped", "%s targets were not affected as they are immune to infection");
+
+		this.add("undergarden.music.acasta_gneiss", "Screem - Acasta Gneiss");
+		this.add("undergarden.music.all_that_wiggles_is_wood", "Screem - All That Wiggles is Wood");
+		this.add("undergarden.music.brotherhood", "Screem - Brotherhood");
+		this.add("undergarden.music.caps", "Screem - Caps");
+		this.add("undergarden.music.grongletune", "Screem - Grongletune");
+		this.add("undergarden.music.monument", "Screem - Monument");
+		this.add("undergarden.music.pit_of_shivers", "Screem - Pit of Shivers");
+		this.add("undergarden.music.smog", "Screem - Smog");
+		this.add("undergarden.music.wrought", "Screem - Wrought");
 	}
 }
