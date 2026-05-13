@@ -251,6 +251,17 @@ public class UGEntityLootTables extends EntityLootSubProvider {
 				.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(4))
 			)
 		);
+
+		this.add(UGEntityTypes.UNDERGAR.get(), LootTable.lootTable()
+			.withPool(LootPool.lootPool()
+				.setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(UGItems.RAW_UNDERGAR_FILLET)
+					.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+					.apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
+					.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 2.0F)))
+				)
+			)
+		);
 	}
 
 	@Override

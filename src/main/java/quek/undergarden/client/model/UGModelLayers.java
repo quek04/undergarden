@@ -41,6 +41,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation POT = register("pot");
 	public static final ModelLayerLocation CLOGGRUM_SHIELD = register("cloggrum_shield");
 	public static final ModelLayerLocation JAVELIN = register("javelin");
+	public static final ModelLayerLocation UNDERGAR = register("undergar");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(Undergarden.prefix(name), "main");

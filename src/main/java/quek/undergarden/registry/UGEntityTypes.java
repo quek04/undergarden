@@ -33,7 +33,7 @@ import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.MinionProjectile;
 import quek.undergarden.entity.projectile.RotbelcherProjectile;
 import quek.undergarden.entity.projectile.ThrownJavelin;
-import quek.undergarden.entity.projectile.slingshot.*;
+import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,6 +85,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = registerWithEgg("forgotten", EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).notInPeaceful().sized(0.7F, 2.2F), Forgotten::registerAttributes, Monster::checkAnyLightMonsterSpawnRules);
 	public static final DeferredHolder<EntityType<?>, EntityType<Denizen>> DENIZEN = registerWithEgg("denizen", EntityType.Builder.of(Denizen::new, MobCategory.MONSTER).notInPeaceful().sized(0.7F, 2.0F), Denizen::registerAttributes, Monster::checkAnyLightMonsterSpawnRules);
 	public static final DeferredHolder<EntityType<?>, EntityType<MysteriousPot>> MYSTERIOUS_POT = registerWithAttributes("mysterious_pot", EntityType.Builder.of(MysteriousPot::new, MobCategory.CREATURE).sized(0.8F, 1.0F), MysteriousPot::registerAttributes);
+	public static final DeferredHolder<EntityType<?>, EntityType<Undergar>> UNDERGAR = registerWithEgg("undergar", EntityType.Builder.of(Undergar::new, MobCategory.WATER_CREATURE).sized(1.5F, 0.5F).eyeHeight(0.25F), Undergar::createAttributes, Undergar::canUndergarSpawn);
 
 	//bosses
 	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = registerWithEgg("forgotten_guardian", EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).notInPeaceful().sized(1.0F, 3.8F), ForgottenGuardian::registerAttributes, Monster::checkMonsterSpawnRules);

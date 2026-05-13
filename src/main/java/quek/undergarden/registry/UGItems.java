@@ -227,6 +227,8 @@ public class UGItems {
 	public static final DeferredItem<Item> INDIGO_STEW = register("indigo_stew", Item::new, () -> new Item.Properties().food(UGFoods.INDIGO_STEW, UGConsumables.STEW_CONSUMABLE.apply(new MobEffectInstance(MobEffects.NIGHT_VISION, 600), new MobEffectInstance(MobEffects.SLOWNESS, 600))).stacksTo(1).usingConvertsTo(Items.BOWL));
 	public static final DeferredItem<Item> VEILED_STEW = register("veiled_stew", Item::new, () -> new Item.Properties().food(UGFoods.VEILED_STEW, UGConsumables.STEW_CONSUMABLE.apply(new MobEffectInstance(MobEffects.SLOW_FALLING, 600), new MobEffectInstance(UGEffects.FEATHERWEIGHT, 600))).stacksTo(1).usingConvertsTo(Items.BOWL));
 	public static final DeferredItem<Item> SLOP_BOWL = register("slop_bowl", Item::new, () -> new Item.Properties().food(UGFoods.SLOP_BOWL, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(MobEffects.NAUSEA, 200))).stacksTo(1).usingConvertsTo(Items.BOWL));
+	public static final DeferredItem<Item> RAW_UNDERGAR_FILLET = register("raw_undergar_fillet", Item::new, () -> new Item.Properties().food(UGFoods.RAW_UNDERGAR_FILLET));
+	public static final DeferredItem<Item> COOKED_UNDERGAR_FILLET = register("cooked_undergar_fillet", Item::new, () -> new Item.Properties().food(UGFoods.COOKED_UNDERGAR_FILLET));
 
 	//blocks
 	private static final Equippable grongEquip = Equippable.builder(EquipmentSlot.HEAD)

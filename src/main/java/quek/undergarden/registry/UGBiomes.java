@@ -67,6 +67,7 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.addSpawn(MobCategory.WATER_CREATURE, 10, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 1, 1))
+				.addSpawn(MobCategory.WATER_CREATURE, 10, new MobSpawnSettings.SpawnerData(UGEntityTypes.UNDERGAR.get(), 1, 2))
 				.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 3, 6))
 				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())

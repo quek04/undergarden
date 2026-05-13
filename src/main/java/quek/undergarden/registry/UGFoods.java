@@ -1,9 +1,6 @@
 package quek.undergarden.registry;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Items;
 
 public class UGFoods {
 
@@ -27,4 +24,6 @@ public class UGFoods {
 	public static final FoodProperties VEILED_STEW = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4F).alwaysEdible().build();
 	public static final FoodProperties SLOP_BOWL = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
 	public static final FoodProperties GRONGLET = new FoodProperties.Builder().alwaysEdible().build();
+	public static final FoodProperties RAW_UNDERGAR_FILLET = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
+	public static final FoodProperties COOKED_UNDERGAR_FILLET = new FoodProperties.Builder().nutrition(6).saturationModifier(0.8F).build();
 }

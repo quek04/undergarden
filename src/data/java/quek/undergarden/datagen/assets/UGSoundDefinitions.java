@@ -739,5 +739,24 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("mob/wither_skeleton/step3"),
 				sound("mob/wither_skeleton/step4")
 		).subtitle("subtitles.block.generic.footsteps"));
+
+		this.add(UGSoundEvents.UNDERGAR_HURT, definition().with(
+			sound("minecraft:entity/fish/hurt1"),
+			sound("minecraft:entity/fish/hurt2"),
+			sound("minecraft:entity/fish/hurt3"),
+			sound("minecraft:entity/fish/hurt4")
+		).subtitle("subtitles.entity.undergar.hurt"));
+		this.add(UGSoundEvents.UNDERGAR_DEATH, definition().with(
+			sound("minecraft:entity/fish/hurt1"),
+			sound("minecraft:entity/fish/hurt2"),
+			sound("minecraft:entity/fish/hurt3"),
+			sound("minecraft:entity/fish/hurt4")
+		).subtitle("subtitles.entity.undergar.death"));
+		this.add(UGSoundEvents.UNDERGAR_FLOP, definition().with(
+			sound("minecraft:entity/fish/flop1").volume(0.3F),
+			sound("minecraft:entity/fish/flop2").volume(0.3F),
+			sound("minecraft:entity/fish/flop3").volume(0.3F),
+			sound("minecraft:entity/fish/flop4").volume(0.3F)
+		).subtitle("subtitles.entity.undergar.flop"));
 	}
 }

@@ -4,20 +4,13 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
-import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
 import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.client.renderer.special.TridentSpecialRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import quek.undergarden.Undergarden;
@@ -25,10 +18,8 @@ import quek.undergarden.client.model.item.CloggrumBucketModel;
 import quek.undergarden.client.model.item.PullingSlingshotModel;
 import quek.undergarden.client.render.item.CloggrumShieldSpecialRenderer;
 import quek.undergarden.client.render.item.JavelinSpecialRenderer;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGItems;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 
@@ -145,6 +136,8 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateSpear(UGItems.FROSTSTEEL_SPEAR.get());
 		this.generateSpear(UGItems.UTHERIUM_SPEAR.get());
 		this.generateSpear(UGItems.FORGOTTEN_SPEAR.get());
+		this.generateFlatItem(UGItems.RAW_UNDERGAR_FILLET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.COOKED_UNDERGAR_FILLET.get(), ModelTemplates.FLAT_ITEM);
 
 		ItemModel.Unbaked flatJavelinModel = ItemModelUtils.plainModel(this.createFlatItemModel(UGItems.JAVELIN.get(), ModelTemplates.FLAT_ITEM));
 		ItemModel.Unbaked inHandNormalModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.JAVELIN.get(), "_in_hand"), new JavelinSpecialRenderer.Unbaked());

@@ -632,6 +632,10 @@ public class UGRecipes extends UGRecipeProvider {
 		smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(this.output, name("smoke_underbeans"));
 		campfireRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(this.output, name("campfire_underbeans"));
 
+		smeltingRecipe(UGItems.COOKED_UNDERGAR_FILLET, UGItems.RAW_UNDERGAR_FILLET, CookingBookCategory.FOOD, 0.35F).save(this.output, name("smelt_raw_undergar_fillet"));
+		smokingRecipe(UGItems.COOKED_UNDERGAR_FILLET, UGItems.RAW_UNDERGAR_FILLET, 0.35F).save(this.output, name("smoke_raw_undergar_fillet"));
+		campfireRecipe(UGItems.COOKED_UNDERGAR_FILLET, UGItems.RAW_UNDERGAR_FILLET, 0.35F).save(this.output, name("campfire_raw_undergar_fillet"));
+
 		smeltingRecipe(UGBlocks.SMOOTH_SEDIMENT_STONE.get(), UGBlocks.SEDIMENT_STONE.get(), CookingBookCategory.BLOCKS, 0.1F).save(this.output);
 
 //		depthrockStonecutting(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(this.output, name("chiseled_depthrock_bricks_stonecutting"));

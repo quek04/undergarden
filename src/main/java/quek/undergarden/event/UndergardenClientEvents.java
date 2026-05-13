@@ -167,6 +167,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.DENIZEN.get(), DenizenRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MYSTERIOUS_POT.get(), MysteriousPotRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.UNDERGAR.get(), UndergarRenderer::new);
 	}
 
 	private static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -204,6 +205,7 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.POT, PotModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.CLOGGRUM_SHIELD, CloggrumShieldModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.JAVELIN, JavelinModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.UNDERGAR, UndergarModel::createBodyLayer);
 
 		ArmorModelSet<MeshDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(LayerDefinitions.INNER_ARMOR_DEFORMATION, LayerDefinitions.OUTER_ARMOR_DEFORMATION);
 		registerArmorModelSet(event, UGModelLayers.FORGOTTEN_ARMOR, humanoidArmor);

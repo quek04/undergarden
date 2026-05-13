@@ -1,7 +1,6 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -168,6 +167,10 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> FORGOTTEN_HURT = register("entity.forgotten.hurt");
 	public static final DeferredHolder<SoundEvent, SoundEvent> FORGOTTEN_DEATH = register("entity.forgotten.death");
 	public static final DeferredHolder<SoundEvent, SoundEvent> FORGOTTEN_STEP = register("entity.forgotten.step");
+
+	public static final DeferredHolder<SoundEvent, SoundEvent> UNDERGAR_HURT = register("entity.undergar.hurt");
+	public static final DeferredHolder<SoundEvent, SoundEvent> UNDERGAR_DEATH = register("entity.undergar.death");
+	public static final DeferredHolder<SoundEvent, SoundEvent> UNDERGAR_FLOP = register("entity.undergar.flop");
 
 	private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Undergarden.prefix(name)));

@@ -125,6 +125,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 10
+      },
+      {
+        "type": "undergarden:undergar",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 10
       }
     ]
   },

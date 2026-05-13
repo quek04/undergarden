@@ -437,6 +437,8 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.INKY_STEW, "Inky Stew");
 		addItem(UGItems.VEILED_STEW, "Veiled Stew");
 		addItem(UGItems.SLOP_BOWL, "Slop Bowl");
+		addItem(UGItems.RAW_UNDERGAR_FILLET, "Raw Undergar Fillet");
+		addItem(UGItems.COOKED_UNDERGAR_FILLET, "Cooked Undergar Fillet");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
 		addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
@@ -486,6 +488,7 @@ public class UGLang extends UGLangProvider {
 		addEntityAndEgg(UGEntityTypes.FORGOTTEN, "Forgotten");
 		addEntityAndEgg(UGEntityTypes.DENIZEN, "Denizen");
 		addEntityType(UGEntityTypes.MYSTERIOUS_POT, "Mysterious Pot");
+		addEntityAndEgg(UGEntityTypes.UNDERGAR, "Undergar");
 
 		addEntityAndEgg(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
@@ -755,6 +758,10 @@ public class UGLang extends UGLangProvider {
 		addSubtitle("entity", "forgotten.ambient", "Forgotten mutters");
 		addSubtitle("entity", "forgotten.hurt", "Forgotten hurts");
 		addSubtitle("entity", "forgotten.death", "Forgotten dies");
+
+		addSubtitle("entity", "undergar.hurt", "Undergar hurts");
+		addSubtitle("entity", "undergar.death", "Undergar dies");
+		addSubtitle("entity", "undergar.flop", "Undergar flops");
 
 		addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
 		addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
