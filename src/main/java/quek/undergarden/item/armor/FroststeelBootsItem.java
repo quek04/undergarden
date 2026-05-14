@@ -22,9 +22,9 @@ public class FroststeelBootsItem extends Item {
 		return true;
 	}
 
-	public static ItemAttributeModifiers createFrosteelAttributes(ArmorType type) {
+	public static ItemAttributeModifiers createFroststeelAttributes(ArmorType type) {
 		Identifier modifierId = Identifier.withDefaultNamespace("armor." + type.getName());
-		return UGArmorMaterials.FROSTSTEEL.createAttributes(ArmorType.HELMET)
+		return UGArmorMaterials.FROSTSTEEL.createAttributes(type)
 			.withModifierAdded(Attributes.MOVEMENT_SPEED, new AttributeModifier(modifierId, -0.05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.bySlot(type.getSlot()));
 	}
 }
