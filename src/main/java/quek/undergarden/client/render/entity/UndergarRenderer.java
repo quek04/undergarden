@@ -2,27 +2,22 @@ package quek.undergarden.client.render.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.UndeadRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.AABB;
 import quek.undergarden.Undergarden;
-import quek.undergarden.client.UGRenderTypes;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.model.UndergarModel;
-import quek.undergarden.client.render.layer.BasicEyesLayer;
+import quek.undergarden.client.render.layer.UndergarEyesLayer;
 import quek.undergarden.client.state.entity.UndergarRenderState;
 import quek.undergarden.entity.animal.Undergar;
 
 public class UndergarRenderer extends MobRenderer<Undergar, UndergarRenderState, UndergarModel> {
 
 	public static final Identifier UNDERGAR = Undergarden.prefix("textures/entity/undergar.png");
-	private static final RenderType UNDERGAR_EYES = UGRenderTypes.eyesNoCull(Undergarden.prefix("textures/entity/undergar_eyes.png"));
 
 	public UndergarRenderer(EntityRendererProvider.Context context) {
 		super(context, new UndergarModel(context.bakeLayer(UGModelLayers.UNDERGAR)), 0.5F);
-		this.addLayer(new BasicEyesLayer<>(this, UNDERGAR_EYES));
+		this.addLayer(new UndergarEyesLayer(this));
 	}
 
 	@Override

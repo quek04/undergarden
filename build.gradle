@@ -166,6 +166,8 @@ dependencies {
 //	runtimeOnly "curse.maven:spark-361579:6225208"
 //
 //	runtimeOnly "curse.maven:worldedit-225608:5830452"
+
+	compileOnly "curse.maven:irisshaders-455508:7867946"
 }
 
 processResources {
