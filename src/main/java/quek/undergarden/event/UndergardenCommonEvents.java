@@ -368,11 +368,11 @@ public class UndergardenCommonEvents {
 	@SuppressWarnings("unchecked") //PAIN
 	private static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
 		UGEntityTypes.SPAWN_PREDICATES.forEach(
-			(type, predicate) ->
+			(type, info) ->
 				event.register((EntityType<Entity>) type.value(),
-					SpawnPlacementTypes.ON_GROUND,
-					Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-					(SpawnPlacements.SpawnPredicate<Entity>) predicate,
+					info.placement(),
+					info.heightmap(),
+					(SpawnPlacements.SpawnPredicate<Entity>) info.predicate(),
 					RegisterSpawnPlacementsEvent.Operation.REPLACE)
 		);
 	}
