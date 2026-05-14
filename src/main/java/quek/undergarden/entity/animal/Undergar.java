@@ -1,7 +1,9 @@
 package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -24,6 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGSoundEvents;
@@ -34,6 +37,10 @@ public class Undergar extends WaterAnimal implements NeutralMob {
 	private long persistentAngerEndTime;
 	private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
 
+	private boolean attacking;
+	private float biteAnim;
+	private float biteAnimO;
+
 	public Undergar(EntityType<? extends WaterAnimal> type, Level level) {
 		super(type, level);
 		this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
@@ -43,7 +50,7 @@ public class Undergar extends WaterAnimal implements NeutralMob {
 	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
-		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5D, false));
+		this.goalSelector.addGoal(1, new UndergarAttackGoal(this, 1.5D, false));
 		this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 1.0D, 120));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
@@ -84,7 +91,52 @@ public class Undergar extends WaterAnimal implements NeutralMob {
 			this.playSound(UGSoundEvents.UNDERGAR_FLOP.get(), 1.0F, this.getVoicePitch());
 		}
 
+		if (this.level().isClientSide()) {
+			this.biteAnimO = this.biteAnim;
+			if (this.attacking) {
+				this.biteAnim += 0.25F;
+				if (this.biteAnim >= 1.0F) {
+					this.attacking = false;
+				}
+			} else if (this.biteAnim > 0.0F) {
+				this.biteAnim -= 0.1F;
+			}
+		}
+
 		super.aiStep();
+	}
+
+	@Override
+	protected void customServerAiStep(ServerLevel level) {
+		this.updatePersistentAnger(level, true);
+		super.customServerAiStep(level);
+	}
+
+	public float getBiteAnim(float partialTicks) {
+		return Math.clamp(Mth.lerp(partialTicks, this.biteAnimO, this.biteAnim), 0.0F, 1.0F);
+	}
+
+	@Override
+	public boolean doHurtTarget(ServerLevel level, Entity target) {
+		boolean flag = super.doHurtTarget(level, target);
+		if (flag) {
+			this.level().broadcastEntityEvent(this, (byte) 80);
+		}
+		return flag;
+	}
+
+	@Override
+	protected AABB getAttackBoundingBox(double horizontalExpansion) {
+		return super.getAttackBoundingBox(horizontalExpansion).inflate(0.4D, 1.0D, 0.4D).expandTowards(0.0D, -0.5D, 0.0D);
+	}
+
+	@Override
+	public void handleEntityEvent(byte id) {
+		if (id == 80) {
+			this.attacking = true;
+		} else {
+			super.handleEntityEvent(id);
+		}
 	}
 
 	@Override

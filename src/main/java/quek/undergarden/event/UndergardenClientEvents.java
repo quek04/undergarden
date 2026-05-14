@@ -64,6 +64,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.DepthrockBedBlock;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.client.UGRenderTypes;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
@@ -111,6 +112,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerSpecialItemModels);
 		bus.addListener(UndergardenClientEvents::registerSpecialModels);
 		bus.addListener(UndergardenClientEvents::registerInfuserSearchCategory);
+		bus.addListener(UndergardenClientEvents::registerPipelines);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
@@ -124,6 +126,10 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 		});
+	}
+
+	private static void registerPipelines(RegisterRenderPipelinesEvent event) {
+		event.registerPipeline(UGRenderTypes.EYES_NO_CULL_PIPELINE);
 	}
 
 	private static void registerInfuserSearchCategory(RegisterRecipeBookSearchCategoriesEvent event) {
