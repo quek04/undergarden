@@ -1,6 +1,7 @@
 package quek.undergarden.effect;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,11 +15,11 @@ public class PurityEffect extends MobEffect {
 
 	@Override
 	public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
+		if (entity.tickCount % Mth.ceil(200.0F / (amplifier + 1)) == 0 && !entity.level().isClientSide()) {
 			float data = entity.getData(UGAttachments.UTHERIC_INFECTION);
 			if (data > 0) {
 				entity.setData(UGAttachments.UTHERIC_INFECTION.get(), data - (amplifier + 1));
 				UthericInfectionEvents.sendInfectionSyncPacket(entity);
-		if (entity.tickCount % Mth.ceil(200.0F / (amplifier + 1)) == 0 && !entity.level().isClientSide()) {
 			}
 		}
 		return true;
