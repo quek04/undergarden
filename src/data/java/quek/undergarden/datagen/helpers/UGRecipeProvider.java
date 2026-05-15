@@ -19,7 +19,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CeilingHangingSignBlock;
-import net.minecraft.world.level.block.SignBlock;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
 import quek.undergarden.datagen.assets.UGBlockFamilies;
@@ -27,7 +26,6 @@ import quek.undergarden.datagen.helpers.builder.InfusingRecipeBuilder;
 import quek.undergarden.datagen.helpers.builder.ItemInfusingRecipeBuilder;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.recipe.InfusingRecipe;
-import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
@@ -56,94 +54,6 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.requires(logIn.get())
 			.group("planks")
 			.unlockedBy("has_log", has(logIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeDoor(HolderGetter<Item> getter, Supplier<? extends Block> doorOut, Supplier<? extends Block> plankIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, doorOut.get(), 3)
-			.pattern("PP")
-			.pattern("PP")
-			.pattern("PP")
-			.define('P', plankIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(plankIn.get()).getPath(), has(plankIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeTrapdoor(HolderGetter<Item> getter, Supplier<? extends Block> trapdoorOut, Supplier<? extends Block> plankIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, trapdoorOut.get(), 2)
-			.pattern("PPP")
-			.pattern("PPP")
-			.define('P', plankIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(plankIn.get()).getPath(), has(plankIn.get()));
-	}
-
-	public ShapelessRecipeBuilder makeButton(HolderGetter<Item> getter, Supplier<? extends Block> buttonOut, Supplier<? extends Block> blockIn) {
-		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.REDSTONE, buttonOut.get())
-			.requires(blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makePressurePlate(HolderGetter<Item> getter, Supplier<? extends Block> pressurePlateOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, pressurePlateOut.get())
-			.pattern("BB")
-			.define('B', blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeStairs(HolderGetter<Item> getter, Supplier<? extends Block> stairsOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, stairsOut.get(), 4)
-			.pattern("M  ")
-			.pattern("MM ")
-			.pattern("MMM")
-			.define('M', blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeSlab(HolderGetter<Item> getter, Supplier<? extends Block> slabOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, slabOut.get(), 6)
-			.pattern("MMM")
-			.define('M', blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeWall(HolderGetter<Item> getter, Supplier<? extends Block> wallOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, wallOut.get(), 6)
-			.pattern("MMM")
-			.pattern("MMM")
-			.define('M', blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeFence(HolderGetter<Item> getter, Supplier<? extends Block> fenceOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, fenceOut.get(), 6)
-			.pattern("M/M")
-			.pattern("M/M")
-			.define('M', blockIn.get())
-			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeFenceGate(HolderGetter<Item> getter, Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, fenceGateOut.get())
-			.pattern("/M/")
-			.pattern("/M/")
-			.define('M', blockIn.get())
-			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeBricks(HolderGetter<Item> getter, Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, bricksOut.get(), 4)
-			.pattern("MM")
-			.pattern("MM")
-			.define('M', blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
-	}
-
-	public ShapedRecipeBuilder makeChiseledBricks(HolderGetter<Item> getter, Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, bricksOut.get())
-			.pattern("M")
-			.pattern("M")
-			.define('M', blockIn.get())
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeWood(HolderGetter<Item> getter, Supplier<? extends Block> woodOut, Supplier<? extends Block> logIn) {
@@ -302,16 +212,6 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_boat", has(ItemTags.BOATS));
 	}
 
-	public ShapedRecipeBuilder makeSign(HolderGetter<Item> getter, Supplier<? extends SignBlock> signOut, Supplier<? extends Block> planksIn) {
-		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, signOut.get(), 3)
-			.pattern("PPP")
-			.pattern("PPP")
-			.pattern(" / ")
-			.define('P', planksIn.get())
-			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(planksIn.get()).getPath(), has(planksIn.get()));
-	}
-
 	protected ShapedRecipeBuilder makeHangingSign(HolderGetter<Item> getter, Supplier<? extends CeilingHangingSignBlock> result, Supplier<? extends Block> log) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, result.get(), 6)
 			.pattern("| |")
@@ -362,13 +262,11 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 	public SimpleCookingRecipeBuilder smokingRecipe(ItemLike result, ItemLike ingredient, float exp) {
 		return SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), RecipeCategory.MISC, result, exp, 100)
 			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
-
 	}
 
 	public SimpleCookingRecipeBuilder campfireRecipe(ItemLike result, ItemLike ingredient, float exp) {
 		return SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), RecipeCategory.FOOD, result, exp, 600)
 			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
-
 	}
 
 	public SmithingTransformRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> templateItem, Supplier<Item> result) {
@@ -387,86 +285,6 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 	public SingleItemRecipeBuilder stonecutting(Supplier<Block> input, ItemLike result, int resultAmount) {
 		return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), RecipeCategory.BUILDING_BLOCKS, result, resultAmount)
 			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(input.get()), has(input.get()));
-	}
-
-	public SingleItemRecipeBuilder depthrockStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.DEPTHROCK, result);
-	}
-
-	public SingleItemRecipeBuilder depthrockStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.DEPTHROCK, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder depthrockBricksStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.DEPTHROCK_BRICKS, result);
-	}
-
-	public SingleItemRecipeBuilder depthrockBricksStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.DEPTHROCK_BRICKS, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder depthrockTilesStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.DEPTHROCK_TILES, result);
-	}
-
-	public SingleItemRecipeBuilder depthrockTilesStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.DEPTHROCK_TILES, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder polishedDepthrockStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.POLISHED_DEPTHROCK, result);
-	}
-
-	public SingleItemRecipeBuilder polishedDepthrockStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.POLISHED_DEPTHROCK, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder shiverstoneStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.SHIVERSTONE, result);
-	}
-
-	public SingleItemRecipeBuilder shiverstoneStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.SHIVERSTONE, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder shiverstoneBricksStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.SHIVERSTONE_BRICKS, result);
-	}
-
-	public SingleItemRecipeBuilder shiverstoneBricksStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.SHIVERSTONE_BRICKS, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder tremblecrustStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.TREMBLECRUST, result);
-	}
-
-	public SingleItemRecipeBuilder tremblecrustStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.TREMBLECRUST, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder tremblecrustBricksStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result);
-	}
-
-	public SingleItemRecipeBuilder tremblecrustBricksStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder dreadrockStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.DREADROCK, result);
-	}
-
-	public SingleItemRecipeBuilder dreadrockStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.DREADROCK, result, resultAmount);
-	}
-
-	public SingleItemRecipeBuilder dreadrockBricksStonecutting(ItemLike result) {
-		return stonecutting(UGBlocks.DREADROCK_BRICKS, result);
-	}
-
-	public SingleItemRecipeBuilder dreadrockBricksStonecutting(ItemLike result, int resultAmount) {
-		return stonecutting(UGBlocks.DREADROCK_BRICKS, result, resultAmount);
 	}
 
 	public ItemInfusingRecipeBuilder itemInfusing(Ingredient ingredient, InfusingBookCategory bookCategory, float experience, int infusingTime) {

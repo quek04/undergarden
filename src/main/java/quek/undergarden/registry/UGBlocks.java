@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -14,8 +15,10 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -182,13 +185,15 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEEPSOIL = registerWithItem("deepsoil", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
 	public static final DeferredBlock<Block> COARSE_DEEPSOIL = registerWithItem("coarse_deepsoil", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(DEEPSOIL.get()));
 	public static final DeferredBlock<Block> DEEPSOIL_FARMLAND = registerWithItem("deepsoil_farmland", DeepsoilFarmlandBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND));
-	public static final DeferredBlock<Block> GOO = registerWithItem("goo", GooLayerBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((state, getter, pos) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollision());
+	public static final DeferredBlock<Block> GOO = registerWithItem("goo", GooLayerBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((_, _, _) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollision());
 	public static final DeferredBlock<Block> GOO_BLOCK = registerWithItem("goo_block", GooBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion());
 	public static final DeferredBlock<Block> SMOG_VENT = registerWithItem("smog_vent", SmogVentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).lightLevel((state) -> 10).isValidSpawn(((state, level, pos, entity) -> false)));
 	public static final DeferredBlock<Block> CLOGGRUM_BARS = registerWithItem("cloggrum_bars", IronBarsBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS));
 	public static final DeferredBlock<Block> CLOGGRUM_TILES = registerWithItem("cloggrum_tiles", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_BLOCK.get()));
 	public static final DeferredBlock<StairBlock> CLOGGRUM_TILE_STAIRS = registerWithItem("cloggrum_tile_stairs", (properties) -> new StairBlock(CLOGGRUM_TILES.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_TILES.get()));
 	public static final DeferredBlock<SlabBlock> CLOGGRUM_TILE_SLAB = registerWithItem("cloggrum_tile_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_TILES.get()));
+	public static final DeferredBlock<Block> CLOGGRUM_PILLAR = registerWithItem("cloggrum_pillar", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_BLOCK.get()));
+	public static final DeferredBlock<Block> CLOGGRUM_GRATE = registerWithItem("cloggrum_grate", WaterloggedTransparentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_BLOCK.get()).noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor((_, _, _) -> false).isSuffocating((_, _, _) -> false).isViewBlocking((_, _, _) -> false));
 	public static final DeferredBlock<BedBlock> DEPTHROCK_BED = register("depthrock_bed", DepthrockBedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()));
 	public static final DeferredBlock<WoolCarpetBlock> MOGMOSS_RUG = registerWithItem("mogmoss_rug", (properties) -> new WoolCarpetBlock(DyeColor.LIME, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GREEN_CARPET));
 	public static final DeferredBlock<WoolCarpetBlock> BLUE_MOGMOSS_RUG = registerWithItem("blue_mogmoss_rug", (properties) -> new WoolCarpetBlock(DyeColor.BLUE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BLUE_CARPET));

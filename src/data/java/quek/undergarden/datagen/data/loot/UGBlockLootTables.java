@@ -221,6 +221,8 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.CLOGGRUM_TILES);
 		this.dropSelf(UGBlocks.CLOGGRUM_TILE_STAIRS);
 		this.dropSelf(UGBlocks.CLOGGRUM_TILE_SLAB);
+		this.dropSelf(UGBlocks.CLOGGRUM_PILLAR);
+		this.dropSelf(UGBlocks.CLOGGRUM_GRATE);
 		this.dropSelf(UGBlocks.DEPTHROCK_TILES);
 		this.dropSelf(UGBlocks.DEPTHROCK_TILE_STAIRS);
 		this.dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);

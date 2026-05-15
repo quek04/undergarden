@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "undergarden:cloggrum_tiles"
+        "recipe": "undergarden:cloggrum_pillar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "undergarden:cloggrum_tiles"
+      "undergarden:cloggrum_pillar"
     ]
   }
 }

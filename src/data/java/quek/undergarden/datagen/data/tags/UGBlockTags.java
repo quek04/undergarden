@@ -247,6 +247,8 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.CLOGGRUM_TILES.get(),
 			UGBlocks.CLOGGRUM_TILE_STAIRS.get(),
 			UGBlocks.CLOGGRUM_TILE_SLAB.get(),
+			UGBlocks.CLOGGRUM_PILLAR.get(),
+			UGBlocks.CLOGGRUM_GRATE.get(),
 			UGBlocks.DEPTHROCK_BED.get(),
 			UGBlocks.CLOGGRUM_LANTERN.get(),
 			UGBlocks.VIRULENT_MIX_CAULDRON.get(),
@@ -382,7 +384,9 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.CLOGGRUM_BARS.get(),
 			UGBlocks.CLOGGRUM_TILES.get(),
 			UGBlocks.CLOGGRUM_TILE_STAIRS.get(),
-			UGBlocks.CLOGGRUM_TILE_SLAB.get()
+			UGBlocks.CLOGGRUM_TILE_SLAB.get(),
+			UGBlocks.CLOGGRUM_PILLAR.get(),
+			UGBlocks.CLOGGRUM_GRATE.get()
 		);
 		tag(BlockTags.NEEDS_IRON_TOOL).add(
 			UGBlocks.DEPTHROCK_GOLD_ORE.get(),

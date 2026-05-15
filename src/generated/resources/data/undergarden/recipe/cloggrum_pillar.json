@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": "undergarden:cloggrum_ingot"
+  },
+  "pattern": [
+    "C",
+    "C",
+    "C"
+  ],
+  "result": {
+    "count": 3,
+    "id": "undergarden:cloggrum_pillar"
+  }
+}

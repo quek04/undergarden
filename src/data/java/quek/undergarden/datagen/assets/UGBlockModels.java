@@ -316,6 +316,9 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.createCrossBlock(UGBlocks.THORNREED.get(), PlantType.NOT_TINTED);
 		this.registerSimpleFlatItemModel(UGItems.THORNREED.get());
 
+		this.wrapBlockItem(UGBlocks.CLOGGRUM_PILLAR.get(), block -> this.createAxisAlignedPillarBlock(block, TexturedModel.COLUMN));
+		this.wrapBlockItem(UGBlocks.CLOGGRUM_GRATE.get(), this::createTrivialCube);
+
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);

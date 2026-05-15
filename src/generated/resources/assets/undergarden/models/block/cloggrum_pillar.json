@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "undergarden:block/cloggrum_pillar_top",
+    "side": "undergarden:block/cloggrum_pillar_side"
+  }
+}
