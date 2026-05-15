@@ -41,7 +41,7 @@ public class UGItemTags extends ItemTagsProvider {
 
 		tag(UGTags.Items.INFUSER_UTHERIUM_FUELS).add(UGItems.UTHERIUM_CRYSTAL.get());
 		tag(UGTags.Items.INFUSER_ROGDORIUM_FUELS).add(UGItems.ROGDORIUM.get());
-		tag(UGTags.Items.ACCELERATED_DREADROCK_BREAKING).add(UGItems.FORGOTTEN_PICKAXE.get());
+		tag(UGTags.Items.ACCELERATED_DREADROCK_BREAKING).add(UGItems.FORGOTTEN_PICKAXE.get(), UGItems.UTHERIUM_PICKAXE.get());
 
 		tag(UGTags.Items.CLOGGRUM_TOOL_MATERIALS).addTag(UGTags.Items.INGOTS_CLOGGRUM);
 		tag(UGTags.Items.FROSTSTEEL_TOOL_MATERIALS).addTag(UGTags.Items.INGOTS_FROSTSTEEL);
