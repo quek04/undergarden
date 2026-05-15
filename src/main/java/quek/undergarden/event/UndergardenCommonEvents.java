@@ -485,7 +485,7 @@ public class UndergardenCommonEvents {
 	}
 
 	public static void angerDenizensWhenCampfireIsBroken(BreakBlockEvent event) {
-		if (!event.getPlayer().isCreative() && UGPointOfInterests.DENIZEN_RESTING_BLOCKS.get().matchingStates().contains(event.getState())) {
+		if (!event.getPlayer().isCreative() && UGPointOfInterests.DENIZEN_RESTING_BLOCKS.get().matchingStates().contains(event.getState()) && !event.getLevel().isClientSide()) {
 			List<Denizen> nearbyDenizens = event.getLevel().getEntitiesOfClass(Denizen.class, new AABB(event.getPos()).inflate(4.0F));
 
 			if (!nearbyDenizens.isEmpty()) {
