@@ -35,10 +35,4 @@ public class UGNoiseBasedChunkGenerator extends NoiseBasedChunkGenerator {
     protected MapCodec<? extends ChunkGenerator> codec() {
         return CODEC;
     }
-
-	//maybe needed for spawning in ug config idk
-	@Override
-	public int getSpawnHeight(LevelHeightAccessor heightAccessor) {
-		return 128;
-	}
 }

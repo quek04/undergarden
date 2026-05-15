@@ -30,4 +30,5 @@ public class UGFeatures {
 		"utherium_growth", () -> new UtheriumCrystalFeature(UtheriumCrystalConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<BlockStateConfiguration>> BOULDER = FEATURES.register("boulder", () -> new UGBlockBlobFeature(BlockStateConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<AncientRootConfiguration>> ANCIENT_ROOT = FEATURES.register("ancient_root", () -> new AncientRootFeature(AncientRootConfiguration.CODEC));
+	public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> UG_BONUS_CHEST = FEATURES.register("undergarden_bonus_chest", () -> new UndergardenBonusChestFeature(NoneFeatureConfiguration.CODEC));
 }

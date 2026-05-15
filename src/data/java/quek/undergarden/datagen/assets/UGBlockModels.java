@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.client.render.item.DepthrockBedSpecialRenderer;
 import quek.undergarden.client.render.item.DepthrockPotSpecialRenderer;
 import quek.undergarden.client.render.item.GrongletSpecialRenderer;
@@ -111,7 +112,7 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
 		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.get());
 
-		this.createNormalTorch(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
+		this.createShardTorch(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
 		this.wrapBlockItem(UGBlocks.DEEPSOIL.get(), this::createTrivialCube);
 		this.createCrossBlockWithDefaultItem(UGBlocks.ASHEN_DEEPTURF.get(), PlantType.NOT_TINTED);
 		this.wrapBlockItem(UGBlocks.DEPTHROCK_COAL_ORE.get(), this::createTrivialCube);
@@ -210,7 +211,7 @@ public class UGBlockModels extends BlockModelGenerators {
 
 		this.createCrossBlockWithDefaultItem(UGBlocks.DEEPTURF.get(), PlantType.TINTED);
 
-		this.wrapTintedBlockItem(UGBlocks.DEEPTURF_BLOCK.get(), ItemModelUtils.constantTint(-10783397), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
+		this.wrapTintedBlockItem(UGBlocks.DEEPTURF_BLOCK.get(), ItemModelUtils.constantTint(UndergardenClient.DEFAULT_TINT_COLOR), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
 			createBooleanModelDispatch(SpreadingDeepturfBlock.SNOWY,
 				plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(block, "_snowy", new TextureMapping()
 					.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), "_side"))
@@ -285,8 +286,8 @@ public class UGBlockModels extends BlockModelGenerators {
 				plainVariant(this.createSuffixedVariant(UGBlocks.UNDERBEAN_BUSH.get(), "_stage" + age, ModelTemplates.CROSS, TextureMapping::cross)))));
 
 		this.createTintedDoublePlant(UGBlocks.TALL_DEEPTURF.get());
-		this.generateTintedEmissiveCross(UGBlocks.SHIMMERWEED.get(), UGBlocks.POTTED_SHIMMERWEED.get(), -10783397);
-		this.createDoublePlantWithBulb(UGBlocks.TALL_SHIMMERWEED.get(), -10783397);
+		this.generateTintedEmissiveCross(UGBlocks.SHIMMERWEED.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UndergardenClient.DEFAULT_TINT_COLOR);
+		this.createDoublePlantWithBulb(UGBlocks.TALL_SHIMMERWEED.get(), UndergardenClient.DEFAULT_TINT_COLOR);
 		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.DITCHBULB_PLANT.get())
 			.with(PropertyDispatch.initial(DitchbulbBlock.AGE)
 				.select(0, this.createTintedEmissiveCross(UGBlocks.DITCHBULB_PLANT.get(), "_ungrown", "_ungrown"))
@@ -433,6 +434,14 @@ public class UGBlockModels extends BlockModelGenerators {
 
 	public static TextureMapping crossEmissive(Block block, String suffix) {
 		return new TextureMapping().put(TextureSlot.CROSS, TextureMapping.getBlockTexture(block, suffix)).put(TextureSlot.CROSS_EMISSIVE, TextureMapping.getBlockTexture(block, suffix + "_emissive"));
+	}
+
+	public void createShardTorch(Block ground, Block wall) {
+		TextureMapping textures = TextureMapping.torch(ground);
+		this.blockStateOutput.accept(createSimpleBlock(ground, plainVariant(Undergarden.prefix("block/shard_torch"))));
+		this.blockStateOutput
+			.accept(MultiVariantGenerator.dispatch(wall, plainVariant(Undergarden.prefix("block/shard_wall_torch"))).with(ROTATION_TORCH));
+		this.registerSimpleFlatItemModel(ground);
 	}
 
 	//this is probably stupid

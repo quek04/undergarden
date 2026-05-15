@@ -40,32 +40,8 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 			DamageSource damageSource = this.damageSources().spit(this, livingShooter);
 			if (victim.hurtServer(level, damageSource, 5.0F)) {
 				EnchantmentHelper.doPostAttackEffects(level, victim, damageSource);
-				if (victim instanceof LivingEntity livingEntity) {
-					if (!this.level().isClientSide() && !livingEntity.is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
-						float data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
-						float b = 0.2F;
-						int a = 0;
-						if (livingEntity instanceof Player player) {
-							for (EquipmentSlot slot : EquipmentSlotGroup.ARMOR) {
-								ItemStack armor = player.getInventory().getItem(slot.getIndex(Inventory.INVENTORY_SIZE));
-								int infusionAmount = armor.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
-								if (infusionAmount > 0) {
-									armor.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(infusionAmount - 1));
-									a++;
-								}
-							}
-						}
-						float t = b / ((1 + a) * 0.18F);
-						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + t);
-					}
-				}
 			}
 		}
-	}
-
-	@Override
-	protected void onHitBlock(BlockHitResult result) {
-		super.onHitBlock(result);
 	}
 
 	@Override

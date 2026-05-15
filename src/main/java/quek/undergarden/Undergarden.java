@@ -17,7 +17,7 @@ import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import quek.undergarden.client.UndergardenClient;
-import quek.undergarden.event.UndergardenClientEvents;
+import quek.undergarden.client.event.UGClientRegistrationEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.registry.*;
 import quek.undergarden.registry.custom.UGHitEffects;
@@ -31,7 +31,7 @@ public class Undergarden {
 	public Undergarden(IEventBus bus, Dist dist, ModContainer container) {
 		NeoForgeMod.enableMilkFluid();
 		if (dist.isClient()) {
-			UndergardenClientEvents.initClientEvents(bus);
+			UGClientRegistrationEvents.init(bus);
 			container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 		}
 

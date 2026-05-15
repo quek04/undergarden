@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
@@ -129,6 +130,8 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT = create("ancient_root");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT_EXTRA = create("ancient_root_extra");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> RUINS = create("ruins");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> UG_BONUS_CHEST = create("undergarden_bonus_chest");
+
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, Undergarden.prefix(name));
@@ -351,6 +354,7 @@ public class UGConfiguredFeatures {
 		context.register(ANCIENT_ROOT, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(25)));
 		context.register(ANCIENT_ROOT_EXTRA, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(10)));
 		context.register(RUINS, new ConfiguredFeature<>(Feature.BLOCK_PILE, new BlockPileConfiguration(new WeightedStateProvider(WeightedList.<BlockState>builder().add(UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), 5).add(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState(), 2).add(UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState(), 2).build()))));
+		context.register(UG_BONUS_CHEST, new ConfiguredFeature<>(UGFeatures.UG_BONUS_CHEST.get(), FeatureConfiguration.NONE));
 	}
 
 	private static SimpleBlockConfiguration simpleBlock(Block block) {

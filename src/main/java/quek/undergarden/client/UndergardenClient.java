@@ -10,6 +10,9 @@ import quek.undergarden.registry.UGSoundEvents;
 
 public class UndergardenClient {
 
+	public static final int DEFAULT_TINT_COLOR = -10783397;
+	public static final int GLOOMGOURD_STEM_TINT = -13226686;
+
 	public static final ContextKey<Float> UTHERIUM_INFECTION = new ContextKey<>(Undergarden.prefix("utherium_infection"));
 	public static final ContextKey<Boolean> CHILLY = new ContextKey<>(Undergarden.prefix("chilly"));
 

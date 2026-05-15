@@ -76,6 +76,7 @@ public class UGDataMapsProvider extends DataMapProvider {
 		entityLethalities.add(UGEntityTypes.ROTWALKER, new UthericInfectionLethality(0.2F), false);
 		entityLethalities.add(UGEntityTypes.ROTBELCHER, new UthericInfectionLethality(0.2F), false);
 		entityLethalities.add(UGEntityTypes.ROTBEAST, new UthericInfectionLethality(0.3F), false);
+		entityLethalities.add(UGEntityTypes.ROTBELCHER_PROJECTILE, new UthericInfectionLethality(0.2F), false);
 	}
 
 	private void addCompostable(DataMapProvider.Builder<Compostable, Item> compostableBuilder, ItemLike item, float chance) {

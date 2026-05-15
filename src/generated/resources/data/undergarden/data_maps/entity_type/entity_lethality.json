@@ -6,6 +6,9 @@
     "undergarden:rotbelcher": {
       "lethality": 0.2
     },
+    "undergarden:rotbelcher_projectile": {
+      "lethality": 0.2
+    },
     "undergarden:rotling": {
       "lethality": 0.1
     },

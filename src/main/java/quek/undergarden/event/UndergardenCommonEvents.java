@@ -1,20 +1,12 @@
 package quek.undergarden.event;
 
-import net.minecraft.SharedConstants;
 import net.minecraft.commands.Commands;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
-import net.minecraft.server.level.PlayerSpawnFinder;
-import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.progress.LevelLoadListener;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -23,17 +15,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.level.storage.ServerLevelData;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -54,7 +41,6 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
@@ -65,10 +51,8 @@ import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
-import org.jspecify.annotations.Nullable;
 import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
-import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.command.InfectionCommand;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -78,7 +62,6 @@ import quek.undergarden.entity.monster.stoneborn.trading.StonebornTradeSet;
 import quek.undergarden.item.bucket.ItemAccessBucketHandler;
 import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.network.UndergardenPortalSoundPacket;
-import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
@@ -89,6 +72,7 @@ public class UndergardenCommonEvents {
 	public static void initCommonEvents(IEventBus bus) {
 		UndergardenToolEvents.setupToolEvents();
 		UthericInfectionEvents.init();
+		UndergardenSpawnEvents.init();
 		bus.addListener(UndergardenCommonEvents::registerPackets);
 		bus.addListener(UndergardenCommonEvents::registerCapabilities);
 		bus.addListener(UndergardenCommonEvents::registerBETypes);
@@ -98,7 +82,6 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 		bus.addListener(UGCreativeModeTabs::registerBuckets);
 
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::setWorldSpawnToUndergarden);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerCommands);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
@@ -127,111 +110,10 @@ public class UndergardenCommonEvents {
 		});
 	}
 
-	/**
-	 * copy of {@link net.minecraft.server.MinecraftServer#setInitialSpawn(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.storage.ServerLevelData, boolean, boolean, net.minecraft.server.level.progress.LevelLoadListener)}
-	 */
-	//TODO it doesn't spawn you in a good spot
-	private static void setWorldSpawnToUndergarden(LevelEvent.CreateSpawnPosition event) {
-		if (UndergardenConfig.Server.spawn_in_undergarden.get()) {
-			ServerLevelData levelData = event.getSettings();
-			if (!levelData.isInitialized()) {
-				event.setCanceled(true);
-				ServerLevel level = (ServerLevel) event.getLevel();
-
-				ServerChunkCache chunkSource = level.getChunkSource();
-//		if (net.neoforged.neoforge.event.EventHooks.onCreateWorldSpawn(level, levelData)) return;
-				ChunkPos spawnChunk = ChunkPos.containing(chunkSource.randomState().sampler().findSpawnPosition());
-				level.getServer().getLevelLoadListener().start(LevelLoadListener.Stage.PREPARE_GLOBAL_SPAWN, 0);
-				level.getServer().getLevelLoadListener().updateFocus(level.dimension(), spawnChunk);
-				int height = chunkSource.getGenerator().getSpawnHeight(level);
-				if (height < 0) {
-					BlockPos worldPosition = spawnChunk.getWorldPosition();
-					height = level.getHeight(Heightmap.Types.WORLD_SURFACE, worldPosition.getX() + 8, worldPosition.getZ() + 8);
-				}
-
-				levelData.setSpawn(LevelData.RespawnData.of(UGDimensions.UNDERGARDEN_LEVEL, spawnChunk.getWorldPosition().offset(8, height, 8), 0.0F, 0.0F));
-				int xChunkOffset = 0;
-				int zChunkOffset = 0;
-				int dXChunk = 0;
-				int dZChunk = -1;
-
-				for (int i = 0; i < Mth.square(11); i++) {
-					if (xChunkOffset >= -5 && xChunkOffset <= 5 && zChunkOffset >= -5 && zChunkOffset <= 5) {
-						BlockPos testedPos = getSpawnPosInChunk(level, new ChunkPos(spawnChunk.x() + xChunkOffset, spawnChunk.z() + zChunkOffset));
-						if (testedPos != null) {
-							levelData.setSpawn(LevelData.RespawnData.of(UGDimensions.UNDERGARDEN_LEVEL, testedPos, 0.0F, 0.0F));
-							break;
-						}
-					}
-
-					if (xChunkOffset == zChunkOffset || xChunkOffset < 0 && xChunkOffset == -zChunkOffset || xChunkOffset > 0 && xChunkOffset == 1 - zChunkOffset) {
-						int olddx = dXChunk;
-						dXChunk = -dZChunk;
-						dZChunk = olddx;
-					}
-
-					xChunkOffset += dXChunk;
-					zChunkOffset += dZChunk;
-				}
-
-				if (level.getServer().getWorldGenSettings().options().generateBonusChest()) {
-					level.registryAccess()
-						.lookup(Registries.CONFIGURED_FEATURE)
-						.flatMap(registry -> registry.get(MiscOverworldFeatures.BONUS_CHEST))
-						.ifPresent(feature -> feature.value().place(level, chunkSource.getGenerator(), level.getRandom(), levelData.getRespawnData().pos()));
-				}
-
-				level.getServer().getLevelLoadListener().finish(LevelLoadListener.Stage.PREPARE_GLOBAL_SPAWN);
-			}
-		}
-	}
-
-	/**
-	 * copy of {@link PlayerSpawnFinder#getOverworldRespawnPos(ServerLevel, int, int)}
-	 */
-	protected static @Nullable BlockPos getUndergardenRespawnPos(ServerLevel level, int x, int z) {
-		int topY = level.getChunkSource().getGenerator().getSpawnHeight(level);
-		if (topY >= 0) {
-			BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-			for (int y = topY + 1; y >= 0; y--) {
-				pos.set(x, y, z);
-				BlockState blockState = level.getBlockState(pos);
-				if (!blockState.getFluidState().isEmpty()) {
-					break;
-				}
-
-				if (Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP)) {
-					return pos.above().immutable();
-				}
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * copy of {@link PlayerSpawnFinder#getSpawnPosInChunk(ServerLevel, ChunkPos)}
-	 */
-	public static @Nullable BlockPos getSpawnPosInChunk(ServerLevel level, ChunkPos chunkPos) {
-		if (!SharedConstants.debugVoidTerrain(chunkPos)) {
-			for (int x = chunkPos.getMinBlockX(); x <= chunkPos.getMaxBlockX(); x++) {
-				for (int z = chunkPos.getMinBlockZ(); z <= chunkPos.getMaxBlockZ(); z++) {
-					BlockPos validSpawnPosition = getUndergardenRespawnPos(level, x, z);
-					if (validSpawnPosition != null) {
-						return validSpawnPosition;
-					}
-				}
-			}
-
-		}
-		return null;
-	}
-
 	private static void registerPackets(RegisterPayloadHandlersEvent event) {
 		PayloadRegistrar registrar = event.registrar(Undergarden.MODID).versioned("1.0.0").optional();
 		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
 		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, (payload, context) -> UndergardenPortalSoundPacket.handle(context));
-		registrar.playToClient(UthericInfectionPacket.TYPE, UthericInfectionPacket.STREAM_CODEC, UthericInfectionPacket::handle);
 	}
 
 	private static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -254,12 +136,12 @@ public class UndergardenCommonEvents {
 
 	private static void setup(FMLCommonSetupEvent event) {
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				NeoForgeMod.WATER_TYPE.value(),
-				fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
+			NeoForgeMod.WATER_TYPE.value(),
+			fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
 		));
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				NeoForgeMod.LAVA_TYPE.value(),
-				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
+			NeoForgeMod.LAVA_TYPE.value(),
+			fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
 			UGCauldronInteractions.register();

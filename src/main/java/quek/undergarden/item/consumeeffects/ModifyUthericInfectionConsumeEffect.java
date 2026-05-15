@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.minecraft.world.level.Level;
+import quek.undergarden.component.UndergardenData;
 import quek.undergarden.event.UthericInfectionEvents;
 import quek.undergarden.registry.UGAttachments;
 import quek.undergarden.registry.UGConsumeEffects;
@@ -41,11 +42,11 @@ public record ModifyUthericInfectionConsumeEffect(float value, boolean addToExis
 	@Override
 	public boolean apply(Level level, ItemStack stack, LivingEntity user) {
 		if (user instanceof Player player) {
+			UndergardenData data = player.getData(UGAttachments.UNDERGARDEN_DATA);
 			if (this.addToExisting()) {
-				float oldValue = player.getData(UGAttachments.UTHERIC_INFECTION);
-				player.setData(UGAttachments.UTHERIC_INFECTION, Mth.clamp(oldValue + this.value(), 0.0F, UthericInfectionEvents.MAX_INFECTION));
+				player.setData(UGAttachments.UNDERGARDEN_DATA, data.setInfectionLevel(Mth.clamp(data.uthericInfection() + this.value(), 0.0F, UthericInfectionEvents.MAX_INFECTION)));
 			} else {
-				player.setData(UGAttachments.UTHERIC_INFECTION, Mth.clamp(this.value(), 0.0F, UthericInfectionEvents.MAX_INFECTION));
+				player.setData(UGAttachments.UNDERGARDEN_DATA, data.setInfectionLevel(Mth.clamp(this.value(), 0.0F, UthericInfectionEvents.MAX_INFECTION)));
 			}
 			return true;
 		}

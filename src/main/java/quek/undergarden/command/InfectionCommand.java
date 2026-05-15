@@ -24,7 +24,7 @@ public class InfectionCommand {
 
 	public static LiteralArgumentBuilder<CommandSourceStack> register() {
 		return Commands.literal("infection")
-			.requires(cs -> Commands.LEVEL_ADMINS.check(cs.permissions()))
+			.requires(cs -> Commands.LEVEL_GAMEMASTERS.check(cs.permissions()))
 			.then(Commands.argument("targets", EntityArgument.entities())
 				.then(Commands.literal("set")
 					.then(Commands.argument("amount", FloatArgumentType.floatArg(0.0F, UthericInfectionEvents.MAX_INFECTION))
@@ -38,8 +38,8 @@ public class InfectionCommand {
 				skipped++;
 				continue;
 			}
-			entity.setData(UGAttachments.UTHERIC_INFECTION, amount);
-			UthericInfectionEvents.sendInfectionSyncPacket(entity);
+			entity.setData(UGAttachments.UNDERGARDEN_DATA, entity.getData(UGAttachments.UNDERGARDEN_DATA).setInfectionLevel(amount));
+			entity.syncData(UGAttachments.UNDERGARDEN_DATA);
 		}
 
 		if (targets.size() == 1) {

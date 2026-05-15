@@ -20,6 +20,8 @@ public class UGBuiltinLootTables {
 	public static final ResourceKey<LootTable> SHEAR_MOG = register("shearing/mog");
 	public static final ResourceKey<LootTable> SHEAR_SMOG_MOG = register("shearing/smog_mog");
 
+	public static final ResourceKey<LootTable> UG_BONUS_CHEST = register("chests/undergarden_bonus_chest");
+
 	private static ResourceKey<LootTable> register(String id) {
 		return register(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix(id)));
 	}
