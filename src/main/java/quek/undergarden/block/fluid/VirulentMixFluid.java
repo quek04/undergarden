@@ -1,6 +1,8 @@
 package quek.undergarden.block.fluid;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -8,6 +10,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
+import org.jspecify.annotations.Nullable;
+import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGSoundEvents;
 
 public abstract class VirulentMixFluid extends BaseFlowingFluid {
@@ -18,17 +22,20 @@ public abstract class VirulentMixFluid extends BaseFlowingFluid {
 
 	@Override
 	protected void animateTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
-		if (random.nextInt(300) == 0) {
-			level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_BUBBLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+		if (state.isSource()) {
+			BlockPos above = pos.above();
+			if (level.isEmptyBlock(above) && random.nextInt(500) == 0) {
+				level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_BUBBLE.get(), SoundSource.BLOCKS, 0.7F + random.nextFloat() * 0.2F, 0.8F + random.nextFloat() * 0.3F, false);
+			}
 		}
-		if (!state.isSource() && random.nextInt(64) == 0) {
-			level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_FLOW.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+		if (!state.isSource() && !state.getValue(FALLING) && random.nextInt(64) == 0) {
+			level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_FLOW.get(), SoundSource.BLOCKS, 0.75F + random.nextFloat() * 0.25F, random.nextFloat() + 0.5F, false);
 		}
 	}
 
 	@Override
-	protected boolean isRandomlyTicking() {
-		return true;
+	protected ParticleOptions getDripParticle() {
+		return UGParticleTypes.DRIPPING_VIRULENT.get();
 	}
 
 	public static class Flowing extends VirulentMixFluid {
