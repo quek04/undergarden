@@ -126,7 +126,7 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(BlockTags.PORTALS).add(UGBlocks.UNDERGARDEN_PORTAL.get()); //TODO otherside portal
 		tag(BlockTags.BEACON_BASE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get());
 		tag(BlockTags.WALL_POST_OVERRIDE).add(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
-		tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE_PLANT.get(), UGBlocks.DROOPVINE.get());
+		tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE_PLANT.get(), UGBlocks.DROOPVINE.get(), UGBlocks.CLOGGRUM_LADDER.get());
 		tag(BlockTags.STRIDER_WARM_BLOCKS).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.UTHERIUM_GROWTH.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get());
 		tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get(), UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
 		tag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
@@ -249,6 +249,7 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.CLOGGRUM_TILE_SLAB.get(),
 			UGBlocks.CLOGGRUM_PILLAR.get(),
 			UGBlocks.CLOGGRUM_GRATE.get(),
+			UGBlocks.CLOGGRUM_LADDER.get(),
 			UGBlocks.DEPTHROCK_BED.get(),
 			UGBlocks.CLOGGRUM_LANTERN.get(),
 			UGBlocks.VIRULENT_MIX_CAULDRON.get(),
@@ -386,7 +387,8 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.CLOGGRUM_TILE_STAIRS.get(),
 			UGBlocks.CLOGGRUM_TILE_SLAB.get(),
 			UGBlocks.CLOGGRUM_PILLAR.get(),
-			UGBlocks.CLOGGRUM_GRATE.get()
+			UGBlocks.CLOGGRUM_GRATE.get(),
+			UGBlocks.CLOGGRUM_LADDER.get()
 		);
 		tag(BlockTags.NEEDS_IRON_TOOL).add(
 			UGBlocks.DEPTHROCK_GOLD_ORE.get(),

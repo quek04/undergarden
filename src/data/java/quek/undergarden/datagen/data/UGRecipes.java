@@ -333,6 +333,14 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_cloggrum", has(UGItems.CLOGGRUM_INGOT.get()))
 			.save(this.output);
 
+		ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, UGBlocks.CLOGGRUM_LADDER.get(), 3)
+			.pattern("C C")
+			.pattern("CCC")
+			.pattern("C C")
+			.define('C', UGItems.CLOGGRUM_INGOT.get())
+			.unlockedBy("has_cloggrum", has(UGItems.CLOGGRUM_INGOT.get()))
+			.save(this.output);
+
 		ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, UGBlocks.CLOGGRUM_GRATE.get(), 4)
 			.pattern(" C ")
 			.pattern("C C")

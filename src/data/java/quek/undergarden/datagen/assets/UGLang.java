@@ -159,6 +159,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.CLOGGRUM_TILE_SLAB, "Cloggrum Tile Slab");
 		addBlock(UGBlocks.CLOGGRUM_PILLAR, "Cloggrum Pillar");
 		addBlock(UGBlocks.CLOGGRUM_GRATE, "Cloggrum Grate");
+		addBlock(UGBlocks.CLOGGRUM_LADDER, "Cloggrum Ladder");
 		addBlock(UGBlocks.DEPTHROCK_BED, "Depthrock Bed");
 		addBlock(UGBlocks.MOGMOSS_RUG, "Mogmoss Rug");
 		addBlock(UGBlocks.BLUE_MOGMOSS_RUG, "Blue Mogmoss Rug");

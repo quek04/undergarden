@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
+import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -23,6 +24,7 @@ public class ForgottenRenderer extends HumanoidMobRenderer<Forgotten, HumanoidRe
 	public ForgottenRenderer(EntityRendererProvider.Context context) {
 		super(context, new ForgottenModel(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, ArmorModelSet.bake(UGModelLayers.FORGOTTEN_ARMOR, context.getModelSet(), ForgottenModel::new), context.getEquipmentRenderer()));
+		this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
 		this.addLayer(new BasicEyesLayer<>(this, FORGOTTEN_EYES));
 	}
 

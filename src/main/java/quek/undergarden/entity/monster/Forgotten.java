@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
+import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGStructures;
@@ -32,9 +33,6 @@ public class Forgotten extends Monster {
 
 	public Forgotten(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
-		for (EquipmentSlot slot : EquipmentSlotGroup.ARMOR) {
-			this.setDropChance(slot, 0.03F);
-		}
 	}
 
 	@Override
@@ -79,6 +77,10 @@ public class Forgotten extends Monster {
 
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
+		for (EquipmentSlot slot : EquipmentSlotGroup.ARMOR) {
+			this.setDropChance(slot, 0.03F);
+		}
+		
 		ServerLevel level = (ServerLevel) this.level();
 		Holder<Structure> structure = level.structureManager().registryAccess().holderOrThrow(UGStructures.DEPLETED_MINE);
 		if (structure.isBound() && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure.value()).isValid() && this.getY() <= 0) {
@@ -101,6 +103,10 @@ public class Forgotten extends Monster {
 					};
 					this.setItemSlot(slot, new ItemStack(armor));
 				}
+			}
+			if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty() && random.nextInt(100) == 0) {
+				this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(UGBlocks.CLOGGRUM_LADDER));
+				this.setDropChance(EquipmentSlot.HEAD, 0.0F);
 			}
 			if (random.nextBoolean()) {
 				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_SWORD.get()));
