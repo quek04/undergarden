@@ -21,7 +21,8 @@
         "probability": 0.025
       }
     ],
-    "minecraft:visual/fog_color": "#000000"
+    "minecraft:visual/fog_color": "#000000",
+    "minecraft:visual/fog_end_distance": 100.0
   },
   "carvers": "undergarden:undergarden_cave",
   "creature_spawn_probability": 0.9999999,

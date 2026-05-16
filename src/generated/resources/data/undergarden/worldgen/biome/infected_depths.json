@@ -21,7 +21,8 @@
         "probability": 0.025
       }
     ],
-    "minecraft:visual/fog_color": "#320000"
+    "minecraft:visual/fog_color": "#320000",
+    "minecraft:visual/fog_end_distance": 100.0
   },
   "carvers": "undergarden:undergarden_cave",
   "downfall": 0.0,
