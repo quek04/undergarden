@@ -316,6 +316,8 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.POLISHED_SEDIMENT_STONE_WALL);
 		this.dropSelf(UGBlocks.SEDIMENT_STONE_BRICK_WALL);
 		this.dropSelf(UGBlocks.SMOOTH_SEDIMENT_STONE_WALL);
+		this.dropSelf(UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS);
+		this.dropSelf(UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS);
 	}
 
 	public void dropSelf(Supplier<? extends Block> block) {

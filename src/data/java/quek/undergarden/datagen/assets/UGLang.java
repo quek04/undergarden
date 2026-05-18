@@ -66,6 +66,8 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.SEDIMENT_STONE, "Sediment Stone");
 		addBlock(UGBlocks.POLISHED_SEDIMENT_STONE, "Polished Sediment Stone");
 		addBlock(UGBlocks.SEDIMENT_STONE_BRICKS, "Sediment Stone Bricks");
+		addBlock(UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS, "Cracked Sediment Stone Bricks");
+		addBlock(UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS, "Dirty Sediment Stone Bricks");
 		addBlock(UGBlocks.CHISELED_SEDIMENT_STONE, "Chiseled Sediment Stone");
 		addBlock(UGBlocks.SMOOTH_SEDIMENT_STONE, "Smooth Sediment Stone");
 

@@ -61,6 +61,15 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHangingSign(getter, UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.STRIPPED_GRONGLE_LOG).save(this.output);
 		makeHangingSign(getter, UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT).save(this.output);
 
+		ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS, 8)
+			.pattern("###")
+			.pattern("#D#")
+			.pattern("###")
+			.define('#', UGBlocks.SEDIMENT_STONE_BRICKS)
+			.define('D', UGBlocks.DEEPSOIL)
+			.unlockedBy("has_sediment_stone_bricks", has(UGBlocks.SEDIMENT_STONE_BRICKS))
+			.save(this.output);
+
 		ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, UGBlocks.SEDIMENT_STONE)
 			.pattern("##")
 			.pattern("##")

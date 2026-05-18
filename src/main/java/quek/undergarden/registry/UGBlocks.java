@@ -96,6 +96,8 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> SEDIMENT_STONE = registerWithItem("sediment_stone", Block::new, () -> BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(0.8F));
 	public static final DeferredBlock<Block> POLISHED_SEDIMENT_STONE = registerWithItem("polished_sediment_stone", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
 	public static final DeferredBlock<Block> SEDIMENT_STONE_BRICKS = registerWithItem("sediment_stone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<Block> CRACKED_SEDIMENT_STONE_BRICKS = registerWithItem("cracked_sediment_stone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
+	public static final DeferredBlock<Block> DIRTY_SEDIMENT_STONE_BRICKS = registerWithItem("dirty_sediment_stone_bricks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
 	public static final DeferredBlock<Block> CHISELED_SEDIMENT_STONE = registerWithItem("chiseled_sediment_stone", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
 	public static final DeferredBlock<Block> SMOOTH_SEDIMENT_STONE = registerWithItem("smooth_sediment_stone", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(SEDIMENT_STONE.get()));
 

@@ -186,6 +186,7 @@ public class UGBlockFamilies {
 		.stairs(UGBlocks.SEDIMENT_STONE_BRICK_STAIRS.get())
 		.slab(UGBlocks.SEDIMENT_STONE_BRICK_SLAB.get())
 		.wall(UGBlocks.SEDIMENT_STONE_BRICK_WALL.get())
+		.cracked(UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 

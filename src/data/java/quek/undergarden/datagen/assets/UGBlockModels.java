@@ -81,6 +81,7 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.generateBlockItem(UGBlocks.SEDIMENT_STONE.get());
 		this.generateBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get());
 		this.generateBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS.get());
 		this.generateBlockItem(UGBlocks.CHISELED_SEDIMENT_STONE.get());
 		this.generateBlockItem(UGBlocks.SMOOTH_SEDIMENT_STONE.get());
 
@@ -319,6 +320,8 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.CLOGGRUM_PILLAR.get(), block -> this.createAxisAlignedPillarBlock(block, TexturedModel.COLUMN));
 		this.wrapBlockItem(UGBlocks.CLOGGRUM_GRATE.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.CLOGGRUM_LADDER.get(), this::createNonTemplateHorizontalBlock);
+
+		this.wrapBlockItem(UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);
 
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);
