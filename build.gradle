@@ -165,7 +165,7 @@ dependencies {
 //	runtimeOnly "curse.maven:better-advancements-272515:${project.better_advancements_version}"
 //	runtimeOnly "curse.maven:spark-361579:6225208"
 //
-//	runtimeOnly "curse.maven:worldedit-225608:5830452"
+	runtimeOnly "curse.maven:worldedit-225608:8037379"
 
 	compileOnly "curse.maven:irisshaders-455508:7867946"
 }
