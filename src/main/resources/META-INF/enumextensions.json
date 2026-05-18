@@ -59,7 +59,7 @@
       "name": "UNDERGARDEN_DWELLER_SADDLE",
       "constructor": "(Ljava/lang/String;)V",
       "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
+        "class": "quek/undergarden/client/UGClientEnumExtensions",
         "field": "DWELLER_SADDLE"
       }
     },
@@ -68,7 +68,7 @@
       "name": "UNDERGARDEN_BATTLEAXE_ARM_POSE",
       "constructor": "(ZZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
       "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
+        "class": "quek/undergarden/client/UGClientEnumExtensions",
         "field": "BATTLEAXE_ARM_POSE"
       }
     }
