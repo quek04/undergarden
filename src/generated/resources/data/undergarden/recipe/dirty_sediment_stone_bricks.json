@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "undergarden:sediment_stone_bricks",
+    "D": "undergarden:deepsoil"
+  },
+  "pattern": [
+    "###",
+    "#D#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "undergarden:dirty_sediment_stone_bricks"
+  }
+}
