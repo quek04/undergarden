@@ -13,6 +13,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.object.boat.BoatModel;
 import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SmokeParticle;
@@ -25,10 +26,7 @@ import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.BuiltInBlockModels;
 import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.renderer.blockentity.BedRenderer;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.NoopRenderer;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.fog.FogData;
@@ -111,15 +109,24 @@ public class UGClientRegistrationEvents {
 		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_POT.get(), DepthrockPotRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
-		//
+
 		event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRenderer::new);
-		//
+
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_PROJECTILE.get(), SlingshotProjectileRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.JAVELIN.get(), ThrownJavelinRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER_PROJECTILE.get(), NoopRenderer::new);
-		//
+
+		event.registerEntityRenderer(UGEntityTypes.WIGGLEWOOD_BOAT.get(), context -> new BoatRenderer(context, UGModelLayers.WIGGLEWOOD_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.WIGGLEWOOD_CHEST_BOAT.get(), context -> new BoatRenderer(context, UGModelLayers.WIGGLEWOOD_CHEST_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.SMOGSTEM_BOAT.get(), context ->  new BoatRenderer(context, UGModelLayers.SMOGSTEM_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.SMOGSTEM_CHEST_BOAT.get(), context -> new BoatRenderer(context, UGModelLayers.SMOGSTEM_CHEST_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.GRONGLE_BOAT.get(), context -> new BoatRenderer(context, UGModelLayers.GRONGLE_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.GRONGLE_CHEST_BOAT.get(), context ->  new BoatRenderer(context, UGModelLayers.GRONGLE_CHEST_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.ANCIENT_ROOT_BOAT.get(), context -> new BoatRenderer(context, UGModelLayers.ANCIENT_ROOT_BOAT));
+		event.registerEntityRenderer(UGEntityTypes.ANCIENT_ROOT_CHEST_BOAT.get(), context ->  new BoatRenderer(context, UGModelLayers.ANCIENT_ROOT_CHEST_BOAT));
+
 		event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), RotlingRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTWALKER.get(), RotwalkerRenderer::new);
@@ -181,6 +188,16 @@ public class UGClientRegistrationEvents {
 		event.registerLayerDefinition(UGModelLayers.CLOGGRUM_SHIELD, CloggrumShieldModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.JAVELIN, JavelinModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.UNDERGAR, UndergarModel::createBodyLayer);
+		LayerDefinition boatModel = BoatModel.createBoatModel();
+		LayerDefinition chestBoatModel = BoatModel.createChestBoatModel();
+		event.registerLayerDefinition(UGModelLayers.WIGGLEWOOD_BOAT, () -> boatModel);
+		event.registerLayerDefinition(UGModelLayers.WIGGLEWOOD_CHEST_BOAT, () -> chestBoatModel);
+		event.registerLayerDefinition(UGModelLayers.SMOGSTEM_BOAT, () -> boatModel);
+		event.registerLayerDefinition(UGModelLayers.SMOGSTEM_CHEST_BOAT, () -> chestBoatModel);
+		event.registerLayerDefinition(UGModelLayers.GRONGLE_BOAT, () -> boatModel);
+		event.registerLayerDefinition(UGModelLayers.GRONGLE_CHEST_BOAT, () -> chestBoatModel);
+		event.registerLayerDefinition(UGModelLayers.ANCIENT_ROOT_BOAT, () -> boatModel);
+		event.registerLayerDefinition(UGModelLayers.ANCIENT_ROOT_CHEST_BOAT, () -> chestBoatModel);
 
 		ArmorModelSet<MeshDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(LayerDefinitions.INNER_ARMOR_DEFORMATION, LayerDefinitions.OUTER_ARMOR_DEFORMATION);
 		registerArmorModelSet(event, UGModelLayers.FORGOTTEN_ARMOR, humanoidArmor);

@@ -42,6 +42,14 @@ public class UGModelLayers {
 	public static final ModelLayerLocation CLOGGRUM_SHIELD = register("cloggrum_shield");
 	public static final ModelLayerLocation JAVELIN = register("javelin");
 	public static final ModelLayerLocation UNDERGAR = register("undergar");
+	public static final ModelLayerLocation WIGGLEWOOD_BOAT = register("wigglewood_boat");
+	public static final ModelLayerLocation WIGGLEWOOD_CHEST_BOAT = register("wigglewood_chest_boat");
+	public static final ModelLayerLocation SMOGSTEM_BOAT = register("smogstem_boat");
+	public static final ModelLayerLocation SMOGSTEM_CHEST_BOAT = register("smogstem_chest_boat");
+	public static final ModelLayerLocation GRONGLE_BOAT = register("grongle_boat");
+	public static final ModelLayerLocation GRONGLE_CHEST_BOAT = register("grongle_chest_boat");
+	public static final ModelLayerLocation ANCIENT_ROOT_BOAT = register("ancient_root_boat");
+	public static final ModelLayerLocation ANCIENT_ROOT_CHEST_BOAT = register("ancient_root_chest_boat");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(Undergarden.prefix(name), "main");
