@@ -3,6 +3,13 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {}
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -11,25 +18,24 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "predicates": {
-                      "minecraft:enchantments": [
-                        {
-                          "enchantments": "minecraft:silk_touch",
-                          "levels": {
-                            "min": 1
+                  "condition": "minecraft:inverted",
+                  "term": {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                      "predicates": {
+                        "minecraft:enchantments": [
+                          {
+                            "enchantments": "minecraft:silk_touch",
+                            "levels": {
+                              "min": 1
+                            }
                           }
-                        }
-                      ]
+                        ]
+                      }
                     }
                   }
                 }
               ],
-              "name": "undergarden:goo"
-            },
-            {
-              "type": "minecraft:item",
               "functions": [
                 {
                   "add": false,
@@ -39,14 +45,20 @@
                     "min": 1.0
                   },
                   "function": "minecraft:set_count"
-                },
-                {
-                  "function": "minecraft:explosion_decay"
                 }
               ],
               "name": "undergarden:goo_ball"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "undergarden:goo"
             }
           ]
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
         }
       ],
       "rolls": 1.0

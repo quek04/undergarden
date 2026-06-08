@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.common.ItemAbilities;
@@ -111,7 +113,18 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.SMOGSTEM_TRAPDOOR);
 		this.dropSelf(UGBlocks.WIGGLEWOOD_TRAPDOOR);
 		this.dropWithSilk(UGBlocks.SMOG_VENT, UGBlocks.DEPTHROCK);
-		this.add(UGBlocks.GOO.get(), (goo) -> this.createSingleItemTableWithSilkTouch(goo, UGItems.GOO_BALL.get(), UniformGenerator.between(1.0F, 4.0F)));
+		this.add(UGBlocks.GOO.get(), block -> LootTable.lootTable()
+			.withPool(
+				this.applyExplosionDecay(block, LootPool.lootPool()
+					.when(LootItemEntityPropertyCondition.entityPresent(LootContext.EntityTarget.THIS))
+					.add(LootItem.lootTableItem(UGItems.GOO_BALL)
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F)))
+						.when(this.doesNotHaveSilkTouch())
+						.otherwise(LootItem.lootTableItem(UGBlocks.GOO))
+					)
+				)
+			)
+		);
 		this.dropWithSilk(UGBlocks.ASHEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
 		this.dropSelf(UGBlocks.SHIVERSTONE);
 		this.dropSelf(UGBlocks.SHIVERSTONE_BRICKS);
