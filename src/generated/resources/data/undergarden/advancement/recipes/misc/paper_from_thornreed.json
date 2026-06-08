@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:paper_from_thornreed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_thornreed": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:thornreed"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_thornreed"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:paper_from_thornreed"
+    ]
+  }
+}
