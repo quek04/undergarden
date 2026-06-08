@@ -311,15 +311,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_butterbunch", has(UGBlocks.BUTTERBUNCH.get()))
 			.save(this.output, name("butterbunch_to_dye"));
 
-		ShapedRecipeBuilder.shaped(getter, RecipeCategory.MISC, Items.LEAD, 2)
-			.pattern("TT ")
-			.pattern("TG ")
-			.pattern("  T")
-			.define('T', UGItems.TWISTYTWIG.get())
-			.define('G', UGItems.GOO_BALL.get())
-			.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
-			.save(this.output, name("undergarden_lead"));
-
 		ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, UGBlocks.SEDIMENT_GLASS_PANE.get(), 16)
 			.pattern("GGG")
 			.pattern("GGG")
