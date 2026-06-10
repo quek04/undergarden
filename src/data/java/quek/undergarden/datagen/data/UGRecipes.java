@@ -260,7 +260,7 @@ public class UGRecipes extends UGRecipeProvider {
 			.save(this.output);
 
 		ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.FOOD, UGItems.GLOOMGOURD_PIE.get())
-			.requires(UGTags.Items.MUSHROOMS)
+			.requires(Items.SUGAR)
 			.requires(UGBlocks.GLOOMGOURD.get())
 			.requires(UGItems.GLITTERKELP.get())
 			.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
@@ -385,6 +385,12 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('T', UGItems.THORNREED)
 			.unlockedBy("has_thornreed", has(UGItems.THORNREED.get()))
 			.save(this.output, name("paper_from_thornreed"));
+
+		ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.MISC, Items.SUGAR)
+			.requires(UGItems.THORNREED)
+			.group("sugar")
+			.unlockedBy("has_thornreed", has(UGItems.THORNREED.get()))
+			.save(this.output, name("sugar_from_thornreed"));
 
 		makeIngotToBlock(getter, UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(this.output);
 		makeIngotToBlock(getter, UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(this.output);
