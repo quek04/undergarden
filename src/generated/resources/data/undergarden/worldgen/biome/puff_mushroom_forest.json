@@ -51,7 +51,8 @@
     [
       "undergarden:huge_puff_mushroom",
       "undergarden:puff_mushroom_patch",
-      "undergarden:deepturf_patch"
+      "undergarden:deepturf_patch",
+      "undergarden:twistybush_patch"
     ]
   ],
   "has_precipitation": false,

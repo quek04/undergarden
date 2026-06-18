@@ -63,7 +63,8 @@
       "undergarden:droopvine_patch",
       "undergarden:gloomgourd_patch",
       "undergarden:huge_blood_mushroom",
-      "undergarden:thornreed_patch"
+      "undergarden:thornreed_patch",
+      "undergarden:twistybush_patch"
     ]
   ],
   "has_precipitation": false,

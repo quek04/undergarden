@@ -62,7 +62,8 @@
       "undergarden:depthrock_pebble_patch",
       "undergarden:ditchbulb_patch",
       "undergarden:ashen_deepturf_patch",
-      "undergarden:blisterberry_bush_patch"
+      "undergarden:blisterberry_bush_patch",
+      "undergarden:twistybush_patch"
     ]
   ],
   "has_precipitation": false,

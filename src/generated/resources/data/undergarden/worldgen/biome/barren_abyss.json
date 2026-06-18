@@ -58,7 +58,8 @@
       "undergarden:ink_mushroom_patch",
       "undergarden:veil_mushroom_patch",
       "undergarden:depthrock_pebble_patch",
-      "undergarden:ditchbulb_patch"
+      "undergarden:ditchbulb_patch",
+      "undergarden:twistybush_patch"
     ]
   ],
   "has_precipitation": false,

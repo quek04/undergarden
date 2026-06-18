@@ -4,8 +4,9 @@
     "model": "undergarden:item/tall_deepturf",
     "tints": [
       {
-        "type": "minecraft:constant",
-        "value": -10783397
+        "type": "minecraft:grass",
+        "downfall": 1.0,
+        "temperature": 0.5
       }
     ]
   }

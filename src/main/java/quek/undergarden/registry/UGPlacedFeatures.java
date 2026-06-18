@@ -164,7 +164,7 @@ public class UGPlacedFeatures {
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.THORNREED.get().defaultBlockState(), BlockPos.ZERO))
 		)));
-		context.register(TWISTYBUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TWISTYBUSH), patch(2, 4)));
+		context.register(TWISTYBUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TWISTYBUSH), patch(5, 64)));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));
