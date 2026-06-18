@@ -24,16 +24,10 @@ public class UndergardenConfig {
 
 	public static class Client {
 
-		public static ModConfigSpec.ConfigValue<Boolean> toggle_undergarden_fog;
 		public static ModConfigSpec.ConfigValue<Boolean> toggle_utheric_infection_number_display;
 		public static ModConfigSpec.ConfigValue<Boolean> toggle_utheric_infection_overlay;
 
 		public Client(ModConfigSpec.Builder builder) {
-			toggle_undergarden_fog = builder
-				.comment("""
-					Toggles the Undergarden's special fog parameters. Set  false to disable it, and return to the vanilla fog.""")
-				.translation("config.undergarden.toggle_undergarden_fog")
-				.define("Toggle Undergarden Fog", true);
 			toggle_utheric_infection_number_display = builder
 				.comment("""
 					Displays the numerical value of the player's Utheric Infection value.""")
