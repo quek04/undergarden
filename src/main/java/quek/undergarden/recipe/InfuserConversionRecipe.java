@@ -8,13 +8,14 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
 import quek.undergarden.recipe.display.CatalystSlotDisplay;
 import quek.undergarden.recipe.display.InfusingRecipeDisplay;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGRecipeSerializers;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class InfuserConversionRecipe extends SimpleInfusingRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(SingleRecipeInput input) {
+	public ItemStack assemble(InfuserInput input) {
 		return this.result.create();
 	}
 

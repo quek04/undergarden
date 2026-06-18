@@ -7,10 +7,10 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.Level;
 import quek.undergarden.recipe.display.CatalystSlotDisplay;
 import quek.undergarden.recipe.display.InfusingRecipeDisplay;
 import quek.undergarden.registry.UGBlocks;
@@ -43,12 +43,7 @@ public class ItemInfusingRecipe extends SimpleInfusingRecipe {
 	}
 
 	@Override
-	public boolean matches(SingleRecipeInput input, Level level) {
-		return this.input().test(input.item());
-	}
-
-	@Override
-	public ItemStack assemble(SingleRecipeInput input) {
+	public ItemStack assemble(InfuserInput input) {
 		return input.item().copy();
 	}
 

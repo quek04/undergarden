@@ -26,7 +26,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
@@ -37,6 +36,7 @@ import quek.undergarden.block.InfuserBlock;
 import quek.undergarden.block.InfuserState;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.inventory.InfuserMenu;
+import quek.undergarden.recipe.InfuserInput;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGDataComponents;
@@ -81,7 +81,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 
 	private static final Codec<Map<ResourceKey<Recipe<?>>, Integer>> RECIPES_USED_CODEC = Codec.unboundedMap(Recipe.KEY_CODEC, Codec.INT);
 	private final Reference2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Reference2IntOpenHashMap<>();
-	private final RecipeManager.CachedCheck<SingleRecipeInput, InfusingRecipe> quickCheck = RecipeManager.createCheck(UGRecipeTypes.INFUSING.get());
+	private final RecipeManager.CachedCheck<InfuserInput, InfusingRecipe> quickCheck = RecipeManager.createCheck(UGRecipeTypes.INFUSING.get());
 
 	public InfuserBlockEntity(BlockPos pos, BlockState blockState) {
 		super(UGBlockEntities.INFUSER.get(), pos, blockState);
@@ -109,29 +109,33 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 
 	public static void serverTick(ServerLevel level, BlockPos pos, BlockState state, InfuserBlockEntity entity) {
 		boolean changed = false;
-		boolean isInfusing = entity.infusingProgress > 0;
+		boolean forceReset = entity.infusingProgress > 0;
 
 		if (!entity.items.isEmpty()) {
 			ItemStack ingredient = entity.getItem(0);
-			ItemStack fuel = entity.getItem(2);
-			SingleRecipeInput input = new SingleRecipeInput(ingredient);
-			RecipeHolder<InfusingRecipe> recipe = entity.quickCheck.getRecipeFor(input, level).orElse(null);
-			if (recipe != null) {
-				ItemStack result = recipe.value().assemble(input);
-				if (!result.isEmpty() && entity.canInfuse(entity.getMaxStackSize(), result)) {
-					entity.infusingProgress++;
-					if (entity.infusingProgress == entity.infusingTotalTime) {
-						entity.infusingProgress = 0;
-						entity.infusingTotalTime = getTotalInfusingTime(level, entity);
-						entity.infuse(ingredient, fuel, result, recipe.value().getRecipeSlotType());
-						entity.setRecipeUsed(recipe);
-						changed = true;
+			InfusingRecipe.SlotType type = entity.getSlotTypeFromFuel();
+			if (type != null) {
+				InfuserInput input = new InfuserInput(ingredient, type);
+				RecipeHolder<InfusingRecipe> recipe = entity.quickCheck.getRecipeFor(input, level).orElse(null);
+				if (recipe != null) {
+					ItemStack result = recipe.value().assemble(input);
+					if (!result.isEmpty() && entity.canInfuse(entity.getMaxStackSize(), result)) {
+						entity.infusingProgress++;
+						if (entity.infusingProgress == entity.infusingTotalTime) {
+							entity.infusingProgress = 0;
+							entity.infusingTotalTime = getTotalInfusingTime(level, entity);
+							entity.infuse(ingredient, result, type);
+							entity.setRecipeUsed(recipe);
+							changed = true;
+						}
 					}
+					forceReset = false;
 				}
 			}
 		}
 
-		if (isInfusing != entity.infusingProgress > 0) {
+		if (forceReset) {
+			entity.infusingProgress = 0;
 			changed = true;
 		}
 
@@ -147,6 +151,15 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 			this.level.setBlock(this.getBlockPos(), state, 3);
 		}
 		super.setChanged();
+	}
+
+	private InfusingRecipe.@Nullable SlotType getSlotTypeFromFuel() {
+		for (InfusingRecipe.SlotType type :InfusingRecipe.SlotType.values()) {
+			if (!this.getItem(type.getSlotIndex()).isEmpty()) {
+				return type;
+			}
+		}
+		return null;
 	}
 
 	private InfuserState calculateState() {
@@ -169,10 +182,11 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		}
 	}
 
-	private void infuse(ItemStack input, ItemStack rogdoriumSlot, ItemStack result, InfusingRecipe.SlotType type) {
+	private void infuse(ItemStack input, ItemStack result, InfusingRecipe.SlotType type) {
 		ItemStack resultItemStack = this.getItem(3);
 
 		if (ItemStack.isSameItem(input, result)) {
+			ItemStack rogdoriumSlot = this.getItem(2);
 			var component = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT);
 			int infusionAmount = component.infusionAmount();
 			int infusionMax = component.infusionMax();
@@ -185,6 +199,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		} else {
 			this.getItem(type.getSlotIndex()).shrink(1);
 		}
+		input.shrink(1);
 
 		if (resultItemStack.isEmpty()) {
 			this.setItem(3, result.copy());
@@ -204,8 +219,12 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	}
 
 	private static int getTotalInfusingTime(ServerLevel level, InfuserBlockEntity entity) {
-		SingleRecipeInput input = new SingleRecipeInput(entity.getItem(0));
-		return entity.quickCheck.getRecipeFor(input, level).map(recipeHolder -> recipeHolder.value().infusingTime()).orElse(200);
+		InfusingRecipe.SlotType type = entity.getSlotTypeFromFuel();
+		if (type != null) {
+			InfuserInput input = new InfuserInput(entity.getItem(0), type);
+			return entity.quickCheck.getRecipeFor(input, level).map(recipeHolder -> recipeHolder.value().infusingTime()).orElse(200);
+		}
+		return 200;
 	}
 
 	@Override

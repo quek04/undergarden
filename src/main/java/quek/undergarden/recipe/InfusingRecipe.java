@@ -8,10 +8,11 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeBookCategory;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeBookCategories;
 import quek.undergarden.registry.UGRecipeTypes;
 import quek.undergarden.registry.UGTags;
@@ -19,7 +20,7 @@ import quek.undergarden.registry.UGTags;
 import java.util.Locale;
 import java.util.function.IntFunction;
 
-public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
+public interface InfusingRecipe extends Recipe<InfuserInput> {
 
 	Ingredient input();
 
@@ -32,12 +33,12 @@ public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
 	int infusingTime();
 
 	@Override
-	default boolean matches(SingleRecipeInput input, Level level) {
-		return this.input().test(input.item());
+	default boolean matches(InfuserInput input, Level level) {
+		return this.input().test(input.item()) && this.getRecipeSlotType().equals(input.type());
 	}
 
 	@Override
-	default RecipeType<? extends Recipe<SingleRecipeInput>> getType() {
+	default RecipeType<? extends Recipe<InfuserInput>> getType() {
 		return UGRecipeTypes.INFUSING.get();
 	}
 

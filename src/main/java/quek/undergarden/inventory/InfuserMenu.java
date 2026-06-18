@@ -7,20 +7,23 @@ import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipePropertySet;
 import net.minecraft.world.level.Level;
 import quek.undergarden.inventory.slot.InfuserResultSlot;
 import quek.undergarden.inventory.slot.InfuserRogdoriumFuelSlot;
 import quek.undergarden.inventory.slot.InfuserUtheriumFuelSlot;
+import quek.undergarden.recipe.InfuserInput;
 import quek.undergarden.recipe.InfusingRecipe;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGMenuTypes;
+import quek.undergarden.registry.UGRecipeBookTypes;
+import quek.undergarden.registry.UGRecipePropertySets;
+import quek.undergarden.registry.UGTags;
 
 import java.util.List;
-import java.util.Objects;
 
 public class InfuserMenu extends RecipeBookMenu {
 
@@ -112,7 +115,7 @@ public class InfuserMenu extends RecipeBookMenu {
 
 			@Override
 			public boolean recipeMatches(RecipeHolder<InfusingRecipe> recipe) {
-				return recipe.value().matches(new SingleRecipeInput(InfuserMenu.this.container.getItem(0)), level);
+				return recipe.value().matches(new InfuserInput(InfuserMenu.this.container.getItem(0), recipe.value().getRecipeSlotType()), level);
 			}
 		}, 1, 1, List.of(this.getSlot(0)), slotsToClear, inventory, (RecipeHolder<InfusingRecipe>)recipe, useMaxItems, allowDroppingItemsToClear);
 	}
