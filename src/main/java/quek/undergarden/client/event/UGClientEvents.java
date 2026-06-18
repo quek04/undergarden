@@ -1,6 +1,7 @@
 package quek.undergarden.client.event;
 
-import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
+import net.neoforged.neoforge.client.event.RecipesReceivedEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.client.UndergardenClient;

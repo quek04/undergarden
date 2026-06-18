@@ -2,21 +2,12 @@ package quek.undergarden.client.render.item;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.resources.Identifier;
 import net.minecraft.util.Unit;
-import net.minecraft.world.level.block.state.properties.BedPart;
 import org.joml.Vector3fc;
-import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.PotModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.client.render.blockentity.DepthrockBedRenderer;
 import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
 
 import java.util.function.Consumer;

@@ -1,7 +1,6 @@
 package quek.undergarden.entity.projectile.slingshot.effect.entity;
 
 import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.server.level.ServerLevel;

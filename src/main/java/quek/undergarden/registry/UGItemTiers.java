@@ -2,7 +2,6 @@ package quek.undergarden.registry;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ToolMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
 
 public class UGItemTiers {
 

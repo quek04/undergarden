@@ -1,7 +1,6 @@
 package quek.undergarden.client.render.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
@@ -14,7 +13,6 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BasicEyesLayer;
 import quek.undergarden.client.state.entity.DwellerRenderState;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.registry.UGEquipmentAssets;
 
 public class DwellerRenderer extends MobWithBabyRenderer<Dweller, DwellerRenderState, DwellerModel> {
 

@@ -1,9 +1,6 @@
 package quek.undergarden.registry.custom;
 
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.Level;
@@ -17,7 +14,6 @@ import quek.undergarden.entity.projectile.slingshot.effect.entity.HealHitEffect;
 import quek.undergarden.entity.projectile.slingshot.effect.entity.VelocityBasedDamageHitEffect;
 import quek.undergarden.registry.*;
 
-import java.util.Optional;
 import java.util.function.Function;
 
 public class UGSlingshotAmmoSettings {

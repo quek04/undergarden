@@ -1,9 +1,7 @@
 package quek.undergarden.registry.custom;
 
-import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.projectile.slingshot.effect.ExplodeHitEffect;

@@ -2,7 +2,6 @@ package quek.undergarden.datagen.assets;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.math.Transformation;
-import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;

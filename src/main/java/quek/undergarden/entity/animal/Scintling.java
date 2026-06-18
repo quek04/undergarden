@@ -15,14 +15,16 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 public class Scintling extends Animal {
 

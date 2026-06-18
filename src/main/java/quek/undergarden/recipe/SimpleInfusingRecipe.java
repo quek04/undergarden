@@ -1,6 +1,9 @@
 package quek.undergarden.recipe;
 
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jspecify.annotations.Nullable;
 
 public abstract class SimpleInfusingRecipe implements InfusingRecipe {

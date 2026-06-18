@@ -1,6 +1,5 @@
 package quek.undergarden.registry;
 
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import quek.undergarden.Undergarden;

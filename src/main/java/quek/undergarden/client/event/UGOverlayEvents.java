@@ -21,7 +21,9 @@ import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.client.UGRenderTypes;
 import quek.undergarden.event.UthericInfectionEvents;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGAttachments;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEffects;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

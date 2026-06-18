@@ -6,7 +6,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import quek.undergarden.component.UndergardenData;
-import quek.undergarden.event.UthericInfectionEvents;
 import quek.undergarden.registry.UGAttachments;
 
 public class PurityEffect extends MobEffect {
