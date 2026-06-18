@@ -8,6 +8,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.world.entity.HumanoidArm;
 import quek.undergarden.client.state.entity.DenizenRenderState;
+import quek.undergarden.entity.monster.denizen.Denizen;
 
 public class DenizenModel extends HumanoidModel<DenizenRenderState> {
 
@@ -62,9 +63,10 @@ public class DenizenModel extends HumanoidModel<DenizenRenderState> {
 	}
 
 	@Override
-	public void translateToHand(HumanoidRenderState state, HumanoidArm arm, PoseStack stack) {
-		float yOffset = 11.0F;
+	public void translateToHand(DenizenRenderState state, HumanoidArm arm, PoseStack stack) {
+		float yOffset = state.variant == Denizen.Type.SHORT ? 3.0F : 11.0F;
 		this.getArm(arm).translateAndRotate(stack);
-		stack.translate(0.0F, yOffset / 16, 0.0F);
+		float xOffset = state.variant == Denizen.Type.SHORT ? 1.0F : 0.0F;
+		stack.translate((arm == HumanoidArm.LEFT ? xOffset : -xOffset) / 16, yOffset / 16, 0.0F);
 	}
 }
