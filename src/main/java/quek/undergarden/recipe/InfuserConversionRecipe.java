@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
+import quek.undergarden.recipe.display.CatalystSlotDisplay;
 import quek.undergarden.recipe.display.InfusingRecipeDisplay;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -65,7 +66,7 @@ public class InfuserConversionRecipe extends SimpleInfusingRecipe {
 	public List<RecipeDisplay> display() {
 		return List.of(new InfusingRecipeDisplay(
 			this.input().display(),
-			new SlotDisplay.TagSlotDisplay(this.slotType.getValidItems()),
+			new CatalystSlotDisplay(new SlotDisplay.TagSlotDisplay(this.slotType.getValidItems()), this.slotType),
 			new SlotDisplay.ItemStackSlotDisplay(this.result),
 			new SlotDisplay.ItemSlotDisplay(UGBlocks.INFUSER.asItem())));
 	}

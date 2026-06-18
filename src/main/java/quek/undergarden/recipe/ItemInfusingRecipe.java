@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.Level;
+import quek.undergarden.recipe.display.CatalystSlotDisplay;
 import quek.undergarden.recipe.display.InfusingRecipeDisplay;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeSerializers;
@@ -55,7 +56,7 @@ public class ItemInfusingRecipe extends SimpleInfusingRecipe {
 	public List<RecipeDisplay> display() {
 		return List.of(new InfusingRecipeDisplay(
 			this.input().display(),
-			new SlotDisplay.TagSlotDisplay(SlotType.ROGDORIUM.getValidItems()),
+			new CatalystSlotDisplay(new SlotDisplay.TagSlotDisplay(SlotType.ROGDORIUM.getValidItems()), SlotType.ROGDORIUM),
 			SlotDisplay.Empty.INSTANCE,
 			new SlotDisplay.ItemSlotDisplay(UGBlocks.INFUSER.asItem())));
 	}
