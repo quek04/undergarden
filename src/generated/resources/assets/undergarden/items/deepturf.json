@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "undergarden:item/deepturf"
+    "model": "undergarden:item/deepturf",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10783397
+      }
+    ]
   }
 }

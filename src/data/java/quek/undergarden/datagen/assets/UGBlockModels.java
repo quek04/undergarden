@@ -2,6 +2,7 @@ package quek.undergarden.datagen.assets;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.math.Transformation;
+import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
@@ -210,7 +211,8 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.SHARD_O_LANTERN.get(), block -> this.createPumpkinVariant(block, TextureMapping.column(UGBlocks.GLOOMGOURD.get())));
 		this.createGloomgourdStems(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 
-		this.createCrossBlockWithDefaultItem(UGBlocks.DEEPTURF.get(), PlantType.TINTED);
+		this.createCrossBlock(UGBlocks.DEEPTURF.get(), PlantType.TINTED);
+		this.createItemWithUGTint(UGBlocks.DEEPTURF.get());
 
 		this.wrapTintedBlockItem(UGBlocks.DEEPTURF_BLOCK.get(), ItemModelUtils.constantTint(UndergardenClient.DEFAULT_TINT_COLOR), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
 			createBooleanModelDispatch(SpreadingDeepturfBlock.SNOWY,
@@ -286,7 +288,9 @@ public class UGBlockModels extends BlockModelGenerators {
 			PropertyDispatch.initial(UnderbeanBushBlock.AGE).generate(age ->
 				plainVariant(this.createSuffixedVariant(UGBlocks.UNDERBEAN_BUSH.get(), "_stage" + age, ModelTemplates.CROSS, TextureMapping::cross)))));
 
-		this.createTintedDoublePlant(UGBlocks.TALL_DEEPTURF.get());
+		this.createDoublePlant(UGBlocks.TALL_DEEPTURF.get(), PlantType.TINTED);
+		this.createDoublePlantItemWithUGTint(UGBlocks.TALL_DEEPTURF.get());
+
 		this.generateTintedEmissiveCross(UGBlocks.SHIMMERWEED.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UndergardenClient.DEFAULT_TINT_COLOR);
 		this.createDoublePlantWithBulb(UGBlocks.TALL_SHIMMERWEED.get(), UndergardenClient.DEFAULT_TINT_COLOR);
 		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.DITCHBULB_PLANT.get())
@@ -451,6 +455,16 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.blockStateOutput
 			.accept(MultiVariantGenerator.dispatch(wall, plainVariant(Undergarden.prefix("block/shard_wall_torch"))).with(ROTATION_TORCH));
 		this.registerSimpleFlatItemModel(ground);
+	}
+
+	public void createItemWithUGTint(Block block) {
+		Identifier itemModel = this.createFlatItemModelWithBlockTexture(block.asItem(), block);
+		this.registerSimpleTintedItemModel(block, itemModel, ItemModelUtils.constantTint(UndergardenClient.DEFAULT_TINT_COLOR));
+	}
+
+	public void createDoublePlantItemWithUGTint(Block block) {
+		Identifier itemModel = this.createFlatItemModelWithBlockTexture(block.asItem(), block, "_top");
+		this.registerSimpleTintedItemModel(block, itemModel, ItemModelUtils.constantTint(UndergardenClient.DEFAULT_TINT_COLOR));
 	}
 
 	//this is probably stupid
