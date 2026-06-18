@@ -9,7 +9,14 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import net.minecraft.world.item.crafting.display.SlotDisplay;
+import quek.undergarden.recipe.display.InfusingRecipeDisplay;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGRecipeSerializers;
+
+import java.util.List;
 
 public class InfuserConversionRecipe extends SimpleInfusingRecipe {
 
@@ -52,6 +59,15 @@ public class InfuserConversionRecipe extends SimpleInfusingRecipe {
 	@Override
 	public RecipeSerializer<? extends SimpleInfusingRecipe> getSerializer() {
 		return UGRecipeSerializers.INFUSER_CONVERSION.get();
+	}
+
+	@Override
+	public List<RecipeDisplay> display() {
+		return List.of(new InfusingRecipeDisplay(
+			this.input().display(),
+			new SlotDisplay.TagSlotDisplay(this.slotType.getValidItems()),
+			new SlotDisplay.ItemStackSlotDisplay(this.result),
+			new SlotDisplay.ItemSlotDisplay(UGBlocks.INFUSER.asItem())));
 	}
 
 	@Override

@@ -3,18 +3,15 @@ package quek.undergarden.compat.jei;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.*;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
 import quek.undergarden.Undergarden;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.compat.jei.category.InfusingJEIRecipeCategory;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeTypes;
-
-import java.util.Objects;
 
 @JeiPlugin
 public class UGJEIPlugin implements IModPlugin {
@@ -31,13 +28,12 @@ public class UGJEIPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-		registration.addRecipes(InfusingJEIRecipeCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(UGRecipeTypes.INFUSING.get()).stream().map(RecipeHolder::value).toList());
+		registration.addRecipes(InfusingJEIRecipeCategory.RECIPE_TYPE, UndergardenClient.RECIPE_MAP.byType(UGRecipeTypes.INFUSING.get()).stream().map(RecipeHolder::value).toList());
 	}
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(UGBlocks.INFUSER), InfusingJEIRecipeCategory.RECIPE_TYPE);
+		registration.addCraftingStation(InfusingJEIRecipeCategory.RECIPE_TYPE, new ItemStack(UGBlocks.INFUSER));
 	}
 
 	@Override

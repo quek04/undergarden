@@ -8,8 +8,14 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.Level;
+import quek.undergarden.recipe.display.InfusingRecipeDisplay;
+import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeSerializers;
+
+import java.util.List;
 
 public class ItemInfusingRecipe extends SimpleInfusingRecipe {
 
@@ -43,6 +49,15 @@ public class ItemInfusingRecipe extends SimpleInfusingRecipe {
 	@Override
 	public ItemStack assemble(SingleRecipeInput input) {
 		return input.item().copy();
+	}
+
+	@Override
+	public List<RecipeDisplay> display() {
+		return List.of(new InfusingRecipeDisplay(
+			this.input().display(),
+			new SlotDisplay.TagSlotDisplay(SlotType.ROGDORIUM.getValidItems()),
+			SlotDisplay.Empty.INSTANCE,
+			new SlotDisplay.ItemSlotDisplay(UGBlocks.INFUSER.asItem())));
 	}
 
 	@Override
