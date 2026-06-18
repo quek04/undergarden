@@ -64,6 +64,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> DROOPVINE_PATCH = create("droopvine_patch");
 	public static final ResourceKey<PlacedFeature> GLITTERKELP_PATCH = create("glitterkelp_patch");
 	public static final ResourceKey<PlacedFeature> THORNREED_PATCH = create("thornreed_patch");
+	public static final ResourceKey<PlacedFeature> TWISTYBUSH_PATCH = create("twistybush_patch");
 
 	//tree
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE = create("smogstem_tree");
@@ -163,6 +164,7 @@ public class UGPlacedFeatures {
 			RandomOffsetPlacement.ofTriangle(7, 3),
 			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.THORNREED.get().defaultBlockState(), BlockPos.ZERO))
 		)));
+		context.register(TWISTYBUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TWISTYBUSH), patch(2, 4)));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));

@@ -323,6 +323,8 @@ public class UGBlockModels extends BlockModelGenerators {
 
 		this.wrapBlockItem(UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);
 
+		this.createCrossBlockWithDefaultItem(UGBlocks.TWISTYBUSH.get(), PlantType.NOT_TINTED);
+
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);

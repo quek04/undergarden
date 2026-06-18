@@ -193,6 +193,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DROOPVINE, "Droopvine");
 		addBlock(UGBlocks.DROOPVINE_PLANT, "Droopvine");
 		addBlock(UGBlocks.THORNREED, "Thornreed");
+		addBlock(UGBlocks.TWISTYBUSH, "Twistybush");
 
 		addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
 		addBlock(UGBlocks.POTTED_INDIGO_MUSHROOM, "Potted Indigo Mushroom");

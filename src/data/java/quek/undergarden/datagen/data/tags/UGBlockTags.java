@@ -82,6 +82,7 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.DREADROCK.get(), UGBlocks.COARSE_DEEPSOIL.get());
 		tag(UGTags.Blocks.SUPPORTS_THORNREED).addTag(BlockTags.SUPPORTS_SUGAR_CANE).add(UGBlocks.DEEPTURF_BLOCK.get()).add(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()).add(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()).add(UGBlocks.DEEPSOIL.get()).add(UGBlocks.COARSE_DEEPSOIL.get()).add(UGBlocks.SEDIMENT.get());
 		tag(UGTags.Blocks.SUPPORTS_THORNREED_ADJACENTLY).add(Blocks.FROSTED_ICE);
+		tag(UGTags.Blocks.SUPPORTS_TWISTYBUSH).addTag(BlockTags.SUPPORTS_VEGETATION).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.DREADROCK.get());
 
 		//undergarden common
 		tag(UGTags.Blocks.DEPTHROCK_GROUND).add(UGBlocks.DEPTHROCK.get());

@@ -98,6 +98,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DROOPVINE = create("droopvine");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GLITTERKELP = create("glitterkelp");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> THORNREED = create("thornreed");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> TWISTYBUSH = create("twistybush");
 
 	//tree
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOGSTEM_TREE = create("smogstem_tree");
@@ -196,6 +197,7 @@ public class UGConfiguredFeatures {
 			BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE,
 			false
 		)));
+		context.register(TWISTYBUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.TWISTYBUSH.get())));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(

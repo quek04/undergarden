@@ -229,6 +229,7 @@ public class UGBlocks {
 	public static final DeferredBlock<DroopvineBlock> DROOPVINE = register("droopvine", DroopvineBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light()));
 	public static final DeferredBlock<DroopvinePlantBlock> DROOPVINE_PLANT = register("droopvine_plant", DroopvinePlantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES_PLANT).strength(0.1F).lightLevel(Droopvine.light()));
 	public static final DeferredBlock<Block> THORNREED = register("thornreed", ThornreedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SUGAR_CANE));
+	public static final DeferredBlock<Block> TWISTYBUSH = registerWithItem("twistybush", TwistybushBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.DEAD_BUSH));
 
 	//mushroom
 	public static final DeferredBlock<Block> INDIGO_MUSHROOM = registerWithItem("indigo_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));
