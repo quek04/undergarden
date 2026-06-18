@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.item.*;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
@@ -46,7 +47,6 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGDataComponents;
 
 import java.util.*;
-import java.util.function.UnaryOperator;
 
 //copy of DynamicFluidContainerModel that allows for the addition of mob and solid block covers
 public class CloggrumBucketModel implements ItemModel {
@@ -58,8 +58,6 @@ public class CloggrumBucketModel implements ItemModel {
 
 	private static final RenderType RENDER_TYPE_CUTOUT_UNLIT_BLOCK = NeoForgeRenderTypes.getItemCutoutUnlit(TextureAtlas.LOCATION_BLOCKS);
 	private static final RenderType RENDER_TYPE_CUTOUT_UNLIT_ITEM = NeoForgeRenderTypes.getItemCutoutUnlit(TextureAtlas.LOCATION_ITEMS);
-	private static final RenderType RENDER_TYPE_TRANSLUCENT_UNLIT_BLOCK = NeoForgeRenderTypes.getItemTranslucentUnlit(TextureAtlas.LOCATION_BLOCKS);
-	private static final RenderType RENDER_TYPE_TRANSLUCENT_UNLIT_ITEM = NeoForgeRenderTypes.getItemTranslucentUnlit(TextureAtlas.LOCATION_ITEMS);
 
 	private final Unbaked unbakedModel;
 	private final BakingContext bakingContext;
@@ -140,8 +138,9 @@ public class CloggrumBucketModel implements ItemModel {
 			// Fluid layer
 			ModelState transformedState = new ComposedModelState(state, DEPTH_OFFSET_TRANSFORM);
 			boolean emissive = this.unbakedModel.applyFluidLuminosity && fluid.getFluidType().getLightLevel() > 0;
-			UnaryOperator<BakedQuad.MaterialInfo> materialModifier = emissive ? CloggrumBucketModel::setMaxEmissivity : UnaryOperator.identity();
-			QuadCollection quads = UnbakedElementsHelper.bakeItemMaskQuads(baker, 0, templateSprite, fluidSprite, transformedState, ExtraFaceData.DEFAULT, materialModifier); // Use template as mask
+			BakedQuad.MaterialInfo fluidInfo = baker.interner().materialInfo(new BakedQuad.MaterialInfo(
+				fluidSprite.sprite(), ChunkSectionLayer.SOLID, computeFluidItemRenderType(fluidSprite, emissive), 0, !emissive, emissive ? Level.MAX_BRIGHTNESS : 0, !emissive));
+			QuadCollection quads = UnbakedElementsHelper.bakeItemMaskQuads(baker, templateSprite, fluidInfo, transformedState, ExtraFaceData.DEFAULT); // Use template as mask
 
 			subModels.add(new CuboidItemModelWrapper(List.of(FluidContentsTint.INSTANCE), quads, renderProperties, this.transformation));
 		}
@@ -180,27 +179,12 @@ public class CloggrumBucketModel implements ItemModel {
 		bakedModel.update(state, stack, resolver, context, level, owner, seed);
 	}
 
-	private static BakedQuad.MaterialInfo setMaxEmissivity(BakedQuad.MaterialInfo materialInfo) {
-		RenderType itemRenderType;
-		if (materialInfo.itemRenderType() == Sheets.cutoutBlockItemSheet()) {
-			itemRenderType = RENDER_TYPE_CUTOUT_UNLIT_BLOCK;
-		} else if (materialInfo.itemRenderType() == Sheets.cutoutItemSheet()) {
-			itemRenderType = RENDER_TYPE_CUTOUT_UNLIT_ITEM;
-		} else if (materialInfo.itemRenderType() == Sheets.translucentBlockItemSheet()) {
-			itemRenderType = RENDER_TYPE_TRANSLUCENT_UNLIT_BLOCK;
-		} else if (materialInfo.itemRenderType() == Sheets.translucentItemSheet()) {
-			itemRenderType = RENDER_TYPE_TRANSLUCENT_UNLIT_ITEM;
+	private static RenderType computeFluidItemRenderType(Material.Baked material, boolean emissive) {
+		if (material.sprite().atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS)) {
+			return emissive ? RENDER_TYPE_CUTOUT_UNLIT_BLOCK : Sheets.cutoutBlockItemSheet();
 		} else {
-			itemRenderType = materialInfo.itemRenderType();
+			return emissive ? RENDER_TYPE_CUTOUT_UNLIT_ITEM : Sheets.cutoutItemSheet();
 		}
-		return new BakedQuad.MaterialInfo(
-			materialInfo.sprite(),
-			materialInfo.layer(),
-			itemRenderType,
-			materialInfo.tintIndex(),
-			materialInfo.shade(),
-			Level.MAX_BRIGHTNESS,
-			materialInfo.ambientOcclusion());
 	}
 
 	public record Textures(Optional<Material> particle, Optional<Material> base, Optional<Material> fluid, Optional<Material> defaultContent) {
