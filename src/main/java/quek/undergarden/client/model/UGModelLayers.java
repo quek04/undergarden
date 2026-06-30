@@ -17,6 +17,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation FORGOTTEN = register("forgotten");
 	public static final ArmorModelSet<ModelLayerLocation> FORGOTTEN_ARMOR = registerArmorSet("forgotten");
 	public static final ModelLayerLocation GLOOMPER = register("gloomper");
+	public static final ModelLayerLocation GLOOMPER_BABY = register("gloomper_baby");
 	public static final ModelLayerLocation GWIBLING = register("gwibling");
 	public static final ModelLayerLocation GWIB = register("gwib");
 	public static final ModelLayerLocation LIVING_POT = register("living_pot");
