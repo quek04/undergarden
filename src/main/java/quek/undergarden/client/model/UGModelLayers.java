@@ -9,6 +9,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation DEPTHROCK_BED_HEAD = register("depthrock_bed_head");
 	public static final ModelLayerLocation DEPTHROCK_BED_FOOT = register("depthrock_bed_foot");
 	public static final ModelLayerLocation BRUTE = register("brute");
+	public static final ModelLayerLocation BRUTE_BABY = register("brute_baby");
 	public static final ModelLayerLocation DWELLER = register("dweller");
 	public static final ModelLayerLocation DWELLER_BABY = register("dweller_baby");
 	public static final ModelLayerLocation DWELLER_SADDLE = register("dweller", "saddle");

@@ -162,7 +162,8 @@ public class UGClientRegistrationEvents {
 		event.registerLayerDefinition(UGModelLayers.DWELLER_SADDLE, () -> DwellerModel.create(0.5F));
 		event.registerLayerDefinition(UGModelLayers.GREATER_DWELLER, GreaterDwellerModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GWIBLING, GwiblingModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.BRUTE, BruteModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.BRUTE, BruteModel::create);
+		event.registerLayerDefinition(UGModelLayers.BRUTE_BABY, BruteModel::createBaby);
 		event.registerLayerDefinition(UGModelLayers.SCINTLING, ScintlingModel::create);
 		event.registerLayerDefinition(UGModelLayers.SCINTLING_BABY, ScintlingModel::createBaby);
 		event.registerLayerDefinition(UGModelLayers.GLOOMPER, GloomperModel::create);
