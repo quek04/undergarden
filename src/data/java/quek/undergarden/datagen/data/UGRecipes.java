@@ -142,15 +142,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_wigglewood_planks", has(UGBlocks.WIGGLEWOOD_PLANKS.get()))
 			.save(this.output);
 
-		ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, Items.SCAFFOLDING, 6)
-			.pattern("STS")
-			.pattern("S S")
-			.pattern("S S")
-			.define('S', Tags.Items.RODS_WOODEN)
-			.define('T', UGItems.TWISTYTWIG.get())
-			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-			.save(this.output, name("undergarden_scaffolding"));
-
 		ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, UGBlocks.GLOOM_O_LANTERN.get())
 			.pattern("G")
 			.pattern("T")
