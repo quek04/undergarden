@@ -26,6 +26,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation MOG = register("mog");
 	public static final ModelLayerLocation MOG_BABY = register("mog_baby");
 	public static final ModelLayerLocation SMOG_MOG = register("smog_mog");
+	public static final ModelLayerLocation SMOG_MOG_BABY = register("smog_mog_baby");
 	public static final ModelLayerLocation MUNCHER = register("muncher");
 	public static final ModelLayerLocation NARGOYLE = register("nargoyle");
 	public static final ModelLayerLocation ROTBEAST = register("rotbeast");

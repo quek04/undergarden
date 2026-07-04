@@ -176,6 +176,7 @@ public class UGClientRegistrationEvents {
 		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::create);
 		event.registerLayerDefinition(UGModelLayers.MOG_BABY, MogModel::createBaby);
 		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.SMOG_MOG_BABY, SmogMogModel::createBaby);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN, DenizenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN_2, DenizenModel::createTallBodyLayer);
