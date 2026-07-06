@@ -65,7 +65,7 @@ public class GreaterDweller extends Animal implements NeutralMob {
 		this.goalSelector.addGoal(0, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5F, true));
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 1.5F, 1.5F));
-		this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, stack -> stack.is(UGTags.Items.DWELLER_FOOD), false));
+		this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, stack -> stack.is(UGTags.Items.GREATER_DWELLER_FOOD), false));
 		this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -148,13 +148,13 @@ public class GreaterDweller extends Animal implements NeutralMob {
 
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return stack.is(UGTags.Items.DWELLER_FOOD);
+		return stack.is(UGTags.Items.GREATER_DWELLER_FOOD);
 	}
 
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-		return UGEntityTypes.GREATER_DWELLER.get().create(this.level(), EntitySpawnReason.BREEDING);
+		return UGEntityTypes.DWELLER.get().create(this.level(), EntitySpawnReason.BREEDING);
 	}
 
 	@Override
