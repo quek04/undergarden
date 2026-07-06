@@ -45,8 +45,9 @@ public class UGTags {
 
 		public static final TagKey<Item> BRUTE_FOOD = tag("brute_food");
 		public static final TagKey<Item> DWELLER_FOOD = tag("dweller_food");
-		public static final TagKey<Item> GREATER_DWELLER_FOOD = tag("dweller_food");
 		public static final TagKey<Item> DWELLER_TEMPT_ITEMS = tag("dweller_tempt_items");
+		public static final TagKey<Item> DWELLER_GROWTH_ITEMS = tag("dweller_growth_items");
+		public static final TagKey<Item> GREATER_DWELLER_FOOD = tag("greater_dweller_food");
 		public static final TagKey<Item> GLOOMPER_FOOD = tag("gloomper_food");
 		public static final TagKey<Item> MOG_FOOD = tag("mog_food");
 		public static final TagKey<Item> SCINTLING_FOOD = tag("scintling_food");

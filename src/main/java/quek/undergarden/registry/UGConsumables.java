@@ -18,6 +18,7 @@ public class UGConsumables {
 	public static final Consumable ROGDORIC_GRONGLET = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(0.0F, false)).build();
 	public static final Consumable ROGDORIUM_NUGGET = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(-2.0F, true)).build();
 	public static final Consumable ROGDORIUM = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(-20.0F, true)).build();
+	public static final Consumable ROGDORIUM_INFUSED_UNDERBEANS = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(-0.7F,  true)).build();
 
 	public static final Function<MobEffectInstance, Consumable> MOB_EFFECT_CONSUMABLE = (effect) -> Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(effect)).build();
 	public static final BiFunction<MobEffectInstance, MobEffectInstance, Consumable> STEW_CONSUMABLE = (effect, secondary) -> Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(List.of(effect, secondary))).build();

@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,12 +29,10 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UGTags;
+import quek.undergarden.registry.*;
 
 import java.util.List;
 
@@ -142,13 +141,32 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
-		boolean isFood = this.isFood(player.getItemInHand(hand));
-		if (!isFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
+		ItemStack stack = player.getItemInHand(hand);
+		boolean isFood = this.isFood(stack);
+		if (stack.is(UGTags.Items.DWELLER_GROWTH_ITEMS) && !this.isVehicle() && !player.isSecondaryUseActive() && !this.isBaby() && !isFood) {
+			if (this.level() instanceof ServerLevel sl) {
+				this.playSound(SoundEvents.ZOMBIE_VILLAGER_CURE);
+				if (this.isSaddled()) {
+					this.spawnAtLocation(sl, this.getItemBySlot(EquipmentSlot.SADDLE));
+					this.setItemSlot(EquipmentSlot.SADDLE, ItemStack.EMPTY);
+					this.playSound(UGSoundEvents.DWELLER_SADDLE_REMOVE.get());
+				}
+			}
+			if (this.level().isClientSide()) {
+				for (int i = 0; i < 10; i++) {
+					this.level().addParticle(UGParticleTypes.ROGDORIUM_SPARKLE.get(), this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+				}
+			}
+			this.convertTo(UGEntityTypes.GREATER_DWELLER.get(), ConversionParams.single(this, false, false), gd -> {
+				EventHooks.onLivingConvert(this, gd);
+			});
+			stack.shrink(1);
+			return InteractionResult.SUCCESS;
+		} else if (!isFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
 			player.startRiding(this);
-
 			return InteractionResult.SUCCESS;
 		} else {
-			if (this.isSaddled() && player.isSecondaryUseActive() && player.getItemInHand(hand).isEmpty() && this.level() instanceof ServerLevel sl) {
+			if (this.isSaddled() && player.isSecondaryUseActive() && stack.isEmpty() && this.level() instanceof ServerLevel sl) {
 				this.spawnAtLocation(sl, this.getItemBySlot(EquipmentSlot.SADDLE));
 				this.setItemSlot(EquipmentSlot.SADDLE, ItemStack.EMPTY);
 				this.playSound(UGSoundEvents.DWELLER_SADDLE_REMOVE.get());
@@ -156,9 +174,8 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 			}
 			InteractionResult interactionResult = super.mobInteract(player, hand);
 			if (!interactionResult.consumesAction()) {
-				ItemStack itemStack = player.getItemInHand(hand);
-				return this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE)
-					? itemStack.interactLivingEntity(player, this, hand)
+				return this.isEquippableInSlot(stack, EquipmentSlot.SADDLE)
+					? stack.interactLivingEntity(player, this, hand)
 					: InteractionResult.PASS;
 			} else {
 				return interactionResult;

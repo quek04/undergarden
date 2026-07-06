@@ -138,6 +138,7 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateSpear(UGItems.FORGOTTEN_SPEAR.get());
 		this.generateFlatItem(UGItems.RAW_UNDERGAR_FILLET.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.COOKED_UNDERGAR_FILLET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.ROGDORIUM_INFUSED_UNDERBEANS.get(), ModelTemplates.FLAT_ITEM);
 
 		ItemModel.Unbaked flatJavelinModel = ItemModelUtils.plainModel(this.createFlatItemModel(UGItems.JAVELIN.get(), ModelTemplates.FLAT_ITEM));
 		ItemModel.Unbaked inHandNormalModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.JAVELIN.get(), "_in_hand"), new JavelinSpecialRenderer.Unbaked());

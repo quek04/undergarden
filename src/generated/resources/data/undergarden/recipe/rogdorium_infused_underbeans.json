@@ -1,0 +1,10 @@
+{
+  "type": "undergarden:infuser_conversion",
+  "category": "purifying",
+  "experience": 1.0,
+  "input": "undergarden:underbeans",
+  "result": {
+    "id": "undergarden:rogdorium_infused_underbeans"
+  },
+  "slot_type": "rogdorium"
+}

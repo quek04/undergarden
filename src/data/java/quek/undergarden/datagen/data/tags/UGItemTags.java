@@ -55,8 +55,9 @@ public class UGItemTags extends ItemTagsProvider {
 
 		tag(UGTags.Items.BRUTE_FOOD).add(UGItems.DROOPFRUIT.get());
 		tag(UGTags.Items.DWELLER_FOOD).add(UGItems.UNDERBEANS.get());
+		tag(UGTags.Items.DWELLER_TEMPT_ITEMS).addTag(UGTags.Items.DWELLER_FOOD).add(UGItems.UNDERBEAN_STICK.get(), UGItems.ROGDORIUM_INFUSED_UNDERBEANS.get());
+		tag(UGTags.Items.DWELLER_GROWTH_ITEMS).add(UGItems.ROGDORIUM_INFUSED_UNDERBEANS.get());
 		tag(UGTags.Items.GREATER_DWELLER_FOOD).addTag(UGTags.Items.DWELLER_FOOD).add(UGBlocks.PUFF_MUSHROOM.get().asItem());
-		tag(UGTags.Items.DWELLER_TEMPT_ITEMS).addTag(UGTags.Items.DWELLER_FOOD).add(UGItems.UNDERBEAN_STICK.get());
 		tag(UGTags.Items.GLOOMPER_FOOD).add(UGBlocks.GLOOMGOURD.asItem());
 		tag(UGTags.Items.MOG_FOOD).add(UGItems.DEPTHROCK_PEBBLE.get());
 		tag(UGTags.Items.SCINTLING_FOOD).add(UGItems.BLISTERBERRY.get());

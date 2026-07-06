@@ -558,6 +558,7 @@ public class UGRecipes extends UGRecipeProvider {
 		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(this.output, name("denizen_totem_infusing"));
 		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(this.output, name("utheric_cluster_to_utherium_crystal_infusing"));
 		infusingPurifying(UGBlocks.ROGDORIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(this.output);
+		infusingPurifying(UGItems.ROGDORIUM_INFUSED_UNDERBEANS, UGItems.UNDERBEANS, 1.0F, 200).save(this.output);
 
 		infusingCorrupting(UGBlocks.UTHERIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(this.output);
 	}
