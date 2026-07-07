@@ -89,6 +89,7 @@ public abstract class UGBlockItemTags {
 		this.tag(BlockTags.IRON_ORES, ItemTags.IRON_ORES).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get());
 		this.tag(BlockTags.GOLD_ORES, ItemTags.GOLD_ORES).add(UGBlocks.DEPTHROCK_GOLD_ORE.get());
 		this.tag(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get());
+		this.tag(BlockTags.GRASS_BLOCKS, ItemTags.GRASS_BLOCKS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get());
 		this.tag(BlockTags.DIRT, ItemTags.DIRT).add(UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
 		this.tag(BlockTags.LANTERNS, ItemTags.LANTERNS).add(UGBlocks.CLOGGRUM_LANTERN.get());
 		this.tag(BlockTags.BARS, ItemTags.BARS).add(UGBlocks.CLOGGRUM_BARS.get());
