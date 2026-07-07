@@ -153,8 +153,8 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 				}
 			}
 			if (this.level().isClientSide()) {
-				for (int i = 0; i < 10; i++) {
-					this.level().addParticle(UGParticleTypes.ROGDORIUM_SPARKLE.get(), this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+				for (int i = 0; i < 20; i++) {
+					this.level().addParticle(UGParticleTypes.ROGDORIUM_SPARKLE.get(), this.getRandomX(2.0D), this.getRandomY() + 1.0D, this.getRandomZ(2.0D), 0.0, 0.0, 0.0);
 				}
 			}
 			this.convertTo(UGEntityTypes.GREATER_DWELLER.get(), ConversionParams.single(this, false, false), gd -> {
