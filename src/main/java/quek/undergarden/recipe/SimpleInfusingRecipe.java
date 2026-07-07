@@ -1,14 +1,11 @@
 package quek.undergarden.recipe;
 
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.PlacementInfo;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import org.jspecify.annotations.Nullable;
 
 public abstract class SimpleInfusingRecipe implements InfusingRecipe {
 
-	protected final Recipe.CommonInfo commonInfo;
+	protected final CommonInfo commonInfo;
 	private final InfusingBookCategory category;
 	private final Ingredient input;
 	private final int infusingTime;
@@ -16,7 +13,7 @@ public abstract class SimpleInfusingRecipe implements InfusingRecipe {
 
 	private @Nullable PlacementInfo placementInfo;
 
-	protected SimpleInfusingRecipe(Recipe.CommonInfo commonInfo, InfusingBookCategory category, Ingredient input, int infusingTime, float experience) {
+	protected SimpleInfusingRecipe(CommonInfo commonInfo, InfusingBookCategory category, Ingredient input, int infusingTime, float experience) {
 		this.commonInfo = commonInfo;
 		this.category = category;
 		this.input = input;

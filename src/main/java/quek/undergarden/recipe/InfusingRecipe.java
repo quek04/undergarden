@@ -51,11 +51,6 @@ public interface InfusingRecipe extends Recipe<InfuserInput> {
 		};
 	}
 
-	@Override
-	default boolean isSpecial() {
-		return true;
-	}
-
 	enum SlotType implements StringRepresentable {
 		UTHERIUM(1, UGTags.Items.INFUSER_UTHERIUM_FUELS),
 		ROGDORIUM(2, UGTags.Items.INFUSER_ROGDORIUM_FUELS);

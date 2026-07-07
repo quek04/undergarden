@@ -57,6 +57,11 @@ public class ItemInfusingRecipe extends SimpleInfusingRecipe {
 	}
 
 	@Override
+	public boolean isSpecial() {
+		return true;
+	}
+
+	@Override
 	public SlotType getRecipeSlotType() {
 		return SlotType.ROGDORIUM;
 	}
