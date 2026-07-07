@@ -42,6 +42,7 @@ import java.util.stream.Collectors;
 
 public class UGBlockLootTables extends BlockLootSubProvider {
 
+	protected static final float[] WIGGLEWOOD_LEAVES_SAPLING_CHANCES = new float[]{0.075F, 0.0825F, 0.095F, 0.125F};
 	private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 	private static final LootItemCondition.Builder HAS_SHEARS = CanItemPerformAbility.canItemPerformAbility(ItemAbilities.SHEARS_DIG);
 
@@ -78,7 +79,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.SMOGSTEM_SAPLING);
 		this.add(UGBlocks.SMOGSTEM_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, UGBlocks.SMOGSTEM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 		this.dropSelf(UGBlocks.WIGGLEWOOD_SAPLING);
-		this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, UGBlocks.WIGGLEWOOD_SAPLING.get(), UGItems.TWISTYTWIG, NORMAL_LEAVES_SAPLING_CHANCES));
+		this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, UGBlocks.WIGGLEWOOD_SAPLING.get(), UGItems.TWISTYTWIG, WIGGLEWOOD_LEAVES_SAPLING_CHANCES));
 		this.add(UGBlocks.GRONGLE_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, UGBlocks.GRONGLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 		this.dropSelf(UGBlocks.INDIGO_MUSHROOM);
 		this.dropSelf(UGBlocks.VEIL_MUSHROOM);
