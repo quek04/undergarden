@@ -1,18 +1,16 @@
 {
   "parent": "undergarden:undergarden/contract_utheric_infection",
   "criteria": {
-    "has_eaten_rogdorium": {
+    "has_eaten_curing_item": {
       "conditions": {
         "item": {
-          "items": "undergarden:rogdorium"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "has_eaten_rogdorium_nugget": {
-      "conditions": {
-        "item": {
-          "items": "undergarden:rogdorium_nugget"
+          "predicates": {
+            "undergarden:infection_consumable": {
+              "amount": {
+                "max": 0.0
+              }
+            }
+          }
         }
       },
       "trigger": "minecraft:consume_item"
@@ -40,8 +38,7 @@
   "requirements": [
     [
       "has_purity_effect",
-      "has_eaten_rogdorium",
-      "has_eaten_rogdorium_nugget"
+      "has_eaten_curing_item"
     ]
   ],
   "sends_telemetry_event": true

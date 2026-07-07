@@ -65,7 +65,8 @@ public class Undergarden {
 			UGSlotDisplays.SLOTS,
 			UGRecipeBookCategories.RECIPE_BOOK_CATEGORIES,
 			UGConsumeEffects.CONSUME_EFFECTS,
-			UGHitEffects.HIT_EFFECTS
+			UGHitEffects.HIT_EFFECTS,
+			UGDataComponentPredicates.COMPONENT_PREDICATES
 		};
 
 		for (DeferredRegister<?> register : registers) {

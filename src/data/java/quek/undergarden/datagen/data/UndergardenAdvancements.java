@@ -7,6 +7,7 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.data.advancements.packs.VanillaAdventureAdvancements;
@@ -15,6 +16,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import quek.undergarden.Undergarden;
+import quek.undergarden.component.predicate.InfectionConsumeEffectPredicate;
 import quek.undergarden.criterion.DenizenCampfireDestroyedTrigger;
 import quek.undergarden.criterion.SlingshotFireTrigger;
 import quek.undergarden.criterion.StonebornTradeTrigger;
@@ -550,9 +552,7 @@ public class UndergardenAdvancements implements AdvancementSubProvider {
 			)
 			.requirements(AdvancementRequirements.Strategy.OR)
 			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY)))
-			//TODO check against consume effect component
-			.addCriterion("has_eaten_rogdorium", ConsumeItemTrigger.TriggerInstance.usedItem(itemGetter, UGItems.ROGDORIUM))
-			.addCriterion("has_eaten_rogdorium_nugget", ConsumeItemTrigger.TriggerInstance.usedItem(itemGetter, UGItems.ROGDORIUM_NUGGET))
+			.addCriterion("has_eaten_curing_item", ConsumeItemTrigger.TriggerInstance.usedItem(ItemPredicate.Builder.item().withComponents(DataComponentMatchers.Builder.components().partial(UGDataComponentPredicates.CONSUMABLE.get(), new InfectionConsumeEffectPredicate(MinMaxBounds.Doubles.atMost(0.0F))).build())))
 			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
 
 		AdvancementHolder enter_denizen_camp = Advancement.Builder.advancement()
