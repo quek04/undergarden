@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/template_single_face",
   "textures": {
-    "all": "undergarden:block/indigo_mushroom_stem"
+    "texture": "undergarden:block/indigo_mushroom_stem"
   }
 }

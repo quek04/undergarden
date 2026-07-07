@@ -41,7 +41,15 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "undergarden:blood_mushroom_cap"
+        "Name": "undergarden:blood_mushroom_cap",
+        "Properties": {
+          "down": "true",
+          "east": "true",
+          "north": "true",
+          "south": "true",
+          "up": "true",
+          "west": "true"
+        }
       }
     },
     "ignore_vines": false,
@@ -62,7 +70,15 @@
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "undergarden:blood_mushroom_stem"
+        "Name": "undergarden:blood_mushroom_stem",
+        "Properties": {
+          "down": "false",
+          "east": "true",
+          "north": "true",
+          "south": "true",
+          "up": "false",
+          "west": "true"
+        }
       }
     }
   }

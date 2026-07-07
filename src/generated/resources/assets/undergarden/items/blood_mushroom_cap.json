@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "undergarden:block/blood_mushroom_cap"
+    "model": "undergarden:block/blood_mushroom_cap_inventory"
   }
 }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "undergarden:block/veil_mushroom_stem"
+    "model": "undergarden:block/veil_mushroom_stem_inventory"
   }
 }

@@ -107,17 +107,6 @@
         "x": 270
       },
       "when": {
-        "up": "true",
-        "end": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "undergarden:block/mushroom_veil_end",
-        "uvlock": true,
-        "x": 270
-      },
-      "when": {
         "east": "false",
         "north": "false",
         "south": "false",
@@ -234,8 +223,7 @@
         "x": 270
       },
       "when": {
-        "up": "true",
-        "end": "false"
+        "up": "true"
       }
     },
     {

@@ -49,7 +49,6 @@ public class Undergarden {
 			UGFeatures.FEATURES,
 			UGFluids.FLUIDS,
 			UGFluids.TYPES,
-			UGFoliagePlacers.FOLIAGE_PLACERS,
 			UGItems.ITEMS,
 			UGParticleTypes.PARTICLES,
 			UGPointOfInterests.POI,

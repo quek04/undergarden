@@ -10,6 +10,7 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -283,31 +284,28 @@ public class UGConfiguredFeatures {
 
 		//huge mushrooms
 		context.register(HUGE_INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(
-			BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState()),
-			BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STEM.get().defaultBlockState()),
+			BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
+			BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
 			3,
 			BlockPredicate.matchesTag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON)
 		)));
-		context.register(HUGE_VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-			BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()),
-			new StraightTrunkPlacer(9, 1, 1),
-			BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()),
-			new VeilFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
-			Optional.empty(),
-			new TwoLayersFeatureSize(1, 0, 1),
-			PLACE_BELOW_UNDERGARDEN_TRUNKS
-		).build()));
+		context.register(HUGE_VEIL_MUSHROOM, new ConfiguredFeature<>(UGFeatures.VEIL_MUSHROOM.get(), new HugeMushroomFeatureConfiguration(
+			BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
+			BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
+			3,
+			BlockPredicate.matchesTag(BlockTags.HUGE_RED_MUSHROOM_CAN_PLACE_ON)
+		)));
 		context.register(HUGE_INK_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-			BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get()),
+			BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
 			new SingleForkingTrunkPlacer(6, 2, 2),
-			BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()),
+			BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
 			new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
 			Optional.empty(),
 			new TwoLayersFeatureSize(1, 0, 2),
 			PLACE_BELOW_UNDERGARDEN_TRUNKS
 		).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
 		context.register(HUGE_BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-			BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()),
+			BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
 			new DarkOakTrunkPlacer(6, 2, 2),
 			BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()),
 			new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),

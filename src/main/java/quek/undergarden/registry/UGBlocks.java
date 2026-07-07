@@ -230,23 +230,23 @@ public class UGBlocks {
 
 	//mushroom
 	public static final DeferredBlock<Block> INDIGO_MUSHROOM = registerWithItem("indigo_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));
-	public static final DeferredBlock<Block> INDIGO_MUSHROOM_CAP = registerWithItem("indigo_mushroom_cap", Block::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD));
-	public static final DeferredBlock<Block> INDIGO_MUSHROOM_STEM = registerWithItem("indigo_mushroom_stem", Block::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD));
+	public static final DeferredBlock<Block> INDIGO_MUSHROOM_CAP = registerWithItem("indigo_mushroom_cap", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD));
+	public static final DeferredBlock<Block> INDIGO_MUSHROOM_STEM = registerWithItem("indigo_mushroom_stem", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD));
 
 	public static final DeferredBlock<Block> VEIL_MUSHROOM = registerWithItem("veil_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));
-	public static final DeferredBlock<Block> VEIL_MUSHROOM_CAP = registerWithItem("veil_mushroom_cap", Block::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.2F).sound(SoundType.WOOD));
-	public static final DeferredBlock<Block> VEIL_MUSHROOM_STEM = registerWithItem("veil_mushroom_stem", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
+	public static final DeferredBlock<Block> VEIL_MUSHROOM_CAP = registerWithItem("veil_mushroom_cap", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.2F).sound(SoundType.WOOD));
+	public static final DeferredBlock<Block> VEIL_MUSHROOM_STEM = registerWithItem("veil_mushroom_stem", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
 	public static final DeferredBlock<Block> MUSHROOM_VEIL = registerWithItem("mushroom_veil", MushroomVeilBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.VINE));
 
 	public static final DeferredBlock<Block> INK_MUSHROOM = registerWithItem("ink_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INK_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));
 	public static final DeferredBlock<Block> INK_MUSHROOM_CAP = registerWithItem("ink_mushroom_cap", InkCapBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(0.2F).sound(SoundType.WOOD));
 	public static final DeferredBlock<Block> SEEPING_INK = registerWithItem("seeping_ink", SeepingInkBlock::new, () -> BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noOcclusion().noCollision());
-	public static final DeferredBlock<Block> INK_MUSHROOM_STEM = registerWithItem("ink_mushroom_stem", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
+	public static final DeferredBlock<Block> INK_MUSHROOM_STEM = registerWithItem("ink_mushroom_stem", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
 
 	public static final DeferredBlock<Block> BLOOD_MUSHROOM = registerWithItem("blood_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));
-	public static final DeferredBlock<Block> BLOOD_MUSHROOM_CAP = registerWithItem("blood_mushroom_cap", Block::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).strength(0.2F).sound(SoundType.WOOD));
+	public static final DeferredBlock<Block> BLOOD_MUSHROOM_CAP = registerWithItem("blood_mushroom_cap", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).strength(0.2F).sound(SoundType.WOOD));
 	public static final DeferredBlock<Block> ENGORGED_BLOOD_MUSHROOM_CAP = registerWithItem("engorged_blood_mushroom_cap", EngorgedCapBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK));
-	public static final DeferredBlock<Block> BLOOD_MUSHROOM_STEM = registerWithItem("blood_mushroom_stem", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
+	public static final DeferredBlock<Block> BLOOD_MUSHROOM_STEM = registerWithItem("blood_mushroom_stem", HugeMushroomBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
 
 	public static final DeferredBlock<Block> PUFF_MUSHROOM = registerWithItem("puff_mushroom", (properties) -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos));
 	public static final DeferredBlock<Block> PUFF_MUSHROOM_CAP = registerWithItem("puff_mushroom_cap", PuffMushroomCapBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.2F).sound(SoundType.WOOD));

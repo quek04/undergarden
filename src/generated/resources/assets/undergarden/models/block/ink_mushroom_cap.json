@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/template_single_face",
   "textures": {
-    "all": "undergarden:block/ink_mushroom_cap"
+    "texture": "undergarden:block/ink_mushroom_cap"
   }
 }

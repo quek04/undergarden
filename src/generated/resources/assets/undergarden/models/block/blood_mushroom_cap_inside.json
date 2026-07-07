@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_single_face",
   "textures": {
-    "texture": "undergarden:block/veil_mushroom_cap"
+    "texture": "undergarden:block/blood_mushroom_block_inside"
   }
 }

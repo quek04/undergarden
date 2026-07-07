@@ -7,12 +7,14 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
+import net.minecraft.client.data.models.blockstates.MultiPartGenerator;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.renderer.blockentity.BedRenderer;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -168,13 +170,13 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.createPlantWithDefaultItem(UGBlocks.AMOROUS_BRISTLE.get(), UGBlocks.POTTED_AMOROUS_BRISTLE.get(), PlantType.NOT_TINTED);
 		this.createPlantWithDefaultItem(UGBlocks.MISERABELL.get(), UGBlocks.POTTED_MISERABELL.get(), PlantType.NOT_TINTED);
 		this.createPlantWithDefaultItem(UGBlocks.BUTTERBUNCH.get(), UGBlocks.POTTED_BUTTERBUNCH.get(), PlantType.NOT_TINTED);
-		this.wrapBlockItem(UGBlocks.INDIGO_MUSHROOM_CAP.get(), this::createTrivialCube);
-		this.wrapBlockItem(UGBlocks.INDIGO_MUSHROOM_STEM.get(), this::createTrivialCube);
-		this.wrapBlockItem(UGBlocks.VEIL_MUSHROOM_CAP.get(), this::createTrivialCube);
-		this.wrapBlockItem(UGBlocks.VEIL_MUSHROOM_STEM.get(), this::createTrivialCube);
-		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.createCustomMushroomBlock(UGBlocks.INDIGO_MUSHROOM_CAP.get(), "indigo_mushroom_block_inside");
+		this.createCustomMushroomBlock(UGBlocks.INDIGO_MUSHROOM_STEM.get(), "indigo_mushroom_block_inside");
+		this.createCustomMushroomBlock(UGBlocks.VEIL_MUSHROOM_CAP.get(), "veil_mushroom_block_inside");
+		this.createCustomMushroomBlock(UGBlocks.VEIL_MUSHROOM_STEM.get(), "veil_mushroom_block_inside");
+		this.createCustomMushroomBlock(UGBlocks.INK_MUSHROOM_CAP.get(), "ink_mushroom_block_inside");
 		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_STEM.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, variant(plainModel(ModelTemplates.CUBE_ALL.create(block, TextureMapping.cube(TextureMapping.getBlockTexture(Blocks.MUSHROOM_STEM)), this.modelOutput))))));
-		this.wrapBlockItem(UGBlocks.BLOOD_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.createCustomMushroomBlock(UGBlocks.BLOOD_MUSHROOM_CAP.get(), "blood_mushroom_block_inside");
 		this.wrapBlockItem(UGBlocks.BLOOD_MUSHROOM_STEM.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, new MultiVariant(WeightedList.of(IntStream.range(1, 4)
 			.mapToObj(i -> new Weighted<>(plainModel(TexturedModel.CUBE.createWithSuffix(block, i == 1 ? "" : "_" + i, this.modelOutput)), 1)).collect(Collectors.toList()))))));
@@ -464,6 +466,28 @@ public class UGBlockModels extends BlockModelGenerators {
 	public void createDoublePlantItemWithUGTint(Block block) {
 		Identifier itemModel = this.createFlatItemModelWithBlockTexture(block.asItem(), block, "_top");
 		this.registerSimpleTintedItemModel(block, itemModel, ItemModelUtils.constantTint(UndergardenClient.DEFAULT_TINT_COLOR));
+	}
+
+	public void createCustomMushroomBlock(Block block, String insideName) {
+		MultiVariant skin = plainVariant(ModelTemplates.SINGLE_FACE.create(block, TextureMapping.defaultTexture(block), this.modelOutput));
+		MultiVariant skinless = plainVariant(ModelTemplates.SINGLE_FACE.createWithSuffix(block, "_inside", TextureMapping.defaultTexture(new Material(Undergarden.prefix("block/" + insideName))), this.modelOutput));
+		this.blockStateOutput
+			.accept(
+				MultiPartGenerator.multiPart(block)
+					.with(condition().term(BlockStateProperties.NORTH, true), skin)
+					.with(condition().term(BlockStateProperties.EAST, true), skin.with(Y_ROT_90).with(UV_LOCK))
+					.with(condition().term(BlockStateProperties.SOUTH, true), skin.with(Y_ROT_180).with(UV_LOCK))
+					.with(condition().term(BlockStateProperties.WEST, true), skin.with(Y_ROT_270).with(UV_LOCK))
+					.with(condition().term(BlockStateProperties.UP, true), skin.with(X_ROT_270).with(UV_LOCK))
+					.with(condition().term(BlockStateProperties.DOWN, true), skin.with(X_ROT_90).with(UV_LOCK))
+					.with(condition().term(BlockStateProperties.NORTH, false), skinless)
+					.with(condition().term(BlockStateProperties.EAST, false), skinless.with(Y_ROT_90))
+					.with(condition().term(BlockStateProperties.SOUTH, false), skinless.with(Y_ROT_180))
+					.with(condition().term(BlockStateProperties.WEST, false), skinless.with(Y_ROT_270))
+					.with(condition().term(BlockStateProperties.UP, false), skinless.with(X_ROT_270))
+					.with(condition().term(BlockStateProperties.DOWN, false), skinless.with(X_ROT_90))
+			);
+		this.registerSimpleItemModel(block, TexturedModel.CUBE.createWithSuffix(block, "_inventory", this.modelOutput));
 	}
 
 	//this is probably stupid
