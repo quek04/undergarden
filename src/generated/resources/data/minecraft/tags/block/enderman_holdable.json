@@ -1,12 +1,16 @@
 {
   "values": [
-    "#undergarden:mushrooms",
     "undergarden:deepturf_block",
     "undergarden:frozen_deepturf_block",
     "undergarden:ashen_deepturf_block",
     "undergarden:deepsoil",
     "undergarden:coarse_deepsoil",
     "undergarden:gloomgourd",
-    "undergarden:carved_gloomgourd"
+    "undergarden:carved_gloomgourd",
+    "undergarden:ink_mushroom",
+    "undergarden:blood_mushroom",
+    "undergarden:indigo_mushroom",
+    "undergarden:veil_mushroom",
+    "undergarden:puff_mushroom"
   ]
 }

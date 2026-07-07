@@ -252,6 +252,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> PUFF_MUSHROOM_CAP = registerWithItem("puff_mushroom_cap", PuffMushroomCapBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.2F).sound(SoundType.WOOD));
 	public static final DeferredBlock<Block> PUFF_MUSHROOM_STEM = registerWithItem("puff_mushroom_stem", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM));
 
+	//TODO wood shelves
 	//smogstem
 	public static final DeferredBlock<SaplingBlock> SMOGSTEM_SAPLING = registerWithItem("smogstem_sapling", (properties) -> new UGSaplingBlock(UGTreeGrowers.SMOGSTEM, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).instabreak().randomTicks().sound(SoundType.GRASS).noOcclusion().noCollision());
 	public static final DeferredBlock<RotatedPillarBlock> SMOGSTEM_LOG = registerWithItem("smogstem_log", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD));

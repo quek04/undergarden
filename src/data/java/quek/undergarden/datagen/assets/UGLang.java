@@ -798,7 +798,6 @@ public class UGLang extends UGLangProvider {
 
 		addEmiItemTag(UGTags.Items.SLINGSHOT_ENCHANTABLE, "Slingshot Enchantables");
 
-		addEmiItemTag(UGTags.Items.MUSHROOMS, "Undergarden Mushrooms");
 		addEmiItemTag(UGTags.Items.CLOGGRUM_ITEMS, "Cloggrum Items");
 		addEmiItemTag(UGTags.Items.FROSTSTEEL_ITEMS, "Froststeel Items");
 		addEmiItemTag(UGTags.Items.UTHERIUM_ITEMS, "Utherium Items");

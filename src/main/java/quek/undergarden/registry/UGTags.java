@@ -22,7 +22,6 @@ public class UGTags {
 
 		public static final TagKey<Item> SLINGSHOT_ENCHANTABLE = tag("enchantable/slingshot");
 
-		public static final TagKey<Item> MUSHROOMS = tag("mushrooms");
 		public static final TagKey<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");
 		public static final TagKey<Item> FROSTSTEEL_ITEMS = tag("froststeel_items");
 		public static final TagKey<Item> UTHERIUM_ITEMS = tag("utherium_items");
@@ -51,6 +50,14 @@ public class UGTags {
 		public static final TagKey<Item> GLOOMPER_FOOD = tag("gloomper_food");
 		public static final TagKey<Item> MOG_FOOD = tag("mog_food");
 		public static final TagKey<Item> SCINTLING_FOOD = tag("scintling_food");
+
+		public static final TagKey<Item> CROPS_GLOOMGOURD = commonTag("crops/gloomgourd");
+		public static final TagKey<Item> SEEDS_GLOOMGOURD = commonTag("seeds/gloomgourd");
+
+		public static final TagKey<Item> TOOLS_BATTLEAXE = commonTag("tools/battleaxe");
+		public static final TagKey<Item> TOOLS_JAVELIN = commonTag("tools/javelin");
+
+		public static final TagKey<Item> BARS_CLOGGRUM = commonTag("bars/cloggrum");
 
 		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = commonTag("raw_materials/cloggrum");
 		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = commonTag("raw_materials/froststeel");
@@ -100,7 +107,6 @@ public class UGTags {
 		public static final TagKey<Block> DREADROCK_ORE_REPLACEABLES = tag("dreadrock_ore_replaceables");
 		public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
 		public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
-		public static final TagKey<Block> MUSHROOMS = tag("mushrooms");
 		public static final TagKey<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
 		public static final TagKey<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
@@ -118,6 +124,8 @@ public class UGTags {
 
 		public static final TagKey<Block> NEEDS_FORGOTTEN_TOOL = tag("needs_forgotten_tool");
 		public static final TagKey<Block> INCORRECT_FOR_FORGOTTEN_TOOL = tag("incorrect_for_forgotten_tool");
+
+		public static final TagKey<Block> BARS_CLOGGRUM = commonTag("bars/cloggrum");
 
 		public static final TagKey<Block> ORES_CLOGGRUM = commonTag("ores/cloggrum");
 		public static final TagKey<Block> ORES_FROSTSTEEL = commonTag("ores/froststeel");
@@ -194,8 +202,16 @@ public class UGTags {
 		public static final TagKey<Biome> HAS_DENIZEN_CAMP = tag("has_structure/denizen_camp");
 		public static final TagKey<Biome> HAS_DEPLETED_MINE = tag("has_structure/depleted_mine");
 
+		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_WIGGLEWOOD = commonTag("primary_wood_type/wigglewood");
+		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_SMOGSTEM = commonTag("primary_wood_type/smogstem");
+		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_GRONGLE = commonTag("primary_wood_type/grongle");
+
 		private static TagKey<Biome> tag(String name) {
 			return TagKey.create(Registries.BIOME, Undergarden.prefix(name));
+		}
+
+		private static TagKey<Biome> commonTag(String name) {
+			return TagKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("c", name));
 		}
 	}
 

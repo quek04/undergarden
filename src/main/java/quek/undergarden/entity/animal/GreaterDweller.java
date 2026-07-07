@@ -193,4 +193,9 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	public void startPersistentAngerTimer() {
 		this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
 	}
+
+	@Override
+	public boolean isBaby() {
+		return false;
+	}
 }

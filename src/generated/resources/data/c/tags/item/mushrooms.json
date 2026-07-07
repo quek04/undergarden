@@ -1,5 +1,9 @@
 {
   "values": [
-    "#undergarden:mushrooms"
+    "undergarden:ink_mushroom",
+    "undergarden:indigo_mushroom",
+    "undergarden:veil_mushroom",
+    "undergarden:blood_mushroom",
+    "undergarden:puff_mushroom"
   ]
 }

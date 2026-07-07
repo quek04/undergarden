@@ -34,14 +34,21 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 		tag(Tags.EntityTypes.BOSSES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
 
 		//vanilla
+		tag(EntityTypeTags.SKELETONS).add(UGEntityTypes.FORGOTTEN.get());
+		tag(EntityTypeTags.UNDEAD).addTag(UGTags.Entities.ROTSPAWN);
 		tag(EntityTypeTags.IMPACT_PROJECTILES).add(UGEntityTypes.BLISTERBOMB.get(), UGEntityTypes.SLINGSHOT_PROJECTILE.get(), UGEntityTypes.MINION_PROJECTILE.get(), UGEntityTypes.ROTBELCHER_PROJECTILE.get());
 		tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(UGEntityTypes.SCINTLING.get(), UGEntityTypes.ROTLING.get(), UGEntityTypes.MUNCHER.get(), UGEntityTypes.SPLOOGIE.get(), UGEntityTypes.MOG.get(), UGEntityTypes.SMOG_MOG.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.BRUTE.get());
 		tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
+		tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(UGEntityTypes.GLOOMPER.get(), UGEntityTypes.MINION.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get());
 		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.MINION.get());
 		tag(EntityTypeTags.DISMOUNTS_UNDERWATER).add(UGEntityTypes.DWELLER.get());
-		tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(UGEntityTypes.GLOOMPER.get());
-		tag(EntityTypeTags.UNDEAD).add(UGEntityTypes.FORGOTTEN.get()).addTag(UGTags.Entities.ROTSPAWN);
+		tag(EntityTypeTags.AQUATIC).add(UGEntityTypes.GWIB.get(), UGEntityTypes.GWIBLING.get(), UGEntityTypes.UNDERGAR.get());
+		tag(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH).add(UGEntityTypes.GWIB.get(), UGEntityTypes.GWIBLING.get(), UGEntityTypes.UNDERGAR.get());
 		tag(EntityTypeTags.DEFLECTS_PROJECTILES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
+		tag(EntityTypeTags.BOAT).add(UGEntityTypes.WIGGLEWOOD_BOAT.get(), UGEntityTypes.SMOGSTEM_BOAT.get(), UGEntityTypes.GRONGLE_BOAT.get(), UGEntityTypes.ANCIENT_ROOT_BOAT.get());
 		tag(EntityTypeTags.CAN_EQUIP_SADDLE).add(UGEntityTypes.DWELLER.get());
+		tag(EntityTypeTags.FOLLOWABLE_FRIENDLY_MOBS).add(UGEntityTypes.DWELLER.get(), UGEntityTypes.GREATER_DWELLER.get(), UGEntityTypes.SCINTLING.get(), UGEntityTypes.GLOOMPER.get(), UGEntityTypes.MOG.get(), UGEntityTypes.SMOG_MOG.get(), UGEntityTypes.BRUTE.get());
+		tag(EntityTypeTags.CANNOT_BE_PUSHED_ONTO_BOATS).add(UGEntityTypes.GWIB.get(), UGEntityTypes.GWIBLING.get(), UGEntityTypes.UNDERGAR.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.MINION.get());
+		tag(EntityTypeTags.CAN_FLOAT_WHILE_RIDDEN).add(UGEntityTypes.DWELLER.get());
 	}
 }
