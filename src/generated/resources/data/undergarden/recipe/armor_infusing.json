@@ -1,5 +1,5 @@
 {
   "type": "undergarden:item_infusing",
-  "input": "#c:armors",
+  "input": "#c:armors/humanoid",
   "show_notification": false
 }

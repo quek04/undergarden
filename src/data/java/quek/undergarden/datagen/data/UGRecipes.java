@@ -554,7 +554,7 @@ public class UGRecipes extends UGRecipeProvider {
 
 		stonecutting(UGBlocks.DEPTHROCK, UGItems.DEPTHROCK_PEBBLE.get(), 9).save(this.output, name("depthrock_pebbles_from_depthrock_stonecutting"));
 
-		itemInfusing(Ingredient.of(getter.getOrThrow(Tags.Items.ARMORS)), InfusingBookCategory.MISC, 0.0F, 200).save(this.output, name("armor_infusing"));
+		itemInfusing(Ingredient.of(getter.getOrThrow(Tags.Items.ARMORS_HUMANOID)), InfusingBookCategory.MISC, 0.0F, 200).save(this.output, name("armor_infusing"));
 		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(this.output, name("denizen_totem_infusing"));
 		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(this.output, name("utheric_cluster_to_utherium_crystal_infusing"));
 		infusingPurifying(UGBlocks.ROGDORIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(this.output);
