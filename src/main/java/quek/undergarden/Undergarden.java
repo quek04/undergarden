@@ -66,6 +66,7 @@ public class Undergarden {
 			UGRecipeBookCategories.RECIPE_BOOK_CATEGORIES,
 			UGConsumeEffects.CONSUME_EFFECTS,
 			UGHitEffects.HIT_EFFECTS,
+			UGBlockPredicates.BLOCK_PREDICATES,
 			UGDataComponentPredicates.COMPONENT_PREDICATES
 		};
 

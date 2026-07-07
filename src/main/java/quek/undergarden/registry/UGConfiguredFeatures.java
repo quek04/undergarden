@@ -32,7 +32,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.world.gen.feature.config.AncientRootConfiguration;
 import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
-import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
+import quek.undergarden.world.gen.feature.predicate.InDimensionPredicate;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
 import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
@@ -52,8 +52,9 @@ public class UGConfiguredFeatures {
 	public static final RuleTest DREADROCK_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES);
 	public static final RuleTest TREMBLECRUST_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES);
 
-	public static final RuleBasedStateProvider PLACE_BELOW_UNDERGARDEN_TRUNKS = RuleBasedStateProvider.ifTrueThenProvide(
-		TreeConfiguration.CAN_PLACE_BELOW_OVERWORLD_TRUNKS, UGBlocks.DEEPSOIL.get()
+	public static final RuleBasedStateProvider PLACE_BELOW_UNDERGARDEN_TRUNKS = new RuleBasedStateProvider(
+		BlockStateProvider.simple(Blocks.DIRT),
+		List.of(new RuleBasedStateProvider.Rule(new InDimensionPredicate(UGDimensions.UNDERGARDEN_LEVEL), BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())))
 	);
 
 	//ores
@@ -238,7 +239,7 @@ public class UGConfiguredFeatures {
 		).ignoreVines().build()));
 		context.register(WIGGLEWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
 			BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LOG.get()),
-			new ForkingTrunkPlacer(3, 1, 1),
+			new ForkingTrunkPlacer(5, 1, 2), //if the trunk base height is any smaller, the placer wigs out. Might want to consider using a new one?
 			BlockStateProvider.simple(UGBlocks.WIGGLEWOOD_LEAVES.get()),
 			new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
 			Optional.empty(),

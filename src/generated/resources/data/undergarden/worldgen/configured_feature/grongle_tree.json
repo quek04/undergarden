@@ -3,14 +3,17 @@
   "config": {
     "below_trunk_provider": {
       "type": "minecraft:rule_based_state_provider",
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:dirt"
+        }
+      },
       "rules": [
         {
           "if_true": {
-            "type": "minecraft:not",
-            "predicate": {
-              "type": "minecraft:matching_block_tag",
-              "tag": "minecraft:cannot_replace_below_tree_trunk"
-            }
+            "type": "undergarden:in_dimension",
+            "dimension": "undergarden:undergarden"
           },
           "then": {
             "type": "minecraft:simple_state_provider",
