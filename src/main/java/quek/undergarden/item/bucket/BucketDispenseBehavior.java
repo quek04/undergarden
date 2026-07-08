@@ -65,7 +65,7 @@ public class BucketDispenseBehavior extends OptionalDispenseItemBehavior {
 				return this.consumeWithRemainder(source, stack, usedStack);
 			}
 		} else {
-			if (!FluidUtil.tryPickupFluid(handler, null, source.level(), pos, facing.getOpposite()).isEmpty()) {
+			if (!FluidUtil.tryPickupFluid(handler, null, source.level(), pos, facing.getOpposite(), null).isEmpty()) {
 				var stack0 = ItemUtil.getStack(containingHandler, 0);
 				var stack1 = ItemUtil.getStack(containingHandler, 1);
 
@@ -111,7 +111,7 @@ public class BucketDispenseBehavior extends OptionalDispenseItemBehavior {
 	}
 
 	private ItemStack dispenseFluid(BlockSource source, ItemStack stack, ServerLevel level, BlockPos pos, ItemStacksResourceHandler containingHandler, ResourceHandler<FluidResource> handler) {
-		if (!FluidUtil.tryPlaceFluid(handler, null, level, InteractionHand.MAIN_HAND, pos).isEmpty()) {
+		if (!FluidUtil.tryPlaceFluid(handler, null, level, pos, false, null).isEmpty()) {
 			var stack0 = ItemUtil.getStack(containingHandler, 0);
 			var stack1 = ItemUtil.getStack(containingHandler, 1);
 

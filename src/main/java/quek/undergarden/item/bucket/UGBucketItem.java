@@ -17,7 +17,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.cow.Cow;
+import net.minecraft.world.entity.animal.fish.Salmon;
 import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
@@ -48,6 +50,7 @@ import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.fluid.FluidUtil;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGDataComponents;
 
@@ -110,62 +113,70 @@ public class UGBucketItem extends Item {
 
 		BlockHitResult blockHitResult = getPlayerPOVHitResult(level, player, isEmpty ? ClipContext.Fluid.SOURCE_ONLY : ClipContext.Fluid.NONE);
 		if (blockHitResult.getType() == HitResult.Type.BLOCK) {
-			BlockPos hitBlockPos = blockHitResult.getBlockPos();
-			BlockState hitBlockState = level.getBlockState(hitBlockPos);
-			Direction hitDirection = blockHitResult.getDirection();
-			BlockPos relativeBlockPos = hitBlockPos.relative(hitDirection);
-			if (isEmpty) {
-				//pickup fluid interaction
-				InteractionResult pickup = this.tryPickupFluid(level, player, hand);
-				if (pickup.consumesAction()) {
-					return pickup;
-				}
-				//pickup block interaction
-				if (hitBlockState.getBlock() instanceof BucketPickup bucketPickup && !(hitBlockState.getBlock() instanceof LiquidBlock)) {
-					var resultStack = bucketPickup.pickupBlock(player, level, hitBlockPos, hitBlockState);
-					if (!resultStack.isEmpty()) {
-						player.awardStat(Stats.ITEM_USED.get(this));
-						bucketPickup.getPickupSound(hitBlockState).ifPresent(event -> player.playSound(event, 1.0F, 1.0F));
-						level.gameEvent(player, GameEvent.FLUID_PICKUP, hitBlockPos);
-						ItemStack workBucket = stack.copyWithCount(1);
-						if (resultStack.getItem() instanceof BucketItem bucket && bucket.content != Fluids.EMPTY) {
-							workBucket.set(UGDataComponents.STORED_FLUID, SimpleFluidContent.copyOf(new FluidStack(bucket.content, FluidType.BUCKET_VOLUME)));
-						} else {
-							workBucket.set(UGDataComponents.STORED_BLOCK, hitBlockState);
-						}
-						if (!level.isClientSide()) {
-							CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, resultStack);
-						}
-						var result = ItemUtils.createFilledResult(stack, player, workBucket);
-						return InteractionResult.SUCCESS.heldItemTransformedTo(result);
+			try (var tx = Transaction.openRoot()) {
+				BlockPos hitBlockPos = blockHitResult.getBlockPos();
+				BlockState hitBlockState = level.getBlockState(hitBlockPos);
+				Direction hitDirection = blockHitResult.getDirection();
+				BlockPos relativeBlockPos = hitBlockPos.relative(hitDirection);
+				if (isEmpty) {
+					//pickup fluid interaction
+					InteractionResult pickup = this.tryPickupFluid(level, player, hand, tx);
+					if (pickup.consumesAction()) {
+						tx.commit();
+						return pickup;
 					}
-				}
-				//entity interaction is handled in interactLivingEntity below
-			} else {
-				//place fluid interaction
-				if (hasFluid(stack)) {
-					InteractionResult place = this.tryPlaceFluid(stack, level, player, hand);
-					if (place.consumesAction()) {
-						//place entity if exists
-						if (getBucketedEntity(stack).isPresent()) {
-							ItemStack emptyBucket = this.spawnEntityFromBucket(player, level, stack, relativeBlockPos, !player.hasInfiniteMaterials());
-							return InteractionResult.SUCCESS.heldItemTransformedTo(emptyBucket);
+					//pickup block interaction
+					if (hitBlockState.getBlock() instanceof BucketPickup bucketPickup && !(hitBlockState.getBlock() instanceof LiquidBlock)) {
+						var resultStack = bucketPickup.pickupBlock(player, level, hitBlockPos, hitBlockState);
+						if (!resultStack.isEmpty()) {
+							player.awardStat(Stats.ITEM_USED.get(this));
+							bucketPickup.getPickupSound(hitBlockState).ifPresent(event -> player.playSound(event, 1.0F, 1.0F));
+							level.gameEvent(player, GameEvent.FLUID_PICKUP, hitBlockPos);
+							ItemStack workBucket = stack.copyWithCount(1);
+							if (resultStack.getItem() instanceof BucketItem bucket && bucket.content != Fluids.EMPTY) {
+								workBucket.set(UGDataComponents.STORED_FLUID, SimpleFluidContent.copyOf(new FluidStack(bucket.content, FluidType.BUCKET_VOLUME)));
+							} else {
+								workBucket.set(UGDataComponents.STORED_BLOCK, hitBlockState);
+							}
+							if (!level.isClientSide()) {
+								CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, resultStack);
+							}
+							var result = ItemUtils.createFilledResult(stack, player, workBucket);
+							tx.commit();
+							return InteractionResult.SUCCESS.heldItemTransformedTo(result);
 						}
-						return place;
 					}
-				} else if (getBucketedEntity(stack).isPresent()) {
-					//place entity interaction
-					ItemStack emptyBucket = this.spawnEntityFromBucket(player, level, stack, relativeBlockPos, !player.hasInfiniteMaterials());
-					return InteractionResult.SUCCESS.heldItemTransformedTo(emptyBucket);
-				} else if (containsBlock(stack)) {
-					//place block interaction
-					BlockState block = stack.get(UGDataComponents.STORED_BLOCK);
-					if (block != null) {
-						var workBucket = stack.copy();
-						InteractionResult interactionResult = block.getBlock().asItem().useOn(new UseOnContext(player, hand, blockHitResult));
-						if (interactionResult.consumesAction()) {
-							if (!player.hasInfiniteMaterials()) workBucket.remove(UGDataComponents.STORED_BLOCK);
-							return InteractionResult.SUCCESS.heldItemTransformedTo(workBucket);
+					//entity interaction is handled in interactLivingEntity below
+				} else {
+					//place fluid interaction
+					if (hasFluid(stack)) {
+						InteractionResult place = this.tryPlaceFluid(stack, level, player, hand, tx);
+						if (place.consumesAction()) {
+							//only commit in survival. We dont want the bucket stack to be processed and emptied in creative
+							if (!player.hasInfiniteMaterials()){
+								tx.commit();
+							}
+							//place entity if exists
+							if (getBucketedEntity(stack).isPresent()) {
+								ItemStack emptyBucket = this.spawnEntityFromBucket(player, level, stack, relativeBlockPos, !player.hasInfiniteMaterials());
+								return InteractionResult.SUCCESS.heldItemTransformedTo(emptyBucket);
+							}
+							return place;
+						}
+					} else if (getBucketedEntity(stack).isPresent()) {
+						//place entity interaction
+						ItemStack emptyBucket = this.spawnEntityFromBucket(player, level, stack, relativeBlockPos, !player.hasInfiniteMaterials());
+						return InteractionResult.SUCCESS.heldItemTransformedTo(emptyBucket);
+					} else if (containsBlock(stack)) {
+						//place block interaction
+						BlockState block = stack.get(UGDataComponents.STORED_BLOCK);
+						if (block != null) {
+							var workBucket = stack.copy();
+							InteractionResult interactionResult = block.getBlock().asItem().useOn(new UseOnContext(player, hand, blockHitResult));
+							if (interactionResult.consumesAction()) {
+								if (!player.hasInfiniteMaterials()) workBucket.remove(UGDataComponents.STORED_BLOCK);
+								return InteractionResult.SUCCESS.heldItemTransformedTo(workBucket);
+							}
 						}
 					}
 				}
@@ -208,7 +219,13 @@ public class UGBucketItem extends Item {
 					serverLevel.gameEvent(player, GameEvent.ENTITY_PLACE, pos);
 				}
 				ItemStack workBucket = stack.copy();
-				if (removeTag) workBucket.remove(DataComponents.BUCKET_ENTITY_DATA);
+				if (removeTag) {
+					workBucket.remove(DataComponents.BUCKET_ENTITY_DATA);
+					//TODO figure out a way to generalize this in the future. I worry more and more mobs are gonna start using components like this
+					if (entity instanceof Salmon) {
+						workBucket.remove(DataComponents.SALMON_SIZE);
+					}
+				}
 				return workBucket;
 			}
 		}
@@ -249,7 +266,13 @@ public class UGBucketItem extends Item {
 						if (id != null) {
 							CustomData.update(DataComponents.BUCKET_ENTITY_DATA, workBucket, tag -> tag.putString("id", id));
 						}
-						player.setItemInHand(hand, workBucket);
+						if (!player.hasInfiniteMaterials()) {
+							player.setItemInHand(hand, workBucket);
+						} else {
+							if (!player.getInventory().contains(workBucket)) {
+								player.getInventory().add(workBucket);
+							}
+						}
 						if (player instanceof ServerPlayer sp) {
 							CriteriaTriggers.FILLED_BUCKET.trigger(sp, bucketStack);
 						}
@@ -264,7 +287,7 @@ public class UGBucketItem extends Item {
 		}
 	}
 
-	private InteractionResult tryPlaceFluid(ItemStack stack, Level level, Player player, InteractionHand hand) {
+	private InteractionResult tryPlaceFluid(ItemStack stack, Level level, Player player, InteractionHand hand, TransactionContext context) {
 		if (stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY).getAmount() < FluidType.BUCKET_VOLUME)
 			return InteractionResult.PASS;
 
@@ -277,13 +300,18 @@ public class UGBucketItem extends Item {
 			var targetPos = pos.relative(trace.getDirection());
 
 			if (player.mayUseItemAt(targetPos, trace.getDirection().getOpposite(), stack)) {
-				var result = FluidUtil.tryPlaceFluid(createHandler(player, hand), player, level, hand, targetPos);
+				var result = FluidUtil.tryPlaceFluid(createHandler(player, hand), player, level, targetPos, true, context);
 				if (!result.isEmpty()) {
 					if (player instanceof ServerPlayer sp) {
 						CriteriaTriggers.PLACED_BLOCK.trigger(sp, targetPos, stack);
 					}
 
 					player.awardStat(Stats.ITEM_USED.get(this));
+
+					if (player.hasInfiniteMaterials()) {
+						FluidUtil.triggerSoundAndGameEvent(FluidResource.of(result), level, pos.getCenter(), player, false);
+					}
+
 					return InteractionResult.SUCCESS;
 				}
 			}
@@ -292,7 +320,7 @@ public class UGBucketItem extends Item {
 		return InteractionResult.FAIL;
 	}
 
-	private InteractionResult tryPickupFluid(Level level, Player player, InteractionHand hand) {
+	private InteractionResult tryPickupFluid(Level level, Player player, InteractionHand hand, TransactionContext context) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (!isBucketEmpty(stack))
 			return InteractionResult.PASS;
@@ -305,8 +333,7 @@ public class UGBucketItem extends Item {
 		if (level.mayInteract(player, pos)) {
 			var direction = trace.getDirection();
 			if (player.mayUseItemAt(pos, direction, stack)) {
-				var result = FluidUtil.tryPickupFluid(createHandler(player, hand), player, level, pos, direction);
-
+				var result = FluidUtil.tryPickupFluid(createHandler(player, hand), player, level, pos, direction, context);
 				if (!result.isEmpty()) {
 					if (!level.isClientSide()) {
 						CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, stack);
