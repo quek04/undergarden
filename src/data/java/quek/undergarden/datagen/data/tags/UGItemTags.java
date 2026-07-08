@@ -122,7 +122,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.CROPS).addTag(UGTags.Items.CROPS_GLOOMGOURD);
 		tag(Tags.Items.FOODS).add(UGItems.GOO_BALL.get(), UGItems.BLOOD_GLOBULE.get());
 		tag(Tags.Items.FOODS_FRUIT).add(UGItems.DROOPFRUIT.get());
-		tag(Tags.Items.FOODS_VEGETABLE).add(UGItems.UNDERBEANS.get(), UGItems.ROASTED_UNDERBEANS.get());
+		tag(Tags.Items.FOODS_VEGETABLE).add(UGItems.UNDERBEANS.get(), UGItems.ROASTED_UNDERBEANS.get(), UGItems.ROGDORIUM_INFUSED_UNDERBEANS.get());
 		tag(Tags.Items.FOODS_BERRY).add(UGItems.BLISTERBERRY.get(), UGItems.ROTTEN_BLISTERBERRY.get());
 		tag(Tags.Items.FOODS_RAW_MEAT).add(UGItems.RAW_DWELLER_MEAT.get(), UGItems.RAW_GLOOMPER_LEG.get());
 		tag(Tags.Items.FOODS_COOKED_MEAT).add(UGItems.DWELLER_STEAK.get(), UGItems.GLOOMPER_LEG.get());

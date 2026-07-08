@@ -1,6 +1,8 @@
 package quek.undergarden.datagen.data.tags;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.tags.BlockTags;
@@ -118,7 +120,7 @@ public class UGBlockTags extends BlockTagsProvider {
 
 		//vanilla
 		//tags are ordered the same way they are in VanillaBlockTagsProvider to hopefully reduce the pain of finding new tags they add
-		tag(BlockTags.ENDERMAN_HOLDABLE).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get(), UGBlocks.INK_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.PUFF_MUSHROOM.get());
+		tag(BlockTags.ENDERMAN_HOLDABLE).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get(), UGBlocks.INK_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.PUFF_MUSHROOM.get(), UGBlocks.BOOMGOURD.get());
 		tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), UGBlocks.POTTED_PUFF_MUSHROOM.get(), UGBlocks.POTTED_GRONGLE_SAPLING.get(), UGBlocks.POTTED_AMOROUS_BRISTLE.get(), UGBlocks.POTTED_MISERABELL.get(), UGBlocks.POTTED_BUTTERBUNCH.get());
 		tag(BlockTags.STONE_PRESSURE_PLATES).add(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get(), UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get(), UGBlocks.TREMBLECRUST_PRESSURE_PLATE.get(), UGBlocks.DREADROCK_PRESSURE_PLATE.get());
 		tag(BlockTags.VALID_SPAWN).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get());
@@ -151,7 +153,8 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.INK_MUSHROOM_CAP.get(),
 			UGBlocks.BLOOD_MUSHROOM_CAP.get(),
 			UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(),
-			UGBlocks.BLOOD_MUSHROOM_STEM.get()
+			UGBlocks.BLOOD_MUSHROOM_STEM.get(),
+			UGBlocks.DENIZEN_TOTEM.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_HOE).add(UGBlocks.HANGING_GRONGLE_LEAVES.get());
 		tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
@@ -335,6 +338,7 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(BlockTags.SUPPORTS_BIG_DRIPLEAF).add(UGBlocks.DEEPSOIL_FARMLAND.get());
 		tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER).add(UGBlocks.DEEPSOIL_FARMLAND.get());
 		tag(BlockTags.GROWS_CROPS).add(UGBlocks.DEEPSOIL_FARMLAND.get());
+		this.tag(BlockTags.REPLACEABLE).addAll(provider.lookupOrThrow(Registries.BLOCK).listElements().filter(ref -> ref.getKey().identifier().getNamespace().equals(Undergarden.MODID)).map(Holder.Reference::value).filter(b -> b.defaultBlockState().canBeReplaced()));
 		tag(BlockTags.MAINTAINS_FARMLAND).add(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 		tag(BlockTags.HAPPY_GHAST_AVOIDS).add(UGBlocks.BLISTERBERRY_BUSH.get());
 	}

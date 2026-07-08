@@ -796,49 +796,127 @@ public class UGLang extends UGLangProvider {
 
 		add("emi.category.undergarden.infusing", "Infusing");
 
-		addEmiItemTag(UGTags.Items.SLINGSHOT_ENCHANTABLE, "Slingshot Enchantables");
+		add(UGTags.Blocks.BASE_STONE_UNDERGARDEN, "Base Undergarden Stones");
+		add(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES, "Depthrock Ore Replaceables");
+		add(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES, "Shiverstone Ore Replaceables");
+		add(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES, "Dreadrock Ore Replaceables");
+		add(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES, "Tremblecrust Ore Replaceables");
+		add(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES, "Undergarden Cave Replaceables");
+		add(UGTags.Blocks.PORTAL_FRAME_BLOCKS, "Undergarden Portal Frame Blocks");
+		add(UGTags.Blocks.SMOGSTEM_LOGS, "Smogstem Logs");
+		add(UGTags.Blocks.WIGGLEWOOD_LOGS, "Wigglewood Logs");
+		add(UGTags.Blocks.GRONGLE_LOGS, "Grongle Logs");
+		add(UGTags.Blocks.MUNCHER_BREAKABLES, "Muncher Breakable Blocks");
 
-		addEmiItemTag(UGTags.Items.CLOGGRUM_ITEMS, "Cloggrum Items");
-		addEmiItemTag(UGTags.Items.FROSTSTEEL_ITEMS, "Froststeel Items");
-		addEmiItemTag(UGTags.Items.UTHERIUM_ITEMS, "Utherium Items");
-		addEmiItemTag(UGTags.Items.SMOGSTEM_LOGS, "Smogstem Logs");
-		addEmiItemTag(UGTags.Items.WIGGLEWOOD_LOGS, "Wigglewood Logs");
-		addEmiItemTag(UGTags.Items.GRONGLE_LOGS, "Grongle Logs");
-		addEmiItemTag(UGTags.Items.INFUSER_UTHERIUM_FUELS, "Infuser Utherium Fuels");
-		addEmiItemTag(UGTags.Items.INFUSER_ROGDORIUM_FUELS, "Infuser Rogdorium Fuels");
+		add(UGTags.Blocks.SCINTLING_SPAWNABLE_ON, "Scintling Spawnable");
+		add(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON, "S'mog Spawnable");
+		add(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON, "Greater Dweller Spawnable");
 
-		addEmiCommonItemTag(UGTags.Items.RAW_MATERIALS_CLOGGRUM, "Raw Cloggrum Materials");
-		addEmiCommonItemTag(UGTags.Items.RAW_MATERIALS_FROSTSTEEL, "Raw Froststeel Materials");
+		add(UGTags.Blocks.SUPPORTS_THORNREED, "Thornweed Supporting");
+		add(UGTags.Blocks.SUPPORTS_THORNREED_ADJACENTLY, "Supports Thornweed Adjacently");
+		add(UGTags.Blocks.SUPPORTS_TWISTYBUSH, "Twistybush Supporting");
 
-		addEmiCommonItemTag(UGTags.Items.INGOTS_CLOGGRUM, "Cloggrum Ingots");
-		addEmiCommonItemTag(UGTags.Items.INGOTS_FROSTSTEEL, "Froststeel Ingots");
-		addEmiCommonItemTag(UGTags.Items.GEMS_UTHERIUM, "Utherium Gems");
-		addEmiCommonItemTag(UGTags.Items.GEMS_REGALIUM, "Regalium Gems");
-		addEmiCommonItemTag(UGTags.Items.INGOTS_ROGDORIUM, "Rogdorium Ingots");
-		addEmiCommonItemTag(UGTags.Items.INGOTS_FORGOTTEN_METAL, "Forgotten Ingots");
+		add(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL, "Needs Forgotten Tool");
+		add(UGTags.Blocks.INCORRECT_FOR_FORGOTTEN_TOOL, "Incorrect for Forgotten Tool");
 
-		addEmiCommonItemTag(UGTags.Items.NUGGETS_CLOGGRUM, "Cloggrum Nuggets");
-		addEmiCommonItemTag(UGTags.Items.NUGGETS_FROSTSTEEL, "Froststeel Nuggets");
-		addEmiCommonItemTag(UGTags.Items.NUGGETS_ROGDORIUM, "Rogdorium Nuggets");
-		addEmiCommonItemTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL, "Forgotten Nuggets");
+		add(UGTags.Blocks.BARS_CLOGGRUM, "Cloggrum Bars");
+		add(UGTags.Blocks.ORES_CLOGGRUM, "Cloggrum Ores");
+		add(UGTags.Blocks.ORES_FROSTSTEEL, "Froststeel Ores");
+		add(UGTags.Blocks.ORES_UTHERIUM, "Utherium Ores");
+		add(UGTags.Blocks.ORES_REGALIUM, "Regalium Ores");
+		add(UGTags.Blocks.ORES_ROGDORIUM, "Rogdorium Ores");
 
-		addEmiCommonItemTag(UGTags.Items.ORES_CLOGGRUM, "Cloggrum Ores");
-		addEmiCommonItemTag(UGTags.Items.ORES_FROSTSTEEL, "Froststeel Ores");
-		addEmiCommonItemTag(UGTags.Items.ORES_UTHERIUM, "Utherium Ores");
-		addEmiCommonItemTag(UGTags.Items.ORES_REGALIUM, "Regalium Ores");
-		addEmiCommonItemTag(UGTags.Items.ORES_ROGDORIUM, "Rogdorium Ores");
+		add(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM, "Cloggrum Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL, "Froststeel Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM, "Utherium Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM, "Regalium Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM, "Rogdorium Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL, "Forgotten Storage Blocks");
 
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_CLOGGRUM, "Cloggrum Storage Blocks");
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL, "Froststeel Storage Blocks");
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_UTHERIUM, "Utherium Storage Blocks");
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_REGALIUM, "Regalium Storage Blocks");
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_ROGDORIUM, "Rogdorium Storage Blocks");
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL, "Forgotten Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM, "Raw Cloggrum Storage Blocks");
+		add(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
 
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM, "Raw Cloggrum Storage Blocks");
-		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
+		add(UGTags.Blocks.DEPTHROCK_GROUND, "Depthrock Ore Ground");
+		add(UGTags.Blocks.DEPTHROCK_ORES, "Depthrock Ores");
+		add(UGTags.Blocks.SHIVERSTONE_GROUND, "Shiverstone Ore Ground");
+		add(UGTags.Blocks.SHIVERSTONE_ORES, "Shiverstone Ores");
+		add(UGTags.Blocks.DREADROCK_GROUND, "Dreadrock Ore Ground");
+		add(UGTags.Blocks.DREADROCK_ORES, "Dreadrock Ores");
+		add(UGTags.Blocks.TREMBLECRUST_GROUND, "Tremblecrust Ore Ground");
+		add(UGTags.Blocks.TREMBLECRUST_ORES, "Tremblecrust Ores");
 
-		addEmiFluidTag(UGTags.Fluids.VIRULENT, "Virulent Mix");
+
+		add(UGTags.Items.SLINGSHOT_ENCHANTABLE, "Slingshot Enchantables");
+
+		add(UGTags.Items.CLOGGRUM_ITEMS, "Cloggrum Items");
+		add(UGTags.Items.FROSTSTEEL_ITEMS, "Froststeel Items");
+		add(UGTags.Items.UTHERIUM_ITEMS, "Utherium Items");
+		add(UGTags.Items.SMOGSTEM_LOGS, "Smogstem Logs");
+		add(UGTags.Items.WIGGLEWOOD_LOGS, "Wigglewood Logs");
+		add(UGTags.Items.GRONGLE_LOGS, "Grongle Logs");
+		add(UGTags.Items.INFUSER_UTHERIUM_FUELS, "Infuser Utherium Fuels");
+		add(UGTags.Items.INFUSER_ROGDORIUM_FUELS, "Infuser Rogdorium Fuels");
+		add(UGTags.Items.ACCELERATED_DREADROCK_BREAKING, "Accelerates Dreadrock Breaking");
+
+		add(UGTags.Items.CLOGGRUM_TOOL_MATERIALS, "Cloggrum Tool Materials");
+		add(UGTags.Items.FROSTSTEEL_TOOL_MATERIALS, "Froststeel Tool Materials");
+		add(UGTags.Items.UTHERIC_TOOL_MATERIALS, "Utheric Tool Materials");
+		add(UGTags.Items.FORGOTTEN_TOOL_MATERIALS, "Forgotten Tool Materials");
+
+		add(UGTags.Items.REPAIRS_CLOGGRUM_ARMOR, "Repairs Cloggrum Armor");
+		add(UGTags.Items.REPAIRS_FROSTSTEEL_ARMOR, "Repairs Froststeel Armor");
+		add(UGTags.Items.REPAIRS_UTHERIC_ARMOR, "Repairs Utheric Armor");
+		add(UGTags.Items.REPAIRS_ANCIENT_ARMOR, "Repairs Ancient Armor");
+
+		add(UGTags.Items.BRUTE_FOOD, "Brute Foods");
+		add(UGTags.Items.DWELLER_FOOD, "Dweller Foods");
+		add(UGTags.Items.GREATER_DWELLER_FOOD, "Greater Dweller Foods");
+		add(UGTags.Items.GLOOMPER_FOOD, "Gloomper Foods");
+		add(UGTags.Items.MOG_FOOD, "Mog Foods");
+		add(UGTags.Items.SCINTLING_FOOD, "Scintling Foods");
+
+		add(UGTags.Items.DWELLER_TEMPT_ITEMS, "Dweller Tempt Items");
+		add(UGTags.Items.DWELLER_GROWTH_ITEMS, "Dweller Growth Items");
+
+		add(UGTags.Items.RAW_MATERIALS_CLOGGRUM, "Raw Cloggrum Materials");
+		add(UGTags.Items.RAW_MATERIALS_FROSTSTEEL, "Raw Froststeel Materials");
+
+		add(UGTags.Items.INGOTS_CLOGGRUM, "Cloggrum Ingots");
+		add(UGTags.Items.INGOTS_FROSTSTEEL, "Froststeel Ingots");
+		add(UGTags.Items.GEMS_UTHERIUM, "Utherium Gems");
+		add(UGTags.Items.GEMS_REGALIUM, "Regalium Gems");
+		add(UGTags.Items.INGOTS_ROGDORIUM, "Rogdorium Ingots");
+		add(UGTags.Items.INGOTS_FORGOTTEN_METAL, "Forgotten Ingots");
+
+		add(UGTags.Items.NUGGETS_CLOGGRUM, "Cloggrum Nuggets");
+		add(UGTags.Items.NUGGETS_FROSTSTEEL, "Froststeel Nuggets");
+		add(UGTags.Items.NUGGETS_ROGDORIUM, "Rogdorium Nuggets");
+		add(UGTags.Items.NUGGETS_FORGOTTEN_METAL, "Forgotten Nuggets");
+
+		add(UGTags.Items.ORES_CLOGGRUM, "Cloggrum Ores");
+		add(UGTags.Items.ORES_FROSTSTEEL, "Froststeel Ores");
+		add(UGTags.Items.ORES_UTHERIUM, "Utherium Ores");
+		add(UGTags.Items.ORES_REGALIUM, "Regalium Ores");
+		add(UGTags.Items.ORES_ROGDORIUM, "Rogdorium Ores");
+
+		add(UGTags.Items.STORAGE_BLOCKS_CLOGGRUM, "Cloggrum Storage Blocks");
+		add(UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL, "Froststeel Storage Blocks");
+		add(UGTags.Items.STORAGE_BLOCKS_UTHERIUM, "Utherium Storage Blocks");
+		add(UGTags.Items.STORAGE_BLOCKS_REGALIUM, "Regalium Storage Blocks");
+		add(UGTags.Items.STORAGE_BLOCKS_ROGDORIUM, "Rogdorium Storage Blocks");
+		add(UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL, "Forgotten Storage Blocks");
+
+		add(UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM, "Raw Cloggrum Storage Blocks");
+		add(UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
+
+		add(UGTags.Items.BARS_CLOGGRUM, "Cloggrum Bars");
+		add(UGTags.Items.CROPS_GLOOMGOURD, "Gloomgourd Crops");
+		add(UGTags.Items.SEEDS_GLOOMGOURD, "Gloomgourd Seeds");
+		add(UGTags.Items.TOOLS_JAVELIN, "Javelins");
+		add(UGTags.Items.TOOLS_BATTLEAXE, "Battleaxes");
+
+		add(UGTags.Fluids.VIRULENT, "Virulent Mix");
+		add(UGTags.Fluids.SUPPORTS_THORNREED_ADJACENTLY, "Supports Thornweed");
 
 		this.add("commands.undergarden.infection.success.single", "Set infection to %s on %s");
 		this.add("commands.undergarden.infection.success.multiple", "Set infection to %s on %s targets");
