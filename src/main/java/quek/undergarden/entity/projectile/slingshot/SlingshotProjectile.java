@@ -99,7 +99,7 @@ public final class SlingshotProjectile extends ThrowableItemProjectile {
 			if (finishedHit) {
 				ammo.hitSound().ifPresent(event -> this.playSound(event.value()));
 				level.broadcastEntityEvent(this, (byte) 3);
-
+			} else {
 				if (this.getOwner() instanceof Player player && !player.isCreative() && ammo.dropAsItem()) {
 					this.spawnAtLocation(level, this.getItem());
 				}

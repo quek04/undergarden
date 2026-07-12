@@ -39,14 +39,12 @@ public record PlaceBlockHitEffect(BlockState stateToMimic) implements HitEffect 
 		if (result instanceof BlockHitResult hitResult) {
 			Direction direction = hitResult.getDirection();
 			BlockPos placePos = hitResult.getBlockPos().relative(direction);
-			if (ammoStack.getItem() instanceof BlockItem block && level.getBlockState(placePos).canBeReplaced()) {
-				BlockState placeState = block.getBlock().withPropertiesOf(this.stateToMimic()).trySetValue(BlockStateProperties.FACING, direction);
+			if (level.getBlockState(placePos).canBeReplaced()) {
+				BlockState placeState = this.stateToMimic().trySetValue(BlockStateProperties.FACING, direction);
 				if (placeState.canSurvive(level, placePos)) {
 					level.setBlock(placePos, placeState, 2);
 					return true;
 				}
-			} else {
-				projectile.spawnAtLocation(level, ammoStack);
 			}
 		}
 		return false;
