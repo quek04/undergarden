@@ -141,7 +141,10 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
-		if (this.isAlive() && !this.hasCustomer() && this.inUndergarden()) {
+		if (this.isAggressive()) {
+			this.playSound(UGSoundEvents.STONEBORN_ANGRY.get());
+			return InteractionResult.SUCCESS;
+		} else if (this.isAlive() && !this.hasCustomer() && this.inUndergarden()) {
 			if (!this.level().isClientSide()) {
 				if (!this.getOffers().isEmpty()) {
 
