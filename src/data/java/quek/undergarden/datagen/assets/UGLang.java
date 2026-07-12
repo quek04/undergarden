@@ -473,6 +473,14 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.JAVELIN, "Javelin");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
 		addEntityType(UGEntityTypes.ROTBELCHER_PROJECTILE, "Rotbelcher Projectile");
+		addEntityType(UGEntityTypes.WIGGLEWOOD_BOAT, "Wigglewood Boat");
+		addEntityType(UGEntityTypes.WIGGLEWOOD_CHEST_BOAT, "Wigglewood Boat with Chest");
+		addEntityType(UGEntityTypes.SMOGSTEM_BOAT, "Smogstem Boat");
+		addEntityType(UGEntityTypes.SMOGSTEM_CHEST_BOAT, "Smogstem Boat with Chest");
+		addEntityType(UGEntityTypes.GRONGLE_BOAT, "Grongle Boat");
+		addEntityType(UGEntityTypes.GRONGLE_CHEST_BOAT, "Grongle Boat with Chest");
+		addEntityType(UGEntityTypes.ANCIENT_ROOT_BOAT, "Ancient Root Boat");
+		addEntityType(UGEntityTypes.ANCIENT_ROOT_CHEST_BOAT, "Ancient Root Boat with Chest");
 
 		addEntityAndEgg(UGEntityTypes.MINION, "Forgotten Minion");
 		addEntityAndEgg(UGEntityTypes.DWELLER, "Dweller");
