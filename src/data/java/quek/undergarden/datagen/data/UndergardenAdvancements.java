@@ -317,7 +317,7 @@ public class UndergardenAdvancements implements AdvancementSubProvider {
 				true,
 				false
 			)
-			.addCriterion("has_gwibling_bucket", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.GWIBLING_BUCKET))
+			.addCriterion("has_gwibling_bucket", FilledBucketTrigger.TriggerInstance.filledBucket(ItemPredicate.Builder.item().of(itemGetter, UGItems.GWIBLING_BUCKET)))
 			.save(consumer, "undergarden:undergarden/catch_gwibling");
 
 		AdvancementHolder kill_rotling = Advancement.Builder.advancement()

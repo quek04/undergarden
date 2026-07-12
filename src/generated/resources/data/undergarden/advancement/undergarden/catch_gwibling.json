@@ -3,13 +3,11 @@
   "criteria": {
     "has_gwibling_bucket": {
       "conditions": {
-        "items": [
-          {
-            "items": "undergarden:gwibling_bucket"
-          }
-        ]
+        "item": {
+          "items": "undergarden:gwibling_bucket"
+        }
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:filled_bucket"
     }
   },
   "display": {
