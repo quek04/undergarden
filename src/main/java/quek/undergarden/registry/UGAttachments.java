@@ -11,5 +11,5 @@ public class UGAttachments {
 
 	public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Undergarden.MODID);
 
-	public static final DeferredHolder<AttachmentType<?>, AttachmentType<UndergardenData>> UNDERGARDEN_DATA = ATTACHMENTS.register("undergarden_data", () -> AttachmentType.builder(UndergardenData::new).serialize(new UndergardenData()).copyHandler(new UndergardenData()).sync(new UndergardenData()).build());
+	public static final DeferredHolder<AttachmentType<?>, AttachmentType<UndergardenData>> UNDERGARDEN_DATA = ATTACHMENTS.register("undergarden_data", () -> AttachmentType.builder(UndergardenData::new).serialize(new UndergardenData()).copyHandler(new UndergardenData()).sync(new UndergardenData()).copyOnDeath().build());
 }
