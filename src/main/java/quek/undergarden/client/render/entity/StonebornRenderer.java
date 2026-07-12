@@ -2,6 +2,7 @@ package quek.undergarden.client.render.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.resources.Identifier;
@@ -30,6 +31,7 @@ public class StonebornRenderer extends MobRenderer<Stoneborn, StonebornRenderSta
 	@Override
 	public void extractRenderState(Stoneborn entity, StonebornRenderState state, float partialTicks) {
 		super.extractRenderState(entity, state, partialTicks);
+		ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, this.itemModelResolver, partialTicks);
 		state.isShaking = !entity.inUndergarden() && !entity.isNoAi();
 	}
 
