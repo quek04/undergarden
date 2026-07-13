@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_blue_mogmoss": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:blue_mogmoss"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_mogmoss": {
       "conditions": {
         "items": [
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mogmoss"
+      "has_mogmoss",
+      "has_blue_mogmoss"
     ]
   ],
   "rewards": {

@@ -5,8 +5,14 @@
     "minecraft:bowl",
     "undergarden:underbeans",
     "undergarden:underbeans",
-    "undergarden:mogmoss",
-    "undergarden:mogmoss"
+    [
+      "undergarden:mogmoss",
+      "undergarden:blue_mogmoss"
+    ],
+    [
+      "undergarden:mogmoss",
+      "undergarden:blue_mogmoss"
+    ]
   ],
   "result": {
     "id": "undergarden:slop_bowl"

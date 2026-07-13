@@ -3,7 +3,10 @@
   "category": "misc",
   "key": {
     "D": "undergarden:depthrock",
-    "M": "undergarden:mogmoss"
+    "M": [
+      "undergarden:mogmoss",
+      "undergarden:blue_mogmoss"
+    ]
   },
   "pattern": [
     "MMM",
