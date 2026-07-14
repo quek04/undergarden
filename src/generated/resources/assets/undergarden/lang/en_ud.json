@@ -346,7 +346,7 @@
   "commands.undergarden.infection.success.multiple": "sʇǝᵷɹɐʇ %2$s uo %1$s oʇ uoᴉʇɔǝɟuᴉ ʇǝS",
   "commands.undergarden.infection.success.single": "%2$s uo %1$s oʇ uoᴉʇɔǝɟuᴉ ʇǝS",
   "config.undergarden.return_portal_frame_block_id": "ᗡI ʞɔoꞁᗺ ǝɯɐɹℲ ꞁɐʇɹoԀ uɹnʇǝᴚ",
-  "config.undergarden.toggle_undergarden_fog": "ᵷoℲ uǝpɹɐᵷɹǝpu∩ ǝꞁᵷᵷo⟘",
+  "config.undergarden.spawn_in_undergarden": "uǝpɹɐᵷɹǝpu∩ uᴉ uʍɐdS",
   "config.undergarden.toggle_utheric_infection_number_display": "ʎɐꞁdsᴉᗡ ɹǝqɯnN uoᴉʇɔǝɟuI ɔᴉɹǝɥʇ∩ ǝꞁᵷᵷo⟘",
   "config.undergarden.toggle_utheric_infection_overlay": "ʎɐꞁɹǝʌO uoᴉʇɔǝɟuI ɔᴉɹǝɥʇ∩ ǝꞁᵷᵷo⟘",
   "container.undergarden.infuser": "ɹǝsnɟuI",
