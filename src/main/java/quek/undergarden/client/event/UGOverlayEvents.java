@@ -82,7 +82,7 @@ public class UGOverlayEvents {
 				Minecraft minecraft = Minecraft.getInstance();
 				LocalPlayer player = minecraft.player;
 				if (minecraft.options.getCameraType().isFirstPerson() && !minecraft.options.hideGui && player != null) {
-					double vignetteBrightness = (player.getData(UGAttachments.UNDERGARDEN_DATA).uthericInfection() / UthericInfectionEvents.MAX_INFECTION) / 2;
+					double vignetteBrightness = (player.getData(UGAttachments.UNDERGARDEN_DATA).uthericInfection() / UthericInfectionEvents.MAX_INFECTION) / 4;
 					vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
 					guiGraphics.blit(UGRenderTypes.GUI_INFECTION, UTHERIC_INFECTION_OVERLAY, 0, 0, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight(), ARGB.white((float) vignetteBrightness));
 				}
