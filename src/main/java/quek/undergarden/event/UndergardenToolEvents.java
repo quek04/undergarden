@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
@@ -31,11 +31,10 @@ public class UndergardenToolEvents {
 	}
 
 	private static void forgottenAttackEvent(LivingIncomingDamageEvent event) {
-		Entity source = event.getSource().getEntity();
-		float damage = event.getAmount();
-
-		if (source instanceof Player player) {
-			if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
+		if (!event.isCanceled() && event.getSource().getWeaponItem() != null) {
+			float damage = event.getAmount();
+			ItemStack weapon = event.getSource().getWeaponItem();
+			if (weapon.is(UGItems.FORGOTTEN_SWORD) || weapon.is(UGItems.FORGOTTEN_AXE) || weapon.is(UGItems.FORGOTTEN_BATTLEAXE)) {
 				if (BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
 					event.setAmount(damage * 1.5F);
 				}
@@ -44,22 +43,23 @@ public class UndergardenToolEvents {
 	}
 
 	private static void forgottenDigEvent(PlayerEvent.BreakSpeed event) {
-		Player player = event.getEntity();
-		BlockState state = event.getState();
+		if (!event.isCanceled()) {
+			BlockState state = event.getState();
+			ItemStack tool = event.getEntity().getMainHandItem();
 
-		if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SHOVEL.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_HOE.get()) {
-			if (state != null && BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
-				event.setNewSpeed(event.getOriginalSpeed() * 1.5F);
+			if (tool.is(UGItems.FORGOTTEN_PICKAXE) || tool.is(UGItems.FORGOTTEN_AXE) || tool.is(UGItems.FORGOTTEN_SHOVEL) || tool.is(UGItems.FORGOTTEN_HOE)) {
+				if (BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
+					event.setNewSpeed(event.getOriginalSpeed() * 1.5F);
+				}
 			}
 		}
 	}
 
 	private static void utheriumAttackEvent(LivingIncomingDamageEvent event) {
-		Entity source = event.getSource().getEntity();
-		float damage = event.getAmount();
-
-		if (source instanceof Player player) {
-			if (player.getMainHandItem().is(UGItems.UTHERIUM_SWORD.get()) || player.getMainHandItem().is(UGItems.UTHERIUM_AXE.get())) {
+		if (!event.isCanceled() && event.getSource().getWeaponItem() != null) {
+			float damage = event.getAmount();
+			ItemStack weapon = event.getSource().getWeaponItem();
+			if (weapon.is(UGItems.UTHERIUM_SWORD.get()) || weapon.is(UGItems.UTHERIUM_AXE.get())) {
 				if (event.getEntity().getType().is(UGTags.Entities.ROTSPAWN)) {
 					event.setAmount(damage * 1.5F);
 					if (!event.getEntity().level().isClientSide()) {
@@ -71,12 +71,12 @@ public class UndergardenToolEvents {
 	}
 
 	private static void froststeelAttackEvent(LivingIncomingDamageEvent event) {
-		Entity source = event.getSource().getEntity();
-		if (source instanceof Player player) {
-			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get())) {
+		if (!event.isCanceled() && event.getSource().getWeaponItem() != null) {
+			ItemStack weapon = event.getSource().getWeaponItem();
+			if (weapon.is(UGItems.FROSTSTEEL_SWORD.get()) || weapon.is(UGItems.FROSTSTEEL_AXE.get())) {
 				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY, 600, 2, false, false));
 			}
-			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_PICKAXE.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_SHOVEL.get())) {
+			if (weapon.is(UGItems.FROSTSTEEL_PICKAXE.get()) || weapon.is(UGItems.FROSTSTEEL_SHOVEL.get())) {
 				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY, 600, 1, false, false));
 			}
 		}

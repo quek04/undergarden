@@ -65,6 +65,7 @@ import quek.undergarden.client.render.layer.DenizenMaskLayer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.entity.animal.dweller.Dweller;
+import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.*;
@@ -82,6 +83,8 @@ public class UndergardenClientEvents {
 	private static final ResourceLocation UTHERIC_INFECTION_HALF = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/half");
 	private static final ResourceLocation UTHERIC_INFECTION_FULL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/full");
 	private static final ResourceLocation UTHERIC_INFECTION_FULL_LETHAL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/full_lethal");
+
+	public static final ResourceLocation UTHERIC_INFECTION_OVERLAY = Undergarden.prefix("textures/misc/utheric_infection_overlay.png");
 
 	public static void initClientEvents(IEventBus bus) {
 		bus.addListener(UndergardenClientEvents::clientSetup);
@@ -381,14 +384,6 @@ public class UndergardenClientEvents {
 				renderPortalOverlay(guiGraphics, minecraft, window, deltaTracker.getGameTimeDeltaPartialTick(true));
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "carved_gloomgourd_overlay"), (guiGraphics, deltaTracker) -> {
-			Minecraft minecraft = Minecraft.getInstance();
-			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gloomgourd_overlay.png");
-			LocalPlayer player = minecraft.player;
-			if (player != null && player.getInventory().getArmor(3).is(UGBlocks.CARVED_GLOOMGOURD.asItem())) {
-				minecraft.gui.renderTextureOverlay(guiGraphics, overlay, 1.0F);
-			}
-		});
 		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
@@ -396,28 +391,25 @@ public class UndergardenClientEvents {
 				renderUthericInfectionBar(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
+		event.registerBelow(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
 			if (UndergardenConfig.Client.toggle_utheric_infection_overlay.get()) {
 				Minecraft minecraft = Minecraft.getInstance();
 				LocalPlayer player = minecraft.player;
-				ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
-				RenderSystem.disableDepthTest();
-				RenderSystem.depthMask(false);
-				RenderSystem.enableBlend();
-				RenderSystem.blendFuncSeparate(
-					GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-				);
-				if (player != null) {
-					double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
-					vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
-					guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+
+				if (!minecraft.options.hideGui && player != null) {
+					double vignetteBrightness = Mth.clamp(player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION, 0.0F, 1.0F);
+					if (vignetteBrightness > 0.0F) {
+						RenderSystem.disableDepthTest();
+						RenderSystem.depthMask(false);
+						RenderSystem.enableBlend();
+						guiGraphics.setColor((float) vignetteBrightness, (float) vignetteBrightness, (float) vignetteBrightness, (float) vignetteBrightness / 4.0F);
+						guiGraphics.blit(UTHERIC_INFECTION_OVERLAY, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
+						RenderSystem.depthMask(true);
+						RenderSystem.enableDepthTest();
+						guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+						RenderSystem.disableBlend();
+					}
 				}
-				guiGraphics.blit(overlay, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
-				RenderSystem.depthMask(true);
-				RenderSystem.enableDepthTest();
-				guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-				RenderSystem.defaultBlendFunc();
-				RenderSystem.disableBlend();
 			}
 		}));
 	}
@@ -488,6 +480,7 @@ public class UndergardenClientEvents {
 				return new UndergardenBEWLR();
 			}
 		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.DEPTHROCK_POT.asItem(), UGBlocks.GRONGLET.asItem(), UGBlocks.UTHERIC_GRONGLET.asItem(), UGBlocks.ROGDORIC_GRONGLET.asItem());
+		event.registerItem(new CarvedGloomgourdItem.GloomgourdExtension(), UGBlocks.CARVED_GLOOMGOURD.asItem());
 		event.registerFluidType(new IClientFluidTypeExtensions() {
 			@Override
 			public ResourceLocation getStillTexture() {

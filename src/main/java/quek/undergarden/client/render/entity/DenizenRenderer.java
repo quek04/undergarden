@@ -16,7 +16,7 @@ import quek.undergarden.client.render.layer.DenizenEyesLayer;
 import quek.undergarden.entity.monster.denizen.Denizen;
 
 public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidModel<Denizen>> {
-	private final FixedHumanoidModel<Denizen> shortModel = this.getModel();
+	private final FixedHumanoidModel<Denizen> shortModel;
 	private final FixedHumanoidModel<Denizen> tallModel;
 
 	private static final ResourceLocation DENIZEN = Undergarden.prefix("textures/entity/denizen.png");
@@ -24,6 +24,7 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 
 	public DenizenRenderer(EntityRendererProvider.Context context) {
 		super(context, new DenizenModel<>(context.bakeLayer(UGModelLayers.DENIZEN)), 0.5F);
+		this.shortModel = this.model;
 		this.tallModel = new Denizen2Model<>(context.bakeLayer(UGModelLayers.DENIZEN_2));
 		this.addLayer(new DenizenEyesLayer<>(this));
 	}
@@ -38,10 +39,10 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 
 	@Override
 	public void render(Denizen entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-		switch (entity.getVariant()) {
-			case SHORT -> this.model = shortModel;
-			case TALL -> this.model = tallModel;
-		}
+		this.model = switch (entity.getVariant()) {
+			case SHORT -> this.shortModel;
+			case TALL -> this.tallModel;
+		};
 		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
 	}
 
