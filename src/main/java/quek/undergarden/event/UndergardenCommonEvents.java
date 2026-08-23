@@ -84,10 +84,10 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 		bus.addListener(UGCreativeModeTabs::registerBuckets);
+		bus.addListener(UndergardenCommonEvents::addComponentTooltips);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerCommands);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::cancelPlayerFallDamageOnDweller);
@@ -95,7 +95,6 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::addComponentTooltips);
 		NeoForge.EVENT_BUS.addListener(OnDatapackSyncEvent.class, event -> event.sendRecipes(UGRecipeTypes.INFUSING.get()));
 
 //		if (ModList.get().isLoaded("create")) {
@@ -285,42 +284,6 @@ public class UndergardenCommonEvents {
 	private static void tickPortalLogic(PlayerTickEvent.Pre event) {
 		if (event.getEntity().level().isClientSide()) {
 			UndergardenPortalVisuals.handlePortalVisuals(event.getEntity());
-		}
-	}
-
-	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
-		ItemAbility action = event.getItemAbility();
-		BlockState state = event.getState();
-		UseOnContext context = event.getContext();
-		if (!event.isSimulated()) {
-			if (action == ItemAbilities.AXE_STRIP) {
-				if (state.is(UGBlocks.SMOGSTEM_LOG.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.SMOGSTEM_WOOD.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.WIGGLEWOOD_LOG.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.WIGGLEWOOD_WOOD.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.GRONGLE_LOG.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.GRONGLE_WOOD.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().withPropertiesOf(state));
-				}
-			}
-			if (action == ItemAbilities.HOE_TILL && (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir())) {
-				if (state.is(UGBlocks.DEEPTURF_BLOCK.get()) || state.is(UGBlocks.DEEPSOIL.get()) || state.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) || state.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get())) {
-					event.setFinalState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
-				}
-				if (state.is(UGBlocks.COARSE_DEEPSOIL.get())) {
-					event.setFinalState(UGBlocks.DEEPSOIL.get().defaultBlockState());
-				}
-			}
 		}
 	}
 

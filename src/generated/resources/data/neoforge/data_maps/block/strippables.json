@@ -1,0 +1,22 @@
+{
+  "values": {
+    "undergarden:grongle_log": {
+      "stripped_block": "undergarden:stripped_grongle_log"
+    },
+    "undergarden:grongle_wood": {
+      "stripped_block": "undergarden:stripped_grongle_wood"
+    },
+    "undergarden:smogstem_log": {
+      "stripped_block": "undergarden:stripped_smogstem_log"
+    },
+    "undergarden:smogstem_wood": {
+      "stripped_block": "undergarden:stripped_smogstem_wood"
+    },
+    "undergarden:wigglewood_log": {
+      "stripped_block": "undergarden:stripped_wigglewood_log"
+    },
+    "undergarden:wigglewood_wood": {
+      "stripped_block": "undergarden:stripped_wigglewood_wood"
+    }
+  }
+}
