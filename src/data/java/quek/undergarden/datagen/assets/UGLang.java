@@ -152,6 +152,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DEEPSOIL, "Deepsoil");
 		addBlock(UGBlocks.COARSE_DEEPSOIL, "Coarse Deepsoil");
 		addBlock(UGBlocks.DEEPSOIL_FARMLAND, "Deepsoil Farmland");
+		addBlock(UGBlocks.DEAD_WISPYGRASS_BLOCK, "Dead Wispygrass Block");
 		addBlock(UGBlocks.GOO, "Scintling Goo");
 		addBlock(UGBlocks.GOO_BLOCK, "Scintling Goo Block");
 		addBlock(UGBlocks.SMOG_VENT, "Smog Vent");
@@ -177,6 +178,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ASHEN_DEEPTURF, "Ashen Deepturf");
 		addBlock(UGBlocks.FROZEN_DEEPTURF, "Frozen Deepturf");
 		addBlock(UGBlocks.TALL_DEEPTURF, "Tall Deepturf");
+		addBlock(UGBlocks.DEAD_WISPYGRASS, "Dead Wispygrass");
 		addBlock(UGBlocks.SHIMMERWEED, "Shimmerweed");
 		addBlock(UGBlocks.TALL_SHIMMERWEED, "Tall Shimmerweed");
 		addBlock(UGBlocks.POTTED_SHIMMERWEED, "Potted Shimmerweed");
@@ -466,6 +468,8 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.DEPTHS, "Depths");
 		addBiome(UGBiomes.INFECTED_DEPTHS, "Infected Depths");
 		addBiome(UGBiomes.PUFF_MUSHROOM_FOREST, "Puff Mushroom Forest");
+		addBiome(UGBiomes.FIELDS_OF_SORROW, "Fields of Sorrow");
+		addBiome(UGBiomes.HOWLING_PEAKS, "Howling Peaks");
 
 		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
 		addEntityType(UGEntityTypes.SLINGSHOT_PROJECTILE, "Slingshot Projectile");
@@ -805,11 +809,13 @@ public class UGLang extends UGLangProvider {
 		add("emi.category.undergarden.infusing", "Infusing");
 
 		add(UGTags.Blocks.BASE_STONE_UNDERGARDEN, "Base Undergarden Stones");
+		add(UGTags.Blocks.BASE_STONE_OTHERSIDE, "Base Otherside Stones");
 		add(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES, "Depthrock Ore Replaceables");
 		add(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES, "Shiverstone Ore Replaceables");
 		add(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES, "Dreadrock Ore Replaceables");
 		add(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES, "Tremblecrust Ore Replaceables");
 		add(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES, "Undergarden Cave Replaceables");
+		add(UGTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES, "Otherside Cave Replaceables");
 		add(UGTags.Blocks.PORTAL_FRAME_BLOCKS, "Undergarden Portal Frame Blocks");
 		add(UGTags.Blocks.SMOGSTEM_LOGS, "Smogstem Logs");
 		add(UGTags.Blocks.WIGGLEWOOD_LOGS, "Wigglewood Logs");

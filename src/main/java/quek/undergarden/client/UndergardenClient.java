@@ -3,6 +3,7 @@ package quek.undergarden.client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.item.crafting.RecipeMap;
 import org.jspecify.annotations.Nullable;
@@ -18,6 +19,8 @@ public class UndergardenClient {
 	public static final ContextKey<Boolean> CHILLY = new ContextKey<>(Undergarden.prefix("chilly"));
 
 	public static RecipeMap RECIPE_MAP = RecipeMap.EMPTY;
+
+	public static final Identifier OTHERSIDE_SKYBOX = Undergarden.prefix("otherside_skybox");
 
 	public static void playPortalSound() {
 		Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), 1.0F, 1.0F));

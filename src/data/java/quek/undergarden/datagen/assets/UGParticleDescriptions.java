@@ -39,6 +39,7 @@ public class UGParticleDescriptions extends ParticleDescriptionProvider {
 		this.spriteSet(UGParticleTypes.UNDERGARDEN_PORTAL.get(), Identifier.withDefaultNamespace("generic"), 8, false);
 		this.spriteSet(UGParticleTypes.SMOG.get(), Identifier.withDefaultNamespace("big_smoke"), 12, false);
 		this.spriteSet(UGParticleTypes.ROGDORIUM_WISP.get(), Undergarden.prefix("rogdorium_wisp"), 22, false);
+		this.spriteSet(UGParticleTypes.OTHERSIDE_ASH.get(), Identifier.withDefaultNamespace("generic"), 1, false);
 
 		this.spriteSet(UGParticleTypes.TOTEM_BEAM.get(), () -> new Iterator<>() {
 			private int counter = 0;

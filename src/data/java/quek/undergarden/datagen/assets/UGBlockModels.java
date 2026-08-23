@@ -330,6 +330,12 @@ public class UGBlockModels extends BlockModelGenerators {
 
 		this.createCrossBlockWithDefaultItem(UGBlocks.TWISTYBUSH.get(), PlantType.NOT_TINTED);
 
+		this.createCrossBlockWithDefaultItem(UGBlocks.DEAD_WISPYGRASS.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.DEAD_WISPYGRASS_BLOCK.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
+			.get(block)
+			.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.TREMBLECRUST.get())))
+			.create(block, this.modelOutput))))));
+
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE_BRICKS.get(), this::createTrivialCube);

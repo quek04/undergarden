@@ -23,7 +23,9 @@ import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.world.timeline.Timeline;
 import net.minecraft.world.timeline.Timelines;
+import net.neoforged.neoforge.common.world.NeoForgeEnvironmentAttributes;
 import quek.undergarden.Undergarden;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
@@ -35,6 +37,11 @@ public class UGDimensions {
 	public static final ResourceKey<NoiseGeneratorSettings> UNDERGARDEN_NOISE_GEN = ResourceKey.create(Registries.NOISE_SETTINGS, Undergarden.prefix("undergarden"));
 	public static final ResourceKey<DimensionType> UNDERGARDEN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, Undergarden.prefix("undergarden"));
 	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, Undergarden.prefix("undergarden"));
+
+	public static final ResourceKey<Level> OTHERSIDE_LEVEL = ResourceKey.create(Registries.DIMENSION, Undergarden.prefix("otherside"));
+	public static final ResourceKey<NoiseGeneratorSettings> OTHERSIDE_NOISE_GEN = ResourceKey.create(Registries.NOISE_SETTINGS, Undergarden.prefix("otherside"));
+	public static final ResourceKey<DimensionType> OTHERSIDE_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, Undergarden.prefix("otherside"));
+	public static final ResourceKey<LevelStem> OTHERSIDE_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, Undergarden.prefix("otherside"));
 
 	public static void bootstrapType(BootstrapContext<DimensionType> context) {
 		HolderGetter<Timeline> timelines = context.lookup(Registries.TIMELINE);
@@ -71,7 +78,37 @@ public class UGDimensions {
 				.set(EnvironmentAttributes.AMBIENT_SOUNDS, UGBiomes.DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.FIELDS_AMBIENT_ADDITION))
 				.build(),
 			timelines.getOrThrow(UGTags.Timelines.IN_UNDERGARDEN),
-			Optional.empty()));
+			Optional.empty()
+		));
+		context.register(OTHERSIDE_DIM_TYPE, new DimensionType(
+			true, //fixed time
+			true, //skylight
+			false, //ceiling
+			false, //dragon fight
+			1.0D, //coordinate scale
+			0, // Minimum Y Level
+			320, // Height + Min Y = Max Y
+			320, // Logical Height
+			BlockTags.INFINIBURN_OVERWORLD, //infiniburn
+			0.0F, // ambient light
+			new DimensionType.MonsterSettings(UniformInt.of(0, 7), 0),
+			DimensionType.Skybox.OVERWORLD,
+			CardinalLighting.Type.DEFAULT,
+			EnvironmentAttributeMap.builder()
+				.set(NeoForgeEnvironmentAttributes.CUSTOM_SKYBOX, UndergardenClient.OTHERSIDE_SKYBOX)
+				.set(EnvironmentAttributes.FOG_COLOR, 12364199)
+				.set(EnvironmentAttributes.SKY_LIGHT_COLOR, -5480243)
+				.set(EnvironmentAttributes.SKY_COLOR, 8079174)
+				.set(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0.0F)
+				.set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -12630209)
+//				.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.END))
+//				.set(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+				.set(EnvironmentAttributes.BED_RULE, BedRule.EXPLODES)
+				.set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, false)
+				.build(),
+			timelines.getOrThrow(UGTags.Timelines.IN_OTHERSIDE),
+			Optional.empty()
+		));
 	}
 
 	public static void bootstrapStem(BootstrapContext<LevelStem> context) {
@@ -80,6 +117,8 @@ public class UGDimensions {
 		HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
 		context.register(UNDERGARDEN_LEVEL_STEM, new LevelStem(dimTypes.getOrThrow(UNDERGARDEN_DIM_TYPE),
 			new UGNoiseBasedChunkGenerator(UGBiomes.buildBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(UNDERGARDEN_NOISE_GEN))));
+		context.register(OTHERSIDE_LEVEL_STEM, new LevelStem(dimTypes.getOrThrow(OTHERSIDE_DIM_TYPE),
+			new NoiseBasedChunkGenerator(UGBiomes.buildOthersideBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(OTHERSIDE_NOISE_GEN))));
 	}
 
 	public static void bootstrapNoise(BootstrapContext<NoiseGeneratorSettings> context) {
@@ -313,6 +352,90 @@ public class UGDimensions {
 			),
 			List.of(), //spawn targets
 			32,
+			false,
+			false,
+			false,
+			false
+		));
+		context.register(OTHERSIDE_NOISE_GEN, new NoiseGeneratorSettings(
+			NoiseSettings.create(0, 320, 2, 1),
+			UGBlocks.TREMBLECRUST.get().defaultBlockState(),
+			Blocks.AIR.defaultBlockState(),
+			new NoiseRouter(
+				DensityFunctions.zero(), //barrier
+				DensityFunctions.zero(), //fluid level floodedness
+				DensityFunctions.zero(), //fluid level spread
+				DensityFunctions.zero(), //lava
+				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.TEMPERATURE)), //temperature
+				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.VEGETATION)), //vegetation
+				NoiseRouterData.getFunction(functions, NoiseRouterData.CONTINENTS), //continents
+				DensityFunctions.noise(noises.getOrThrow(Noises.EROSION), 2.0D, 1.0D), //erosion
+				NoiseRouterData.getFunction(functions, NoiseRouterData.DEPTH), //depth
+				NoiseRouterData.getFunction(functions, NoiseRouterData.RIDGES), //ridges
+				DensityFunctions.zero(), //initial density
+				DensityFunctions.mul(
+					DensityFunctions.constant(0.64D),
+					DensityFunctions.interpolated(
+						DensityFunctions.blendDensity(
+							DensityFunctions.add(
+								DensityFunctions.constant(-0.234375),
+								DensityFunctions.max(
+									DensityFunctions.mul(
+										DensityFunctions.yClampedGradient(4, 32, 0.0D, 1.0D),
+										DensityFunctions.add(
+											DensityFunctions.constant(0.234375),
+											DensityFunctions.add(
+												DensityFunctions.constant(-23.4375),
+												DensityFunctions.mul(
+													DensityFunctions.yClampedGradient(64, 440, 1.0D, 0.0D),
+													DensityFunctions.add(
+														DensityFunctions.constant(23.4375),
+														BlendedNoise.createUnseeded(0.25D, 0.25D, 80, 160, 4)
+													)
+												)
+											)
+										)
+									),
+									DensityFunctions.mul(
+										DensityFunctions.yClampedGradient(4, 32, 0.0D, 1.0D),
+										DensityFunctions.mul(
+											DensityFunctions.yClampedGradient(64, 256, 1.0D, 0.0D),
+											DensityFunctions.noise(noises.getOrThrow(Noises.EROSION), 2.0D, 1.0D)
+										)
+									)
+								)
+							)
+						)
+					)
+				).squeeze(), //final density
+				DensityFunctions.zero(), //vein toggle
+				DensityFunctions.zero(), //vein ridged
+				DensityFunctions.zero() //vein gap
+			),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.HOWLING_PEAKS), SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())),
+				//mix dead wispygrass into fields of sorrow
+				SurfaceRules.ifTrue(
+					SurfaceRules.isBiome(UGBiomes.FIELDS_OF_SORROW),
+					SurfaceRules.ifTrue(
+						SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
+						SurfaceRules.sequence(
+							SurfaceRules.ifTrue(
+								SurfaceRules.noiseCondition(noises.getOrThrow(Noises.POWDER_SNOW).key(), 0.0D, 1.8D),
+								SurfaceRules.state(UGBlocks.DEAD_WISPYGRASS_BLOCK.get().defaultBlockState())
+							),
+							SurfaceRules.ifTrue(
+								SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
+								SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())
+							),
+							SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())
+						)
+					)
+				),
+				SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())
+			),
+			List.of(),
+			-64,
 			false,
 			false,
 			false,

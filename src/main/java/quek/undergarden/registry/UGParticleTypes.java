@@ -39,6 +39,7 @@ public class UGParticleTypes {
 		}
 	});
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ROGDORIUM_WISP = PARTICLES.register("rogdorium_wisp", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> OTHERSIDE_ASH = PARTICLES.register("otherside_ash", () -> new SimpleParticleType(false));
 
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_BLOOD = PARTICLES.register("dripping_blood", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_BLOOD = PARTICLES.register("falling_blood", () -> new SimpleParticleType(false));

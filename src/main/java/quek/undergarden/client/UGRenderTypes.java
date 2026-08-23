@@ -48,6 +48,16 @@ public class UGRenderTypes {
 		.withColorTargetState(new ColorTargetState(BlendFunction.OVERLAY))
 		.build();
 
+	public static final RenderPipeline OTHERSIDE_VORTEX = RenderPipeline.builder(RenderPipelines.MATRICES_PROJECTION_SNIPPET)
+			.withLocation("pipeline/celestial")
+			.withVertexShader("core/position_tex")
+			.withFragmentShader("core/position_tex")
+			.withSampler("Sampler0")
+			.withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
+			.withVertexFormat(DefaultVertexFormat.POSITION_TEX, VertexFormat.Mode.QUADS)
+			.build()
+	;
+
 	private static final Function<Identifier, RenderType> EYES_NO_CULL = Util.memoize(
 		texture -> RenderType.create("eyes", RenderSetup.builder(EYES_NO_CULL_PIPELINE).withTexture("Sampler0", texture).sortOnUpload().createRenderSetup())
 	);

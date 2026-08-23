@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -47,6 +48,9 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> INFECTED_DEPTHS = create("infected_depths");
 	public static final ResourceKey<Biome> PUFF_MUSHROOM_FOREST = create("puff_mushroom_forest");
 	public static final ResourceKey<Biome> ROGDORIUM_GROVE = create("rogdorium_grove");
+
+	public static final ResourceKey<Biome> HOWLING_PEAKS = create("howling_peaks");
+	public static final ResourceKey<Biome> FIELDS_OF_SORROW = create("fields_of_sorrow");
 
 	private static ResourceKey<Biome> create(String name) {
 		return ResourceKey.create(Registries.BIOME, Undergarden.prefix(name));
@@ -626,6 +630,37 @@ public class UGBiomes {
 				.build())
 			.specialEffects(generateColors(1784489))
 			.build());
+
+		context.register(HOWLING_PEAKS, new Biome.BiomeBuilder()
+			.generationSettings(addOthersideOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
+				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
+				.build())
+			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder()).build())
+			.hasPrecipitation(false)
+			.downfall(0.0F)
+			.temperature(0.8F)
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(UGParticleTypes.OTHERSIDE_ASH.get(), 0.025F)))
+				.build())
+			.specialEffects(generateOthersideColors(12364199))
+			.build());
+
+		context.register(FIELDS_OF_SORROW, new Biome.BiomeBuilder()
+			.generationSettings(addOthersideOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
+				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEAD_WISPYGRASS_PATCH)
+				.build())
+			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder()).build())
+			.hasPrecipitation(false)
+			.downfall(0.0F)
+			.temperature(0.8F)
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(UGParticleTypes.OTHERSIDE_ASH.get(), 0.025F)))
+				.build())
+			.specialEffects(generateOthersideColors(12364199))
+			.build());
 	}
 
 	private static BiomeGenerationSettings.Builder addOresAndCaves(BiomeGenerationSettings.Builder builder) {
@@ -648,6 +683,12 @@ public class UGBiomes {
 			.addCarver(UGConfiguredCarvers.UNDERGARDEN_CAVE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE);
+	}
+
+	private static BiomeGenerationSettings.Builder addOthersideOresAndCaves(BiomeGenerationSettings.Builder builder) {
+		return builder
+			.addCarver(UGConfiguredCarvers.OTHERSIDE_CAVE)
+			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE_OTHERSIDE);
 	}
 
 	private static BiomeGenerationSettings.Builder addShroomPatches(BiomeGenerationSettings.Builder builder) {
@@ -684,6 +725,10 @@ public class UGBiomes {
 		return new BiomeSpecialEffects.Builder().waterColor(342306).grassColorOverride(grass).foliageColorOverride(grass).build();
 	}
 
+	private static BiomeSpecialEffects generateOthersideColors(int grass) {
+		return new BiomeSpecialEffects.Builder().waterColor(1).grassColorOverride(grass).foliageColorOverride(grass).build();
+	}
+
 	public static BiomeSource buildBiomeSource(HolderGetter<Biome> biomes) {
 		List<Pair<Climate.ParameterPoint, Holder<Biome>>> params = new ArrayList<>();
 
@@ -712,5 +757,12 @@ public class UGBiomes {
 	private static void createForBiomeAndSea(List<Pair<Climate.ParameterPoint, Holder<Biome>>> list, HolderGetter<Biome> biomes, Climate.ParameterPoint parameters, ResourceKey<Biome> mainBiome, ResourceKey<Biome> sea) {
 		list.add(Pair.of(parameters, biomes.getOrThrow(mainBiome)));
 		list.add(Pair.of(Climate.parameters(parameters.temperature(), parameters.humidity(), parameters.continentalness(), parameters.erosion(), Climate.Parameter.point(-1.0F), parameters.weirdness(), parameters.offset()), biomes.getOrThrow(sea)));
+	}
+
+	public static BiomeSource buildOthersideBiomeSource(HolderGetter<Biome> biomes) {
+		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(ImmutableList.of(
+			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.0F, 0.2F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(FIELDS_OF_SORROW)),
+			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.2F, 1.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(HOWLING_PEAKS))
+		)));
 	}
 }

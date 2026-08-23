@@ -50,5 +50,6 @@ public class UGDataGenerators {
 		generator.addProvider(true, new UGEnchantmentTags(output, lookupProvider));
 		generator.addProvider(true, new UGStonebornTradeTags(output, lookupProvider));
 		generator.addProvider(true, new UGTimelineTags(output, lookupProvider));
+		generator.addProvider(true, new UGAtlasGenerator(output, event.getLookupProvider()));
 	}
 }

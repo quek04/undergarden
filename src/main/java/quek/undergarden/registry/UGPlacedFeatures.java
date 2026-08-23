@@ -30,6 +30,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> ROGDORIUM_ORE = create("rogdorium_ore");
 	public static final ResourceKey<PlacedFeature> ROGDORIUM_ORE_EXTRA = create("rogdorium_ore_extra");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_ORE = create("utherium_ore");
+	public static final ResourceKey<PlacedFeature> UTHERIUM_ORE_OTHERSIDE = create("utherium_ore_otherside");
 	public static final ResourceKey<PlacedFeature> REGALIUM_ORE = create("regalium_ore");
 	public static final ResourceKey<PlacedFeature> SHIVERSTONE_ORE = create("shiverstone_ore");
 	public static final ResourceKey<PlacedFeature> DEEPSOIL_ORE = create("deepsoil_ore");
@@ -65,6 +66,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> GLITTERKELP_PATCH = create("glitterkelp_patch");
 	public static final ResourceKey<PlacedFeature> THORNREED_PATCH = create("thornreed_patch");
 	public static final ResourceKey<PlacedFeature> TWISTYBUSH_PATCH = create("twistybush_patch");
+	public static final ResourceKey<PlacedFeature> DEAD_WISPYGRASS_PATCH = create("dead_wispygrass_patch");
 
 	//tree
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE = create("smogstem_tree");
@@ -117,6 +119,7 @@ public class UGPlacedFeatures {
 		context.register(ROGDORIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), List.of(InSquarePlacement.spread(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)), BiomeFilter.biome())));
 		context.register(ROGDORIUM_ORE_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)))));
 		context.register(UTHERIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(32)))));
+		context.register(UTHERIUM_ORE_OTHERSIDE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.TOP))));
 		context.register(REGALIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.REGALIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(12)))));
 		context.register(SHIVERSTONE_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SHIVERSTONE_ORE), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.top()))));
 		context.register(DEEPSOIL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEEPSOIL_ORE), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.top()))));
@@ -165,6 +168,7 @@ public class UGPlacedFeatures {
 			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.THORNREED.get().defaultBlockState(), BlockPos.ZERO))
 		)));
 		context.register(TWISTYBUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TWISTYBUSH), patch(5, 64)));
+		context.register(DEAD_WISPYGRASS_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEAD_WISPYGRASS), patchWithFilter(100, 64, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.DEAD_WISPYGRASS_BLOCK.get()))));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));

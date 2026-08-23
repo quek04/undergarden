@@ -88,7 +88,7 @@ public class UGClientRegistrationEvents {
 		bus.addListener(UGClientRegistrationEvents::registerSpecialModels);
 		bus.addListener(UGClientRegistrationEvents::registerInfuserSearchCategory);
 
-		UGClientEvents.init();
+		UGClientEvents.init(bus);
 		UGOverlayEvents.init(bus);
 	}
 
@@ -252,6 +252,7 @@ public class UGClientRegistrationEvents {
 		event.registerSpriteSet(UGParticleTypes.ROGDORIUM_SPARKLE.get(), ShimmerParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.TOTEM_BEAM.get(), TotemBeamParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.ROGDORIUM_WISP.get(), RogdoriumWispParticle.Provider::new);
+		event.registerSpriteSet(UGParticleTypes.OTHERSIDE_ASH.get(), OthersideAshParticle.Provider::new);
 
 		event.registerSpriteSet(UGParticleTypes.DRIPPING_BLOOD.get(), UGDripParticles.BloodHangProvider::new);
 		event.registerSpriteSet(UGParticleTypes.FALLING_BLOOD.get(), UGDripParticles.BloodFallProvider::new);

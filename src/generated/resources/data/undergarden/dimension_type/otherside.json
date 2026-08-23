@@ -1,0 +1,33 @@
+{
+  "ambient_light": 0.0,
+  "attributes": {
+    "minecraft:gameplay/bed_rule": {
+      "can_set_spawn": "never",
+      "can_sleep": "never",
+      "explodes": true
+    },
+    "minecraft:gameplay/respawn_anchor_works": false,
+    "minecraft:visual/ambient_light_color": "#3f473f",
+    "minecraft:visual/fog_color": "#bca9a7",
+    "minecraft:visual/sky_color": "#7b4746",
+    "minecraft:visual/sky_light_color": "#ac60cd",
+    "minecraft:visual/sky_light_factor": 0.0,
+    "neoforge:custom_skybox": "undergarden:otherside_skybox"
+  },
+  "coordinate_scale": 1.0,
+  "has_ceiling": false,
+  "has_ender_dragon_fight": false,
+  "has_fixed_time": true,
+  "has_skylight": true,
+  "height": 320,
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "logical_height": 320,
+  "min_y": 0,
+  "monster_spawn_block_light_limit": 0,
+  "monster_spawn_light_level": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 7,
+    "min_inclusive": 0
+  },
+  "timelines": "#undergarden:in_otherside"
+}

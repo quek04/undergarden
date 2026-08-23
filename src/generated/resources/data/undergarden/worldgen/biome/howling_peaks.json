@@ -1,0 +1,72 @@
+{
+  "attributes": {
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "undergarden:otherside_ash"
+        },
+        "probability": 0.025
+      }
+    ]
+  },
+  "carvers": "undergarden:otherside_cave",
+  "downfall": 0.0,
+  "effects": {
+    "foliage_color": "#bca9a7",
+    "grass_color": "#bca9a7",
+    "water_color": "#000001"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "undergarden:utherium_growth_extra",
+      "undergarden:ceiling_utherium_growth"
+    ],
+    [],
+    [
+      "undergarden:utherium_ore_otherside"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "undergarden:rotling",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbelcher",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
+    "undergarden:stupid": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.8
+}

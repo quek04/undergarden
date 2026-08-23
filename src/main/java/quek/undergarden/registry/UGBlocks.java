@@ -184,6 +184,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEEPSOIL = registerWithItem("deepsoil", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
 	public static final DeferredBlock<Block> COARSE_DEEPSOIL = registerWithItem("coarse_deepsoil", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(DEEPSOIL.get()));
 	public static final DeferredBlock<Block> DEEPSOIL_FARMLAND = registerWithItem("deepsoil_farmland", DeepsoilFarmlandBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND));
+	public static final DeferredBlock<Block> DEAD_WISPYGRASS_BLOCK = registerWithItem("dead_wispygrass_block", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()));
 	public static final DeferredBlock<Block> GOO = registerWithItem("goo", GooLayerBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((_, _, _) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollision());
 	public static final DeferredBlock<Block> GOO_BLOCK = registerWithItem("goo_block", GooBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion());
 	public static final DeferredBlock<Block> SMOG_VENT = registerWithItem("smog_vent", SmogVentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).lightLevel((state) -> 10).isValidSpawn(((state, level, pos, entity) -> false)));
@@ -210,6 +211,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> ASHEN_DEEPTURF = registerWithItem("ashen_deepturf", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> FROZEN_DEEPTURF = registerWithItem("frozen_deepturf", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> TALL_DEEPTURF = registerWithItem("tall_deepturf", DoublePlantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS));
+	public static final DeferredBlock<Block> DEAD_WISPYGRASS = registerWithItem("dead_wispygrass", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> SHIMMERWEED = registerWithItem("shimmerweed", ShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel((state) -> 12));
 	public static final DeferredBlock<Block> TALL_SHIMMERWEED = registerWithItem("tall_shimmerweed", TallShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS).lightLevel((state) -> 14));
 	public static final DeferredBlock<Block> DITCHBULB_PLANT = register("ditchbulb_plant", DitchbulbBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0));

@@ -102,11 +102,13 @@ public class UGTags {
 	public static class Blocks {
 
 		public static final TagKey<Block> BASE_STONE_UNDERGARDEN = tag("base_stone_undergarden");
+		public static final TagKey<Block> BASE_STONE_OTHERSIDE = tag("base_stone_otherside");
 		public static final TagKey<Block> DEPTHROCK_ORE_REPLACEABLES = tag("depthrock_ore_replaceables");
 		public static final TagKey<Block> SHIVERSTONE_ORE_REPLACEABLES = tag("shiverstone_ore_replaceables");
 		public static final TagKey<Block> DREADROCK_ORE_REPLACEABLES = tag("dreadrock_ore_replaceables");
 		public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
 		public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
+		public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = tag("otherside_carver_replaceables");
 		public static final TagKey<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
 		public static final TagKey<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
@@ -227,6 +229,7 @@ public class UGTags {
 	public static class Timelines {
 
 		public static final TagKey<Timeline> IN_UNDERGARDEN = tag("in_undergarden");
+		public static final TagKey<Timeline> IN_OTHERSIDE = tag("in_otherside");
 
 		private static TagKey<Timeline> tag(String name) {
 			return TagKey.create(Registries.TIMELINE, Undergarden.prefix(name));

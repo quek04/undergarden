@@ -36,10 +36,11 @@ public class UGBlockTags extends BlockTagsProvider {
 
 		//undergarden
 		tag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.DREADROCK.get());
+		tag(UGTags.Blocks.BASE_STONE_OTHERSIDE).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
 		tag(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES).add(UGBlocks.DEPTHROCK.get());
 		tag(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES).add(UGBlocks.SHIVERSTONE.get());
 		tag(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES).add(UGBlocks.DREADROCK.get());
-		tag(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
+		tag(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get(), UGBlocks.DEAD_WISPYGRASS_BLOCK.get());
 		tag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES)
 			.addTag(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES)
 			.addTag(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES)
@@ -55,6 +56,7 @@ public class UGBlockTags extends BlockTagsProvider {
 				UGBlocks.SEDIMENT_STONE.get(),
 				Blocks.POWDER_SNOW
 			);
+		tag(UGTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES).addTag(UGTags.Blocks.BASE_STONE_OTHERSIDE).add(UGBlocks.DEAD_WISPYGRASS_BLOCK.get());
 		tag(UGTags.Blocks.PORTAL_FRAME_BLOCKS).add(
 			Blocks.STONE_BRICKS,
 			Blocks.MOSSY_STONE_BRICKS,

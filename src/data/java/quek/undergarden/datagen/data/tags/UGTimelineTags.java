@@ -20,5 +20,6 @@ public class UGTimelineTags extends KeyTagProvider<Timeline> {
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(UGTags.Timelines.IN_UNDERGARDEN).addTag(TimelineTags.UNIVERSAL);
+		this.tag(UGTags.Timelines.IN_OTHERSIDE).addTag(TimelineTags.UNIVERSAL);
 	}
 }

@@ -100,6 +100,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GLITTERKELP = create("glitterkelp");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> THORNREED = create("thornreed");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> TWISTYBUSH = create("twistybush");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_WISPYGRASS = create("dead_wispygrass");
 
 	//tree
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOGSTEM_TREE = create("smogstem_tree");
@@ -199,6 +200,7 @@ public class UGConfiguredFeatures {
 			false
 		)));
 		context.register(TWISTYBUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.TWISTYBUSH.get())));
+		context.register(DEAD_WISPYGRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.DEAD_WISPYGRASS.get())));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "undergarden:block/tremblecrust",
+    "side": "undergarden:block/dead_wispygrass_block_side",
+    "top": "undergarden:block/dead_wispygrass_block_top"
+  }
+}

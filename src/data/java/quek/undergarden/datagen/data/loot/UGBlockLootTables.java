@@ -333,6 +333,8 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS);
 		this.dropSelf(UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS);
 		this.add(UGBlocks.TWISTYBUSH.get(), block -> this.createShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(UGItems.TWISTYTWIG).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+		this.dropWithSilk(UGBlocks.DEAD_WISPYGRASS_BLOCK, UGBlocks.TREMBLECRUST);
+		this.add(UGBlocks.DEAD_WISPYGRASS.get(), this::createShearsOnlyDrop);
 	}
 
 	public void dropSelf(Supplier<? extends Block> block) {
