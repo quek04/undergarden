@@ -3,6 +3,7 @@ package quek.undergarden.event;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,9 +31,11 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.tooltip.TooltipAppender;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.RegisterTooltipAppendersEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -92,6 +95,7 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::addComponentTooltips);
 		NeoForge.EVENT_BUS.addListener(OnDatapackSyncEvent.class, event -> event.sendRecipes(UGRecipeTypes.INFUSING.get()));
 
 //		if (ModList.get().isLoaded("create")) {
@@ -388,5 +392,10 @@ public class UndergardenCommonEvents {
 
 	private static void registerCommands(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("undergarden").then(InfectionCommand.register()));
+	}
+
+	private static void addComponentTooltips(RegisterTooltipAppendersEvent event) {
+		event.registerComponentAppenderBeforeAll(UGDataComponents.ROGDORIUM_INFUSION, TooltipAppender.createComponentAppender(UGDataComponents.ROGDORIUM_INFUSION.get()));
+		event.registerComponentAppenderAfter(UGDataComponents.SLINGSHOT_AMMO, DataComponents.LORE, TooltipAppender.createComponentAppender(UGDataComponents.SLINGSHOT_AMMO.get()));
 	}
 }

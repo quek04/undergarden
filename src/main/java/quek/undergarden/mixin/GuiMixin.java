@@ -15,7 +15,7 @@ public class GuiMixin {
 
 	@Nullable
 	@WrapOperation(method = "nextContextualInfoState", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;jumpableVehicle()Lnet/minecraft/world/entity/PlayerRideableJumping;"))
-	public PlayerRideableJumping meow(LocalPlayer instance, Operation<PlayerRideableJumping> original) {
+	public PlayerRideableJumping removeJumpBarForDweller(LocalPlayer instance, Operation<PlayerRideableJumping> original) {
 		if (instance.jumpableVehicle() instanceof Dweller) {
 			return null;
 		}

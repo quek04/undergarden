@@ -11,6 +11,5 @@
     "LivingEntityRendererMixin"
   ],
   "mixins": [
-    "ItemStackMixin"
   ]
 }
