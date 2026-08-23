@@ -138,12 +138,12 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void setup(FMLCommonSetupEvent event) {
-		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-			NeoForgeMod.WATER_TYPE.value(),
+		FluidInteractionRegistry.addInteraction(NeoForgeMod.WATER_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
+			UGFluids.VIRULENT_MIX_TYPE.get(),
 			UGBlocks.DEPTHROCK.get().defaultBlockState()
 		));
-		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-			NeoForgeMod.LAVA_TYPE.value(),
+		FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
+			UGFluids.VIRULENT_MIX_TYPE.get(),
 			fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
