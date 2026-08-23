@@ -137,7 +137,7 @@ public class UndergardenCommonEvents {
 	private static void setup(FMLCommonSetupEvent event) {
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
 			NeoForgeMod.WATER_TYPE.value(),
-			fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
+			UGBlocks.DEPTHROCK.get().defaultBlockState()
 		));
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
 			NeoForgeMod.LAVA_TYPE.value(),

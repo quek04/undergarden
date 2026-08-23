@@ -11,8 +11,6 @@
     "LivingEntityRendererMixin"
   ],
   "mixins": [
-    "ItemStackMixin",
-    "fluid.EntityMixin",
-    "fluid.LivingEntityMixin"
+    "ItemStackMixin"
   ]
 }
