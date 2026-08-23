@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:shiverstone",
+  "result": {
+    "id": "undergarden:shiverstone_brick_wall"
+  }
+}

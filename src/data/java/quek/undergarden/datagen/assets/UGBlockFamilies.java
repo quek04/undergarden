@@ -80,6 +80,7 @@ public class UGBlockFamilies {
 		.pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get())
 		.button(UGBlocks.DEPTHROCK_BUTTON.get())
 		.polished(UGBlocks.POLISHED_DEPTHROCK.get())
+		.bricks(UGBlocks.DEPTHROCK_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 
@@ -87,7 +88,6 @@ public class UGBlockFamilies {
 		.wall(UGBlocks.POLISHED_DEPTHROCK_WALL.get())
 		.stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get())
 		.slab(UGBlocks.POLISHED_DEPTHROCK_SLAB.get())
-		.bricks(UGBlocks.DEPTHROCK_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 
@@ -113,6 +113,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.SHIVERSTONE_SLAB.get())
 		.pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get())
 		.button(UGBlocks.SHIVERSTONE_BUTTON.get())
+		.bricks(UGBlocks.SHIVERSTONE_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 
@@ -131,6 +132,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.DREADROCK_SLAB.get())
 		.pressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE.get())
 		.button(UGBlocks.DREADROCK_BUTTON.get())
+		.bricks(UGBlocks.DREADROCK_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 
@@ -147,6 +149,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.TREMBLECRUST_SLAB.get())
 		.pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE.get())
 		.button(UGBlocks.TREMBLECRUST_BUTTON.get())
+		.bricks(UGBlocks.TREMBLECRUST_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 
@@ -171,6 +174,7 @@ public class UGBlockFamilies {
 		.wall(UGBlocks.SEDIMENT_STONE_WALL.get())
 		.polished(UGBlocks.POLISHED_SEDIMENT_STONE.get())
 		.chiseled(UGBlocks.CHISELED_SEDIMENT_STONE.get())
+		.bricks(UGBlocks.SEDIMENT_STONE_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 
@@ -178,7 +182,6 @@ public class UGBlockFamilies {
 		.stairs(UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS.get())
 		.slab(UGBlocks.POLISHED_SEDIMENT_STONE_SLAB.get())
 		.wall(UGBlocks.POLISHED_SEDIMENT_STONE_WALL.get())
-		.bricks(UGBlocks.SEDIMENT_STONE_BRICKS.get())
 		.generateStonecutterRecipe()
 		.getFamily();
 

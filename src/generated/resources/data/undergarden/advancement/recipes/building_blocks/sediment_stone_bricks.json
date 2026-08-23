@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_polished_sediment_stone": {
+    "has_sediment_stone": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:polished_sediment_stone"
+            "items": "undergarden:sediment_stone"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_polished_sediment_stone"
+      "has_sediment_stone"
     ]
   ],
   "rewards": {

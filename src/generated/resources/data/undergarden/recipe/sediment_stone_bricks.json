@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "undergarden:polished_sediment_stone"
+    "#": "undergarden:sediment_stone"
   },
   "pattern": [
     "##",

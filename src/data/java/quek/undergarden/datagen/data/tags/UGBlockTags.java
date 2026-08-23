@@ -151,9 +151,12 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.VEIL_MUSHROOM_CAP.get(),
 			UGBlocks.VEIL_MUSHROOM_STEM.get(),
 			UGBlocks.INK_MUSHROOM_CAP.get(),
+			UGBlocks.INK_MUSHROOM_STEM.get(),
 			UGBlocks.BLOOD_MUSHROOM_CAP.get(),
 			UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(),
 			UGBlocks.BLOOD_MUSHROOM_STEM.get(),
+			UGBlocks.PUFF_MUSHROOM_CAP.get(),
+			UGBlocks.PUFF_MUSHROOM_STEM.get(),
 			UGBlocks.DENIZEN_TOTEM.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_HOE).add(UGBlocks.HANGING_GRONGLE_LEAVES.get());
@@ -238,13 +241,19 @@ public class UGBlockTags extends BlockTagsProvider {
 			UGBlocks.SEDIMENT_STONE.get(),
 			UGBlocks.POLISHED_SEDIMENT_STONE.get(),
 			UGBlocks.SEDIMENT_STONE_BRICKS.get(),
+			UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS.get(),
+			UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS.get(),
 			UGBlocks.CHISELED_SEDIMENT_STONE.get(),
 			UGBlocks.SEDIMENT_STONE_STAIRS.get(),
 			UGBlocks.POLISHED_SEDIMENT_STONE_STAIRS.get(),
 			UGBlocks.SEDIMENT_STONE_BRICK_STAIRS.get(),
 			UGBlocks.SEDIMENT_STONE_SLAB.get(),
 			UGBlocks.POLISHED_SEDIMENT_STONE_SLAB.get(),
-			UGBlocks.SEDIMENT_STONE_BRICK_SLAB.get()
+			UGBlocks.SEDIMENT_STONE_BRICK_SLAB.get(),
+			UGBlocks.SMOOTH_SEDIMENT_STONE.get(),
+			UGBlocks.SMOOTH_SEDIMENT_STONE_SLAB.get(),
+			UGBlocks.SMOOTH_SEDIMENT_STONE_STAIRS.get(),
+			UGBlocks.SMOOTH_SEDIMENT_STONE_WALL.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
 			UGBlocks.DEEPTURF_BLOCK.get(),
