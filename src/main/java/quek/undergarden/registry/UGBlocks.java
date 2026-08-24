@@ -23,6 +23,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.waypoints.Waypoint;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import quek.undergarden.TallDeadWispygrassBlock;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
@@ -211,7 +212,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> ASHEN_DEEPTURF = registerWithItem("ashen_deepturf", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> FROZEN_DEEPTURF = registerWithItem("frozen_deepturf", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> TALL_DEEPTURF = registerWithItem("tall_deepturf", DoublePlantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS));
-	public static final DeferredBlock<Block> DEAD_WISPYGRASS = registerWithItem("dead_wispygrass", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
+	public static final DeferredBlock<Block> DEAD_WISPYGRASS = registerWithItem("dead_wispygrass", TallDeadWispygrassBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> SHIMMERWEED = registerWithItem("shimmerweed", ShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel((state) -> 12));
 	public static final DeferredBlock<Block> TALL_SHIMMERWEED = registerWithItem("tall_shimmerweed", TallShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS).lightLevel((state) -> 14));
 	public static final DeferredBlock<Block> DITCHBULB_PLANT = register("ditchbulb_plant", DitchbulbBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0));

@@ -124,6 +124,8 @@ public class UGTags {
 
 		public static final TagKey<Block> SUPPORTS_TWISTYBUSH = tag("supports_twistybush");
 
+		public static final TagKey<Block> SUPPORTS_WISPYGRASS = tag("supports_wispygrass");
+
 		public static final TagKey<Block> NEEDS_FORGOTTEN_TOOL = tag("needs_forgotten_tool");
 		public static final TagKey<Block> INCORRECT_FOR_FORGOTTEN_TOOL = tag("incorrect_for_forgotten_tool");
 

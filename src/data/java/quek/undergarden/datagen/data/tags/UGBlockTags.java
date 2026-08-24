@@ -87,6 +87,7 @@ public class UGBlockTags extends BlockTagsProvider {
 		tag(UGTags.Blocks.SUPPORTS_THORNREED).addTag(BlockTags.SUPPORTS_SUGAR_CANE);
 		tag(UGTags.Blocks.SUPPORTS_THORNREED_ADJACENTLY).add(Blocks.FROSTED_ICE);
 		tag(UGTags.Blocks.SUPPORTS_TWISTYBUSH).addTag(BlockTags.SUPPORTS_VEGETATION).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.DREADROCK.get());
+		tag(UGTags.Blocks.SUPPORTS_WISPYGRASS).addTag(BlockTags.SUPPORTS_VEGETATION).add(UGBlocks.DEAD_WISPYGRASS_BLOCK.get());
 		tag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL).add(
 			UGBlocks.DREADROCK.get(),
 			UGBlocks.DREADROCK_BRICKS.get(),
