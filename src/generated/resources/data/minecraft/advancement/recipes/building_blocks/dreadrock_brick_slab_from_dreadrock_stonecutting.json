@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_polished_sediment_stone": {
+    "has_dreadrock": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:polished_sediment_stone"
+            "items": "undergarden:dreadrock"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sediment_stone_brick_wall_from_polished_sediment_stone_stonecutting"
+        "recipe": "minecraft:dreadrock_brick_slab_from_dreadrock_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_polished_sediment_stone"
+      "has_dreadrock"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sediment_stone_brick_wall_from_polished_sediment_stone_stonecutting"
+      "minecraft:dreadrock_brick_slab_from_dreadrock_stonecutting"
     ]
   }
 }

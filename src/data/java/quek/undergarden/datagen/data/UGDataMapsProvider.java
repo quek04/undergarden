@@ -8,6 +8,7 @@ import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
+import net.neoforged.neoforge.registries.datamaps.builtin.Strippable;
 import quek.undergarden.datamap.UthericInfectionLethality;
 import quek.undergarden.registry.*;
 
@@ -77,6 +78,14 @@ public class UGDataMapsProvider extends DataMapProvider {
 		entityLethalities.add(UGEntityTypes.ROTBELCHER, new UthericInfectionLethality(0.2F), false);
 		entityLethalities.add(UGEntityTypes.ROTBEAST, new UthericInfectionLethality(0.3F), false);
 		entityLethalities.add(UGEntityTypes.ROTBELCHER_PROJECTILE, new UthericInfectionLethality(0.2F), false);
+
+		var strippables = this.builder(NeoForgeDataMaps.STRIPPABLES);
+		strippables.add(UGBlocks.WIGGLEWOOD_LOG, new Strippable(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get()), false);
+		strippables.add(UGBlocks.WIGGLEWOOD_WOOD, new Strippable(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get()), false);
+		strippables.add(UGBlocks.SMOGSTEM_LOG, new Strippable(UGBlocks.STRIPPED_SMOGSTEM_LOG.get()), false);
+		strippables.add(UGBlocks.SMOGSTEM_WOOD, new Strippable(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get()), false);
+		strippables.add(UGBlocks.GRONGLE_LOG, new Strippable(UGBlocks.STRIPPED_GRONGLE_LOG.get()), false);
+		strippables.add(UGBlocks.GRONGLE_WOOD, new Strippable(UGBlocks.STRIPPED_GRONGLE_WOOD.get()), false);
 	}
 
 	private void addCompostable(DataMapProvider.Builder<Compostable, Item> compostableBuilder, ItemLike item, float chance) {

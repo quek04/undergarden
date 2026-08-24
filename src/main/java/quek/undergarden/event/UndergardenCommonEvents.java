@@ -3,6 +3,7 @@ package quek.undergarden.event;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,9 +31,11 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.tooltip.TooltipAppender;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.RegisterTooltipAppendersEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -81,10 +84,10 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 		bus.addListener(UGCreativeModeTabs::registerBuckets);
+		bus.addListener(UndergardenCommonEvents::addComponentTooltips);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerCommands);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::cancelPlayerFallDamageOnDweller);
@@ -135,12 +138,12 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void setup(FMLCommonSetupEvent event) {
-		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-			NeoForgeMod.WATER_TYPE.value(),
+		FluidInteractionRegistry.addInteraction(NeoForgeMod.WATER_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
+			UGFluids.VIRULENT_MIX_TYPE.get(),
 			UGBlocks.DEPTHROCK.get().defaultBlockState()
 		));
-		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-			NeoForgeMod.LAVA_TYPE.value(),
+		FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
+			UGFluids.VIRULENT_MIX_TYPE.get(),
 			fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
@@ -284,42 +287,6 @@ public class UndergardenCommonEvents {
 		}
 	}
 
-	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
-		ItemAbility action = event.getItemAbility();
-		BlockState state = event.getState();
-		UseOnContext context = event.getContext();
-		if (!event.isSimulated()) {
-			if (action == ItemAbilities.AXE_STRIP) {
-				if (state.is(UGBlocks.SMOGSTEM_LOG.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.SMOGSTEM_WOOD.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.WIGGLEWOOD_LOG.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.WIGGLEWOOD_WOOD.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.GRONGLE_LOG.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().withPropertiesOf(state));
-				}
-				if (state.is(UGBlocks.GRONGLE_WOOD.get())) {
-					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().withPropertiesOf(state));
-				}
-			}
-			if (action == ItemAbilities.HOE_TILL && (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir())) {
-				if (state.is(UGBlocks.DEEPTURF_BLOCK.get()) || state.is(UGBlocks.DEEPSOIL.get()) || state.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) || state.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get())) {
-					event.setFinalState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
-				}
-				if (state.is(UGBlocks.COARSE_DEEPSOIL.get())) {
-					event.setFinalState(UGBlocks.DEEPSOIL.get().defaultBlockState());
-				}
-			}
-		}
-	}
-
 	private static void ignoreEffects(MobEffectEvent.Applicable event) {
 		if (event.getEffectInstance() != null) {
 			if (event.getEffectInstance().is(UGEffects.GOOEY) && event.getEntity().is(UGTags.Entities.IMMUNE_TO_GOOEY_EFFECT)) {
@@ -388,5 +355,10 @@ public class UndergardenCommonEvents {
 
 	private static void registerCommands(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("undergarden").then(InfectionCommand.register()));
+	}
+
+	private static void addComponentTooltips(RegisterTooltipAppendersEvent event) {
+		event.registerComponentAppenderBeforeAll(UGDataComponents.ROGDORIUM_INFUSION, TooltipAppender.createComponentAppender(UGDataComponents.ROGDORIUM_INFUSION.get()));
+		event.registerComponentAppenderAfter(UGDataComponents.SLINGSHOT_AMMO, DataComponents.LORE, TooltipAppender.createComponentAppender(UGDataComponents.SLINGSHOT_AMMO.get()));
 	}
 }

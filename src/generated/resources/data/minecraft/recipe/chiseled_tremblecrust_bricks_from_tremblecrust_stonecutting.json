@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "undergarden:tremblecrust",
+  "result": {
+    "id": "undergarden:chiseled_tremblecrust_bricks"
+  }
+}

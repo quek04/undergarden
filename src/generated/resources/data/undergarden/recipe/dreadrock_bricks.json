@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "undergarden:depthrock"
+    "#": "undergarden:dreadrock"
   },
   "pattern": [
     "##",
@@ -10,6 +10,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "undergarden:depthrock_bricks"
+    "id": "undergarden:dreadrock_bricks"
   }
 }

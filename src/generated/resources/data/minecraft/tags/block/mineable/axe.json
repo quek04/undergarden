@@ -10,9 +10,12 @@
     "undergarden:veil_mushroom_cap",
     "undergarden:veil_mushroom_stem",
     "undergarden:ink_mushroom_cap",
+    "undergarden:ink_mushroom_stem",
     "undergarden:blood_mushroom_cap",
     "undergarden:engorged_blood_mushroom_cap",
     "undergarden:blood_mushroom_stem",
+    "undergarden:puff_mushroom_cap",
+    "undergarden:puff_mushroom_stem",
     "undergarden:denizen_totem"
   ]
 }

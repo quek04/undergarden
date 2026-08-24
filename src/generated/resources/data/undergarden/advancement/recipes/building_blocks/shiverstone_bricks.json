@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_polished_depthrock": {
+    "has_shiverstone": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:polished_depthrock"
+            "items": "undergarden:shiverstone"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:depthrock_tile_stairs_from_polished_depthrock_stonecutting"
+        "recipe": "undergarden:shiverstone_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_polished_depthrock"
+      "has_shiverstone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:depthrock_tile_stairs_from_polished_depthrock_stonecutting"
+      "undergarden:shiverstone_bricks"
     ]
   }
 }

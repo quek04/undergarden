@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "undergarden:depthrock"
+    "#": "undergarden:tremblecrust"
   },
   "pattern": [
     "##",
@@ -10,6 +10,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "undergarden:depthrock_bricks"
+    "id": "undergarden:tremblecrust_bricks"
   }
 }

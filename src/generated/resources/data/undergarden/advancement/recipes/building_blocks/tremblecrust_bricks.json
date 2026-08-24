@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_depthrock": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:tremblecrust_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tremblecrust": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:depthrock"
+            "items": "undergarden:tremblecrust"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "undergarden:depthrock_bricks"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_depthrock"
+      "has_tremblecrust"
     ]
   ],
   "rewards": {
     "recipes": [
-      "undergarden:depthrock_bricks"
+      "undergarden:tremblecrust_bricks"
     ]
   }
 }
