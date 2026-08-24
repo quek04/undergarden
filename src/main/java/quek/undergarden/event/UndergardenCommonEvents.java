@@ -43,6 +43,7 @@ import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -95,6 +96,7 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::modifyForgottenRequiredBlocks);
 		NeoForge.EVENT_BUS.addListener(OnDatapackSyncEvent.class, event -> event.sendRecipes(UGRecipeTypes.INFUSING.get()));
 
 //		if (ModList.get().isLoaded("create")) {
@@ -360,5 +362,14 @@ public class UndergardenCommonEvents {
 	private static void addComponentTooltips(RegisterTooltipAppendersEvent event) {
 		event.registerComponentAppenderBeforeAll(UGDataComponents.ROGDORIUM_INFUSION, TooltipAppender.createComponentAppender(UGDataComponents.ROGDORIUM_INFUSION.get()));
 		event.registerComponentAppenderAfter(UGDataComponents.SLINGSHOT_AMMO, DataComponents.LORE, TooltipAppender.createComponentAppender(UGDataComponents.SLINGSHOT_AMMO.get()));
+	}
+
+	public static void modifyForgottenRequiredBlocks(PlayerEvent.BreakSpeed event) {
+		if (!event.isCanceled() && event.getState().is(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL) && event.getEntity().level().dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
+			var tool = event.getEntity().getInventory().getSelectedItem().getComponents().get(DataComponents.TOOL);
+			if (tool == null || !tool.isCorrectForDrops(event.getState())) {
+				event.setNewSpeed(event.getOriginalSpeed() / 64.0F);
+			}
+		}
 	}
 }

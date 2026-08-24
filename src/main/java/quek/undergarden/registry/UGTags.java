@@ -30,7 +30,6 @@ public class UGTags {
 		public static final TagKey<Item> GRONGLE_LOGS = tag("grongle_logs");
 		public static final TagKey<Item> INFUSER_UTHERIUM_FUELS = tag("infuser_utherium_fuels");
 		public static final TagKey<Item> INFUSER_ROGDORIUM_FUELS = tag("infuser_rogdorium_fuels");
-		public static final TagKey<Item> ACCELERATED_DREADROCK_BREAKING = tag("accelerated_dreadrock_breaking");
 
 		public static final TagKey<Item> CLOGGRUM_TOOL_MATERIALS = tag("cloggrum_tool_materials");
 		public static final TagKey<Item> FROSTSTEEL_TOOL_MATERIALS = tag("froststeel_tool_materials");
