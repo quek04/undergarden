@@ -335,6 +335,9 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.add(UGBlocks.TWISTYBUSH.get(), block -> this.createShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(UGItems.TWISTYTWIG).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
 		this.dropWithSilk(UGBlocks.DEAD_WISPYGRASS_BLOCK, UGBlocks.TREMBLECRUST);
 		this.add(UGBlocks.DEAD_WISPYGRASS.get(), this::createShearsOnlyDrop);
+		this.dropSelf(UGBlocks.WHISPERWOOD_LOG);
+		this.dropSelf(UGBlocks.WHISPERWOOD_WOOD);
+		this.dropSelf(UGBlocks.WHISPERWOOD_PLANKS);
 	}
 
 	public void dropSelf(Supplier<? extends Block> block) {

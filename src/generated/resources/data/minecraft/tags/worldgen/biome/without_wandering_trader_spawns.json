@@ -1,5 +1,6 @@
 {
   "values": [
-    "#undergarden:is_undergarden"
+    "#undergarden:is_undergarden",
+    "#undergarden:is_otherside"
   ]
 }

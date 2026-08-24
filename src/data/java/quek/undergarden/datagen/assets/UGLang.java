@@ -301,6 +301,10 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
 		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
+		addBlock(UGBlocks.WHISPERWOOD_LOG, "Whisperwood Log");
+		addBlock(UGBlocks.WHISPERWOOD_WOOD, "Whisperwood Wood");
+		addBlock(UGBlocks.WHISPERWOOD_PLANKS, "Whisperwood Planks");
+
 		addBlock(UGBlocks.INFUSER, "Infuser");
 
 		addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
@@ -820,6 +824,7 @@ public class UGLang extends UGLangProvider {
 		add(UGTags.Blocks.SMOGSTEM_LOGS, "Smogstem Logs");
 		add(UGTags.Blocks.WIGGLEWOOD_LOGS, "Wigglewood Logs");
 		add(UGTags.Blocks.GRONGLE_LOGS, "Grongle Logs");
+		add(UGTags.Blocks.WHISPERWOOD_LOGS, "Whisperwood Logs");
 		add(UGTags.Blocks.MUNCHER_BREAKABLES, "Muncher Breakable Blocks");
 
 		add(UGTags.Blocks.SCINTLING_SPAWNABLE_ON, "Scintling Spawnable");
@@ -868,6 +873,7 @@ public class UGLang extends UGLangProvider {
 		add(UGTags.Items.SMOGSTEM_LOGS, "Smogstem Logs");
 		add(UGTags.Items.WIGGLEWOOD_LOGS, "Wigglewood Logs");
 		add(UGTags.Items.GRONGLE_LOGS, "Grongle Logs");
+		add(UGTags.Items.WHISPERWOOD_LOGS, "Whisperwood Logs");
 		add(UGTags.Items.INFUSER_UTHERIUM_FUELS, "Infuser Utherium Fuels");
 		add(UGTags.Items.INFUSER_ROGDORIUM_FUELS, "Infuser Rogdorium Fuels");
 		add(UGTags.Items.ACCELERATED_DREADROCK_BREAKING, "Accelerates Dreadrock Breaking");

@@ -115,6 +115,8 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
 		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.get());
 
+		this.generateBlockItem(UGBlocks.WHISPERWOOD_PLANKS.get());
+
 		this.createShardTorch(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
 		this.wrapBlockItem(UGBlocks.DEEPSOIL.get(), this::createTrivialCube);
 		this.createCrossBlockWithDefaultItem(UGBlocks.ASHEN_DEEPTURF.get(), PlantType.NOT_TINTED);
@@ -335,6 +337,8 @@ public class UGBlockModels extends BlockModelGenerators {
 			.get(block)
 			.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.TREMBLECRUST.get())))
 			.create(block, this.modelOutput))))));
+
+		this.woodProvider(UGBlocks.WHISPERWOOD_LOG.get()).logWithHorizontal(UGBlocks.WHISPERWOOD_LOG.get()).wood(UGBlocks.WHISPERWOOD_WOOD.get());
 
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);

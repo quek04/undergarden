@@ -6,7 +6,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTags;
@@ -18,6 +17,7 @@ public abstract class UGBlockItemTags {
 		this.tag(UGTags.Blocks.SMOGSTEM_LOGS, UGTags.Items.SMOGSTEM_LOGS).add(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
 		this.tag(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS).add(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
 		this.tag(UGTags.Blocks.GRONGLE_LOGS, UGTags.Items.GRONGLE_LOGS).add(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get(), UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
+		this.tag(UGTags.Blocks.WHISPERWOOD_LOGS, UGTags.Items.WHISPERWOOD_LOGS).add(UGBlocks.WHISPERWOOD_LOG.get(), UGBlocks.WHISPERWOOD_WOOD.get());
 
 		//undergarden common
 		this.tag(UGTags.Blocks.BARS_CLOGGRUM, UGTags.Items.BARS_CLOGGRUM).add(UGBlocks.CLOGGRUM_BARS.get());
@@ -75,7 +75,7 @@ public abstract class UGBlockItemTags {
 		this.tag(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get(), UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
 		this.tag(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get(), UGBlocks.GRONGLE_PRESSURE_PLATE.get(), UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.get());
 		this.tag(BlockTags.SAPLINGS, ItemTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get(), UGBlocks.WIGGLEWOOD_SAPLING.get(), UGBlocks.GRONGLE_SAPLING.get());
-		this.tag(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.get(), UGBlocks.ROGDORIC_ANCIENT_ROOT.get());
+		this.tag(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS).addTag(UGTags.Blocks.WHISPERWOOD_LOGS).add(UGBlocks.ANCIENT_ROOT.get(), UGBlocks.ROGDORIC_ANCIENT_ROOT.get());
 		this.tag(BlockTags.SAND, ItemTags.SAND).add(UGBlocks.SEDIMENT.get());
 		this.tag(BlockTags.SLABS, ItemTags.SLABS).add(UGBlocks.DEPTHROCK_SLAB.get(), UGBlocks.POLISHED_DEPTHROCK_SLAB.get(), UGBlocks.DEPTHROCK_BRICK_SLAB.get(), UGBlocks.DEPTHROCK_TILE_SLAB.get(), UGBlocks.SHIVERSTONE_SLAB.get(), UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), UGBlocks.TREMBLECRUST_SLAB.get(), UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), UGBlocks.CLOGGRUM_TILE_SLAB.get(), UGBlocks.DREADROCK_SLAB.get(), UGBlocks.DREADROCK_BRICK_SLAB.get(), UGBlocks.SEDIMENT_STONE_SLAB.get(), UGBlocks.POLISHED_SEDIMENT_STONE_SLAB.get(), UGBlocks.SEDIMENT_STONE_BRICK_SLAB.get());
 		this.tag(BlockTags.WALLS, ItemTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get(), UGBlocks.POLISHED_DEPTHROCK_WALL.get(), UGBlocks.DEPTHROCK_BRICK_WALL.get(), UGBlocks.SHIVERSTONE_WALL.get(), UGBlocks.SHIVERSTONE_BRICK_WALL.get(), UGBlocks.TREMBLECRUST_WALL.get(), UGBlocks.TREMBLECRUST_BRICK_WALL.get(), UGBlocks.DREADROCK_WALL.get(), UGBlocks.DREADROCK_BRICK_WALL.get(), UGBlocks.SEDIMENT_STONE_WALL.get(), UGBlocks.POLISHED_SEDIMENT_STONE_WALL.get(), UGBlocks.SEDIMENT_STONE_BRICK_WALL.get());

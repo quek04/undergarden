@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "undergarden:block/whisperwood_log",
+    "side": "undergarden:block/whisperwood_log"
+  }
+}

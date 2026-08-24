@@ -72,6 +72,11 @@ public class UGBlockFamilies {
 		.recipeUnlockedBy("has_planks")
 		.getFamily();
 
+	public static final BlockFamily WHISPERWOOD_PLANKS = familyBuilder(UGBlocks.WHISPERWOOD_PLANKS.get())
+		.recipeGroupPrefix("wooden")
+		.recipeUnlockedBy("has_planks")
+		.getFamily();
+
 	public static final BlockFamily DEPTHROCK = familyBuilder(UGBlocks.DEPTHROCK.get())
 		.wall(UGBlocks.DEPTHROCK_WALL.get())
 		.stairs(UGBlocks.DEPTHROCK_STAIRS.get())

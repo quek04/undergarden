@@ -364,6 +364,11 @@ public class UGBlocks {
 	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", (properties) -> new CeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
 	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = register("ancient_root_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> wallVariant(ANCIENT_ROOT_HANGING_SIGN.get(), true).mapColor(ANCIENT_ROOT.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava());
 
+	//whisperwood
+	public static final DeferredBlock<RotatedPillarBlock> WHISPERWOOD_LOG = registerWithItem("whisperwood_log", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG));
+	public static final DeferredBlock<RotatedPillarBlock> WHISPERWOOD_WOOD = registerWithItem("whisperwood_wood", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD));
+	public static final DeferredBlock<Block> WHISPERWOOD_PLANKS = registerWithItem("whisperwood_planks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+
 	//functional
 	public static final DeferredBlock<Block> INFUSER = registerWithItem("infuser", InfuserBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(UGSoundTypes.DREADROCK).noOcclusion().lightLevel((state) -> state.getValue(InfuserBlock.STATE) != InfuserState.INACTIVE ? 10 : 0));
 

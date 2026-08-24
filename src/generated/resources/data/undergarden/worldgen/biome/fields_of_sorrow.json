@@ -32,7 +32,8 @@
     [],
     [],
     [
-      "undergarden:dead_wispygrass_patch"
+      "undergarden:dead_wispygrass_patch",
+      "undergarden:dead_whisperwood_tree"
     ]
   ],
   "has_precipitation": false,

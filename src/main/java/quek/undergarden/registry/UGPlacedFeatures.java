@@ -79,6 +79,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> GRONGLE_TREE = create("grongle_tree");
 	public static final ResourceKey<PlacedFeature> SMALL_GRONGLE_TREE = create("small_grongle_tree");
 	public static final ResourceKey<PlacedFeature> GRONGLE_BUSH = create("grongle_bush");
+	public static final ResourceKey<PlacedFeature> DEAD_WHISPERWOOD_TREE = create("dead_whisperwood_tree");
 
 	//huge mushrooms
 	public static final ResourceKey<PlacedFeature> HUGE_INDIGO_MUSHROOM = create("huge_indigo_mushroom");
@@ -181,6 +182,7 @@ public class UGPlacedFeatures {
 		context.register(GRONGLE_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GRONGLE_TREE), tree(8)));
 		context.register(SMALL_GRONGLE_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMALL_GRONGLE_TREE), tree(8)));
 		context.register(GRONGLE_BUSH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GRONGLE_BUSH), tree(8)));
+		context.register(DEAD_WHISPERWOOD_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEAD_WHISPERWOOD_TREE), List.of(CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), UGBlocks.TREMBLECRUST.get(), UGBlocks.DEAD_WISPYGRASS_BLOCK.get())))));
 
 		//huge mushrooms
 		context.register(HUGE_INDIGO_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM), tree(8)));

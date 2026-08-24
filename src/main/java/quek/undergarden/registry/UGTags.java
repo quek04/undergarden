@@ -28,6 +28,7 @@ public class UGTags {
 		public static final TagKey<Item> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Item> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
 		public static final TagKey<Item> GRONGLE_LOGS = tag("grongle_logs");
+		public static final TagKey<Item> WHISPERWOOD_LOGS = tag("whisperwood_logs");
 		public static final TagKey<Item> INFUSER_UTHERIUM_FUELS = tag("infuser_utherium_fuels");
 		public static final TagKey<Item> INFUSER_ROGDORIUM_FUELS = tag("infuser_rogdorium_fuels");
 		public static final TagKey<Item> ACCELERATED_DREADROCK_BREAKING = tag("accelerated_dreadrock_breaking");
@@ -113,6 +114,7 @@ public class UGTags {
 		public static final TagKey<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
 		public static final TagKey<Block> GRONGLE_LOGS = tag("grongle_logs");
+		public static final TagKey<Block> WHISPERWOOD_LOGS = tag("whisperwood_logs");
 		public static final TagKey<Block> MUNCHER_BREAKABLES = tag("muncher_breakables");
 
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
@@ -198,6 +200,7 @@ public class UGTags {
 	public static class Biomes {
 
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
+		public static final TagKey<Biome> IS_OTHERSIDE = tag("is_otherside");
 
 		public static final TagKey<Biome> IS_DEPTHS_BIOME = tag("is_depths_biome");
 
@@ -209,6 +212,7 @@ public class UGTags {
 		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_WIGGLEWOOD = commonTag("primary_wood_type/wigglewood");
 		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_SMOGSTEM = commonTag("primary_wood_type/smogstem");
 		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_GRONGLE = commonTag("primary_wood_type/grongle");
+		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_WHISPERWOOD = commonTag("primary_wood_type/whisperwood");
 
 		private static TagKey<Biome> tag(String name) {
 			return TagKey.create(Registries.BIOME, Undergarden.prefix(name));

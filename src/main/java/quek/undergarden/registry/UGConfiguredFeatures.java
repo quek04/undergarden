@@ -112,6 +112,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GRONGLE_TREE = create("grongle_tree");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_GRONGLE_TREE = create("small_grongle_tree");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GRONGLE_BUSH = create("grongle_bush");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_WHISPERWOOD_TREE = create("dead_whisperwood_tree");
 
 	//huge mushrooms
 	public static final ResourceKey<ConfiguredFeature<?, ?>> HUGE_INDIGO_MUSHROOM = create("huge_indigo_mushroom");
@@ -282,6 +283,15 @@ public class UGConfiguredFeatures {
 			new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
 			Optional.empty(),
 			new TwoLayersFeatureSize(0, 0, 0),
+			PLACE_BELOW_UNDERGARDEN_TRUNKS
+		).ignoreVines().build()));
+		context.register(DEAD_WHISPERWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(UGBlocks.WHISPERWOOD_LOG.get()),
+			new ForkingTrunkPlacer(6, 3, 3),
+			BlockStateProvider.simple(Blocks.AIR),
+			new AcaciaFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+			Optional.empty(),
+			new TwoLayersFeatureSize(1, 0, 2),
 			PLACE_BELOW_UNDERGARDEN_TRUNKS
 		).ignoreVines().build()));
 

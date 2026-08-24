@@ -651,6 +651,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEAD_WISPYGRASS_PATCH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEAD_WHISPERWOOD_TREE)
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder()).build())
 			.hasPrecipitation(false)
