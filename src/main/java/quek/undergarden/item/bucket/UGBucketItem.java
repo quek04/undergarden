@@ -19,7 +19,6 @@ import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.cow.Cow;
 import net.minecraft.world.entity.animal.fish.Salmon;
 import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;

@@ -52,7 +52,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Blisterbomb>> BLISTERBOMB = registerMisc("blisterbomb", EntityType.Builder.<Blisterbomb>of(Blisterbomb::new, MobCategory.MISC).sized(0.5F, 0.5F));
 	public static final DeferredHolder<EntityType<?>, EntityType<ThrownJavelin>> JAVELIN = registerMisc("javelin", EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
 	public static final DeferredHolder<EntityType<?>, EntityType<MinionProjectile>> MINION_PROJECTILE = registerMisc("minion_projectile", EntityType.Builder.<MinionProjectile>of(MinionProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F));
-	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = registerMisc("minion", EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).eyeHeight(1.0F));
+	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = registerWithAttributes("minion", EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).eyeHeight(1.0F), Minion::registerAttributes);
 	public static final DeferredHolder<EntityType<?>, EntityType<RotbelcherProjectile>> ROTBELCHER_PROJECTILE = registerMisc("rotbelcher_projectile", EntityType.Builder.<RotbelcherProjectile>of(RotbelcherProjectile::new, MobCategory.MISC).sized(0.5F, 0.5F));
 
 	//boats

@@ -1,7 +1,6 @@
 package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.context.UseOnContext;

@@ -876,7 +876,6 @@ public class UGLang extends UGLangProvider {
 		add(UGTags.Items.WHISPERWOOD_LOGS, "Whisperwood Logs");
 		add(UGTags.Items.INFUSER_UTHERIUM_FUELS, "Infuser Utherium Fuels");
 		add(UGTags.Items.INFUSER_ROGDORIUM_FUELS, "Infuser Rogdorium Fuels");
-		add(UGTags.Items.ACCELERATED_DREADROCK_BREAKING, "Accelerates Dreadrock Breaking");
 
 		add(UGTags.Items.CLOGGRUM_TOOL_MATERIALS, "Cloggrum Tool Materials");
 		add(UGTags.Items.FROSTSTEEL_TOOL_MATERIALS, "Froststeel Tool Materials");

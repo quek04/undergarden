@@ -1,7 +1,6 @@
 package quek.undergarden.event;
 
 import net.minecraft.commands.Commands;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -15,20 +14,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.tooltip.TooltipAppender;
@@ -43,7 +38,7 @@ import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
@@ -95,6 +90,7 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::modifyForgottenRequiredBlocks);
 		NeoForge.EVENT_BUS.addListener(OnDatapackSyncEvent.class, event -> event.sendRecipes(UGRecipeTypes.INFUSING.get()));
 
 //		if (ModList.get().isLoaded("create")) {
@@ -360,5 +356,14 @@ public class UndergardenCommonEvents {
 	private static void addComponentTooltips(RegisterTooltipAppendersEvent event) {
 		event.registerComponentAppenderBeforeAll(UGDataComponents.ROGDORIUM_INFUSION, TooltipAppender.createComponentAppender(UGDataComponents.ROGDORIUM_INFUSION.get()));
 		event.registerComponentAppenderAfter(UGDataComponents.SLINGSHOT_AMMO, DataComponents.LORE, TooltipAppender.createComponentAppender(UGDataComponents.SLINGSHOT_AMMO.get()));
+	}
+
+	public static void modifyForgottenRequiredBlocks(PlayerEvent.BreakSpeed event) {
+		if (!event.isCanceled() && event.getState().is(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL) && event.getEntity().level().dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
+			var tool = event.getEntity().getInventory().getSelectedItem().getComponents().get(DataComponents.TOOL);
+			if (tool == null || !tool.isCorrectForDrops(event.getState())) {
+				event.setNewSpeed(event.getOriginalSpeed() / 64.0F);
+			}
+		}
 	}
 }

@@ -227,6 +227,8 @@ public class UGEntityLootTables extends EntityLootSubProvider {
 			)
 		);
 
+		this.add(UGEntityTypes.MINION.get(), LootTable.lootTable());
+
 		this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(ConstantValue.exactly(1))
