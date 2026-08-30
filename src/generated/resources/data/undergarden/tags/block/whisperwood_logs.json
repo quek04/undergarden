@@ -1,6 +1,8 @@
 {
   "values": [
     "undergarden:whisperwood_log",
-    "undergarden:whisperwood_wood"
+    "undergarden:stripped_whisperwood_log",
+    "undergarden:whisperwood_wood",
+    "undergarden:stripped_whisperwood_wood"
   ]
 }

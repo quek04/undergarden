@@ -301,9 +301,15 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
 		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
+		addBlock(UGBlocks.DEAD_WHISPERWOOD_SAPLING, "Dead Whisperwood Sapling");
 		addBlock(UGBlocks.WHISPERWOOD_LOG, "Whisperwood Log");
+		addBlock(UGBlocks.STRIPPED_WHISPERWOOD_LOG, "Stripped Whisperwood Log");
 		addBlock(UGBlocks.WHISPERWOOD_WOOD, "Whisperwood Wood");
+		addBlock(UGBlocks.STRIPPED_WHISPERWOOD_WOOD, "Stripped Whisperwood Wood");
+		addBlock(UGBlocks.DEAD_WHISPERWOOD_LEAVES, "Dead Whisperwood Leaves");
+		addBlock(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES, "Hanging Dead Whisperwood Leaves");
 		addBlock(UGBlocks.WHISPERWOOD_PLANKS, "Whisperwood Planks");
+		addBlock(UGBlocks.POTTED_DEAD_WHISPERWOOD_SAPLING, "Potted Dead Whisperwood Sapling");
 
 		addBlock(UGBlocks.INFUSER, "Infuser");
 

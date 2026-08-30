@@ -46,6 +46,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeWood(getter, UGBlocks.STRIPPED_WIGGLEWOOD_WOOD, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).save(this.output);
 		makeWood(getter, UGBlocks.GRONGLE_WOOD, UGBlocks.GRONGLE_LOG).save(this.output);
 		makeWood(getter, UGBlocks.STRIPPED_GRONGLE_WOOD, UGBlocks.STRIPPED_GRONGLE_LOG).save(this.output);
+		makeWood(getter, UGBlocks.WHISPERWOOD_WOOD, UGBlocks.WHISPERWOOD_LOG).save(this.output);
+		makeWood(getter, UGBlocks.STRIPPED_WHISPERWOOD_WOOD, UGBlocks.STRIPPED_WHISPERWOOD_LOG).save(this.output);
 
 		makeBoat(getter, UGItems.SMOGSTEM_BOAT, UGBlocks.SMOGSTEM_PLANKS).save(this.output);
 		makeBoat(getter, UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(this.output);
