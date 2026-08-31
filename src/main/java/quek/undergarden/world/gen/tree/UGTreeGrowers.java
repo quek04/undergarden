@@ -24,10 +24,10 @@ public class UGTreeGrowers {
 		Optional.of(UGConfiguredFeatures.SMALL_GRONGLE_TREE),
 		Optional.empty()
 	);
-	public static final TreeGrower DEAD_WHISPERWOOD = new TreeGrower(
-		"dead_whisperwood",
+	public static final TreeGrower DESICCATED_WHISPERWOOD = new TreeGrower(
+		"desiccated_whisperwood",
 		Optional.empty(),
-		Optional.of(UGConfiguredFeatures.DEAD_WHISPERWOOD_TREE),
+		Optional.of(UGConfiguredFeatures.DESICCATED_WHISPERWOOD_TREE),
 		Optional.empty()
 	);
 }

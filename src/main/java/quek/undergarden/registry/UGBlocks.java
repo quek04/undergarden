@@ -23,7 +23,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.waypoints.Waypoint;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import quek.undergarden.TallDeadWispygrassBlock;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
@@ -185,7 +184,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEEPSOIL = registerWithItem("deepsoil", properties -> new DeepsoilBlock(UGBlocks.DEEPSOIL_FARMLAND, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
 	public static final DeferredBlock<Block> COARSE_DEEPSOIL = registerWithItem("coarse_deepsoil", properties -> new DeepsoilBlock(DEEPSOIL, properties), () -> BlockBehaviour.Properties.ofFullCopy(DEEPSOIL.get()));
 	public static final DeferredBlock<Block> DEEPSOIL_FARMLAND = registerWithItem("deepsoil_farmland", DeepsoilFarmlandBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND));
-	public static final DeferredBlock<Block> DEAD_WISPYGRASS_BLOCK = registerWithItem("dead_wispygrass_block", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()));
+	public static final DeferredBlock<Block> DESICCATED_WISPYGRASS_BLOCK = registerWithItem("desiccated_wispygrass_block", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()));
 	public static final DeferredBlock<Block> GOO = registerWithItem("goo", GooLayerBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((_, _, _) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollision());
 	public static final DeferredBlock<Block> GOO_BLOCK = registerWithItem("goo_block", GooBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion());
 	public static final DeferredBlock<Block> SMOG_VENT = registerWithItem("smog_vent", SmogVentBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).lightLevel((state) -> 10).isValidSpawn(((state, level, pos, entity) -> false)));
@@ -212,7 +211,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> ASHEN_DEEPTURF = registerWithItem("ashen_deepturf", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> FROZEN_DEEPTURF = registerWithItem("frozen_deepturf", TallDeepturfVariantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> TALL_DEEPTURF = registerWithItem("tall_deepturf", DoublePlantBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS));
-	public static final DeferredBlock<Block> DEAD_WISPYGRASS = registerWithItem("dead_wispygrass", TallDeadWispygrassBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
+	public static final DeferredBlock<Block> DESICCATED_WISPYGRASS = registerWithItem("desiccated_wispygrass", TallWispygrassBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));
 	public static final DeferredBlock<Block> SHIMMERWEED = registerWithItem("shimmerweed", ShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel((state) -> 12));
 	public static final DeferredBlock<Block> TALL_SHIMMERWEED = registerWithItem("tall_shimmerweed", TallShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS).lightLevel((state) -> 14));
 	public static final DeferredBlock<Block> DITCHBULB_PLANT = register("ditchbulb_plant", DitchbulbBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0));
@@ -313,7 +312,7 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> GRONGLE_WOOD = registerWithItem("grongle_wood", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_GRONGLE_WOOD = registerWithItem("stripped_grongle_wood", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD));
 	public static final DeferredBlock<Block> GRONGLE_LEAVES = registerWithItem("grongle_leaves", properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 0x36971d), properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.AZALEA_LEAVES));
-	public static final DeferredBlock<Block> HANGING_GRONGLE_LEAVES = registerWithItem("hanging_grongle_leaves", HangingGrongleLeavesBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(GRONGLE_LEAVES.get()).noCollision().noOcclusion());
+	public static final DeferredBlock<Block> HANGING_GRONGLE_LEAVES = registerWithItem("hanging_grongle_leaves", HangingLeavesBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(GRONGLE_LEAVES.get()).noCollision().noOcclusion());
 	public static final DeferredBlock<Block> GRONGLE_PLANKS = registerWithItem("grongle_planks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 	public static final DeferredBlock<StairBlock> GRONGLE_STAIRS = registerWithItem("grongle_stairs", properties -> new StairBlock(GRONGLE_PLANKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get()));
 	public static final DeferredBlock<SlabBlock> GRONGLE_SLAB = registerWithItem("grongle_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get()));
@@ -365,13 +364,13 @@ public class UGBlocks {
 	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = register("ancient_root_wall_hanging_sign", properties -> new WallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> wallVariant(ANCIENT_ROOT_HANGING_SIGN.get(), true).mapColor(ANCIENT_ROOT.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava());
 
 	//whisperwood
-	public static final DeferredBlock<Block> DEAD_WHISPERWOOD_SAPLING = registerWithItem("dead_whisperwood_sapling", properties -> new UGSaplingBlock(UGTreeGrowers.DEAD_WHISPERWOOD, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));
+	public static final DeferredBlock<Block> DESICCATED_WHISPERWOOD_SAPLING = registerWithItem("desiccated_whisperwood_sapling", properties -> new UGSaplingBlock(UGTreeGrowers.DESICCATED_WHISPERWOOD, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));
 	public static final DeferredBlock<RotatedPillarBlock> WHISPERWOOD_LOG = registerWithItem("whisperwood_log", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WHISPERWOOD_LOG = registerWithItem("stripped_whisperwood_log", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG));
 	public static final DeferredBlock<RotatedPillarBlock> WHISPERWOOD_WOOD = registerWithItem("whisperwood_wood", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WHISPERWOOD_WOOD = registerWithItem("stripped_whisperwood_wood", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD));
-	public static final DeferredBlock<Block> DEAD_WHISPERWOOD_LEAVES = registerWithItem("dead_whisperwood_leaves", properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 0xd7d9ed), properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.AZALEA_LEAVES));
-	public static final DeferredBlock<Block> HANGING_DEAD_WHISPERWOOD_LEAVES = registerWithItem("hanging_dead_whisperwood_leaves", HangingGrongleLeavesBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DEAD_WHISPERWOOD_LEAVES.get()).noCollision().noOcclusion());
+	public static final DeferredBlock<Block> DESICCATED_WHISPERWOOD_LEAVES = registerWithItem("desiccated_whisperwood_leaves", properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 0xd7d9ed), properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.AZALEA_LEAVES));
+	public static final DeferredBlock<Block> HANGING_DESICCATED_WHISPERWOOD_LEAVES = registerWithItem("hanging_desiccated_whisperwood_leaves", HangingLeavesBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(DESICCATED_WHISPERWOOD_LEAVES.get()).noCollision().noOcclusion());
 	public static final DeferredBlock<Block> WHISPERWOOD_PLANKS = registerWithItem("whisperwood_planks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 
 	//functional
@@ -381,7 +380,7 @@ public class UGBlocks {
 	public static final DeferredBlock<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = register("potted_smogstem_sapling", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));
 	public static final DeferredBlock<FlowerPotBlock> POTTED_WIGGLEWOOD_SAPLING = register("potted_wigglewood_sapling", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, WIGGLEWOOD_SAPLING, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));
 	public static final DeferredBlock<FlowerPotBlock> POTTED_GRONGLE_SAPLING = register("potted_grongle_sapling", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, GRONGLE_SAPLING, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));
-	public static final DeferredBlock<FlowerPotBlock> POTTED_DEAD_WHISPERWOOD_SAPLING = register("potted_dead_whisperwood_sapling", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, DEAD_WHISPERWOOD_SAPLING, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));
+	public static final DeferredBlock<FlowerPotBlock> POTTED_DESICCATED_WHISPERWOOD_SAPLING = register("potted_desiccated_whisperwood_sapling", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, DESICCATED_WHISPERWOOD_SAPLING, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));
 	public static final DeferredBlock<FlowerPotBlock> POTTED_SHIMMERWEED = register("potted_shimmerweed", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SHIMMERWEED, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT).lightLevel((state) -> 12));
 	public static final DeferredBlock<FlowerPotBlock> POTTED_INDIGO_MUSHROOM = register("potted_indigo_mushroom", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, INDIGO_MUSHROOM, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));
 	public static final DeferredBlock<FlowerPotBlock> POTTED_VEIL_MUSHROOM = register("potted_veil_mushroom", properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, VEIL_MUSHROOM, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT));

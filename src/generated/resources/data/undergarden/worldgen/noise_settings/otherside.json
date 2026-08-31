@@ -148,7 +148,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "undergarden:howling_peaks"
+            "undergarden:mountains_of_madness"
           ]
         },
         "then_run": {
@@ -189,7 +189,7 @@
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
-                    "Name": "undergarden:dead_wispygrass_block"
+                    "Name": "undergarden:desiccated_wispygrass_block"
                   }
                 }
               },

@@ -21,7 +21,7 @@
           }
         },
         {
-          "biome": "undergarden:howling_peaks",
+          "biome": "undergarden:mountains_of_madness",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,

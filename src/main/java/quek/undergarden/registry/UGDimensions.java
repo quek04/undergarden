@@ -414,7 +414,7 @@ public class UGDimensions {
 				DensityFunctions.zero() //vein gap
 			),
 			SurfaceRules.sequence(
-				SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.HOWLING_PEAKS), SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())),
+				SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.MOUNTAINS_OF_MADNESS), SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())),
 				//mix dead wispygrass into fields of sorrow
 				SurfaceRules.ifTrue(
 					SurfaceRules.isBiome(UGBiomes.FIELDS_OF_SORROW),
@@ -423,7 +423,7 @@ public class UGDimensions {
 						SurfaceRules.sequence(
 							SurfaceRules.ifTrue(
 								SurfaceRules.noiseCondition(noises.getOrThrow(Noises.POWDER_SNOW).key(), 0.0D, 1.8D),
-								SurfaceRules.state(UGBlocks.DEAD_WISPYGRASS_BLOCK.get().defaultBlockState())
+								SurfaceRules.state(UGBlocks.DESICCATED_WISPYGRASS_BLOCK.get().defaultBlockState())
 							),
 							SurfaceRules.ifTrue(
 								SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),

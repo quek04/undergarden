@@ -33,7 +33,7 @@ import quek.undergarden.block.*;
 import quek.undergarden.world.gen.feature.config.AncientRootConfiguration;
 import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 import quek.undergarden.world.gen.feature.predicate.InDimensionPredicate;
-import quek.undergarden.world.gen.treedecorator.DeadWhisperwoodLeafDecorator;
+import quek.undergarden.world.gen.treedecorator.DesiccatedWhisperwoodLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
 import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
@@ -113,7 +113,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GRONGLE_TREE = create("grongle_tree");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_GRONGLE_TREE = create("small_grongle_tree");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GRONGLE_BUSH = create("grongle_bush");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_WHISPERWOOD_TREE = create("dead_whisperwood_tree");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DESICCATED_WHISPERWOOD_TREE = create("desiccated_whisperwood_tree");
 
 	//huge mushrooms
 	public static final ResourceKey<ConfiguredFeature<?, ?>> HUGE_INDIGO_MUSHROOM = create("huge_indigo_mushroom");
@@ -202,7 +202,7 @@ public class UGConfiguredFeatures {
 			false
 		)));
 		context.register(TWISTYBUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.TWISTYBUSH.get())));
-		context.register(DEAD_WISPYGRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.DEAD_WISPYGRASS.get())));
+		context.register(DEAD_WISPYGRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, simpleBlock(UGBlocks.DESICCATED_WISPYGRASS.get())));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -286,7 +286,7 @@ public class UGConfiguredFeatures {
 			new TwoLayersFeatureSize(0, 0, 0),
 			PLACE_BELOW_UNDERGARDEN_TRUNKS
 		).ignoreVines().build()));
-		context.register(DEAD_WHISPERWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+		context.register(DESICCATED_WHISPERWOOD_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
 			BlockStateProvider.simple(UGBlocks.WHISPERWOOD_LOG.get()),
 			new CherryTrunkPlacer(
 				6,
@@ -297,12 +297,12 @@ public class UGConfiguredFeatures {
 				UniformInt.of(-4, -3),
 				UniformInt.of(-1, 0)
 			),
-			BlockStateProvider.simple(UGBlocks.DEAD_WHISPERWOOD_LEAVES.get()),
+			BlockStateProvider.simple(UGBlocks.DESICCATED_WHISPERWOOD_LEAVES.get()),
 			new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
 			Optional.empty(),
 			new TwoLayersFeatureSize(1, 0, 2),
 			PLACE_BELOW_UNDERGARDEN_TRUNKS
-		).ignoreVines().decorators(ImmutableList.of(DeadWhisperwoodLeafDecorator.INSTANCE)).build()));
+		).ignoreVines().decorators(ImmutableList.of(DesiccatedWhisperwoodLeafDecorator.INSTANCE)).build()));
 
 		//huge mushrooms
 		context.register(HUGE_INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(

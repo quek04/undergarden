@@ -49,7 +49,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> PUFF_MUSHROOM_FOREST = create("puff_mushroom_forest");
 	public static final ResourceKey<Biome> ROGDORIUM_GROVE = create("rogdorium_grove");
 
-	public static final ResourceKey<Biome> HOWLING_PEAKS = create("howling_peaks");
+	public static final ResourceKey<Biome> MOUNTAINS_OF_MADNESS = create("mountains_of_madness");
 	public static final ResourceKey<Biome> FIELDS_OF_SORROW = create("fields_of_sorrow");
 
 	private static ResourceKey<Biome> create(String name) {
@@ -631,7 +631,7 @@ public class UGBiomes {
 			.specialEffects(generateColors(1784489))
 			.build());
 
-		context.register(HOWLING_PEAKS, new Biome.BiomeBuilder()
+		context.register(MOUNTAINS_OF_MADNESS, new Biome.BiomeBuilder()
 			.generationSettings(addOthersideOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
@@ -651,7 +651,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEAD_WISPYGRASS_PATCH)
-				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEAD_WHISPERWOOD_TREE)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DESICCATED_WHISPERWOOD_TREE)
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder()).build())
 			.hasPrecipitation(false)
@@ -763,7 +763,7 @@ public class UGBiomes {
 	public static BiomeSource buildOthersideBiomeSource(HolderGetter<Biome> biomes) {
 		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(ImmutableList.of(
 			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.0F, 0.2F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(FIELDS_OF_SORROW)),
-			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.2F, 1.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(HOWLING_PEAKS))
+			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.2F, 1.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(MOUNTAINS_OF_MADNESS))
 		)));
 	}
 }

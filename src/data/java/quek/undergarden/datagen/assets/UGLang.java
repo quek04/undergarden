@@ -152,7 +152,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DEEPSOIL, "Deepsoil");
 		addBlock(UGBlocks.COARSE_DEEPSOIL, "Coarse Deepsoil");
 		addBlock(UGBlocks.DEEPSOIL_FARMLAND, "Deepsoil Farmland");
-		addBlock(UGBlocks.DEAD_WISPYGRASS_BLOCK, "Dead Wispygrass Block");
+		addBlock(UGBlocks.DESICCATED_WISPYGRASS_BLOCK, "Desiccated Wispygrass Block");
 		addBlock(UGBlocks.GOO, "Scintling Goo");
 		addBlock(UGBlocks.GOO_BLOCK, "Scintling Goo Block");
 		addBlock(UGBlocks.SMOG_VENT, "Smog Vent");
@@ -178,7 +178,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ASHEN_DEEPTURF, "Ashen Deepturf");
 		addBlock(UGBlocks.FROZEN_DEEPTURF, "Frozen Deepturf");
 		addBlock(UGBlocks.TALL_DEEPTURF, "Tall Deepturf");
-		addBlock(UGBlocks.DEAD_WISPYGRASS, "Dead Wispygrass");
+		addBlock(UGBlocks.DESICCATED_WISPYGRASS, "Desiccated Wispygrass");
 		addBlock(UGBlocks.SHIMMERWEED, "Shimmerweed");
 		addBlock(UGBlocks.TALL_SHIMMERWEED, "Tall Shimmerweed");
 		addBlock(UGBlocks.POTTED_SHIMMERWEED, "Potted Shimmerweed");
@@ -301,15 +301,15 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
 		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
-		addBlock(UGBlocks.DEAD_WHISPERWOOD_SAPLING, "Dead Whisperwood Sapling");
+		addBlock(UGBlocks.DESICCATED_WHISPERWOOD_SAPLING, "Desiccated Whisperwood Sapling");
 		addBlock(UGBlocks.WHISPERWOOD_LOG, "Whisperwood Log");
 		addBlock(UGBlocks.STRIPPED_WHISPERWOOD_LOG, "Stripped Whisperwood Log");
 		addBlock(UGBlocks.WHISPERWOOD_WOOD, "Whisperwood Wood");
 		addBlock(UGBlocks.STRIPPED_WHISPERWOOD_WOOD, "Stripped Whisperwood Wood");
-		addBlock(UGBlocks.DEAD_WHISPERWOOD_LEAVES, "Dead Whisperwood Leaves");
-		addBlock(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES, "Hanging Dead Whisperwood Leaves");
+		addBlock(UGBlocks.DESICCATED_WHISPERWOOD_LEAVES, "Desiccated Whisperwood Leaves");
+		addBlock(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES, "Hanging Desiccated Whisperwood Leaves");
 		addBlock(UGBlocks.WHISPERWOOD_PLANKS, "Whisperwood Planks");
-		addBlock(UGBlocks.POTTED_DEAD_WHISPERWOOD_SAPLING, "Potted Dead Whisperwood Sapling");
+		addBlock(UGBlocks.POTTED_DESICCATED_WHISPERWOOD_SAPLING, "Potted Desiccated Whisperwood Sapling");
 
 		addBlock(UGBlocks.INFUSER, "Infuser");
 
@@ -479,7 +479,7 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.INFECTED_DEPTHS, "Infected Depths");
 		addBiome(UGBiomes.PUFF_MUSHROOM_FOREST, "Puff Mushroom Forest");
 		addBiome(UGBiomes.FIELDS_OF_SORROW, "Fields of Sorrow");
-		addBiome(UGBiomes.HOWLING_PEAKS, "Howling Peaks");
+		addBiome(UGBiomes.MOUNTAINS_OF_MADNESS, "Mountains of Madness");
 
 		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
 		addEntityType(UGEntityTypes.SLINGSHOT_PROJECTILE, "Slingshot Projectile");

@@ -53,7 +53,7 @@
           },
           {
             "type": "minecraft:matching_blocks",
-            "blocks": "undergarden:dead_wispygrass_block",
+            "blocks": "undergarden:desiccated_wispygrass_block",
             "offset": [
               0,
               -1,

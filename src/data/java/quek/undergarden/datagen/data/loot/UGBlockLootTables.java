@@ -333,17 +333,17 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.CRACKED_SEDIMENT_STONE_BRICKS);
 		this.dropSelf(UGBlocks.DIRTY_SEDIMENT_STONE_BRICKS);
 		this.add(UGBlocks.TWISTYBUSH.get(), block -> this.createShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(UGItems.TWISTYTWIG).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
-		this.dropWithSilk(UGBlocks.DEAD_WISPYGRASS_BLOCK, UGBlocks.TREMBLECRUST);
-		this.add(UGBlocks.DEAD_WISPYGRASS.get(), this::createShearsOnlyDrop);
-		this.dropSelf(UGBlocks.DEAD_WHISPERWOOD_SAPLING);
+		this.dropWithSilk(UGBlocks.DESICCATED_WISPYGRASS_BLOCK, UGBlocks.TREMBLECRUST);
+		this.add(UGBlocks.DESICCATED_WISPYGRASS.get(), this::createShearsOnlyDrop);
+		this.dropSelf(UGBlocks.DESICCATED_WHISPERWOOD_SAPLING);
 		this.dropSelf(UGBlocks.WHISPERWOOD_LOG);
 		this.dropSelf(UGBlocks.STRIPPED_WHISPERWOOD_LOG);
 		this.dropSelf(UGBlocks.WHISPERWOOD_WOOD);
 		this.dropSelf(UGBlocks.STRIPPED_WHISPERWOOD_WOOD);
 		this.dropSelf(UGBlocks.WHISPERWOOD_PLANKS);
-		this.add(UGBlocks.DEAD_WHISPERWOOD_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, UGBlocks.DEAD_WHISPERWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
-		this.add(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get(), this::createShearsOnlyDrop);
-		this.dropPottedContents(UGBlocks.POTTED_DEAD_WHISPERWOOD_SAPLING.get());
+		this.add(UGBlocks.DESICCATED_WHISPERWOOD_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, UGBlocks.DESICCATED_WHISPERWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+		this.add(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get(), this::createShearsOnlyDrop);
+		this.dropPottedContents(UGBlocks.POTTED_DESICCATED_WHISPERWOOD_SAPLING.get());
 	}
 
 	public void dropSelf(Supplier<? extends Block> block) {

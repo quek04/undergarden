@@ -233,7 +233,7 @@ public class UGBlockModels extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.GOO_BLOCK.get(), block -> this.simpleBlockBuilder(block, ModelTemplates.CUBE_BOTTOM_TOP, TextureMapping::cubeBottomTop));
 
 		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.HANGING_GRONGLE_LEAVES.get())
-			.with(PropertyDispatch.initial(HangingGrongleLeavesBlock.HALF)
+			.with(PropertyDispatch.initial(HangingLeavesBlock.HALF)
 				.select(DoubleBlockHalf.LOWER, plainVariant(PlantType.NOT_TINTED.getCross().create(UGBlocks.HANGING_GRONGLE_LEAVES.get(), TextureMapping.cross(UGBlocks.HANGING_GRONGLE_LEAVES.get()), this.modelOutput)))
 				.select(DoubleBlockHalf.UPPER, plainVariant(PlantType.NOT_TINTED.getCross().createWithSuffix(UGBlocks.HANGING_GRONGLE_LEAVES.get(), "_top", TextureMapping.cross(TextureMapping.getBlockTexture(UGBlocks.HANGING_GRONGLE_LEAVES.get(), "_top")), this.modelOutput)))));
 		this.registerSimpleFlatItemModel(UGBlocks.HANGING_GRONGLE_LEAVES.get());
@@ -332,21 +332,21 @@ public class UGBlockModels extends BlockModelGenerators {
 
 		this.createCrossBlockWithDefaultItem(UGBlocks.TWISTYBUSH.get(), PlantType.NOT_TINTED);
 
-		this.createCrossBlockWithDefaultItem(UGBlocks.DEAD_WISPYGRASS.get(), PlantType.NOT_TINTED);
-		this.wrapBlockItem(UGBlocks.DEAD_WISPYGRASS_BLOCK.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
+		this.createCrossBlockWithDefaultItem(UGBlocks.DESICCATED_WISPYGRASS.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.DESICCATED_WISPYGRASS_BLOCK.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
 			.get(block)
 			.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.TREMBLECRUST.get())))
 			.create(block, this.modelOutput))))));
 
 		this.woodProvider(UGBlocks.WHISPERWOOD_LOG.get()).logWithHorizontal(UGBlocks.WHISPERWOOD_LOG.get()).wood(UGBlocks.WHISPERWOOD_WOOD.get());
 		this.woodProvider(UGBlocks.STRIPPED_WHISPERWOOD_LOG.get()).logWithHorizontal(UGBlocks.STRIPPED_WHISPERWOOD_LOG.get()).wood(UGBlocks.STRIPPED_WHISPERWOOD_WOOD.get());
-		this.wrapBlockItem(UGBlocks.DEAD_WHISPERWOOD_LEAVES.get(), this::createTrivialCube);
-		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get())
-			.with(PropertyDispatch.initial(HangingGrongleLeavesBlock.HALF)
-				.select(DoubleBlockHalf.LOWER, plainVariant(PlantType.NOT_TINTED.getCross().create(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get(), TextureMapping.cross(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get()), this.modelOutput)))
-				.select(DoubleBlockHalf.UPPER, plainVariant(PlantType.NOT_TINTED.getCross().createWithSuffix(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get(), "_top", TextureMapping.cross(TextureMapping.getBlockTexture(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get(), "_top")), this.modelOutput)))));
-		this.registerSimpleFlatItemModel(UGBlocks.HANGING_DEAD_WHISPERWOOD_LEAVES.get());
-		this.createPlantWithDefaultItem(UGBlocks.DEAD_WHISPERWOOD_SAPLING.get(), UGBlocks.POTTED_DEAD_WHISPERWOOD_SAPLING.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.DESICCATED_WHISPERWOOD_LEAVES.get(), this::createTrivialCube);
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get())
+			.with(PropertyDispatch.initial(HangingLeavesBlock.HALF)
+				.select(DoubleBlockHalf.LOWER, plainVariant(PlantType.NOT_TINTED.getCross().create(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get(), TextureMapping.cross(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get()), this.modelOutput)))
+				.select(DoubleBlockHalf.UPPER, plainVariant(PlantType.NOT_TINTED.getCross().createWithSuffix(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get(), "_top", TextureMapping.cross(TextureMapping.getBlockTexture(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get(), "_top")), this.modelOutput)))));
+		this.registerSimpleFlatItemModel(UGBlocks.HANGING_DESICCATED_WHISPERWOOD_LEAVES.get());
+		this.createPlantWithDefaultItem(UGBlocks.DESICCATED_WHISPERWOOD_SAPLING.get(), UGBlocks.POTTED_DESICCATED_WHISPERWOOD_SAPLING.get(), PlantType.NOT_TINTED);
 
 //		this.wrapBlockItem(UGBlocks.SEDIMENT_STONE.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN_WITH_WALL));
 //		this.wrapBlockItem(UGBlocks.POLISHED_SEDIMENT_STONE.get(), this::createTrivialCube);

@@ -4,7 +4,7 @@
     "to_place": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "undergarden:dead_wispygrass"
+        "Name": "undergarden:desiccated_wispygrass"
       }
     }
   }

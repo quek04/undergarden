@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "undergarden:block/hanging_desiccated_whisperwood_leaves"
+    },
+    "half=upper": {
+      "model": "undergarden:block/hanging_desiccated_whisperwood_leaves_top"
+    }
+  }
+}

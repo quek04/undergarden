@@ -5,7 +5,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.world.gen.treedecorator.DeadWhisperwoodLeafDecorator;
+import quek.undergarden.world.gen.treedecorator.DesiccatedWhisperwoodLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
 import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
@@ -16,5 +16,5 @@ public class UGTreeDecoratorTypes {
 	public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<GrongleLeafDecorator>> GRONGLE_LEAF_DECORATOR = TREE_DECORATORS.register("grongle_leaf_decorator", () -> new TreeDecoratorType<>(GrongleLeafDecorator.CODEC));
 	public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<GrongletTrunkDecorator>> GRONGLET_TRUNK_DECORATOR = TREE_DECORATORS.register("gronglet_trunk_decorator", () -> new TreeDecoratorType<>(GrongletTrunkDecorator.CODEC));
 	public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<ReplaceLeafDecorator>> REPLACE_LEAF_DECORATOR = TREE_DECORATORS.register("replace_leaf", () -> new TreeDecoratorType<>(ReplaceLeafDecorator.CODEC));
-	public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<DeadWhisperwoodLeafDecorator>> DEAD_WHISPERWOOD_LEAF_DECORATOR = TREE_DECORATORS.register("dead_whisperwood_leaf_decorator", () -> new TreeDecoratorType<>(DeadWhisperwoodLeafDecorator.CODEC));
+	public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<DesiccatedWhisperwoodLeafDecorator>> DESICCATED_WHISPERWOOD_LEAF_DECORATOR = TREE_DECORATORS.register("desiccated_whisperwood_leaf_decorator", () -> new TreeDecoratorType<>(DesiccatedWhisperwoodLeafDecorator.CODEC));
 }
