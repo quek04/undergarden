@@ -96,11 +96,12 @@ public class UGDimensions {
 			CardinalLighting.Type.DEFAULT,
 			EnvironmentAttributeMap.builder()
 				.set(NeoForgeEnvironmentAttributes.CUSTOM_SKYBOX, UndergardenClient.OTHERSIDE_SKYBOX)
+				.set(NeoForgeEnvironmentAttributes.CUSTOM_WEATHER_EFFECTS, UndergardenClient.OTHERSIDE_SKYBOX)
 				.set(EnvironmentAttributes.FOG_COLOR, 12364199)
-				.set(EnvironmentAttributes.SKY_LIGHT_COLOR, -5480243)
+				.set(EnvironmentAttributes.SKY_LIGHT_COLOR, 8079174)
 				.set(EnvironmentAttributes.SKY_COLOR, 8079174)
 				.set(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0.0F)
-				.set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -12630209)
+				.set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 8079174)
 //				.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.END))
 //				.set(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
 				.set(EnvironmentAttributes.BED_RULE, BedRule.EXPLODES)
@@ -390,7 +391,7 @@ public class UGDimensions {
 													DensityFunctions.yClampedGradient(64, 440, 1.0D, 0.0D),
 													DensityFunctions.add(
 														DensityFunctions.constant(23.4375),
-														BlendedNoise.createUnseeded(0.25D, 0.25D, 80, 160, 4)
+														BlendedNoise.createUnseeded(0.25D, 0.25D, 1, 160, 4)
 													)
 												)
 											)

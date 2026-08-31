@@ -7,12 +7,13 @@
       "explodes": true
     },
     "minecraft:gameplay/respawn_anchor_works": false,
-    "minecraft:visual/ambient_light_color": "#3f473f",
+    "minecraft:visual/ambient_light_color": "#7b4746",
     "minecraft:visual/fog_color": "#bca9a7",
     "minecraft:visual/sky_color": "#7b4746",
-    "minecraft:visual/sky_light_color": "#ac60cd",
+    "minecraft:visual/sky_light_color": "#7b4746",
     "minecraft:visual/sky_light_factor": 0.0,
-    "neoforge:custom_skybox": "undergarden:otherside_skybox"
+    "neoforge:custom_skybox": "undergarden:otherside_skybox",
+    "neoforge:custom_weather_effects": "undergarden:otherside_skybox"
   },
   "coordinate_scale": 1.0,
   "has_ceiling": false,
