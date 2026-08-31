@@ -57,6 +57,10 @@ public class UGConfiguredFeatures {
 		BlockStateProvider.simple(Blocks.DIRT),
 		List.of(new RuleBasedStateProvider.Rule(new InDimensionPredicate(UGDimensions.UNDERGARDEN_LEVEL), BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())))
 	);
+	public static final RuleBasedStateProvider PLACE_BELOW_OTHERSIDE_TRUNKS = new RuleBasedStateProvider(
+		BlockStateProvider.simple(Blocks.DIRT),
+		List.of(new RuleBasedStateProvider.Rule(new InDimensionPredicate(UGDimensions.OTHERSIDE_LEVEL), BlockStateProvider.simple(UGBlocks.TREMBLECRUST.get())))
+	);
 
 	//ores
 	public static final ResourceKey<ConfiguredFeature<?, ?>> COAL_ORE = create("coal_ore");
@@ -301,7 +305,7 @@ public class UGConfiguredFeatures {
 			new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
 			Optional.empty(),
 			new TwoLayersFeatureSize(1, 0, 2),
-			PLACE_BELOW_UNDERGARDEN_TRUNKS
+			PLACE_BELOW_OTHERSIDE_TRUNKS
 		).ignoreVines().decorators(ImmutableList.of(DesiccatedWhisperwoodLeafDecorator.INSTANCE)).build()));
 
 		//huge mushrooms

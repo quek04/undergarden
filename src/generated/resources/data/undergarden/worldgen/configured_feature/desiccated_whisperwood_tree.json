@@ -13,12 +13,12 @@
         {
           "if_true": {
             "type": "undergarden:in_dimension",
-            "dimension": "undergarden:undergarden"
+            "dimension": "undergarden:otherside"
           },
           "then": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "undergarden:deepsoil"
+              "Name": "undergarden:tremblecrust"
             }
           }
         }
