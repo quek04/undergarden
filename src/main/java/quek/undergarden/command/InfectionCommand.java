@@ -23,7 +23,7 @@ public class InfectionCommand {
 
 	public static LiteralArgumentBuilder<CommandSourceStack> register() {
 		return Commands.literal("infection")
-			.requires(cs -> cs.hasPermission(Commands.LEVEL_ADMINS))
+			.requires(cs -> cs.hasPermission(Commands.LEVEL_GAMEMASTERS))
 			.then(Commands.argument("targets", EntityArgument.entities())
 				.then(Commands.literal("set")
 					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
