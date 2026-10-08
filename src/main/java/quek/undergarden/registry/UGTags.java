@@ -207,6 +207,7 @@ public class UGTags {
 		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 		public static final TagKey<Biome> HAS_DENIZEN_CAMP = tag("has_structure/denizen_camp");
 		public static final TagKey<Biome> HAS_DEPLETED_MINE = tag("has_structure/depleted_mine");
+		public static final TagKey<Biome> HAS_OBELISK = tag("has_structure/obelisk");
 
 		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_WIGGLEWOOD = commonTag("primary_wood_type/wigglewood");
 		public static final TagKey<Biome> PRIMARY_WOOD_TYPE_SMOGSTEM = commonTag("primary_wood_type/smogstem");

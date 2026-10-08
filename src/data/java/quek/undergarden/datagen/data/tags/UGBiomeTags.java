@@ -28,6 +28,7 @@ public class UGBiomeTags extends BiomeTagsProvider {
 		tag(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE).add(UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.DENSE_FOREST, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.BARREN_ABYSS);
 		tag(UGTags.Biomes.HAS_DENIZEN_CAMP).add(UGBiomes.DEPTHS);
 		tag(UGTags.Biomes.HAS_DEPLETED_MINE).addTag(UGTags.Biomes.IS_DEPTHS_BIOME);
+		tag(UGTags.Biomes.HAS_OBELISK).addTag(UGTags.Biomes.IS_OTHERSIDE);
 
 		//undergarden common
 		tag(UGTags.Biomes.PRIMARY_WOOD_TYPE_WIGGLEWOOD).add(UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.DENSE_FOREST);

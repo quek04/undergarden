@@ -86,6 +86,14 @@ public class UGStructures {
 
 	public static final ResourceKey<StructureProcessorList> DEPLETED_MINE_LANTERN_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("depleted_mine_lantern_processor"));
 
+	//obelisk
+	public static final ResourceKey<Structure> OBELISK = ResourceKey.create(Registries.STRUCTURE, Undergarden.prefix("obelisk"));
+	public static final ResourceKey<StructureSet> OBELISK_SET = ResourceKey.create(Registries.STRUCTURE_SET, Undergarden.prefix("obelisk"));
+
+	public static final ResourceKey<StructureTemplatePool> OBELISK_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("obelisk"));
+
+	public static final ResourceKey<StructureProcessorList> OBELISK_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("obelisk_processor"));
+
 	public static void bootstrapStructures(BootstrapContext<Structure> context) {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 		HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
@@ -178,6 +186,21 @@ public class UGStructures {
 			new DimensionPadding(10),
 			LiquidSettings.IGNORE_WATERLOGGING
 		));
+		context.register(OBELISK, new BiggerJigsawStructure(
+			new Structure.StructureSettings.Builder(biomes.getOrThrow(UGTags.Biomes.HAS_OBELISK))
+				.generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+				.terrainAdapation(TerrainAdjustment.BEARD_THIN)
+				.build(),
+			pools.getOrThrow(OBELISK_POOL),
+			Optional.empty(),
+			5,
+			UniformHeight.of(VerticalAnchor.absolute(64), VerticalAnchor.TOP),
+			Optional.empty(),
+			new JigsawStructure.MaxDistance(10),
+			List.of(),
+			DimensionPadding.ZERO,
+			LiquidSettings.IGNORE_WATERLOGGING
+		));
 	}
 
 	public static void bootstrapSets(BootstrapContext<StructureSet> context) {
@@ -186,6 +209,7 @@ public class UGStructures {
 		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 3, 1, RandomSpreadType.LINEAR)));
 		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(12, 6, RandomSpreadType.LINEAR, 27630047)));
 		context.register(DEPLETED_MINE_SET, new StructureSet(structures.getOrThrow(DEPLETED_MINE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.LEGACY_TYPE_3, 0.004F, 50002673, Optional.empty(), 1, 0, RandomSpreadType.LINEAR)));
+		context.register(OBELISK_SET, new StructureSet(structures.getOrThrow(OBELISK), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 50002674, Optional.empty(), 12, 6, RandomSpreadType.LINEAR)));
 	}
 
 	public static void bootstrapPools(BootstrapContext<StructureTemplatePool> context) {
@@ -380,6 +404,15 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/logs_1")), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/logs_2")), 1)
 		), StructureTemplatePool.Projection.RIGID));
+
+		context.register(OBELISK_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("obelisk/1")), 1),
+			Pair.of(StructurePoolElement.single(name("obelisk/2")), 1),
+			Pair.of(StructurePoolElement.single(name("obelisk/3")), 1),
+			Pair.of(StructurePoolElement.single(name("obelisk/4")), 1),
+			Pair.of(StructurePoolElement.single(name("obelisk/5")), 1),
+			Pair.of(StructurePoolElement.single(name("obelisk/6")), 1)
+		), StructureTemplatePool.Projection.RIGID));
 	}
 
 	public static void bootstrapProcessors(BootstrapContext<StructureProcessorList> context) {
@@ -443,6 +476,16 @@ public class UGStructures {
 					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_LANTERN.get(), 0.75F),
 					AlwaysTrueTest.INSTANCE,
 					Blocks.AIR.defaultBlockState()
+				)
+			))
+		)));
+
+		context.register(OBELISK_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.TREMBLECRUST_BRICKS.get(), 0.25F),
+					AlwaysTrueTest.INSTANCE,
+					UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get().defaultBlockState()
 				)
 			))
 		)));

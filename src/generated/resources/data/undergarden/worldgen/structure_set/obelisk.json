@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.85,
+    "salt": 50002674,
+    "separation": 6,
+    "spacing": 12
+  },
+  "structures": [
+    {
+      "structure": "undergarden:obelisk",
+      "weight": 1
+    }
+  ]
+}
