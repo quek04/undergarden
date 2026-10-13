@@ -167,7 +167,7 @@ dependencies {
 //
 	runtimeOnly "curse.maven:worldedit-225608:8037379"
 
-	compileOnly "curse.maven:irisshaders-455508:7867946"
+	compileOnly "curse.maven:irisshaders-455508:8868960"
 }
 
 processResources {
