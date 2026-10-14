@@ -63,6 +63,7 @@ import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.client.render.item.*;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
+import quek.undergarden.compat.IrisCompat;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.registry.*;
 
@@ -98,6 +99,7 @@ public class UGClientRegistrationEvents {
 			Sheets.addWoodType(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
+			IrisCompat.init();
 		});
 	}
 
