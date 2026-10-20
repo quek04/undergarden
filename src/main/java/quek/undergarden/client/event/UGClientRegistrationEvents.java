@@ -147,6 +147,7 @@ public class UGClientRegistrationEvents {
 		event.registerEntityRenderer(UGEntityTypes.MYSTERIOUS_POT.get(), MysteriousPotRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.UNDERGAR.get(), UndergarRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ACOLYTE.get(), AcolyteRenderer::new);
 	}
 
 	private static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -198,9 +199,11 @@ public class UGClientRegistrationEvents {
 		event.registerLayerDefinition(UGModelLayers.GRONGLE_CHEST_BOAT, () -> chestBoatModel);
 		event.registerLayerDefinition(UGModelLayers.ANCIENT_ROOT_BOAT, () -> boatModel);
 		event.registerLayerDefinition(UGModelLayers.ANCIENT_ROOT_CHEST_BOAT, () -> chestBoatModel);
+		event.registerLayerDefinition(UGModelLayers.ACOLYTE, AcolyteModel::createBodyLayer);
 
 		ArmorModelSet<MeshDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(LayerDefinitions.INNER_ARMOR_DEFORMATION, LayerDefinitions.OUTER_ARMOR_DEFORMATION);
 		registerArmorModelSet(event, UGModelLayers.FORGOTTEN_ARMOR, humanoidArmor);
+		registerArmorModelSet(event, UGModelLayers.ACOLYTE_ARMOR, humanoidArmor);
 	}
 
 	private static void registerArmorModelSet(EntityRenderersEvent.RegisterLayerDefinitions event, ArmorModelSet<ModelLayerLocation> set, ArmorModelSet<MeshDefinition> target) {

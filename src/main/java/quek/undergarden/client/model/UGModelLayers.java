@@ -53,6 +53,8 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GRONGLE_CHEST_BOAT = register("grongle_chest_boat");
 	public static final ModelLayerLocation ANCIENT_ROOT_BOAT = register("ancient_root_boat");
 	public static final ModelLayerLocation ANCIENT_ROOT_CHEST_BOAT = register("ancient_root_chest_boat");
+	public static final ModelLayerLocation ACOLYTE = register("acolyte");
+	public static final ArmorModelSet<ModelLayerLocation> ACOLYTE_ARMOR = registerArmorSet("acolyte");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(Undergarden.prefix(name), "main");
