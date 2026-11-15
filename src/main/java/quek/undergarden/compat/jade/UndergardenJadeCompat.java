@@ -11,6 +11,7 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import snownee.jade.addon.harvest.HarvestToolProvider;
 import snownee.jade.api.*;
+import snownee.jade.api.harvest.ToolTier;
 
 import java.util.List;
 
@@ -21,7 +22,12 @@ public class UndergardenJadeCompat implements IWailaPlugin {
 	public void registerClient(IWailaClientRegistration registration) {
 		registration.addRayTraceCallback((hitResult, accessor, _) -> this.createOverrides(registration, hitResult, accessor));
 
-		HarvestToolProvider.registerHandler(() -> new ForgottenToolHandler(Undergarden.prefix("forgotten"), Lists.transform(List.of(UGItems.FORGOTTEN_PICKAXE.get(), UGItems.FORGOTTEN_AXE.get(), UGItems.FORGOTTEN_SHOVEL.get(), UGItems.FORGOTTEN_HOE.get()), Item::getDefaultInstance)));
+		registration.addHarvestPlugin(registry -> {
+			registry.type(JadeIds.JADE("pickaxe")).addTier(ToolTier.item(UGItems.FORGOTTEN_PICKAXE.get()));
+			registry.type(JadeIds.JADE("axe")).addTier(ToolTier.item(UGItems.FORGOTTEN_AXE.get()));
+			registry.type(JadeIds.JADE("shovel")).addTier(ToolTier.item(UGItems.FORGOTTEN_SHOVEL.get()));
+			registry.type(JadeIds.JADE("hoe")).addTier(ToolTier.item(UGItems.FORGOTTEN_HOE.get()));
+		});
 	}
 
 	private @Nullable Accessor<?> createOverrides(IWailaClientRegistration client, HitResult hitResult, @Nullable Accessor<?> accessor) {
