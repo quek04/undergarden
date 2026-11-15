@@ -23,21 +23,35 @@ public class InfectionCommand {
 
 	public static LiteralArgumentBuilder<CommandSourceStack> register() {
 		return Commands.literal("infection")
-			.requires(cs -> cs.hasPermission(Commands.LEVEL_ADMINS))
+			.requires(cs -> cs.hasPermission(Commands.LEVEL_GAMEMASTERS))
 			.then(Commands.argument("targets", EntityArgument.entities())
 				.then(Commands.literal("set")
 					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
-						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), DoubleArgumentType.getDouble(context, "amount"))))));
+						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), DoubleArgumentType.getDouble(context, "amount"), true)))
+				)
+				.then(Commands.literal("add")
+					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
+						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), DoubleArgumentType.getDouble(context, "amount"), false)))
+				)
+				.then(Commands.literal("remove")
+					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
+						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), -DoubleArgumentType.getDouble(context, "amount"), false)))
+				)
+			);
 	}
 
-	private static int applyInfection(CommandSourceStack source, Collection<? extends Entity> targets, double amount) throws CommandSyntaxException {
+	private static int applyInfection(CommandSourceStack source, Collection<? extends Entity> targets, double amount, boolean forced) throws CommandSyntaxException {
 		int skipped = 0;
 		for (Entity entity : targets) {
 			if (entity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 				skipped++;
 				continue;
 			}
-			entity.setData(UGAttachments.UTHERIC_INFECTION, amount);
+			if (forced) {
+				entity.setData(UGAttachments.UTHERIC_INFECTION, amount);
+			} else {
+				entity.setData(UGAttachments.UTHERIC_INFECTION, entity.getData(UGAttachments.UTHERIC_INFECTION) + amount);
+			}
 			UthericInfectionEvents.sendInfectionSyncPacket(entity);
 		}
 
