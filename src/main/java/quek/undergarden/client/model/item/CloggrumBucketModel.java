@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.mojang.math.Transformation;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
@@ -182,7 +183,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 			if (jsonObject.has("content")) {
 				content = ResourceLocation.tryParse(jsonObject.get("content").getAsString());
 			}
-			
+
 			return new CloggrumBucketModel(fluid, content, flip, applyFluidLuminosity, false);
 		}
 	}
@@ -228,7 +229,14 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 				BakedModel bakedModel = this.cache.get(content);
 				if (bakedModel == null && content != null) {
 					CloggrumBucketModel unbaked = (fluid == null) ? this.parent.withOtherContent(content, containsEntityType) : this.parent.withFluid(fluid.getFluid());
-					bakedModel = unbaked.bake(this.owner, this.baker, Material::sprite, BlockModelRotation.X0_Y0, this);
+					ResourceLocation finalContent = content;
+					bakedModel = unbaked.bake(this.owner, this.baker, material -> {
+						if (material.texture() == null) {
+							Undergarden.LOGGER.error("Material texture for content {} was null! Using missing texture instead!", finalContent);
+							return Minecraft.getInstance().getTextureAtlas(material.atlasLocation()).apply(MissingTextureAtlasSprite.getLocation());
+						}
+						return material.sprite();
+					}, BlockModelRotation.X0_Y0, this);
 					this.cache.put(content, bakedModel);
 				}
 				return bakedModel;

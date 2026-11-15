@@ -62,7 +62,7 @@ public class UGCreativeModeTabs {
 
 			for (Item item : BuiltInRegistries.ITEM.stream().filter(item -> item instanceof MobBucketItem).toList().reversed()) {
 				EntityType<?> type = ((MobBucketItem) item).type;
-				if (!usedEntities.contains(type)) {
+				if (!usedEntities.contains(type) && BuiltInRegistries.ENTITY_TYPE.containsValue(type)) {
 					FluidStack stack = new FluidStack(((MobBucketItem) item).content, FluidType.BUCKET_VOLUME);
 					ResourceLocation id = EntityType.getKey(type);
 					event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder()
@@ -74,15 +74,17 @@ public class UGCreativeModeTabs {
 
 			for (Item item : BuiltInRegistries.ITEM.stream().filter(item -> item instanceof SolidBucketItem).toList().reversed()) {
 				Block block = ((SolidBucketItem) item).getBlock();
-				if (!usedBlocks.contains(block)) {
+				if (!usedBlocks.contains(block) && BuiltInRegistries.BLOCK.containsValue(block)) {
 					event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder().set(UGDataComponents.STORED_BLOCK.get(), block.defaultBlockState()).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 					usedBlocks.add(block);
 				}
 			}
 
 			for (Fluid fluid : BuiltInRegistries.FLUID.stream().filter(fluid -> fluid.isSource(fluid.defaultFluidState())).toList().reversed()) {
-				FluidStack stack = new FluidStack(fluid, FluidType.BUCKET_VOLUME);
-				event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder().set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack)).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+				if (fluid.getBucket() != Items.AIR && BuiltInRegistries.ITEM.containsValue(fluid.getBucket())) {
+					FluidStack stack = new FluidStack(fluid, FluidType.BUCKET_VOLUME);
+					event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder().set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack)).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+				}
 			}
 		}
 	}
